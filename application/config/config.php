@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/ecomie/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'git c';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
