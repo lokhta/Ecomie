@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-27 20:02:52
+/* Smarty version 3.1.34-dev-7, created on 2020-02-27 20:24:48
   from 'C:\wamp64\www\Ecomie\application\views\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e58206cb8d1e0_25698529',
+  'unifunc' => 'content_5e5825902fc379_46880504',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '577ced7bad3619aa3fcaab6891f507e58435b3e4' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\header.tpl',
-      1 => 1464121800,
+      1 => 1582835086,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e58206cb8d1e0_25698529 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5825902fc379_46880504 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -39,7 +39,7 @@ function content_5e58206cb8d1e0_25698529 (Smarty_Internal_Template $_smarty_tpl)
 
 	<style type="text/css">
 	
-		body {background-color: #fff; color: #000; width: 800px; font-family: 'Roboto Mono', 'courier', 'courier new', monotype;}
+		body {background-color: #fff; color: #000; width: 900px; font-family: 'Roboto Mono', 'courier', 'courier new', monotype;}
 		h1, h2 {background-color: #fff; color: #999; font-family: 'Roboto Slab', 'Times New Roman', Georgia, serif;}
 		h1 {font-size: 2em;}
 		h2 {font-size: 1.5em;}

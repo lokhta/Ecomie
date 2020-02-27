@@ -14,7 +14,7 @@
 
 	<style type="text/css">
 	{literal}
-		body {background-color: #fff; color: #000; width: 800px; font-family: 'Roboto Mono', 'courier', 'courier new', monotype;}
+		body {background-color: #fff; color: #000; width: 900px; font-family: 'Roboto Mono', 'courier', 'courier new', monotype;}
 		h1, h2 {background-color: #fff; color: #999; font-family: 'Roboto Slab', 'Times New Roman', Georgia, serif;}
 		h1 {font-size: 2em;}
 		h2 {font-size: 1.5em;}
