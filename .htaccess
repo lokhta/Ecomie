@@ -16,7 +16,7 @@ ExpiresActive On
 # AllowOverride FileInfo
 RewriteEngine on
 # Use: RewriteBase /<subdirectory> if installed in subdirectory
-RewriteBase /
+RewriteBase /ecomie
 
 # CodeIgniter pages with their own controllers 
 RewriteCond %{REQUEST_FILENAME} !-f
