@@ -1,7 +1,25 @@
-RewriteEngine On
-RewriteBase /ecomie
-RewriteCond %{REQUEST_URI} ^system.*
-RewriteRule ^(.*)$ /index.php/$1 [L]
+Options +FollowSymLinks
+IndexIgnore *
+
+<IfModule mod_expires.c>
+ExpiresActive On
+############################################################
+## Add default Expires header
+## http://developer.yahoo.com/performance/rules.html#expires
+############################################################
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+ ExpiresDefault "access plus 1 year"
+</FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+# AllowOverride FileInfo
+RewriteEngine on
+# Use: RewriteBase /<subdirectory> if installed in subdirectory
+RewriteBase /
+
+# CodeIgniter pages with their own controllers 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ index.php [L]
+
+</IfModule>
