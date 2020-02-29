@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 17:11:23
+/* Smarty version 3.1.34-dev-7, created on 2020-02-29 17:21:56
   from 'C:\wamp64\www\Ecomie\application\views\templates\pages\savoir_faire.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a9b3b3a00c0_22586619',
+  'unifunc' => 'content_5e5a9db4667028_61252683',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '251f8c0c18f8d652ebedbcd4153f8d73f2d4d8e1' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\pages\\savoir_faire.tpl',
-      1 => 1582992983,
+      1 => 1582996495,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e5a9b3b3a00c0_22586619 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5a9db4667028_61252683 (Smarty_Internal_Template $_smarty_tpl) {
 ?>    <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Savoir-Faire",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
 ?>
       <div class="contenaire__bloc">
@@ -175,5 +176,6 @@ assets/img/ampoule (1).svg" alt="outils">
             <a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 assets/img/facebook.svg" alt="Facebook"></a>
         </section>
-<?php }
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

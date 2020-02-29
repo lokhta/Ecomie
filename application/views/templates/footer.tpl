@@ -25,7 +25,7 @@
                         <li><a href="#">Accueil</a></li>
                         <li><a href="{$base_url}pages/articles">Savoir-Faire</a></li>
                         <li><a href="{$base_url}pages/erreur">Evénements</a></li>
-                        <li><a href="{$base_url}pages/gallerie">Galerie</a></li>
+                        <li><a href="{$base_url}pages/galerie">Galerie</a></li>
                         <li><a href="{$base_url}pages/contact">Contact</a></li>
                         <p class="disii">© 2019, DISII</p>
                     </ul>

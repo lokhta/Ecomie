@@ -131,3 +131,4 @@
             <p>Plein d'autres astuce sur notre page Facebook</p>
             <a href="#"><img src="{$base_url}assets/img/facebook.svg" alt="Facebook"></a>
         </section>
+{include file="footer.tpl"}
