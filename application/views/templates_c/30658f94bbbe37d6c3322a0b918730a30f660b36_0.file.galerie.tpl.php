@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 16:27:39
+/* Smarty version 3.1.34-dev-7, created on 2020-02-29 17:11:28
   from 'C:\wamp64\www\Ecomie\application\views\templates\pages\galerie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a90fb0c3397_41891680',
+  'unifunc' => 'content_5e5a9b40c07580_20122303',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '30658f94bbbe37d6c3322a0b918730a30f660b36' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\pages\\galerie.tpl',
-      1 => 1582993655,
+      1 => 1582995313,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e5a90fb0c3397_41891680 (Smarty_Internal_Template $_smarty_tpl) {
-?>        <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Galerie",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
+function content_5e5a9b40c07580_20122303 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Galerie",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
 ?>
 <div class="galerie">
   <span id="votre_id1" class="target"></span>

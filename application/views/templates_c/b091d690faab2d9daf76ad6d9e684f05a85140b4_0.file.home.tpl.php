@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 13:01:17
+/* Smarty version 3.1.34-dev-7, created on 2020-02-29 17:11:19
   from 'C:\wamp64\www\Ecomie\application\views\templates\pages\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a609d774db5_86649463',
+  'unifunc' => 'content_5e5a9b37eea073_15245426',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b091d690faab2d9daf76ad6d9e684f05a85140b4' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\pages\\home.tpl',
-      1 => 1582981274,
+      1 => 1582992983,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e5a609d774db5_86649463 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5a9b37eea073_15245426 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Accueil",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
 ?>
         <div id=background>

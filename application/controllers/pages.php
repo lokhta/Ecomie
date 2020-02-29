@@ -22,4 +22,8 @@ class Pages extends CI_Controller{
     public function cgu(){
         $this->smarty->view('pages/cgu.tpl');
     }
+
+    public function mentions(){
+        $this->smarty->view('pages/mentions.tpl');
+    }
 }
