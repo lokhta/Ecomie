@@ -6,4 +6,8 @@ class Pages extends CI_Controller{
 
         $this->smarty->assign('base_url', base_url());
     }
+
+    public function articles(){
+        $this->smarty->view('pages/savoir_faire.tpl');
+    }
 }
