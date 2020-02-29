@@ -28,12 +28,12 @@
                 <nav>
                     <a href="{$base_url}">Accueil</a>
                     <a href="{$base_url}pages/articles">Savoir-Faire</a>
-                    <a href="{$base_url}pages/erreur">Evénements</a>
-                    <a href="{$base_url}pages/gallerie">Galerie</a>
+                    <a href="{$base_url}pages/evenements">Evénements</a>
+                    <a href="{$base_url}pages/galerie">Galerie</a>
                     <a href="{$base_url}pages/contact">Contact</a>
                     <a class="connexion" href="{$base_url}pages/connexion">Connexion</a>
                 </nav>
-                <a class="connexion__mobile" href="{$base_url}pages/erreur"><img
+                <a class="connexion__mobile" href="{$base_url}pages/connexion"><img
                         src="{$base_url}assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion"></a>
 
             </div>

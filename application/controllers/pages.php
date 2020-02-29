@@ -10,4 +10,8 @@ class Pages extends CI_Controller{
     public function articles(){
         $this->smarty->view('pages/savoir_faire.tpl');
     }
+
+    public function galerie(){
+        $this->smarty->view('pages/galerie.tpl');
+    }
 }
