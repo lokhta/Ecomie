@@ -15,6 +15,10 @@ class Pages extends CI_Controller{
         $this->smarty->view('pages/events.tpl');
     }
 
+    public function connexion(){
+        $this->smarty->view('pages/connect.tpl');
+    }
+
     public function galerie(){
         $this->smarty->view('pages/galerie.tpl');
     }
