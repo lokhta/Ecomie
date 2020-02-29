@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" type="image/png" href="assets/img/5151logo_fleur.ico" />
+    <link rel="stylesheet" href="{$base_url}assets/css/style.css">
+    <link rel="shortcut icon" type="image/png" href="{$base_url}assets/img/5151logo_fleur.ico" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Ecomie</title>
+    <title>{$title}</title>
 </head>
 
 <body>
     <div id="principal">
         <header>
             <div id="logo">
-                <div class="element_logo"><img src="assets/img/logo_fleur.png" alt="Logo">
+                <div class="element_logo"><img src="{$base_url}assets/img/logo_fleur.png" alt="Logo">
                 </div>
                 <div id="element_titre">
                     <h1 class="titre">ECOMIE</h1>
@@ -26,15 +26,15 @@
             <div class="menu">
                 <input class="burger" type="checkbox">
                 <nav>
-                    <a href="#">Accueil</a>
-                    <a href="savoir-faire/savoir_faire.html">Savoir-Faire</a>
-                    <a href="erreur/erreur.html">Evénements</a>
-                    <a href="galerie/galerie.html">Galerie</a>
-                    <a href="contact/contact.html">Contact</a>
-                    <a class="connexion" href="#">Connexion</a>
+                    <a href="{$base_url}">Accueil</a>
+                    <a href="{$base_url}pages/articles">Savoir-Faire</a>
+                    <a href="{$base_url}pages/erreur">Evénements</a>
+                    <a href="{$base_url}pages/gallerie">Galerie</a>
+                    <a href="{$base_url}pages/contact">Contact</a>
+                    <a class="connexion" href="{$base_url}pages/connexion">Connexion</a>
                 </nav>
-                <a class="connexion__mobile" href="erreur/erreur.html"><img
-                        src="assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion"></a>
+                <a class="connexion__mobile" href="{$base_url}pages/erreur"><img
+                        src="{$base_url}assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion"></a>
 
             </div>
         </header>
