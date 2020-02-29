@@ -2,7 +2,7 @@
             <div id="footer_contenaire">
                 <div id="footer__fb">
                     <div class="fb">
-                        <a href="#"><img src="img/fb.svg" alt="Facebook"></a>
+                        <a href="#"><img src="assets/img/fb.svg" alt="Facebook"></a>
                     </div>
                     <ul>
                         <li><a href="CGU/cgu.html">Mention légal</a></li>
