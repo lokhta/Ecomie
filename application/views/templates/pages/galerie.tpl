@@ -1,4 +1,4 @@
-        {include file="header.tpl" title="Ecomie - Galerie" name=$Name}
+{include file="header.tpl" title="Ecomie - Galerie" name=$Name}
 <div class="galerie">
   <span id="votre_id1" class="target"></span>
   <span id="votre_id2" class="target"></span>

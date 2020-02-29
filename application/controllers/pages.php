@@ -18,4 +18,8 @@ class Pages extends CI_Controller{
     public function contact(){
         $this->smarty->view('pages/contact.tpl');
     }
+
+    public function cgu(){
+        $this->smarty->view('pages/cgu.tpl');
+    }
 }
