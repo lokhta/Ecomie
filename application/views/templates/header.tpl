@@ -16,7 +16,8 @@
     <div id="principal">
         <header>
             <div id="logo">
-                <div class="element_logo"><img src="{$base_url}assets/img/logo_fleur.png" alt="Logo">
+                <div class="element_logo">
+                    <a href="{$base_url}"><img src="{$base_url}assets/img/logo_fleur.png" alt="Logo"></a>
                 </div>
                 <div id="element_titre">
                     <h1 class="titre">ECOMIE</h1>
