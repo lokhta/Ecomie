@@ -2,7 +2,7 @@
             <div id="footer_contenaire">
                 <div id="footer__fb">
                     <div class="fb">
-                        <a href="#"><img src="assets/img/fb.svg" alt="Facebook"></a>
+                        <a href="#"><img src="{$base_url}assets/img/fb.svg" alt="Facebook"></a>
                     </div>
                     <ul>
                         <li><a href="CGU/cgu.html">Mention légal</a></li>
@@ -23,10 +23,10 @@
                 <div id="footer__nav">
                     <ul id="footer__menu">
                         <li><a href="#">Accueil</a></li>
-                        <li><a href="savoir-faire/savoir_faire.html">Savoir-Faire</a></li>
-                        <li><a href="erreur/erreur.html">Evénements</a></li>
-                        <li><a href="galerie/galerie.html">Galerie</a></li>
-                        <li><a href="contact/contact.html">Contact</a></li>
+                        <li><a href="{$base_url}pages/articles">Savoir-Faire</a></li>
+                        <li><a href="{$base_url}pages/erreur">Evénements</a></li>
+                        <li><a href="{$base_url}pages/gallerie">Galerie</a></li>
+                        <li><a href="{$base_url}pages/contact">Contact</a></li>
                         <p class="disii">© 2019, DISII</p>
                     </ul>
                 </div>
