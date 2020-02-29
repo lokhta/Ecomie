@@ -1,27 +1,31 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 11:15:46
+/* Smarty version 3.1.34-dev-7, created on 2020-02-29 13:01:17
   from 'C:\wamp64\www\Ecomie\application\views\templates\pages\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a47e2d9ac70_51843363',
+  'unifunc' => 'content_5e5a609d774db5_86649463',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b091d690faab2d9daf76ad6d9e684f05a85140b4' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\pages\\home.tpl',
-      1 => 1582974858,
+      1 => 1582981274,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e5a47e2d9ac70_51843363 (Smarty_Internal_Template $_smarty_tpl) {
-?>        <div id=background>
+function content_5e5a609d774db5_86649463 (Smarty_Internal_Template $_smarty_tpl) {
+?>        <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Accueil",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
+?>
+        <div id=background>
             <div class="slider">
                 <div class="slides">
 
@@ -42,15 +46,18 @@ function content_5e5a47e2d9ac70_51843363 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <section id="impact">
             <div class="terre">
-                <img class="centrer" src="img/terre.png" alt="Terre">
+                <img class="centrer" src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+assets/img/terre.png" alt="Terre">
                 <p>réduison notre impact</br>sur la planéte</br>par la force du groupe</p>
             </div>
             <div class="terre">
-                <img src="img/partage_2.png" alt="Partage">
+                <img src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+assets/img/partage_2.png" alt="Partage">
                 <p>Apprendre et partager </br> avec ses proches</p>
             </div>
             <div class="terre">
-                <img src="img/qartier.png" alt="Quartier">
+                <img src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+assets/img/qartier.png" alt="Quartier">
                 <p>Ce retrouver lors </br>d'événements et défi</br>de quartier convivial</p>
             </div>
         </section>
@@ -62,5 +69,6 @@ function content_5e5a47e2d9ac70_51843363 (Smarty_Internal_Template $_smarty_tpl)
                 <button class="bouton">Souscrivez </button>
             </div>
         </section>
-<?php }
+        <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

@@ -20,15 +20,15 @@
         </div>
         <section id="impact">
             <div class="terre">
-                <img class="centrer" src="assets/img/terre.png" alt="Terre">
+                <img class="centrer" src="{$base_url}assets/img/terre.png" alt="Terre">
                 <p>réduison notre impact</br>sur la planéte</br>par la force du groupe</p>
             </div>
             <div class="terre">
-                <img src="assets/img/partage_2.png" alt="Partage">
+                <img src="{$base_url}assets/img/partage_2.png" alt="Partage">
                 <p>Apprendre et partager </br> avec ses proches</p>
             </div>
             <div class="terre">
-                <img src="assets/img/qartier.png" alt="Quartier">
+                <img src="{$base_url}assets/img/qartier.png" alt="Quartier">
                 <p>Ce retrouver lors </br>d'événements et défi</br>de quartier convivial</p>
             </div>
         </section>
