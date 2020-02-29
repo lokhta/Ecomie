@@ -28,8 +28,6 @@ class Welcome extends CI_Controller {
     }
 
     public function index(){
-
-        $viewData = ['name' => 'Monkey D.', 'firstname' => 'Luffy'];
-        $this->smarty->view('example.tpl', $viewData);
+        $this->smarty->view('pages/home.tpl',);
     }
 }
