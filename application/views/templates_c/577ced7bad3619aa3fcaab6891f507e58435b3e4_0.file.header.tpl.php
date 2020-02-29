@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 13:01:17
+/* Smarty version 3.1.34-dev-7, created on 2020-02-29 16:37:10
   from 'C:\wamp64\www\Ecomie\application\views\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a609d7c0135_24711205',
+  'unifunc' => 'content_5e5a933653e474_52373908',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '577ced7bad3619aa3fcaab6891f507e58435b3e4' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\header.tpl',
-      1 => 1582980963,
+      1 => 1582994220,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e5a609d7c0135_24711205 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5a933653e474_52373908 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 
@@ -58,16 +58,16 @@ assets/img/logo_fleur.png" alt="Logo">
                     <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 pages/articles">Savoir-Faire</a>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-pages/erreur">Evénements</a>
+pages/evenements">Evénements</a>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-pages/gallerie">Galerie</a>
+pages/galerie">Galerie</a>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 pages/contact">Contact</a>
                     <a class="connexion" href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 pages/connexion">Connexion</a>
                 </nav>
                 <a class="connexion__mobile" href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-pages/erreur"><img
+pages/connexion"><img
                         src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion"></a>
 

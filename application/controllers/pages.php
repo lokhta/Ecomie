@@ -14,4 +14,8 @@ class Pages extends CI_Controller{
     public function galerie(){
         $this->smarty->view('pages/galerie.tpl');
     }
+
+    public function contact(){
+        $this->smarty->view('pages/contact.tpl');
+    }
 }
