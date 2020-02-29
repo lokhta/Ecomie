@@ -32,7 +32,7 @@ class Welcome extends CI_Controller {
 
     public function index(){
 
-		$this->smarty->view('pages/home.tpl',);
+		$this->smarty->view('pages/home.tpl');
 		
 	}
 
