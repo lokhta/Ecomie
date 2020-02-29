@@ -5,9 +5,9 @@
                         <a href="#"><img src="{$base_url}assets/img/fb.svg" alt="Facebook"></a>
                     </div>
                     <ul>
-                        <li><a href="CGU/cgu.html">Mention légal</a></li>
-                        <li><a href="CGU/cgu.html">CGU</a></li>
-                        <li><a href="plan/plan.html">Plan du site</a></li>
+                        <li><a href="{$base_url}pages/mentions">Mention légal</a></li>
+                        <li><a href="{$base_url}pages/cgu">CGU</a></li>
+                        <li><a href="{$base_url}pages/plan">Plan du site</a></li>
                     </ul>
                 </div>
                 <div id="footer__adress">
@@ -24,8 +24,8 @@
                     <ul id="footer__menu">
                         <li><a href="#">Accueil</a></li>
                         <li><a href="{$base_url}pages/articles">Savoir-Faire</a></li>
-                        <li><a href="{$base_url}pages/evenements">Evénements</a></li>
-                        <li><a href="{$base_url}pages/galerie">Galerie</a></li>
+                        <li><a href="{$base_url}pages/erreur">Evénements</a></li>
+                        <li><a href="{$base_url}pages/gallerie">Galerie</a></li>
                         <li><a href="{$base_url}pages/contact">Contact</a></li>
                         <p class="disii">© 2019, DISII</p>
                     </ul>
