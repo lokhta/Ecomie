@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 01 mars 2020 à 11:17
+-- Généré le :  sam. 07 mars 2020 à 14:20
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -38,7 +38,15 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `categoryId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   PRIMARY KEY (`articleId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `articles`
+--
+
+INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleDate`, `validate`, `categoryId`, `userId`) VALUES
+(1, 'Comment fabriquer son potager en ville ?', 'Pourquoi les citadins n\'auraient pas accès aux bienfaits d\'un potager ? Les solutions pour cultiver des légumes en ville, sur peu de surface, ou même sans terrain, existent et ne sont pas si difficiles que ça à mettre en place. Voyez plutôt...', '2020-03-07 15:15:04', 1, 1, 1),
+(2, 'Consommer local et de saison ?', 'En achetant auprès des producteurs locaux afin de contribuer à faire émerger une autre logique de production et de distribution. Un exemple qui marche ? Le système des AMAP (Association pour le Maintien d’une Agriculture Paysanne). Il propose de créer un lien privilégié entre un paysan et un groupe de consommateurs qui, chaque semaine, va remplir son panier de fruits et de légumes frais, de viande, de vin… Cette collaboration permet à des milliers de paysans de s’installer tous les ans sur de petites exploitations respectueuses de l’environnement. La France comptait 500 AMAP en 2007, elles sont 4000 en prévision en 2010. Les AMAP connaissent un tel succès qu’elles affichent souvent complet ! Alors pourquoi ne pas en créer une ?', '2020-03-07 15:17:36', 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -51,7 +59,15 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `categoryId` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(15) NOT NULL,
   PRIMARY KEY (`categoryId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`categoryId`, `categoryName`) VALUES
+(1, 'Astuces'),
+(2, 'Alimentaires');
 
 -- --------------------------------------------------------
 
@@ -121,7 +137,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `sender` int(11) NOT NULL,
   `recipient` int(11) NOT NULL,
   PRIMARY KEY (`msgId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`msgId`, `msgContent`, `msgDate`, `sender`, `recipient`) VALUES
+(1, 'Bonjour, j\'aimerais pouvoir publier un article sur votre site mais je n\'y arrive pas, pouvez-vous me guider ?', '2020-03-07 14:54:18', 1, 4),
+(2, 'Comment change t\'on son adresse email ?', '2020-03-07 15:00:20', 3, 4),
+(3, 'Bonjour... j\'ai envoyer un message à Victoire mais elle me dis qu\'elle ne l\'as pas reçus...', '2020-03-07 15:02:08', 2, 4),
+(4, 'Salut :)', '2020-03-07 15:02:08', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -136,7 +162,16 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
   `newsContent` text NOT NULL,
   `newsDate` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`newsId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `newsletters`
+--
+
+INSERT INTO `newsletters` (`newsId`, `newsTitle`, `newsContent`, `newsDate`) VALUES
+(1, 'Consommer local et de saison ?', 'En achetant auprès des producteurs locaux afin de contribuer à faire émerger une autre logique de production et de distribution. Un exemple qui marche ? Le système des AMAP (Association pour le Maintien d’une Agriculture Paysanne). Il propose de créer un lien privilégié entre un paysan et un groupe de consommateurs qui, chaque semaine, va remplir son panier de fruits et de légumes frais, de viande, de vin… Cette collaboration permet à des milliers de paysans de s’installer tous les ans sur de petites exploitations respectueuses de l’environnement. La France comptait 500 AMAP en 2007, elles sont 4000 en prévision en 2010. Les AMAP connaissent un tel succès qu’elles affichent souvent complet ! Alors pourquoi ne pas en créer une ?', '2020-03-07 14:49:38'),
+(2, 'Comment fabriquer son potager en ville ?', 'Pourquoi les citadins n\'auraient pas accès aux bienfaits d\'un potager ? Les solutions pour cultiver des légumes en ville, sur peu de surface, ou même sans terrain, existent et ne sont pas si difficiles que ça à mettre en place. Voyez plutôt...', '2020-03-07 14:49:38'),
+(3, 'Prendre soin de ses plantes aromatiques', 'A peu près partout, à condition qu\'il y ait un minimum de lumière et de soleil durant la journée. Attention, il ne faut pas une exposition trop soutenue au soleil car cela pourrait nuire à la plante. Choisissez donc de préférence la mi-ombre aux heures les plus chaudes, sauf pour le romarin, le thym et le basilic.', '2020-03-07 14:51:02');
 
 -- --------------------------------------------------------
 
@@ -149,7 +184,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `roleId` int(11) NOT NULL AUTO_INCREMENT,
   `roleName` varchar(15) NOT NULL,
   PRIMARY KEY (`roleId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `roles`
+--
+
+INSERT INTO `roles` (`roleId`, `roleName`) VALUES
+(1, 'User'),
+(2, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -164,7 +207,16 @@ CREATE TABLE IF NOT EXISTS `subscribes` (
   `userId` int(11) DEFAULT NULL,
   `newsId` int(11) NOT NULL,
   PRIMARY KEY (`subscriberId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `subscribes`
+--
+
+INSERT INTO `subscribes` (`subscriberId`, `subscriberEmail`, `userId`, `newsId`) VALUES
+(1, 'EmmelineLanctot@dayrep.com', NULL, 1),
+(2, 'antoinecousteau@gmail.com', 2, 2),
+(3, 'christianducharme@hotmail.com', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -186,7 +238,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `avatar` varchar(255) NOT NULL,
   `roleId` int(11) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `email`, `phone`, `address`, `cp`, `city`, `pwd`, `avatar`, `roleId`) VALUES
+(1, 'Ducharme', 'Christian', 'christianducharme@hotmail.com', '0288170297', '94 , avenue du Marechal Juin', '50000', 'Saint-Lô', '12345678', '', 1),
+(2, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 1),
+(3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 1),
+(4, 'Admin', 'Admin', 'GanelonBarteaux@armyspy.com', NULL, '85, rue du Fossé des Tanneurs', '83100', 'Toulon', 'admin', 'admin', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
