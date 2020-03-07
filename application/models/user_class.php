@@ -1,5 +1,6 @@
 <?php
-	class User{
+	class User extends CI_Mode{
+
 		/* ATTRIBUTS */
 		private $_userId;
 		private $_userName;
@@ -29,31 +30,31 @@
 		
 		/* SETTERS */
 		public function setUserId($intUserId){
-			$this->_id = $intUserId;
+			$this->_userId = $intUserId;
 		}
 		public function setUserName($strUserName){
-			$this->_name = trim($strUserName);
+			$this->_userName = $strUserName;
 		}
 		public function setUserFirstname($strUserFirstname){
-			$this->_firstname = trim($strUserFirstname);
+			$this->_userFirstname = $strUserFirstname;
 		}
 		public function setEmail($strEmail){
-			$this->_email = strtolower(trim($strEmail));
+			$this->_email = $strEmail;
         }
         public function setPhone($strPhone){
-            $this->_phone = trim($strPhone, ".");
+            $this->_phone = $strPhone;
         }
         public function setAddress($strAddress){
             $this->_address = $strAddress;
         }
         public function setCp($strCp){
-            $this->_cp = trim($strCp);
+            $this->_cp = $strCp;
         }
         public function setCity($strCity){
             $this->_city = $strCity;
         }
         public function setPwd($strPwd){
-			$this->_pwd = password_hash($strPwd, PASSWORD_DEFAULT);
+			$this->_pwd = $strPwd;
         }
         public function setAvatar($strAvatar){
             $this->_avatar = $strAvatar);
@@ -61,13 +62,13 @@
 		
 		/* GETTERS */
 		public function getUserId(){
-			return $this->_id;
+			return $this->_userId;
 		}
 		public function getUserName(){
-			return strtoupper($this->_name);
+			return $this->_userName;
 		}		
 		public function getUserFirstname(){
-			return $this->_firstname;
+			return $this->_userFirstname;
 		}
 		public function getEmail(){
 			return $this->_email;
