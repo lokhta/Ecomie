@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/png" href="{base_url()}assets/img/5151logo_fleur.ico" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>{$title}</title>
+     <script src="https://kit.fontawesome.com/cefffb285d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
