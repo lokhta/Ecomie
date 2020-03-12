@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 07 mars 2020 à 14:20
+-- Généré le :  jeu. 12 mars 2020 à 15:41
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `articleTitle` varchar(100) NOT NULL,
   `articleContent` text NOT NULL,
   `articleDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `validate` tinyint(1) NOT NULL DEFAULT 0,
-  `categoryId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
+  `articleValidate` tinyint(1) NOT NULL DEFAULT 0,
+  `articleCategory` int(11) NOT NULL,
+  `articleAuthor` int(11) NOT NULL,
   PRIMARY KEY (`articleId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 -- Déchargement des données de la table `articles`
 --
 
-INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleDate`, `validate`, `categoryId`, `userId`) VALUES
+INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleDate`, `articleValidate`, `articleCategory`, `articleAuthor`) VALUES
 (1, 'Comment fabriquer son potager en ville ?', 'Pourquoi les citadins n\'auraient pas accès aux bienfaits d\'un potager ? Les solutions pour cultiver des légumes en ville, sur peu de surface, ou même sans terrain, existent et ne sont pas si difficiles que ça à mettre en place. Voyez plutôt...', '2020-03-07 15:15:04', 1, 1, 1),
 (2, 'Consommer local et de saison ?', 'En achetant auprès des producteurs locaux afin de contribuer à faire émerger une autre logique de production et de distribution. Un exemple qui marche ? Le système des AMAP (Association pour le Maintien d’une Agriculture Paysanne). Il propose de créer un lien privilégié entre un paysan et un groupe de consommateurs qui, chaque semaine, va remplir son panier de fruits et de légumes frais, de viande, de vin… Cette collaboration permet à des milliers de paysans de s’installer tous les ans sur de petites exploitations respectueuses de l’environnement. La France comptait 500 AMAP en 2007, elles sont 4000 en prévision en 2010. Les AMAP connaissent un tel succès qu’elles affichent souvent complet ! Alors pourquoi ne pas en créer une ?', '2020-03-07 15:17:36', 0, 2, 1);
 
@@ -80,10 +80,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `commentId` int(11) NOT NULL AUTO_INCREMENT,
   `commentContent` text NOT NULL,
   `commentDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `report` tinyint(1) NOT NULL DEFAULT 0,
-  `userId` int(11) NOT NULL,
-  `articleId` int(11) DEFAULT NULL,
-  `eventId` int(11) DEFAULT NULL,
+  `commentReport` tinyint(1) NOT NULL DEFAULT 0,
+  `commentAuthor` int(11) NOT NULL,
+  `commentArticle` int(11) DEFAULT NULL,
+  `commentEvent` int(11) DEFAULT NULL,
   PRIMARY KEY (`commentId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -98,11 +98,11 @@ CREATE TABLE IF NOT EXISTS `events` (
   `eventId` int(11) NOT NULL AUTO_INCREMENT,
   `eventName` varchar(100) NOT NULL,
   `eventContent` text NOT NULL,
-  `dateStart` date NOT NULL,
-  `timeStart` time NOT NULL,
-  `dateEnd` date NOT NULL,
-  `timeEnd` time NOT NULL,
-  `userId` int(11) NOT NULL,
+  `eventDateStart` date NOT NULL,
+  `eventTimeStart` time NOT NULL,
+  `eventDateEnd` date NOT NULL,
+  `eventTimeEnd` time NOT NULL,
+  `eventAuthor` int(11) NOT NULL,
   PRIMARY KEY (`eventId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -116,10 +116,10 @@ DROP TABLE IF EXISTS `images`;
 CREATE TABLE IF NOT EXISTS `images` (
   `imgId` int(11) NOT NULL AUTO_INCREMENT,
   `imgName` varchar(255) NOT NULL,
-  `dateAdd` datetime NOT NULL DEFAULT current_timestamp(),
-  `alt` varchar(50) NOT NULL,
-  `articleId` int(11) DEFAULT NULL,
-  `eventId` int(11) DEFAULT NULL,
+  `imgDateAdd` datetime NOT NULL DEFAULT current_timestamp(),
+  `imgAlt` varchar(50) NOT NULL,
+  `imgEvent` int(11) DEFAULT NULL,
+  `imgArticle` int(11) DEFAULT NULL,
   PRIMARY KEY (`imgId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -134,8 +134,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `msgId` int(11) NOT NULL AUTO_INCREMENT,
   `msgContent` text NOT NULL,
   `msgDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `sender` int(11) NOT NULL,
-  `recipient` int(11) NOT NULL,
+  `msgSender` int(11) NOT NULL,
+  `msgRecipient` int(11) NOT NULL,
   PRIMARY KEY (`msgId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- Déchargement des données de la table `messages`
 --
 
-INSERT INTO `messages` (`msgId`, `msgContent`, `msgDate`, `sender`, `recipient`) VALUES
+INSERT INTO `messages` (`msgId`, `msgContent`, `msgDate`, `msgSender`, `msgRecipient`) VALUES
 (1, 'Bonjour, j\'aimerais pouvoir publier un article sur votre site mais je n\'y arrive pas, pouvez-vous me guider ?', '2020-03-07 14:54:18', 1, 4),
 (2, 'Comment change t\'on son adresse email ?', '2020-03-07 15:00:20', 3, 4),
 (3, 'Bonjour... j\'ai envoyer un message à Victoire mais elle me dis qu\'elle ne l\'as pas reçus...', '2020-03-07 15:02:08', 2, 4),
@@ -202,18 +202,18 @@ INSERT INTO `roles` (`roleId`, `roleName`) VALUES
 
 DROP TABLE IF EXISTS `subscribes`;
 CREATE TABLE IF NOT EXISTS `subscribes` (
-  `subscriberId` int(11) NOT NULL AUTO_INCREMENT,
-  `subscriberEmail` varchar(100) NOT NULL,
-  `userId` int(11) DEFAULT NULL,
-  `newsId` int(11) NOT NULL,
-  PRIMARY KEY (`subscriberId`)
+  `subscribeId` int(11) NOT NULL AUTO_INCREMENT,
+  `subscribeEmail` varchar(100) NOT NULL,
+  `subscribeMember` int(11) DEFAULT NULL,
+  `subscribeNews` int(11) NOT NULL,
+  PRIMARY KEY (`subscribeId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `subscribes`
 --
 
-INSERT INTO `subscribes` (`subscriberId`, `subscriberEmail`, `userId`, `newsId`) VALUES
+INSERT INTO `subscribes` (`subscribeId`, `subscribeEmail`, `subscribeMember`, `subscribeNews`) VALUES
 (1, 'EmmelineLanctot@dayrep.com', NULL, 1),
 (2, 'antoinecousteau@gmail.com', 2, 2),
 (3, 'christianducharme@hotmail.com', 1, 3);
@@ -229,14 +229,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `userName` varchar(20) NOT NULL,
   `userFirstname` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  `address` varchar(150) NOT NULL,
-  `cp` char(5) NOT NULL,
-  `city` varchar(80) NOT NULL,
-  `pwd` varchar(255) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `roleId` int(11) NOT NULL,
+  `userEmail` varchar(100) NOT NULL,
+  `userPhone` varchar(15) DEFAULT NULL,
+  `userAddress` varchar(150) NOT NULL,
+  `userCp` char(5) NOT NULL,
+  `userCity` varchar(80) NOT NULL,
+  `userPwd` varchar(255) NOT NULL,
+  `userAvatar` varchar(255) NOT NULL,
+  `userRole` int(11) NOT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `email`, `phone`, `address`, `cp`, `city`, `pwd`, `avatar`, `roleId`) VALUES
+INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `userEmail`, `userPhone`, `userAddress`, `userCp`, `userCity`, `userPwd`, `userAvatar`, `userRole`) VALUES
 (1, 'Ducharme', 'Christian', 'christianducharme@hotmail.com', '0288170297', '94 , avenue du Marechal Juin', '50000', 'Saint-Lô', '12345678', '', 1),
 (2, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 1),
 (3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 1),
