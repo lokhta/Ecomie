@@ -5,13 +5,13 @@
 		private $_userId;
 		private $_userName;
 		private $_userFirstname;
-        private $_email;
-        private $_phone;
-        private $_address;
-        private $_cp;
-        private $_city;
-        private $_pwd;
-        private $_avatar;
+        private $_userEmail;
+        private $_userPhone;
+        private $_userAddress;
+        private $_userCp;
+        private $_userCity;
+        private $_userPwd;
+        private $_userAvatar;
 		
 		/* CONSTRUCTEUR */
 		public function __construct(){
@@ -38,26 +38,26 @@
 		public function setUserFirstname($strUserFirstname){
 			$this->_userFirstname = $strUserFirstname;
 		}
-		public function setEmail($strEmail){
-			$this->_email = $strEmail;
+		public function setEmail($strUserEmail){
+			$this->_userEmail = $strUserEmail;
         }
         public function setPhone($strPhone){
-            $this->_phone = $strPhone;
+            $this->_userPhone = $strUserPhone;
         }
         public function setAddress($strAddress){
-            $this->_address = $strAddress;
+            $this->_userAddress = $strUserAddress;
         }
         public function setCp($strCp){
-            $this->_cp = $strCp;
+            $this->_userCp = $strUserCp;
         }
         public function setCity($strCity){
-            $this->_city = $strCity;
+            $this->_userCity = $strUserCity;
         }
-        public function setPwd($strPwd){
-			$this->_pwd = $strPwd;
+        public function setPwd($strUserPwd){
+			$this->_userPwd = $strUserPwd;
         }
-        public function setAvatar($strAvatar){
-            $this->_avatar = $strAvatar);
+        public function setAvatar($strUserAvatar){
+            $this->_userAvatar = $strUserAvatar);
         }
 		
 		/* GETTERS */
@@ -71,25 +71,25 @@
 			return $this->_userFirstname;
 		}
 		public function getEmail(){
-			return $this->_email;
+			return $this->_userEmail;
         }
         public function getPhone(){
-			return $this->_phone;
+			return $this->_userPhone;
         }
         public function getAddress(){
-			return $this->_address;
+			return $this->_userAddress;
         }
         public function getCp(){
-			return $this->_cp;
+			return $this->_userCp;
         }
         public function getCity(){
-			return $this->_city;
+			return $this->_userCity;
 		}
 		public function getPwd(){
-			return $this->_pwd;
+			return $this->_userPwd;
 		}
 		public function getAvatar(){
-			return $this->_avatar;
+			return $this->_userAvatar;
 		}
 		/*
 		public function getFullName(){
