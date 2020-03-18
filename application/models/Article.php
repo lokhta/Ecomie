@@ -10,13 +10,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Article extends CI_Model{
 
-    private $_id;
-    private $_title;
-    private $_content;
-    private $_date;
-    private $_validate;
-    private $_category;
-    private $_author;
+    private $_articleId;
+    private $_articleTitle;
+    private $_articleContent;
+    private $_articleDate;
+    private $_articleValidate;
+    private $_articleCategory;
+    private $_articleAuthor;
 
     public function __construct(){
         parent::__construct();
@@ -47,7 +47,7 @@ class Article extends CI_Model{
      * @param $id integer
      */
     public function setId($id){
-        $this->_id = $id;
+        $this->_articleId = $id;
     }
 
     /**
@@ -56,7 +56,7 @@ class Article extends CI_Model{
      * @param $title string
      */
     public function setTitle($title){
-        $this->_title =$title;
+        $this->_articleTitle =$title;
     }
 
     /**
@@ -65,16 +65,20 @@ class Article extends CI_Model{
      * @param $content string
      */
     public function setContent($content){
-        $this->_content = $content;
+        $this->_articleContent = $content;
     }
 
     /**
      * @fn setDate($dt)
-     * @brief Fonction setter pour ajouter une date
+     * @brief Fonction setter qui formate une date au format JJ-MM-AAAA avant de l'ajouté comme attribut
      * @param $dt 
      */
     public function setDate($dt){
-        $this->_date = $dt;
+
+        $phpdate = strtotime($dt);
+        $dte = date('d-m-Y', $phpdate);
+
+        $this->_articleDate = $dte;
     }
 
     /**
@@ -83,7 +87,7 @@ class Article extends CI_Model{
      * @param $valid integer
      */
     public function setValidate($valid){
-        $this->_validate = $valid;
+        $this->_articleValidate = $valid;
     }
 
     /**
@@ -92,7 +96,7 @@ class Article extends CI_Model{
      * @param $cat
      */
     public function setCategory($cat){
-        $this->_category = $cat;
+        $this->_articleCategory = $cat;
     }
 
 
@@ -103,37 +107,50 @@ class Article extends CI_Model{
      * @param $author
      */
     public function setAuthor($author){
-        $this->_author = $author;
+        $this->_articleAuthor = $author;
     }
 
     
     //Getters
 
     public function getId(){
-        return $this->_id;
+        return $this->_articleId;
     }
 
     public function getTitle(){
-        return $this->_title;
+        return $this->_articleTitle;
     }
 
     public function getContent(){
-        return $this->_content;
+        return $this->_articleContent;
     }
 
     public function getDate(){
-        return $this->_date;
+        return $this->_articleDate;
     }
 
     public function getValidate(){
-        return $this->_validate;
+        return $this->_articleValidate;
     }
 
     public function getCategory(){
-        return $this->_category;
+        return $this->_articleCategory;
     }
 
     public function getAuthor(){
-        return $this->_author;
+        return $this->_articleAuthor;
+    }
+
+    public function getData(){
+        $articleData = get_object_vars($this);
+
+        $data = array();
+        foreach($articleData as $key => $value){
+            $data[substr($key, 1)] = $value;
+        }
+
+        $data = array_filter($data);
+        // var_dump($data);
+       return $data;
     }
 }

@@ -6,9 +6,10 @@ class Article_manager extends CI_Model{
         parent::__construct();
     }
 
-    public function addArticle(){
-
+    public function addArticle(Article $article){
+        return  $this->db->insert('articles', $article->getData()); 
     }
+
 
     public function editArticle(){
 
