@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 mars 2020 à 13:11
+-- Généré le :  sam. 21 mars 2020 à 14:49
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -113,6 +113,22 @@ CREATE TABLE IF NOT EXISTS `events` (
   `eventAuthor` int(11) NOT NULL,
   PRIMARY KEY (`eventId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `form`
+--
+
+DROP TABLE IF EXISTS `form`;
+CREATE TABLE IF NOT EXISTS `form` (
+  `formId` int(11) NOT NULL AUTO_INCREMENT,
+  `formSendername` varchar(255) NOT NULL,
+  `formSendermail` varchar(255) NOT NULL,
+  `formSubject` varchar(255) NOT NULL,
+  `formMessage` varchar(255) NOT NULL,
+  PRIMARY KEY (`formId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
