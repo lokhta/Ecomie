@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 26, 2020 at 05:01 PM
+-- Generation Time: Mar 26, 2020 at 05:35 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -119,10 +119,10 @@ INSERT INTO `events` (`eventId`, `eventName`, `eventContent`, `eventDateStart`, 
 
 CREATE TABLE `form` (
   `formId` int(11) NOT NULL,
-  `formSendername` varchar(20) NOT NULL,
-  `formSendermail` varchar(100) NOT NULL,
-  `formSubject` varchar(150) NOT NULL,
-  `formMessage` text NOT NULL
+  `formSendername` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `formSendermail` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `formSubject` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `formMessage` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -130,9 +130,9 @@ CREATE TABLE `form` (
 --
 
 INSERT INTO `form` (`formId`, `formSendername`, `formSendermail`, `formSubject`, `formMessage`) VALUES
-(1, 'Julien', 'julien.paris@hotmail.com', 'Ajout articles', 'Très beau site ! Pourrais-je savoir comment l\'on peut intégrer des articles dans votre site ? '),
-(2, 'Antoinedu59', 'antoinedu59@gmail.com', 'Bonjour', 'Bonjour,\r\n\r\ncomment s\'inscrit-on sur ce site ?\r\n\r\nCordialement,'),
-(3, 'Marie', 'mariecastor@gmail.com', 'Photos', 'Bonjour, j\'aimerais signaler qu\'il y a un bug je n\'arrive pas à agrandir l\'image sur le site quand je clique dessus.\r\n\r\nCordialement,'),
+(1, 'Julien', 'julien.paris@hotmail.com', 'Ajout articles', 'Très beau site ! Pourrais-je savoir comment l\'on peut intégrer des articles dans votre site ?'),
+(2, 'Antoinedu59', 'antoinedu59@gmail.com', 'Bonjour', 'Bonjour,\r\n\r\ncomment s\'inscrit-on sur ce site ?\r\n\r\nCordialement,\r\n'),
+(3, 'Marie', 'mariecastor@gmail.com', 'Photos', 'Bonjour, j\'aimerais signaler qu\'il y a un bug je n\'arrive pas à agrandir l\'image sur le site quand je clique dessus.\r\n\r\nCordialement,\r\n'),
 (4, 'Aurélie', 'aurélie.dujardin@yopmail.com', 'Commentaire', 'Comment comment-on les articles publiés ?');
 
 -- --------------------------------------------------------
