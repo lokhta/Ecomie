@@ -1,47 +1,37 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 24 mars 2020 à 14:32
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Host: localhost:8889
+-- Generation Time: Mar 26, 2020 at 05:01 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de données :  `ecomie`
+-- Database: `ecomie`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `articles`
+-- Table structure for table `articles`
 --
 
-DROP TABLE IF EXISTS `articles`;
-CREATE TABLE IF NOT EXISTS `articles` (
-  `articleId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `articleId` int(11) NOT NULL,
   `articleTitle` varchar(100) NOT NULL,
   `articleContent` text NOT NULL,
-  `articleDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `articleValidate` tinyint(1) NOT NULL DEFAULT 0,
+  `articleDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `articleValidate` tinyint(1) NOT NULL DEFAULT '0',
   `articleCategory` int(11) NOT NULL,
-  `articleAuthor` int(11) NOT NULL,
-  PRIMARY KEY (`articleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `articleAuthor` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `articles`
+-- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleDate`, `articleValidate`, `articleCategory`, `articleAuthor`) VALUES
@@ -55,18 +45,16 @@ INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleD
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE IF NOT EXISTS `categories` (
-  `categoryId` int(11) NOT NULL AUTO_INCREMENT,
-  `categoryName` varchar(15) NOT NULL,
-  PRIMARY KEY (`categoryId`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `categories` (
+  `categoryId` int(11) NOT NULL,
+  `categoryName` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`categoryId`, `categoryName`) VALUES
@@ -76,23 +64,21 @@ INSERT INTO `categories` (`categoryId`, `categoryName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comments`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `commentId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `commentId` int(11) NOT NULL,
   `commentContent` text NOT NULL,
-  `commentDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `commentReport` tinyint(1) NOT NULL DEFAULT 0,
+  `commentDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `commentReport` tinyint(1) NOT NULL DEFAULT '0',
   `commentAuthor` int(11) NOT NULL,
   `commentArticle` int(11) DEFAULT NULL,
-  `commentEvent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`commentId`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `commentEvent` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`commentId`, `commentContent`, `commentDate`, `commentReport`, `commentAuthor`, `commentArticle`, `commentEvent`) VALUES
@@ -103,48 +89,44 @@ INSERT INTO `comments` (`commentId`, `commentContent`, `commentDate`, `commentRe
 -- --------------------------------------------------------
 
 --
--- Structure de la table `events`
+-- Table structure for table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
-CREATE TABLE IF NOT EXISTS `events` (
-  `eventId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `events` (
+  `eventId` int(11) NOT NULL,
   `eventName` varchar(100) NOT NULL,
   `eventContent` text NOT NULL,
   `eventDateStart` date NOT NULL,
   `eventTimeStart` time NOT NULL,
   `eventDateEnd` date NOT NULL,
   `eventTimeEnd` time NOT NULL,
-  `eventAuthor` int(11) NOT NULL,
-  PRIMARY KEY (`eventId`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `eventAuthor` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`eventId`, `eventName`, `eventContent`, `eventDateStart`, `eventTimeStart`, `eventDateEnd`, `eventTimeEnd`, `eventAuthor`) VALUES
-(1, 'Nettoyer le quartier', 'Hello tout le monde,\r\nEcomie vous propose de vous organiser pour une balade dimanche, ayant pour but de ramasser les déchets de votre quartier. \r\n\r\nBonne chasse !', '2020-05-10', '09:00:00', '2020-05-10', '20:00:00', 4),
-(2, 'Apéro ', 'Le lien, la vie d\'un quartier passe par le partage est notamment le partage de bon moment. \r\nAlors ramener chaise table et de bonne choses a partager pour vivre ensemble un moment convivial.\r\nPs: N\'oublié pas de prévenir vos voisins  ', '2020-05-23', '18:30:00', '2020-03-23', '22:00:00', 0);
+(1, 'Nettoyer le quartier', 'Hello tout le monde,\r\nEcomie vous propose de vous organiser pour une balade dimanche, ayant pour but de ramasser les déchets de votre quartier. \r\n\r\nBonne chasse !', '2020-05-10', '09:00:00', '2020-05-10', '20:00:00', 2),
+(2, 'Apéro ', 'Le lien, la vie d\'un quartier passe par le partage est notamment le partage de bon moment. \r\nAlors ramener chaise table et de bonne choses a partager pour vivre ensemble un moment convivial.\r\nPs: N\'oublié pas de prévenir vos voisins  ', '2020-05-23', '18:30:00', '2020-03-23', '22:00:00', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `form`
+-- Table structure for table `form`
 --
 
-DROP TABLE IF EXISTS `form`;
-CREATE TABLE IF NOT EXISTS `form` (
-  `formId` int(11) NOT NULL AUTO_INCREMENT,
-  `formSendername` varchar(255) NOT NULL,
-  `formSendermail` varchar(255) NOT NULL,
-  `formSubject` varchar(255) NOT NULL,
-  `formMessage` varchar(255) NOT NULL,
-  PRIMARY KEY (`formId`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+CREATE TABLE `form` (
+  `formId` int(11) NOT NULL,
+  `formSendername` varchar(20) NOT NULL,
+  `formSendermail` varchar(100) NOT NULL,
+  `formSubject` varchar(150) NOT NULL,
+  `formMessage` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `form`
+-- Dumping data for table `form`
 --
 
 INSERT INTO `form` (`formId`, `formSendername`, `formSendermail`, `formSubject`, `formMessage`) VALUES
@@ -156,48 +138,44 @@ INSERT INTO `form` (`formId`, `formSendername`, `formSendermail`, `formSubject`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `images`
+-- Table structure for table `images`
 --
 
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE IF NOT EXISTS `images` (
-  `imgId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `images` (
+  `imgId` int(11) NOT NULL,
   `imgName` varchar(255) NOT NULL,
-  `imgDateAdd` datetime NOT NULL DEFAULT current_timestamp(),
+  `imgDateAdd` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `imgAlt` varchar(50) NOT NULL,
   `imgEvent` int(11) DEFAULT NULL,
-  `imgArticle` int(11) DEFAULT NULL,
-  PRIMARY KEY (`imgId`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `imgArticle` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `images`
+-- Dumping data for table `images`
 --
 
 INSERT INTO `images` (`imgId`, `imgName`, `imgDateAdd`, `imgAlt`, `imgEvent`, `imgArticle`) VALUES
 (1, 'lessive-maison.jpg', '2020-03-23 19:35:18', 'Lessive maison', NULL, 5),
 (2, 'i-boycott.jpg', '2020-03-25 19:35:18', 'I-Boycott', NULL, 7),
 (5, 'fete-du-quartier', '2020-03-23 20:05:11', 'Fête du quartier', 2, NULL),
-(7, 'hulot.jpg', '2020-03-24 11:14:31', 'Nicolas Hulot', NULL, NULL);
+(7, 'hulot.jpg', '2020-03-24 11:14:31', 'Nicolas Hulot', 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `messages`
+-- Table structure for table `messages`
 --
 
-DROP TABLE IF EXISTS `messages`;
-CREATE TABLE IF NOT EXISTS `messages` (
-  `msgId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `messages` (
+  `msgId` int(11) NOT NULL,
   `msgContent` text NOT NULL,
-  `msgDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `msgDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `msgSender` int(11) NOT NULL,
-  `msgRecipient` int(11) NOT NULL,
-  PRIMARY KEY (`msgId`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `msgRecipient` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `messages`
+-- Dumping data for table `messages`
 --
 
 INSERT INTO `messages` (`msgId`, `msgContent`, `msgDate`, `msgSender`, `msgRecipient`) VALUES
@@ -209,20 +187,18 @@ INSERT INTO `messages` (`msgId`, `msgContent`, `msgDate`, `msgSender`, `msgRecip
 -- --------------------------------------------------------
 
 --
--- Structure de la table `newsletters`
+-- Table structure for table `newsletters`
 --
 
-DROP TABLE IF EXISTS `newsletters`;
-CREATE TABLE IF NOT EXISTS `newsletters` (
-  `newsId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `newsletters` (
+  `newsId` int(11) NOT NULL,
   `newsTitle` varchar(100) NOT NULL,
   `newsContent` text NOT NULL,
-  `newsDate` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`newsId`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `newsDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `newsletters`
+-- Dumping data for table `newsletters`
 --
 
 INSERT INTO `newsletters` (`newsId`, `newsTitle`, `newsContent`, `newsDate`) VALUES
@@ -233,18 +209,16 @@ INSERT INTO `newsletters` (`newsId`, `newsTitle`, `newsContent`, `newsDate`) VAL
 -- --------------------------------------------------------
 
 --
--- Structure de la table `roles`
+-- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `roleId` int(11) NOT NULL AUTO_INCREMENT,
-  `roleName` varchar(15) NOT NULL,
-  PRIMARY KEY (`roleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `roles` (
+  `roleId` int(11) NOT NULL,
+  `roleName` varchar(15) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`roleId`, `roleName`) VALUES
@@ -255,20 +229,18 @@ INSERT INTO `roles` (`roleId`, `roleName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `subscribes`
+-- Table structure for table `subscribes`
 --
 
-DROP TABLE IF EXISTS `subscribes`;
-CREATE TABLE IF NOT EXISTS `subscribes` (
-  `subscribeId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subscribes` (
+  `subscribeId` int(11) NOT NULL,
   `subscribeEmail` varchar(100) NOT NULL,
   `subscribeMember` int(11) DEFAULT NULL,
-  `subscribeNews` int(11) NOT NULL,
-  PRIMARY KEY (`subscribeId`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `subscribeNews` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `subscribes`
+-- Dumping data for table `subscribes`
 --
 
 INSERT INTO `subscribes` (`subscribeId`, `subscribeEmail`, `subscribeMember`, `subscribeNews`) VALUES
@@ -279,12 +251,11 @@ INSERT INTO `subscribes` (`subscribeId`, `subscribeEmail`, `subscribeMember`, `s
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `userId` int(11) NOT NULL,
   `userName` varchar(20) NOT NULL,
   `userFirstname` varchar(20) NOT NULL,
   `userEmail` varchar(100) NOT NULL,
@@ -294,12 +265,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userCity` varchar(80) NOT NULL,
   `userPwd` varchar(255) NOT NULL,
   `userAvatar` varchar(255) NOT NULL,
-  `userRole` int(11) NOT NULL,
-  PRIMARY KEY (`userId`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `userRole` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `userEmail`, `userPhone`, `userAddress`, `userCp`, `userCity`, `userPwd`, `userAvatar`, `userRole`) VALUES
@@ -307,8 +277,143 @@ INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `userEmail`, `userPh
 (2, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 1),
 (3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 1),
 (4, 'Admin', 'Admin', 'GanelonBarteaux@armyspy.com', NULL, '85, rue du Fossé des Tanneurs', '83100', 'Toulon', 'admin', 'admin', 2);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`articleId`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`categoryId`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`commentId`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`eventId`);
+
+--
+-- Indexes for table `form`
+--
+ALTER TABLE `form`
+  ADD PRIMARY KEY (`formId`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`imgId`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`msgId`);
+
+--
+-- Indexes for table `newsletters`
+--
+ALTER TABLE `newsletters`
+  ADD PRIMARY KEY (`newsId`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`roleId`);
+
+--
+-- Indexes for table `subscribes`
+--
+ALTER TABLE `subscribes`
+  ADD PRIMARY KEY (`subscribeId`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `articleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `eventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `form`
+--
+ALTER TABLE `form`
+  MODIFY `formId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `imgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `msgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `newsletters`
+--
+ALTER TABLE `newsletters`
+  MODIFY `newsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `roleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `subscribes`
+--
+ALTER TABLE `subscribes`
+  MODIFY `subscribeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
