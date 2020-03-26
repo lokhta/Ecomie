@@ -19,8 +19,15 @@ class Article_manager extends CI_Model{
 
     }
 
-    public function getArticle(){
-
+    public function getArticle($article_id){
+        $query = $this->db
+        ->select('articleId, articleTitle, articleContent, articleDate, articleValidate, categoryName, userFirstname')
+        ->from('articles')
+        ->join('users', 'users.userId = articles.articleAuthor')
+        ->join('categories', 'categories.categoryId = articles.articleCategory')
+        ->where('articleId', $article_id)
+        ->get();
+        return $query->row_array();
     }
 
     public function getAllArticle(){

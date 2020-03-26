@@ -922,7 +922,7 @@ PAGE SAVOIR-FAIRE***************************************************************
     justify-content: space-around;
     flex-direction: column;
     max-width: 1280px;
-    margin-top: 50px;
+    margin-bottom: 50px;
 }   
 .savoir__bloc {
     display: flex;
@@ -1300,4 +1300,44 @@ Article
 
 #sidebar nav ul li a i {
     margin-right: 25px;
+}
+
+
+/*****************************
+    Page article site
+*****************************/
+/* .btn-content{
+    height: 45px;
+    width: 200px;
+} */
+
+#modal{
+    width: 1080px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 15px;
+}
+
+
+.btn{
+    width: 100px;
+    background: #00aeef;
+    color : #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.btn:hover{
+    background: #0079a7;
+}
+
+#btn-create-art{
+    margin: 15px;
+}
+
+#btn-create-art a{
+    width: 150px;
 }
