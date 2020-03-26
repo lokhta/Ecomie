@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 21 mars 2020 à 14:49
+-- Généré le :  mar. 24 mars 2020 à 14:32
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -50,11 +50,7 @@ INSERT INTO `articles` (`articleId`, `articleTitle`, `articleContent`, `articleD
 (6, 'Prendre soin de ses plantes aromatiques', '1 Une plante aromatique par pot \r\n2 Exposer les un maximum à la lumière \r\n  mais attention aux tâches qui peuvent \r\n  apparaitre sur les feuilles à cause de \r\n  trop de lumière.\r\n3 Les mettre dans une terre de qualité.\r\n4 L’arrosage ne doit pas être \r\n  systématique, la terre doit rester \r\n  humide.\r\n5 Ne pas tailler plus de la moitié de la \r\n  plante lors de la récolte.\r\n\r\n', '2020-03-12 18:14:23', 0, 2, 2),
 (5, 'Faire sa propre lessive', '1 Râper 40g de véritable savon de \r\n  Marseille.\r\n2 Faites-les fondre à feu doux dans un \r\n  litre d’eau très chaude.\r\n3 Mélanger bien.\r\n4 Ajoutez 3 C à S. de bicarbonate de \r\n  soude.\r\n5	Laisser reposer pendant 1 heures puis allonger avec 1 litre d’eau tiède.\r\n6	Le lendemain rallonger de nouveau avec 1 litre d’eau froide.\r\n7	Facultatif : après refroidissement parfumer avec quelques gouttes d’huile essentielle\r\n8	Mettez en bouteille.\r\n', '2020-03-11 16:12:19', 0, 2, 1),
 (7, 'Le boycott peut-il changer les choses ', 'Le boycott est aujourd’hui la dernière arme encore disponible pour les citoyens. Plus puissant que n’importe quel bulletin de vote. Pourtant on ne voit pas ou très peu de résistance citoyenne face à certaine injustice social ou environnemental. Mail il existe une association qui met en place des actions de boycott en proposant des alternatives aux entreprises. Je vous invite à vous intéresser à l’association I-boycott. C’est uni que le boycott pourra changer les choses et I-boycott est le lien entre des valeurs sociales, environnementales et une action efficace contre toutes ses injustices.', '2020-03-18 16:14:23', 0, 1, 1),
-(8, 'Manger local et de saison ?', 'Manger local et de saison, c’est reprendre contact avec celles et ceux qui nous nourrissent, retrouver la fraîcheur des aliments et les saveurs du terroir. C’est aussi encourager la production alimentaire près de chez soi et, par la même occasion, l’autonomie alimentaire et un partage plus juste des ressources nourricières avec le reste du monde.\r\nManger local et de saison c’est du bon sens\r\n', '2020-03-12 08:24:20', 0, 1, 3),
-(9, 'Faire sa propre lessive', '1 Râper 40g de véritable savon de \r\n  Marseille.\r\n2 Faites-les fondre à feu doux dans un \r\n  litre d’eau très chaude.\r\n3 Mélanger bien.\r\n4 Ajoutez 3 C à S. de bicarbonate de \r\n  soude.\r\n5	Laisser reposer pendant 1 heures puis allonger avec 1 litre d’eau tiède.\r\n6	Le lendemain rallonger de nouveau avec 1 litre d’eau froide.\r\n7	Facultatif : après refroidissement parfumer avec quelques gouttes d’huile essentielle\r\n8	Mettez en bouteille.\r\n', '2020-03-11 16:12:19', 0, 2, 1),
-(10, 'Prendre soin de ses plantes aromatiques', '1 Une plante aromatique par pot \r\n2 Exposer les un maximum à la lumière \r\n  mais attention aux tâches qui peuvent \r\n  apparaitre sur les feuilles à cause de \r\n  trop de lumière.\r\n3 Les mettre dans une terre de qualité.\r\n4 L’arrosage ne doit pas être \r\n  systématique, la terre doit rester \r\n  humide.\r\n5 Ne pas tailler plus de la moitié de la \r\n  plante lors de la récolte.\r\n\r\n', '2020-03-12 18:14:23', 0, 2, 2),
-(11, 'Le boycott peut-il changer les choses ', 'Le boycott est aujourd’hui la dernière arme encore disponible pour les citoyens. Plus puissant que n’importe quel bulletin de vote. Pourtant on ne voit pas ou très peu de résistance citoyenne face à certaine injustice social ou environnemental. Mail il existe une association qui met en place des actions de boycott en proposant des alternatives aux entreprises. Je vous invite à vous intéresser à l’association I-boycott. C’est uni que le boycott pourra changer les choses et I-boycott est le lien entre des valeurs sociales, environnementales et une action efficace contre toutes ses injustices.', '2020-03-18 16:14:23', 0, 1, 1),
-(12, 'Manger local et de saison ?', 'Manger local et de saison, c’est reprendre contact avec celles et ceux qui nous nourrissent, retrouver la fraîcheur des aliments et les saveurs du terroir. C’est aussi encourager la production alimentaire près de chez soi et, par la même occasion, l’autonomie alimentaire et un partage plus juste des ressources nourricières avec le reste du monde.\r\nManger local et de saison c’est du bon sens\r\n', '2020-03-12 08:24:20', 0, 1, 3);
+(8, 'Manger local et de saison ?', 'Manger local et de saison, c’est reprendre contact avec celles et ceux qui nous nourrissent, retrouver la fraîcheur des aliments et les saveurs du terroir. C’est aussi encourager la production alimentaire près de chez soi et, par la même occasion, l’autonomie alimentaire et un partage plus juste des ressources nourricières avec le reste du monde.\r\nManger local et de saison c’est du bon sens\r\n', '2020-03-12 08:24:20', 0, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -93,7 +89,16 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `commentArticle` int(11) DEFAULT NULL,
   `commentEvent` int(11) DEFAULT NULL,
   PRIMARY KEY (`commentId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `comments`
+--
+
+INSERT INTO `comments` (`commentId`, `commentContent`, `commentDate`, `commentReport`, `commentAuthor`, `commentArticle`, `commentEvent`) VALUES
+(1, 'Nettoyer le quartier la flemme mais l\'apéro. Vous pouvez compter sur moi les voisinoux', '2020-05-07 19:52:07', 0, 1, NULL, 2),
+(2, 'J\'utilise de la lavande pour parfumer ma lessive en plus ça éloigne les mites.', '2020-03-25 16:32:07', 0, 2, 5, NULL),
+(3, 'Consommer de saison c\'est sympa pour la planète mais l\'hiver c\'est horrible. J\'en peux plus des panais.', '2020-03-23 20:04:18', 0, 3, 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,7 +117,15 @@ CREATE TABLE IF NOT EXISTS `events` (
   `eventTimeEnd` time NOT NULL,
   `eventAuthor` int(11) NOT NULL,
   PRIMARY KEY (`eventId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `events`
+--
+
+INSERT INTO `events` (`eventId`, `eventName`, `eventContent`, `eventDateStart`, `eventTimeStart`, `eventDateEnd`, `eventTimeEnd`, `eventAuthor`) VALUES
+(1, 'Nettoyer le quartier', 'Hello tout le monde,\r\nEcomie vous propose de vous organiser pour une balade dimanche, ayant pour but de ramasser les déchets de votre quartier. \r\n\r\nBonne chasse !', '2020-05-10', '09:00:00', '2020-05-10', '20:00:00', 4),
+(2, 'Apéro ', 'Le lien, la vie d\'un quartier passe par le partage est notamment le partage de bon moment. \r\nAlors ramener chaise table et de bonne choses a partager pour vivre ensemble un moment convivial.\r\nPs: N\'oublié pas de prévenir vos voisins  ', '2020-05-23', '18:30:00', '2020-03-23', '22:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -128,7 +141,17 @@ CREATE TABLE IF NOT EXISTS `form` (
   `formSubject` varchar(255) NOT NULL,
   `formMessage` varchar(255) NOT NULL,
   PRIMARY KEY (`formId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `form`
+--
+
+INSERT INTO `form` (`formId`, `formSendername`, `formSendermail`, `formSubject`, `formMessage`) VALUES
+(1, 'Julien', 'julien.paris@hotmail.com', 'Ajout articles', 'Très beau site ! Pourrais-je savoir comment l\'on peut intégrer des articles dans votre site ? '),
+(2, 'Antoinedu59', 'antoinedu59@gmail.com', 'Bonjour', 'Bonjour,\r\n\r\ncomment s\'inscrit-on sur ce site ?\r\n\r\nCordialement,'),
+(3, 'Marie', 'mariecastor@gmail.com', 'Photos', 'Bonjour, j\'aimerais signaler qu\'il y a un bug je n\'arrive pas à agrandir l\'image sur le site quand je clique dessus.\r\n\r\nCordialement,'),
+(4, 'Aurélie', 'aurélie.dujardin@yopmail.com', 'Commentaire', 'Comment comment-on les articles publiés ?');
 
 -- --------------------------------------------------------
 
@@ -145,7 +168,17 @@ CREATE TABLE IF NOT EXISTS `images` (
   `imgEvent` int(11) DEFAULT NULL,
   `imgArticle` int(11) DEFAULT NULL,
   PRIMARY KEY (`imgId`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `images`
+--
+
+INSERT INTO `images` (`imgId`, `imgName`, `imgDateAdd`, `imgAlt`, `imgEvent`, `imgArticle`) VALUES
+(1, 'lessive-maison.jpg', '2020-03-23 19:35:18', 'Lessive maison', NULL, 5),
+(2, 'i-boycott.jpg', '2020-03-25 19:35:18', 'I-Boycott', NULL, 7),
+(5, 'fete-du-quartier', '2020-03-23 20:05:11', 'Fête du quartier', 2, NULL),
+(7, 'hulot.jpg', '2020-03-24 11:14:31', 'Nicolas Hulot', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -208,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `roleId` int(11) NOT NULL AUTO_INCREMENT,
   `roleName` varchar(15) NOT NULL,
   PRIMARY KEY (`roleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `roles`
@@ -216,7 +249,8 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 INSERT INTO `roles` (`roleId`, `roleName`) VALUES
 (1, 'User'),
-(2, 'Admin');
+(2, 'Admin'),
+(3, 'Moderator');
 
 -- --------------------------------------------------------
 

@@ -1,8 +1,11 @@
     {include file="header.tpl" title="Ecomie - Savoir-Faire" name=$Name}
-      <div class="contenaire__bloc">
+    <div class="btn-content" id="btn-create-art">
+        <a href="{base_url()}dashboard/articles" class="btn">Créer un article</a>
+    </div>
+    <div class="contenaire__bloc">
             {foreach from=$article item=val key=key}
                 <section class="savoir__faire">
-                    <a class="{$val.articleCategory}__bloc" href="">
+                    <a class="{$val.articleCategory}__bloc" href="{base_url()}pages/articles?article_id={$val.articleId}">
                         <div class="{$val.articleCategory}__logo">
                             <img src="{base_url()}assets/img/{$val.articleCategory}" alt="">
                         </div>
@@ -15,14 +18,7 @@
                         <p>{$val.articleDate}</p>
                     </div>
                 </section>
-            {/foreach}
-
-              {* <div class="savoir__logo"> *}
-                  {* <img src="{$base_url}assets/img/outils.svg" alt="outils">  *}
-       
-            
-              {* <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils">  *}
+            {/foreach}    
          
 
         </div>

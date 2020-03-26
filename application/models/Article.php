@@ -76,7 +76,7 @@ class Article extends CI_Model{
     public function setDate($dt){
 
         $phpdate = strtotime($dt);
-        $dte = date('d-m-Y', $phpdate);
+        $dte = date('d/m/Y', $phpdate);
 
         $this->_articleDate = $dte;
     }

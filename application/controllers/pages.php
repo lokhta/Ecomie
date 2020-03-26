@@ -6,7 +6,46 @@ class Pages extends CI_Controller{
     }
 
     public function articles(){
-        $this->smarty->view('pages/savoir_faire.tpl');
+        $this->load->model('Article_manager');
+        $this->load->model('Article');
+
+        $articleManager = new Article_manager;
+
+        //Afficher un seul article
+
+        if(!empty($_GET['article_id'])){
+
+            $articleArray = $articleManager->getArticle($_GET['article_id']);
+            $articleRow = new Article;
+        
+            $articleArray['articleAuthor'] = $articleArray['userFirstname'];
+            $articleArray['articleCategory'] = $articleArray['categoryName'];
+            $articleRow->hydrate($articleArray);
+            
+            // var_dump($articleRow);
+
+            $this->smarty->assign('articleDetail', $articleRow->getData());
+            $this->smarty->view('pages/article.tpl');
+        }else{
+
+            //Afficher tout les articles
+            $articleData = $articleManager->getAllArticle();
+
+            $articleList = array();
+
+            foreach($articleData as $val){
+                $article = new Article;
+                
+                $val['articleAuthor'] = $val['userFirstname'];
+                $val['articleCategory'] = $val['categoryName']; 
+                
+                $article->hydrate($val);
+                array_push($articleList, $article->getData());
+            }
+        
+            $this->smarty->assign('article', $articleList);
+            $this->smarty->view('pages/savoir_faire.tpl');
+        }
     }
 
     public function evenements(){
