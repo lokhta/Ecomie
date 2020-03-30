@@ -30,7 +30,7 @@
                 <input class="burger" type="checkbox">
                 <nav>
                     <a href="{base_url()}">Accueil</a>
-                    <a href="{base_url()}pages/articles">Savoir-Faire</a>
+                    <a href="{base_url()}Articles/articles">Savoir-Faire</a>
                     <a href="{base_url()}pages/evenements">Evénements</a>
                     <a href="{base_url()}pages/galerie">Galerie</a>
                     <a href="{base_url()}pages/contact">Contact</a>

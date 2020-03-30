@@ -31,12 +31,18 @@ class Article_manager extends CI_Model{
     }
 
     public function getAllArticle(){
-        $query = $this->db
-        ->select('articleId, articleTitle, articleContent, articleDate, articleValidate, categoryName, userFirstname')
-        ->from('articles')
-        ->join('users', 'users.userId = articles.articleAuthor')
-        ->join('categories', 'categories.categoryId = articles.articleCategory')
-        ->get();
+        $url = base_url()."Articles/articles";
+
+        $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate, categoryName, userFirstname');
+        $this->db->from('articles');
+        $this->db->join('users', 'users.userId = articles.articleAuthor');
+        $this->db->join('categories', 'categories.categoryId = articles.articleCategory');
+
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 1 && current_url() !== $url){
+            $this->db->where('articleAuthor', $_SESSION['id']);
+        }
+
+        $query = $this->db->get();
         return $query->result_array();
     }
 
