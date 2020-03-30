@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 	/**
  	* Classe User
  	* \author Julien MARIUZZA
@@ -103,6 +103,18 @@
 		}
 		public function getAvatar(){
 			return $this->_UserAvatar;
-		}		
+		}	
+
+		public function getData(){
+			$articleData = get_object_vars($this);
+	
+			$data = array();
+			foreach($userData as $key => $value){
+				$data[substr($key, 1)] = $value;
+			}
+	
+			$data = array_filter($data);
+		   return $data;
+		}	
 	}
 
