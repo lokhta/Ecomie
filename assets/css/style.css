@@ -295,9 +295,19 @@ body {
 
 @media screen and (max-width : 1380px ) {
     
- .menu {
-     width: auto;
- }
+    .menu {
+        width: auto;
+    }
+
+    .connexion__mobile {
+        height: 100%;
+        align-items: center;
+    }
+
+    .headerLogo{
+        display: none;
+    }
+
 }
 @media screen and (max-width : 1280px){
 
@@ -1340,4 +1350,38 @@ Article
 
 #btn-create-art a{
     width: 150px;
+}
+
+/******************
+Header logo
+******************/
+
+.headerLogo {
+    background: #00aeef;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 20px;
+}
+
+.headerLogo a, .headerLogo span, .connexion__mobile a, .connexion__mobile span {
+    text-decoration: none;
+    color: #fff;
+    padding: 2px;
+}
+
+.headerLogo a:hover, .connexion__mobile a:hover {
+    color: #ffe527;
+}
+
+@media screen and (max-width : 1380px ) {
+    
+    .connexion__mobile {
+        height: 100%;
+        align-items: center;
+    }
+
+    .headerLogo{
+        display: none;
+    }
+
 }
