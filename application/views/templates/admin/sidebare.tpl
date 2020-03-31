@@ -1,24 +1,53 @@
-<aside id="sidebar">
+<aside id="sidebar" class="left_content">
     <nav>
-        <ul>
-            <li>
-                <a href="{base_url()}dashboard/membres"><i class="fas fa-address-book"></i>Membres</a>
-            </li>
-            <li>
-                <a href="{base_url()}dashboard/articles"><i class="fas fa-newspaper"></i>Articles</a>
-            </li>
-            <li>
-                <a href="{base_url()}dashboard/evenements"><i class="fas fa-calendar-alt"></i>Evénements</a>
-            </li>
-            <li>
-                <a href="{base_url()}dashboard/newsletters"><i class="fas fa-paper-plane"></i>Newsletters</a>
-            </li>
-            <li>
-                <a href="{base_url()}dashboard/messagerie"><i class="fas fa-envelope"></i>Messagerie</a>
-            </li>
-            <li>
-                <a href="{base_url()}dashboard/archives"><i class="fas fa-archive"></i>Archives</a>
-            </li>
-        </ul>
+        <div class="link-nav-admin">
+            <div class="content_ico">
+                <i class="fas fa-tachometer-alt ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard" class="link_admin">Tableau de bord</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico">
+                <i class="fas fa-user ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard/profil" class="link_admin">Profil</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico"> 
+                <i class="fas fa-address-book ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard/membres" class="link_admin">Membres</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico">
+                <i class="fas fa-newspaper ico_admin"></i>
+            </div>
+            <a href="{base_url()}Articles/dashboard" class="link_admin">Articles</a>
+        </div>
+    
+        <div class="link-nav-admin">
+            <div class="content_ico">
+                <i class="fas fa-calendar-alt ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard/evenements" class="link_admin">Evénements</a>
+        </div>
+        <div class="link-nav-admin">
+                <div class="content_ico">
+                    <i class="fas fa-paper-plane ico_admin"></i>
+                </div>
+            <a href="{base_url()}dashboard/newsletters" class="link_admin">Newsletters</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico">
+                <i class="fas fa-envelope ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard/messagerie" class="link_admin">Messagerie</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico">            
+                <i class="fas fa-archive ico_admin"></i>
+            </div>
+            <a href="{base_url()}dashboard/archives" class="link_admin">Archives</a>
+        </div>
     </nav>
 </aside>

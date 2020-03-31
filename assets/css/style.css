@@ -11,6 +11,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
 }
 #principal {
    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
@@ -1281,21 +1282,24 @@ Article
 *****************************/
 
 #adminContent{
-    width : 1080px;
-    margin: 0 auto;
     display: flex;
+}
+
+section.right_content {
+    width: 100%;
+    padding: 20px;
 }
 
 #sidebar{
     width: 250px;
-    background: #8ca465;
+
 }
 
 #sidebar nav ul li {
     list-style: none;
 }
 
-#sidebar nav ul li a {
+#sidebar nav a {
     display: flex;
     height: 50px;
     /* justify-content: stretch; */
@@ -1304,13 +1308,82 @@ Article
     color: #fff;
 }
 
-#sidebar nav ul li a:hover{
+#sidebar nav a:hover{
     color: #e5ce23;
 }
 
-#sidebar nav ul li a i {
+#sidebar nav a i{
     margin-right: 25px;
+
 }
+
+.link-nav-admin {
+    color: white;
+}
+
+.link-nav-admin {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    background: #2C3E50;
+    height: 75px;
+}
+
+.content_ico{
+    width: 70px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ico_admin:hover{
+    color: #ffe527;
+}
+
+a.link_admin {
+    font-size: 16px;
+}
+
+
+
+
+@media screen and (max-width : 1280px){
+    .link-nav-admin {
+        height: 50px;
+        width: 70px;;
+        background: #2C3E50;
+        display: block;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .link-nav-admin:hover{
+        width: 250px;;
+    }
+
+    #sidebar{
+        width: 70px;
+    }
+
+    .content_ico{
+        width: 70px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a.link_admin {
+        position: relative;
+        left: 90px;
+        top: -51px;
+    }
+}
+
+
+
+
 
 
 /*****************************
@@ -1384,4 +1457,51 @@ Header logo
         display: none;
     }
 
+    .headerAdmin{
+        display: flex;
+    }
+
+}
+
+/******************
+Article Dashboard
+******************/
+
+.tab{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.thead {
+    background: #229954;
+    color: #fff;
+}
+
+.tab tr, .tab td{
+    height: 50px;
+    text-align: center;
+}
+
+.tab .fa-archive, .tab .fa-hourglass-half{
+    color : #F1C40F;
+}
+
+.tab .fa-trash-alt, .tab .fa-times-circle{
+    color : #E74C3C;
+}
+
+.tab .fa-check-circle{
+    color : #2ECC71;
+}
+
+.tab .fa-search{
+    color : #34495E;
+}
+
+.tab .fa-check-circle, .tab .fa-hourglass-half,.tab .fa-times-circle{
+    font-size: 20px;
+}
+
+section.right_content #formContent form{
+    max-width: 100%;
 }

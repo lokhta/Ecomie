@@ -1,17 +1,23 @@
 <div>
-    <table>
-        <tr>
+    <table class="tab">
+        <tr class="thead">
             <th class="col1">N° article</th>
+            <th  class ="col4">Statut</th>
             <th class="col2">Titre</th>
             <th class="col3">Date de création</th>
-            <th  class ="col4">Statut</th>
+            <th class="col3">Actions</th>
         </tr>
         {foreach from=$article key=key item=val}
-            <tr>
+            <tr style="background: {cycle values='#fff , #D6EAF8'}">
                 <td>{$val.articleId}</td>
+                <td>{$val.articleValidate}</td>
                 <td>{$val.articleTitle}</td>
                 <td>{$val.articleDate}</td>
-                <td>{$val.articleValidate}</td>
+                <td class="link_gestion">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-archive"></i></a>
+                    <a href="#"><i class="fas fa-trash-alt"></i></a>
+                </td>
             </tr>
         {/foreach}
     </table>

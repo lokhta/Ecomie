@@ -78,11 +78,11 @@ class Articles extends CI_Controller{
             $val['articleCategory'] = $val['categoryName']; 
 
             if($val['articleValidate'] == 0){
-                $val['articleValidate'] = "En cours de traitement";
+                $val['articleValidate'] = '<i class="fas fa-hourglass-half"></i>';
             }elseif($val['articleValidate'] == 1){
-                $val['articleValidate'] = "Valider";
+                $val['articleValidate'] = '<i class="far fa-check-circle"></i>';
             }elseif($val['articleValidate'] == 2){
-                $val['articleValidate'] = "Refuser";
+                $val['articleValidate'] = '<i class="far fa-times-circle"></i>';
             }
             
             $article->hydrate($val);
