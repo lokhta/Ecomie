@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
         
         public function addUser(User $user){
-            return  $this->db->insert('users', $user->getData()); 
+            return  $this->db->insert('users', $user->getData());
         }
     
     
@@ -23,7 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     
         public function getUser(){
-    
+            $query = $this->db
+            ->select('*')
+            ->from('users')
+            ->where('userEmail',$_POST['userEmail'])
+            ->get();
+            return $query->row_array();
         }
     
         public function getAllUser(){
