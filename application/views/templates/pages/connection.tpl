@@ -4,8 +4,8 @@
                 {form_label("Adresse Mail")}
                 {form_input("email",'',"id='userEmail'")}
                 <span class="text-danger"><?php echo form_error('userEmail'); ?></span>
-                <label><b>Mot de passe</b></label>
-                {form_input("password","id='title'")}<input type="password" placeholder="Entrer le mot de passe" name="userPwd">
+                {form_label("Mot de passe")}
+                {form_input("password",'',"id='userPwd'")}
                 <span class="text-danger"><?php echo form_error('user_password'); ?></span>
                 {form_submit("id='mysubmit'", 'Se connecter')}    
                 <a href="{base_url()}pages/inscription">Créez votre compte</a>
