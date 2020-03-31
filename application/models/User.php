@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	* 
 	*/
 
-	class User extends CI_Mode{
+	class User extends CI_Model{
 
 		/* ATTRIBUTS */
 		private $_userId;
@@ -19,7 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         private $_userCp;
         private $_userCity;
         private $_userPwd;
-        private $_userAvatar;
+		private $_userAvatar="user-solid.svg";
+		private $_userRole=1;
 		
 		/* CONSTRUCTEUR */
 		public function __construct(){
@@ -34,7 +35,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	public function hydrate($data){
         foreach($data as $key => $value){
             $method = 'set'.str_replace('user','',$key);
-
             if(method_exists($this, $method)){
                 $this->$method($value);
             }
@@ -42,71 +42,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 		
 		/* SETTERS */
-		public function setUserId($intUserId){
+		public function setId($intUserId){
 			$this->_userId = $intUserId;
 		}
-		public function setUserName($strUserName){
+		public function setName($strUserName){
 			$this->_userName = $strUserName;
 		}
-		public function setUserFirstname($strUserFirstname){
+		public function setFirstname($strUserFirstname){
 			$this->_userFirstname = $strUserFirstname;
 		}
 		public function setEmail($strUserEmail){
 			$this->_userEmail = $strUserEmail;
         }
-        public function setPhone($strPhone){
+        public function setPhone($strUserPhone){
             $this->_userPhone = $strUserPhone;
         }
-        public function setAddress($strAddress){
+        public function setAddress($strUserAddress){
             $this->_userAddress = $strUserAddress;
         }
-        public function setCp($strCp){
+        public function setCp($strUserCp){
             $this->_userCp = $strUserCp;
         }
-        public function setCity($strCity){
+        public function setCity($strUserCity){
             $this->_userCity = $strUserCity;
         }
         public function setPwd($strUserPwd){
 			$this->_userPwd = $strUserPwd;
         }
         public function setAvatar($strUserAvatar){
-            $this->_userAvatar = $strUserAvatar);
+            $this->_userAvatar = $strUserAvatar;
+		}
+		public function setRole($strUserRole){
+            $this->_userRole = $strUserRole;
         }
 		
 		/* GETTERS */
 		public function getUserId(){
-			return $this->_UserId;
+			return $this->_userId;
 		}
 		public function getUserName(){
-			return $this->_UserName;
+			return $this->_userName;
 		}		
 		public function getUserFirstname(){
-			return $this->_UserFirstname;
+			return $this->_userFirstname;
 		}
 		public function getEmail(){
-			return $this->_UserEmail;
+			return $this->_userEmail;
         }
         public function getPhone(){
-			return $this->_UserPhone;
+			return $this->_userPhone;
         }
         public function getAddress(){
-			return $this->_UserAddress;
+			return $this->_userAddress;
         }
         public function getCp(){
-			return $this->_UserCp;
+			return $this->_userCp;
         }
         public function getCity(){
-			return $this->_UserCity;
+			return $this->_userCity;
 		}
 		public function getPwd(){
-			return $this->_UserPwd;
+			return $this->_userPwd;
 		}
 		public function getAvatar(){
-			return $this->_UserAvatar;
+			return $this->_userAvatar;
+		}
+		public function getRole(){
+			return $this->_userRole;
 		}	
 
 		public function getData(){
-			$articleData = get_object_vars($this);
+			$userData = get_object_vars($this);
 	
 			$data = array();
 			foreach($userData as $key => $value){
@@ -117,4 +123,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		   return $data;
 		}	
 	}
-
