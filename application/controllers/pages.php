@@ -53,8 +53,16 @@ class Pages extends CI_Controller{
     }
 
     public function connexion(){
-        $this->smarty->view('pages/connect.tpl');
+        $this->smarty->view('pages/connection.tpl');
     }
+    public function connexion_validation(){
+        
+    }
+
+    public function inscription(){
+        $this->smarty->view('pages/inscription.tpl');
+    }
+
 
     public function galerie(){
         $this->smarty->view('pages/galerie.tpl');
