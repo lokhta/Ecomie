@@ -17,6 +17,15 @@
 <body>
     <div id="principal">
         <header>
+            <div class="headerLogo">
+                <div>
+                    {if $smarty.session.id}
+                         <a href="{base_url()}pages">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
+                         {else}
+                            <a href="{base_url()}pages/inscription">Inscription</a><span>/</span><a href="{base_url()}pages/connexion">Connexion</a>       
+                    {/if}
+                </div>
+            </div>
             <div id="logo">
                 <div class="element_logo">
                     <a href="{base_url()}"><img src="{base_url()}assets/img/logo_fleur.png" alt="Logo"></a>
@@ -30,14 +39,22 @@
                 <input class="burger" type="checkbox">
                 <nav>
                     <a href="{base_url()}">Accueil</a>
-                    <a href="{base_url()}pages/articles">Savoir-Faire</a>
+                    <a href="{base_url()}Articles/articles">Savoir-Faire</a>
                     <a href="{base_url()}pages/evenements">Evénements</a>
                     <a href="{base_url()}pages/galerie">Galerie</a>
                     <a href="{base_url()}pages/contact">Contact</a>
-                    <a class="connexion" href="{base_url()}pages/connexion">Connexion</a>
                 </nav>
-                <a class="connexion__mobile" href="{base_url()}pages/connexion"><img
-                        src="{base_url()}assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion"></a>
-
+                {* <a class="connexion__mobile" href="{base_url()}pages/connexion"><img
+                        src="{base_url()}assets/img/baseline_perm_identity_white_24dp.png" alt="Connexion">
+                </a> *}
+                <div class="connexion__mobile">
+                    <div>
+                        {if $smarty.session.id}
+                            <a href="{base_url()}pages">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
+                            {else}
+                                <a href="{base_url()}pages/inscription">Inscription</a><span>/</span><a href="{base_url()}pages/connexion">Connexion</a>       
+                        {/if}
+                    </div>
+                </div>
             </div>
         </header>

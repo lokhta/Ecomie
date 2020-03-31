@@ -3,7 +3,7 @@
     <div id="modal">
         <div>
             <div class="btn-content">
-                <a href="{base_url()}pages/articles" class="btn">Retour</a>
+                <a href="{base_url()}Articles/articles" class="btn">Retour</a>
             </div>
         
             <h2>{$articleDetail.articleTitle}</h2>
