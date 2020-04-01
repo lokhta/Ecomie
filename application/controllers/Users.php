@@ -31,18 +31,16 @@ class Users extends CI_Controller{
                     $user = New User;
                     $user->hydrate($getUser);
                     //var_dump($user);
+
                     $userTab = $user->getData();
-                    $_SESSION['id'] = $userTab['userId'];
-                    $_SESSION['firstname'] = $userTab['userFirstname'];
-                    $_SESSION['email'] = $userTab['userEmail'];
-                    $_SESSION['phone'] = $userTab['userPhone'];
-                    $_SESSION['address'] = $userTab['userAddress'];
-                    $_SESSION['cp'] = $userTab['userCp'];
-                    $_SESSION['city'] = $userTab['userCity'];
-                    $_SESSION['pwd'] = $userTab['userPwd'];
-                    $_SESSION['avatar'] = $userTab['userAvatar'];
-                    $_SESSION['role'] = $userTab['userRole'];
-                    //var_dump($_SESSION);
+
+                    //Création de la session 
+                    foreach($userTab as $key => $value){
+                        $keys = lcfirst(str_replace('user','',$key));
+                        $_SESSION[$keys] = $value;
+                    }
+
+                    // var_dump($_SESSION);
                     redirect(base_url()."dashboard", 'location');
                 }
                 else
@@ -64,15 +62,18 @@ class Users extends CI_Controller{
         $userManager = new User_manager;
         //Pour insertion dans la BDD
         //var_dump($_POST);
-        if(($_POST ['userName']) or ($_POST ['userFirstname']) or ($_POST ['userEmail']) or ($_POST ['userAddress']) or ($_POST ['userCp']) or ($_POST ['userCity']) or ($_POST ['userPwd']) !=""){
+        if(!empty($_POST['userName'])){
             $userObj = new User;
             $userObj->hydrate($_POST);
+            
+            // var_dump($userObj);
+            // echo 'ok';
+
             $userManager->addUser($userObj);
             //redirect(base_url()."Users/dashboard", 'location');
             redirect("",'refresh');
-        }else
-        {
-            echo "formulaire non valide";
+        }else{
+            echo"formulaire non valide";
             redirect("",'refresh');
         }
     }
