@@ -1,11 +1,14 @@
 <div>
     <table class="tab">
         <tr class="thead">
-            <th class="col1">N° article</th>
-            <th  class ="col4">Statut</th>
-            <th class="col2">Titre</th>
-            <th class="col3">Date de création</th>
-            <th class="col3">Actions</th>
+            <th>N° article</th>
+            <th>Statut</th>
+            <th>Titre</th>
+            <th>Date de création</th>
+            {if $smarty.session.role == 1}
+                <th>Auteur</th>
+            {/if}
+            <th>Actions</th>
         </tr>
         {foreach from=$article key=key item=val}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
@@ -13,6 +16,9 @@
                 <td>{$val.articleValidate}</td>
                 <td>{$val.articleTitle}</td>
                 <td>{$val.articleDate}</td>
+                {if $smarty.session.role == 1}
+                    <td>{$val.author}</td>
+                {/if}
                 <td class="link_gestion">
                     <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}"><i class="fas fa-search"></i></a>
                     <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>

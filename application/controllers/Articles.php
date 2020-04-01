@@ -10,24 +10,21 @@ class Articles extends CI_Controller{
 
     public function articles(){
         $articleManager = new Article_manager;
+        $article = new Article;
 
         //Afficher un seul article
-
         if(!empty($_GET['article_id'])){
 
             $articleArray = $articleManager->getArticle($_GET['article_id']);
-            $articleRow = new Article;
-        
-            $articleArray['articleAuthor'] = $articleArray['userFirstname'];
-            $articleArray['articleCategory'] = $articleArray['categoryName'];
-            $articleRow->hydrate($articleArray);
+            $articleArray['author'] = $articleArray['userFirstname'];
+            $articleArray['articleCategory'] = $articleArray['categoryName']; 
+            $article->hydrate($articleArray);
             
-            // var_dump($articleRow);
+            // var_dump($article);
 
-            $this->smarty->assign('articleDetail', $articleRow->getData());
+            $this->smarty->assign('articleDetail', $article->getData());
             $this->smarty->view('pages/article.tpl');
         }else{
-
             //Afficher tout les articles
             $articleData = $articleManager->getAllArticle();
             //var_dump($articleData);
@@ -35,15 +32,16 @@ class Articles extends CI_Controller{
             $articleList = array();
 
             foreach($articleData as $val){
-                $article = new Article;
-                
-                $val['articleAuthor'] = $val['userFirstname'];
-                $val['articleCategory'] = $val['categoryName']; 
                 
                 $article->hydrate($val);
-                array_push($articleList, $article->getData());
-                //var_dump($article);
+
+                $data =  $article->getData();
+                $data['author'] = $val['userFirstname'];
+                $data['articleCategory'] = $val['categoryName']; 
+                array_push($articleList, $data); 
             }
+            // var_dump($articleList);
+
             $this->smarty->assign('article', $articleList);
             $this->smarty->view('pages/savoir_faire.tpl');
         }
@@ -57,9 +55,9 @@ class Articles extends CI_Controller{
 
         //Pour insetion dans la BDD
         if(!empty($_POST) && empty($_GET)){
-            $articleObj = new Article;
-            $articleObj->hydrate($_POST);
-            $articleManager->addArticle($articleObj);
+            $_POST['articleAuthor'] = $_SESSION['id'];
+            $article->hydrate($_POST);
+            $articleManager->addArticle($article);
             redirect(base_url()."Articles/dashboard", 'location');
         }
 
@@ -140,10 +138,9 @@ class Articles extends CI_Controller{
             // var_dump($articleList);
             
             $this->smarty->assign('article', $articleList);
-
-
             $this->smarty->assign('page', 'admin/article.tpl');
         }   
+        
         //Affichage dynamique des catégories dans le champ select
         $cat = $articleManager->getCategory();
         $catData = array('-- Catégorie --');

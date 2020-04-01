@@ -1,6 +1,8 @@
     {include file="header.tpl" title="Ecomie - Savoir-Faire" name=$Name}
     <div class="btn-content" id="btn-create-art">
-        <a href="{base_url()}Articles/dashboard" class="btn">Créer un article</a>
+        {if $smarty.session.id}
+            <a href="{base_url()}Articles/dashboard" class="btn">Créer un article</a> 
+        {/if}
     </div>
     <div class="contenaire__bloc">
             {foreach from=$article item=val key=key}
@@ -14,7 +16,7 @@
                         </div>
                     </a>
                     <div class="auteur">
-                        <p>{$val.articleAuthor}</p>
+                        <p>{$val.author}</p>
                         <p>{$val.articleDate}</p>
                     </div>
                 </section>

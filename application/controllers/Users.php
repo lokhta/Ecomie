@@ -65,7 +65,7 @@ class Users extends CI_Controller{
         if(!empty($_POST['userName'])){
             $userObj = new User;
             $userObj->hydrate($_POST);
-            
+
             // var_dump($userObj);
             // echo 'ok';
 
@@ -83,6 +83,7 @@ class Users extends CI_Controller{
     public function logout()
     {
         session_destroy();
+        redirect(base_url(), 'location');
     }
 
 }
