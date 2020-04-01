@@ -15,7 +15,7 @@
                 <td>{$val.articleDate}</td>
                 <td class="link_gestion">
                     <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}"><i class="fas fa-search"></i></a>
-                    <a href="#"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {/foreach}

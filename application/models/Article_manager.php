@@ -15,8 +15,8 @@ class Article_manager extends CI_Model{
         return  $this->db->where('articleId', $article->getId())->update('articles',  $article->getData());
     }
 
-    public function deleteArticle(){
-
+    public function deleteArticle($article_id){
+        return $this->db->where('articleId', $article_id)->delete('articles');
     }
     
     public function getArticle($article_id){

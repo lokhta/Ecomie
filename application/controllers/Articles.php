@@ -106,6 +106,12 @@ class Articles extends CI_Controller{
                 redirect($url, 'location');
             }
 
+            //Suppression article
+            if(!empty($_GET['article_id']) && !empty($_GET['del'])){
+                $articleManager->deleteArticle($_GET['article_id']);
+                redirect(base_url()."Articles/dashboard", 'location');
+            }
+
         }else{
             //Pour affichage de la liste des articles
             $articleData = $articleManager->getAllArticle();
