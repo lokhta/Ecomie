@@ -56,8 +56,7 @@ class Articles extends CI_Controller{
         // var_dump($article);
 
         //Pour insetion dans la BDD
-        if(!empty($_POST)){
-
+        if(!empty($_POST) && empty($_GET)){
             $articleObj = new Article;
             $articleObj->hydrate($_POST);
             $articleManager->addArticle($articleObj);
@@ -66,6 +65,11 @@ class Articles extends CI_Controller{
 
         if($_GET){
             $url = "Articles/dashboard?article_id=".$_GET['article_id'];
+
+            if(!empty($_GET['edit'])){
+                $url .= "&edit=1&update=1";
+            }
+
             $this->smarty->assign('url', $url);
 
             //Afficher un seul article
@@ -89,6 +93,17 @@ class Articles extends CI_Controller{
                 $article->hydrate($dataEdit);
                 // var_dump($article->getData());
                 $articleManager->editArticle($article);
+                redirect($url, 'location');
+            }
+
+            //Modification article
+            if(!empty($_POST) && !empty($_GET['update'])){
+                var_dump($_POST);
+                $_POST['articleDate'] = date('Y-m-d H:i:s');
+                $article->hydrate($_POST);
+                var_dump($article);
+                $articleManager->editArticle($article);
+                redirect($url, 'location');
             }
 
         }else{
@@ -120,18 +135,19 @@ class Articles extends CI_Controller{
             
             $this->smarty->assign('article', $articleList);
 
-            //Affichage dynamique des catégories dans le champ select
-            $cat = $articleManager->getCategory();
-            $catData = array('-- Catégorie --');
 
-            foreach ($cat as $row)
-            {
-                array_push($catData, $row['categoryName']);
-            }
-
-            $this->smarty->assign('option', $catData);
             $this->smarty->assign('page', 'admin/article.tpl');
-        }       
+        }   
+        //Affichage dynamique des catégories dans le champ select
+        $cat = $articleManager->getCategory();
+        $catData = array('-- Catégorie --');
+
+        foreach ($cat as $row)
+        {
+            array_push($catData, $row['categoryName']);
+        }
+
+        $this->smarty->assign('option', $catData); 
         $this->smarty->view('admin/dashboard.tpl');
     }
 }

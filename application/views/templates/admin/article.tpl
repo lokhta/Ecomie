@@ -21,12 +21,12 @@
         {/foreach}
     </table>
     <div id="formContent">
-        {form_open('Articles/dashboard')}
-        <p>
+        {form_open('Articles/dashboard', 'class="form"')}
+        <p class="field-content">
             {form_label("Catégorie")}
             {form_dropdown('articleCategory', $option, "id='cat'")}
         </p>
-        <p>
+        <p class="field-content">
             {form_label("Titre")}
             {form_input("articleTitle",'',"id='title'")}
         </p>
