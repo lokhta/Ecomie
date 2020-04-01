@@ -11,17 +11,17 @@ class Article_manager extends CI_Model{
     }
 
 
-    public function editArticle(){
-
+    public function editArticle(Article $article){
+        return  $this->db->where('articleId', $article->getId())->update('articles',  $article->getData());
     }
 
     public function deleteArticle(){
 
     }
-
+    
     public function getArticle($article_id){
         $query = $this->db
-        ->select('articleId, articleTitle, articleContent, articleDate, articleValidate, categoryName, userFirstname')
+        ->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname')
         ->from('articles')
         ->join('users', 'users.userId = articles.articleAuthor')
         ->join('categories', 'categories.categoryId = articles.articleCategory')
@@ -33,7 +33,7 @@ class Article_manager extends CI_Model{
     public function getAllArticle(){
         $url = base_url()."Articles/articles";
 
-        $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate, categoryName, userFirstname');
+        $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname');
         $this->db->from('articles');
         $this->db->join('users', 'users.userId = articles.articleAuthor');
         $this->db->join('categories', 'categories.categoryId = articles.articleCategory');

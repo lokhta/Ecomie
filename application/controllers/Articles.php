@@ -57,41 +57,38 @@ class Articles extends CI_Controller{
 
         //Pour insetion dans la BDD
         if(!empty($_POST)){
-            //$_POST['articleAuthor'] = $_SESSION['id'];
 
             $articleObj = new Article;
             $articleObj->hydrate($_POST);
-
-            // var_dump($_SESSION);
-            // var_dump($_POST);
-            // var_dump($articleObj);exit;
-
             $articleManager->addArticle($articleObj);
             redirect(base_url()."Articles/dashboard", 'location');
         }
 
         if($_GET){
             $url = "Articles/dashboard?article_id=".$_GET['article_id'];
-
-            // if(!empty($_GET['edit'])){
-            //     $url .= "&edit=1&update=1";
-            // }
-
             $this->smarty->assign('url', $url);
 
             //Afficher un seul article
             if(!empty($_GET['article_id'])){
-
                 $articleAdd = $articleManager->getArticle($_GET['article_id']);
-            
-                $articleAdd['articleAuthor'] = $articleAdd['userFirstname'];
-                $articleAdd['articleCategory'] = $articleAdd['categoryName'];
                 $article->hydrate($articleAdd);
-                //var_dump($article->getData());
-                // var_dump($article);
+                $data = $article->getData();
+                $data['author'] = $articleAdd['userFirstname'];
+                $data['categoryName'] = $articleAdd['categoryName'];
 
-                $this->smarty->assign('articleDetail', $article->getData());
+                // var_dump($article);
+                // var_dump($data);
+
+                $this->smarty->assign('articleDetail',$data);
                 $this->smarty->assign('page', 'admin/article_detail.tpl');
+            }
+
+            //Validation des articles
+            if(!empty($_GET['valide'])){
+                $dataEdit['articleValidate'] = $_GET['valide'];
+                $article->hydrate($dataEdit);
+                // var_dump($article->getData());
+                $articleManager->editArticle($article);
             }
 
         }else{
@@ -101,10 +98,7 @@ class Articles extends CI_Controller{
             $articleList = array();
 
             foreach($articleData as $val){
-            
-                $val['articleAuthor'] = $val['userFirstname'];
-                $val['articleCategory'] = $val['categoryName']; 
-
+    
                 if($val['articleValidate'] == 0){
                     $val['articleValidate'] = '<i class="fas fa-hourglass-half"></i>';
                 }elseif($val['articleValidate'] == 1){
@@ -116,10 +110,14 @@ class Articles extends CI_Controller{
                 $article->hydrate($val);
 
                 // var_dump($article);
+                $data =  $article->getData();
+                $data['author'] = $val['userFirstname'];
+                $data['articleCategory'] = $val['categoryName']; 
+                array_push($articleList, $data);
 
-                array_push($articleList, $article->getData());
             }
-
+            // var_dump($articleList);
+            
             $this->smarty->assign('article', $articleList);
 
             //Affichage dynamique des catégories dans le champ select
@@ -133,8 +131,7 @@ class Articles extends CI_Controller{
 
             $this->smarty->assign('option', $catData);
             $this->smarty->assign('page', 'admin/article.tpl');
-        }
-        
+        }       
         $this->smarty->view('admin/dashboard.tpl');
     }
 }
