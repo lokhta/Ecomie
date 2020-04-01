@@ -14,15 +14,14 @@
                 <td>{$val.articleTitle}</td>
                 <td>{$val.articleDate}</td>
                 <td class="link_gestion">
-                    <a href="#"><i class="fas fa-search"></i></a>
-                    <a href="#"><i class="fas fa-archive"></i></a>
+                    <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}"><i class="fas fa-search"></i></a>
                     <a href="#"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {/foreach}
     </table>
     <div id="formContent">
-        {form_open('dashboard/articles')}
+        {form_open('Articles/dashboard')}
         <p>
             {form_label("Catégorie")}
             {form_dropdown('articleCategory', $option, "id='cat'")}

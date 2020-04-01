@@ -1280,9 +1280,9 @@ Article
 /*****************************
     Espace admin
 *****************************/
-
 #adminContent{
     display: flex;
+    background: #EBEDEF;
 }
 
 section.right_content {
@@ -1410,7 +1410,7 @@ a.link_admin {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    height: 30px;
 }
 
 .btn:hover{
@@ -1505,3 +1505,34 @@ Article Dashboard
 section.right_content #formContent form{
     max-width: 100%;
 }
+
+/*Article detail*/
+.content-action{
+    display: flex;
+} 
+.content-action .btn {
+    margin: 12px;
+    border-radius: 5px;
+}
+a.btn.btn-valid {
+    background: #28B463;
+}
+a.btn.btn-valid:hover {
+    background: #2ECC71;
+}
+
+a.btn.btn-fail, a.btn.btn-del{
+    background: #EA3725;
+}
+a.btn.btn-fail:hover, a.btn.btn-del:hover {
+    background: #E74C3C;
+}
+
+a.btn.btn-edit {
+    background: #F39C12;
+}
+a.btn.btn-edit:hover {
+    background: #F5B041;
+}
+
+

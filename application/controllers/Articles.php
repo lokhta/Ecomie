@@ -51,6 +51,10 @@ class Articles extends CI_Controller{
 
     public function dashboard(){
         $articleManager = new Article_manager;
+        $article = new Article;
+
+        // var_dump($article);
+
         //Pour insetion dans la BDD
         if(!empty($_POST)){
             //$_POST['articleAuthor'] = $_SESSION['id'];
@@ -66,43 +70,70 @@ class Articles extends CI_Controller{
             redirect(base_url()."Articles/dashboard", 'location');
         }
 
-        //Pour affichage de la liste des articles
-        $articleData = $articleManager->getAllArticle();
+        if($_GET){
+            $url = "Articles/dashboard?article_id=".$_GET['article_id'];
 
-        $articleList = array();
+            // if(!empty($_GET['edit'])){
+            //     $url .= "&edit=1&update=1";
+            // }
 
-        foreach($articleData as $val){
-            $article = new Article;
+            $this->smarty->assign('url', $url);
+
+            //Afficher un seul article
+            if(!empty($_GET['article_id'])){
+
+                $articleAdd = $articleManager->getArticle($_GET['article_id']);
             
-            $val['articleAuthor'] = $val['userFirstname'];
-            $val['articleCategory'] = $val['categoryName']; 
+                $articleAdd['articleAuthor'] = $articleAdd['userFirstname'];
+                $articleAdd['articleCategory'] = $articleAdd['categoryName'];
+                $article->hydrate($articleAdd);
+                //var_dump($article->getData());
+                // var_dump($article);
 
-            if($val['articleValidate'] == 0){
-                $val['articleValidate'] = '<i class="fas fa-hourglass-half"></i>';
-            }elseif($val['articleValidate'] == 1){
-                $val['articleValidate'] = '<i class="far fa-check-circle"></i>';
-            }elseif($val['articleValidate'] == 2){
-                $val['articleValidate'] = '<i class="far fa-times-circle"></i>';
+                $this->smarty->assign('articleDetail', $article->getData());
+                $this->smarty->assign('page', 'admin/article_detail.tpl');
             }
+
+        }else{
+            //Pour affichage de la liste des articles
+            $articleData = $articleManager->getAllArticle();
+
+            $articleList = array();
+
+            foreach($articleData as $val){
             
-            $article->hydrate($val);
+                $val['articleAuthor'] = $val['userFirstname'];
+                $val['articleCategory'] = $val['categoryName']; 
 
-            array_push($articleList, $article->getData());
+                if($val['articleValidate'] == 0){
+                    $val['articleValidate'] = '<i class="fas fa-hourglass-half"></i>';
+                }elseif($val['articleValidate'] == 1){
+                    $val['articleValidate'] = '<i class="far fa-check-circle"></i>';
+                }elseif($val['articleValidate'] == 2){
+                    $val['articleValidate'] = '<i class="far fa-times-circle"></i>';
+                }
+                
+                $article->hydrate($val);
+
+                // var_dump($article);
+
+                array_push($articleList, $article->getData());
+            }
+
+            $this->smarty->assign('article', $articleList);
+
+            //Affichage dynamique des catégories dans le champ select
+            $cat = $articleManager->getCategory();
+            $catData = array('-- Catégorie --');
+
+            foreach ($cat as $row)
+            {
+                array_push($catData, $row['categoryName']);
+            }
+
+            $this->smarty->assign('option', $catData);
+            $this->smarty->assign('page', 'admin/article.tpl');
         }
-        $this->smarty->assign('article', $articleList);
-
-        //Affichage dynamique des catégories dans le champ select
-        $cat = $articleManager->getCategory();
-        $catData = array('-- Catégorie --');
-
-        foreach ($cat as $row)
-        {
-            array_push($catData, $row['categoryName']);
-        }
-
-        $this->smarty->assign('option', $catData);
-
-        $this->smarty->assign('page', 'admin/article.tpl');
         
         $this->smarty->view('admin/dashboard.tpl');
     }
