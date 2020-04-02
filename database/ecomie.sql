@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 26 mars 2020 à 18:16
+-- Généré le :  jeu. 02 avr. 2020 à 14:49
 -- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -296,18 +296,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userAvatar` varchar(255) NOT NULL,
   `userRole` int(11) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `userEmail`, `userPhone`, `userAddress`, `userCp`, `userCity`, `userPwd`, `userAvatar`, `userRole`) VALUES
-(1, 'Ducharme', 'Christian', 'christianducharme@hotmail.com', '0288170297', '94 , avenue du Marechal Juin', '50000', 'Saint-Lô', '12345678', '', 1),
-(2, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 1),
-(3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 1),
-(4, 'Admin', 'Admin', 'GanelonBarteaux@armyspy.com', '0623548797', '85, rue du Fossé des Tanneurs', '83100', 'Toulon', 'W!tn8$D7tr', 'admin', 2),
-(5, 'Modeur', 'Modeur', 'moderator.ecomie@gmail.com', '0785964123', '5 rue de Michelbach', '68330', 'Huningue', 'TqUAC5_E', 'moderator', 3);
+(6, 'Ducharme', 'Christian', 'christianducharme@hotmail.com', '0288170297', '94 , avenue du Marechal Juin', '50000', 'Saint-Lô', '12345678', '', 3),
+(4, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 3),
+(3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 3),
+(1, 'Admin', 'Admin', 'GanelonBarteaux@armyspy.com', '0623548797', '85, rue du Fossé des Tanneurs', '83100', 'Toulon', 'W!tn8$D7tr', 'admin', 1),
+(2, 'Modeur', 'Modeur', 'moderator.ecomie@gmail.com', '0785964123', '5 rue de Michelbach', '68330', 'Huningue', 'TqUAC5_E', 'moderator', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
