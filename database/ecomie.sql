@@ -248,9 +248,10 @@ CREATE TABLE IF NOT EXISTS `roles` (
 --
 
 INSERT INTO `roles` (`roleId`, `roleName`) VALUES
-(1, 'User'),
-(2, 'Admin'),
-(3, 'Moderator');
+(1, 'Admin'),
+(2, 'Moderator');
+(3, 'User'),
+
 
 -- --------------------------------------------------------
 
