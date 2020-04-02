@@ -89,12 +89,14 @@ class Users extends CI_Controller{
     public function profil()
     {
         $this->smarty->view('pages/profil.tpl');
-        $userManager = new User_manager;
-        if(!empty($_POST)){
+        if(!empty($_POST)){ 
+            $userManager = new User_manager;
             $userObj = new User;
             $userObj->hydrate($_POST);
             $userManager->editUser($userObj);
-            redirect("",'refresh');
+            var_dump($userObj);
+            //Rafraichissement de la page
+            //header('refresh:0');
         }
     }
 }
