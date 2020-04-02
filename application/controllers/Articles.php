@@ -53,7 +53,7 @@ class Articles extends CI_Controller{
 
         // var_dump($article);
 
-        //Pour insetion dans la BDD
+        //Pour insertion dans la BDD
         if(!empty($_POST) && empty($_GET)){
             $_POST['articleAuthor'] = $_SESSION['id'];
             $article->hydrate($_POST);
@@ -67,7 +67,6 @@ class Articles extends CI_Controller{
             if(!empty($_GET['edit'])){
                 $url .= "&edit=1&update=1";
             }
-
             $this->smarty->assign('url', $url);
 
             //Afficher un seul article
@@ -91,7 +90,7 @@ class Articles extends CI_Controller{
                 $article->hydrate($dataEdit);
                 // var_dump($article->getData());
                 $articleManager->editArticle($article);
-                redirect($url, 'location');
+                redirect($url, 'location'); 
             }
 
             //Modification article
@@ -131,7 +130,7 @@ class Articles extends CI_Controller{
                 // var_dump($article);
                 $data =  $article->getData();
                 $data['author'] = $val['userFirstname'];
-                $data['articleCategory'] = $val['categoryName']; 
+                $data['articleCategory'] = $val['categoryName'];
                 array_push($articleList, $data);
 
             }
