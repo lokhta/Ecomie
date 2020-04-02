@@ -14,8 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     
     
-        public function editUser(){
-    
+        public function editUser(User $user){
+            return  $this->db->where('userId', $user->getId())->update('users',  $user->getData());
         }
     
         public function deleteUser(){
