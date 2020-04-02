@@ -10,7 +10,7 @@
             <div class="content_ico">
                 <i class="fas fa-user ico_admin"></i>
             </div>
-            <a href="{base_url()}dashboard/profil" class="link_admin">Profil</a>
+            <a href="{base_url()}users/profil" class="link_admin">Profil</a>
         </div>
         <div class="link-nav-admin">
             <div class="content_ico"> 
