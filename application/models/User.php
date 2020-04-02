@@ -77,13 +77,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 		
 		/* GETTERS */
-		public function getUserId(){
+		public function getId(){
 			return $this->_userId;
 		}
-		public function getUserName(){
+		public function getName(){
 			return $this->_userName;
 		}		
-		public function getUserFirstname(){
+		public function getFirstname(){
 			return $this->_userFirstname;
 		}
 		public function getEmail(){
@@ -118,7 +118,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			foreach($userData as $key => $value){
 				$data[substr($key, 1)] = $value;
 			}
-	
 			$data = array_filter($data);
 		   return $data;
 		}	
