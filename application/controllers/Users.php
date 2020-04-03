@@ -15,66 +15,77 @@ class Users extends CI_Controller{
 
     public function connexion()
     {
+    $this->smarty->view('pages/connection.tpl');
+    $this->load->library('encryption');
         if ($_POST)
         {
             $userManager = New User_manager;
             $getUser = $userManager->getUser();
+            //var_dump($_POST);
             //var_dump($getUser);
-            if (empty($getUser))
+            if (!empty($_POST['userEmail']))
             {
-                echo "erreur email";
-                $this->smarty->view('pages/connection.tpl');
-            }else
-            {
-                if ($_POST['userPwd'] == $getUser['userPwd'])
-                {
-                    $user = New User;
-                    $user->hydrate($getUser);
-                    //var_dump($user);
+                if (!empty($_POST['userPwd']))
+                {  
+                    if (!empty($getUser))
+                    {
+                        $decryptedPwd = $getUser['userPwd'];
+                        $getUser['userPwd'] = $this->encryption->decrypt($decryptedPwd);
+                        //var_dump($getUser);
+                        if ($_POST['userPwd'] == $getUser['userPwd'])
+                        {
+                            $user = New User;
+                            $user->hydrate($getUser);
+                            //var_dump($user);
 
-                    $userTab = $user->getData();
+                            $userTab = $user->getData();
 
-                    //Création de la session 
-                    foreach($userTab as $key => $value){
-                        $keys = lcfirst(str_replace('user','',$key));
-                        $_SESSION[$keys] = $value;
+                            //Création de la session 
+                            foreach($userTab as $key => $value){
+                                $keys = lcfirst(str_replace('user','',$key));
+                                $_SESSION[$keys] = $value;
+                            }
+                            redirect(base_url()."users/profil", 'location');
+                        }else{
+                                echo 'Identifiants incorrects';
+                        }
+                    }else{
+                        echo 'Identifiants incorrects';
                     }
-
-                    // var_dump($_SESSION);
-                    redirect(base_url()."dashboard", 'location');
+                }else{
+                    echo 'Veuillez renseigner un mot de passe';
                 }
-                else
-                {
-                    echo "erreur mot de passe";
-                    $this->smarty->view('pages/connection.tpl');
-                }
-                
+            }else{
+                echo 'Veuillez renseigner une adresse mail';
             }
         }
-        
-        $this->smarty->view('pages/connection.tpl');
     }
+    
 
 // Fonction de création de compte
 
     public function inscription()
     {
+        $this->load->library('encryption');
         $userManager = new User_manager;
         //Pour insertion dans la BDD
         //var_dump($_POST);
         if(!empty($_POST['userName'])){
+            
             $userObj = new User;
+            $password = $_POST['userPwd'];
+            $encryptedPwd = $this->encryption->encrypt($password);
+            $_POST['userPwd'] = $encryptedPwd;
             $userObj->hydrate($_POST);
-
-            // var_dump($userObj);
+            var_dump($userObj);
             // echo 'ok';
 
             $userManager->addUser($userObj);
             //redirect(base_url()."Users/dashboard", 'location');
-            redirect("",'refresh');
+            //redirect("",'refresh');
         }else{
             echo"formulaire non valide";
-            redirect("",'refresh');
+            //redirect("",'refresh');
         }
     }
 
