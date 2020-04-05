@@ -23,8 +23,11 @@ editor('articleContent');
 var commentForm = document.getElementById('comment');
 var btnComment = document.getElementById('commentBtn');
 
-btnComment.addEventListener('click', function(){
-    commentForm.style.display = "block";
-})
+// if(btnComment){
+//     btnComment.addEventListener('click', function(){
+//         commentForm.style.display = "block";
+//     })
+    
+    editor('commentContent');
+// }
 
-editor('commentContent');

@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <title>{$title}</title>
         <script src="https://kit.fontawesome.com/cefffb285d.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        <script src="{base_url()}assets/js/ckeditor/ckeditor.js"></script>
     </head>
 
     <body>
