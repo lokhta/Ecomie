@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->_userCity = $strUserCity;
         }
         public function setPwd($strUserPwd){
-			$this->_userPwd = $strUserPwd;
+			$this->_userPwd = password_hash($strUserPwd, PASSWORD_DEFAULT);
         }
         public function setAvatar($strUserAvatar){
             $this->_userAvatar = $strUserAvatar;
