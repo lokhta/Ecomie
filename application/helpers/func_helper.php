@@ -68,9 +68,10 @@ function get_data($obj_manager, $obj_class, $method, $param=null){
 
             $data = $obj_class->getData();
 
-            if($obj_manager == 'Article_manager' || $obj_class == 'Article'){
+            if(get_class($obj_manager) == 'Article_manager' || get_class($obj_class) == 'Article'){
                 $data['author'] = $value['userFirstname'];
                 $data['category'] = $value['categoryName'];
+                // var_dump($data);
             }
 
             array_push($liste, $data);

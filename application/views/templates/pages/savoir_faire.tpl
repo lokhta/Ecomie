@@ -7,11 +7,11 @@
     <div class="contenaire__bloc">
             {foreach from=$article item=val key=key}
                 <section class="savoir__faire">
-                    <a class="{$val.articleCategory}__bloc" href="{base_url()}Articles/articles?article_id={$val.articleId}">
-                        <div class="{$val.articleCategory}__logo">
-                            <img src="{base_url()}assets/img/{$val.articleCategory}" alt="">
+                    <a class="{$val.category}__bloc" href="{base_url()}Articles/articles?article_id={$val.articleId}">
+                        <div class="{$val.category}__logo">
+                            <img src="{base_url()}assets/img/{$val.category}" alt="">
                         </div>
-                        <div class="{$val.articleCategory}__titre">
+                        <div class="{$val.category}__titre">
                             <h2>{$val.articleTitle}</h2>
                         </div>
                     </a>

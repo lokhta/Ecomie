@@ -2,47 +2,32 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Articles extends CI_Controller{
+
+    private $_article_manager;
+    private $_article;
+
     public function __construct(){
         parent::__construct();
         $this->load->model('Article_manager');
         $this->load->model('Article');
+        $this->_article_manager = create_object('Article_manager');
+        $this->_article = create_object('Article');
     }
 
     public function articles(){
-        $articleManager = new Article_manager;
-        $article = new Article;
+        // $articleManager = new Article_manager;
+        // $article = new Article;
 
         //Afficher un seul article
-        if(!empty($_GET['article_id'])){
+        if(!empty($_GET['article_id'])){            
+            $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
 
-            $articleArray = $articleManager->getArticle($_GET['article_id']);
-            $articleArray['author'] = $articleArray['userFirstname'];
-            $articleArray['articleCategory'] = $articleArray['categoryName']; 
-            $article->hydrate($articleArray);
-            
-            // var_dump($article);
-
-            $this->smarty->assign('articleDetail', $article->getData());
+            $this->smarty->assign('articleDetail', $data);
             $this->smarty->view('pages/article.tpl');
-        }else{
-            //Afficher tout les articles
-            $articleData = $articleManager->getAllArticle();
-            //var_dump($articleData);
+        }else{//Afficher tout les articles
+            $data = get_data($this->_article_manager, $this->_article, 'getAllArticle');
 
-            $articleList = array();
-
-            foreach($articleData as $val){
-                
-                $article->hydrate($val);
-
-                $data =  $article->getData();
-                $data['author'] = $val['userFirstname'];
-                $data['articleCategory'] = $val['categoryName']; 
-                array_push($articleList, $data); 
-            }
-            // var_dump($articleList);
-
-            $this->smarty->assign('article', $articleList);
+            $this->smarty->assign('article', $data);
             $this->smarty->view('pages/savoir_faire.tpl');
         }
     }
@@ -71,15 +56,7 @@ class Articles extends CI_Controller{
 
             //Afficher un seul article
             if(!empty($_GET['article_id'])){
-                $articleAdd = $articleManager->getArticle($_GET['article_id']);
-                $article->hydrate($articleAdd);
-                $data = $article->getData();
-                $data['author'] = $articleAdd['userFirstname'];
-                $data['categoryName'] = $articleAdd['categoryName'];
-
-                // var_dump($article);
-                // var_dump($data);
-
+                $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
                 $this->smarty->assign('articleDetail',$data);
                 $this->smarty->assign('page', 'admin/article_detail.tpl');
             }
@@ -109,34 +86,9 @@ class Articles extends CI_Controller{
                 redirect(base_url()."Articles/dashboard", 'location');
             }
 
-        }else{
-            //Pour affichage de la liste des articles
-            $articleData = $articleManager->getAllArticle();
-
-            $articleList = array();
-
-            foreach($articleData as $val){
-    
-                if($val['articleValidate'] == 0){
-                    $val['articleValidate'] = '<i class="fas fa-hourglass-half"></i>';
-                }elseif($val['articleValidate'] == 1){
-                    $val['articleValidate'] = '<i class="far fa-check-circle"></i>';
-                }elseif($val['articleValidate'] == 2){
-                    $val['articleValidate'] = '<i class="far fa-times-circle"></i>';
-                }
-                
-                $article->hydrate($val);
-
-                // var_dump($article);
-                $data =  $article->getData();
-                $data['author'] = $val['userFirstname'];
-                $data['articleCategory'] = $val['categoryName'];
-                array_push($articleList, $data);
-
-            }
-            // var_dump($articleList);
-            
-            $this->smarty->assign('article', $articleList);
+        }else{ //Pour affichage de la liste des articles
+            $data = get_data($this->_article_manager, $this->_article, 'getAllArticle');
+            $this->smarty->assign('article', $data);
             $this->smarty->assign('page', 'admin/article.tpl');
         }   
         

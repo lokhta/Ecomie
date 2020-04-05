@@ -13,7 +13,13 @@
         {foreach from=$article key=key item=val}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
                 <td>{$val.articleId}</td>
-                <td>{$val.articleValidate}</td>
+                {if $val.articleValidate == 0}
+                    <td><i class="fas fa-hourglass-half"></i></td>
+                    {elseif $val.articleValidate == 1}
+                    <td><i class="far fa-check-circle"></i></td>
+                    {elseif $val.articleValidate == 2}
+                    <td><i class="far fa-times-circle"></i></td>
+                {/if}
                 <td>{$val.articleTitle}</td>
                 <td>{$val.articleDate}</td>
                 {if $smarty.session.role == 1}
