@@ -29,10 +29,8 @@ class Users extends CI_Controller{
                 {  
                     if (!empty($getUser))
                     {
-                        $decryptedPwd = $getUser['userPwd'];
-                        $getUser['userPwd'] = $this->encryption->decrypt($decryptedPwd);
                         //var_dump($getUser);
-                        if ($_POST['userPwd'] == $getUser['userPwd'])
+                        if (password_verify($_POST['userPwd'], $getUser['userPwd']))
                         {
                             $user = New User;
                             $user->hydrate($getUser);
@@ -73,16 +71,12 @@ class Users extends CI_Controller{
         if(!empty($_POST['userName'])){
             
             $userObj = new User;
-            $password = $_POST['userPwd'];
-            $encryptedPwd = $this->encryption->encrypt($password);
-            $_POST['userPwd'] = $encryptedPwd;
             $userObj->hydrate($_POST);
-            var_dump($userObj);
-            // echo 'ok';
+            //var_dump($userObj);
 
             $userManager->addUser($userObj);
             //redirect(base_url()."Users/dashboard", 'location');
-            //redirect("",'refresh');
+            redirect("",'refresh');
         }else{
             echo"formulaire non valide";
             //redirect("",'refresh');
