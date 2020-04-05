@@ -935,7 +935,7 @@ PAGE SAVOIR-FAIRE***************************************************************
     max-width: 1280px;
     margin-bottom: 50px;
 }   
-.savoir__bloc {
+.Savoir__bloc {
     display: flex;
     flex-direction: row;
     height: 150px;
@@ -943,12 +943,12 @@ PAGE SAVOIR-FAIRE***************************************************************
     background-color: rgb(141, 191, 59);
     text-decoration: none;
 }
-.savoir__bloc  img {
+.Savoir__bloc  img {
     height: 50px;
     width: 50px;
     margin: 25px 65px 0px 25px;
 }
-.savoir__bloc h2 {
+.Savoir__bloc h2 {
        font-size: 1.4em;
        color:black;
        font-weight: normal;
@@ -964,7 +964,7 @@ PAGE SAVOIR-FAIRE***************************************************************
     margin: auto 25px;
     font-size: 1.1em;
 }
-.faire__bloc {
+.Faire__bloc {
     display: flex;
     flex-direction: row;
     height: 150px;
@@ -972,12 +972,12 @@ PAGE SAVOIR-FAIRE***************************************************************
     background-color: rgb(255, 229, 33);
     text-decoration: none;
 }
-.faire__bloc  img {
+.Faire__bloc  img {
     height: 60px;
     width: 60px;
     margin: 25px 65px 0px 25px;
 }
-.faire__bloc h2 {
+.Faire__bloc h2 {
        font-size: 1.4em;
        color:black;
        font-weight: normal;
@@ -1004,13 +1004,13 @@ PAGE SAVOIR-FAIRE***************************************************************
 }
 
 @media screen and (max-width: 350px) {
-    .savoir__bloc {
+    .Savoir__bloc {
         max-width: 320px;
     }
     .auteur {
         width: 320px;
     }
-    .faire__bloc {
+    .Faire__bloc {
         max-width: 320px;
     }
 }
