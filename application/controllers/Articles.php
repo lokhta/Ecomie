@@ -55,7 +55,7 @@ class Articles extends CI_Controller{
             //Validation des articles
             if(!empty($_GET['valide'])){
                 $data_edit_validate = array();
-                
+
                 write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, 'articleValidate', $_GET['valide']);
 
                 redirect($url, 'location'); 
@@ -63,11 +63,10 @@ class Articles extends CI_Controller{
 
             //Modification article
             if(!empty($_POST) && !empty($_GET['update'])){
-                var_dump($_POST);
-                $_POST['articleDate'] = date('Y-m-d H:i:s');
-                $article->hydrate($_POST);
-                var_dump($article);
-                $articleManager->editArticle($article);
+                $date_modif = date('Y-m-d H:i:s');
+
+                write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, 'articleDate', $date_modif);
+
                 redirect($url, 'location');
             }
 
