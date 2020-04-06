@@ -42,6 +42,7 @@ class Articles extends CI_Controller{
             if(!empty($_GET['edit'])){
                 $url .= "&edit=1&update=1";
             }
+
             $this->smarty->assign('url', $url);
 
             //Afficher un seul article
@@ -53,10 +54,10 @@ class Articles extends CI_Controller{
 
             //Validation des articles
             if(!empty($_GET['valide'])){
-                $dataEdit['articleValidate'] = $_GET['valide'];
-                $article->hydrate($dataEdit);
-                // var_dump($article->getData());
-                $articleManager->editArticle($article);
+                $data_edit_validate = array();
+                
+                write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, 'articleValidate', $_GET['valide']);
+
                 redirect($url, 'location'); 
             }
 
