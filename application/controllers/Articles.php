@@ -15,9 +15,6 @@ class Articles extends CI_Controller{
     }
 
     public function articles(){
-        // $articleManager = new Article_manager;
-        // $article = new Article;
-
         //Afficher un seul article
         if(!empty($_GET['article_id'])){            
             $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
@@ -33,16 +30,9 @@ class Articles extends CI_Controller{
     }
 
     public function dashboard(){
-        $articleManager = new Article_manager;
-        $article = new Article;
-
-        // var_dump($article);
-
         //Pour insertion dans la BDD
         if(!empty($_POST) && empty($_GET)){
-            $_POST['articleAuthor'] = $_SESSION['id'];
-            $article->hydrate($_POST);
-            $articleManager->addArticle($article);
+            write_data($this->_article_manager, $this->_article, 'addArticle', $_POST, 'articleAuthor', $_SESSION['id']);
             redirect(base_url()."Articles/dashboard", 'location');
         }
 

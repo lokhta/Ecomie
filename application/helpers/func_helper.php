@@ -26,7 +26,7 @@ function create_object($class){
  * @author Sofiane AL AMRI
  * @brief get_data() retourne un tableau contenant les données concernant l'objet passé en paramètre
  * @param $obj_manager Nom de la class manager
- * @param $obj_manager Nom de la class associé au manager $obj_manager
+ * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la method appartenant au manager que l'on souhaite appeler
  * @param  $param Permet d'ajouter un paramètre à $method. $param est initialisé à null par defaut si $method n'utilise pas de paramètre
  * @return Array 
@@ -95,5 +95,44 @@ function get_category_article($obj_manager){
         array_push($liste, $value['categoryName']);
     }
 
+    // vat_dump($liste);
     return $liste;
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief write_data() permet d'écrire des données dans la base de donnée. (Insérer ou mettre à jour)
+ * @param $obj_manager Nom de la class manager
+ * @param $obj_class Nom de la class associé au manager $obj_manager
+ * @param $method Nom de la method appartenant au manager que l'on souhaite appeler
+ * @param $data Tableau contenant les informations permetant d'inserer ou mettre à jour la base de données.
+ * @param $key Nom du champ qui est utilisé pour le WHERE de la réquete sql. Inialiser à null si la requête n'utilise pas de WHERE. Si $key n'est pas null, $value ne peut pas être null.
+ * @param $value Valeur qui permet de filtrer la requete sql avec WHERE. Initialiser a null. 
+ */
+function write_data($obj_manager, $obj_class, $method, array $data, $key = null, $value = null){
+    $get_method = get_class_methods($obj_manager);
+
+    if(!in_array($method, $get_method)){
+        echo "La methode que vous souhaitez utiliser n'existe pas";
+        exit;
+    }
+
+    if($key && $value){
+        $data[$key] = $value;
+    }
+    // var_dump($data);
+
+    $obj_class->hydrate($data);
+    // var_dump($obj_class);
+
+    if($method == 'editUser'){
+        $userTab = $obj_class->getData();
+
+        foreach($userTab as $key => $value){
+            $key_session = lcfirst(str_replace('user', '', $key));
+            $_SESSION[$key_session] = $value;
+        }
+    }
+
+    $obj_manager->$method($obj_class);
 }
