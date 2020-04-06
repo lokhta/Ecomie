@@ -24,7 +24,7 @@ function create_object($class){
 
 /**
  * @author Sofiane AL AMRI
- * @brief get_data retourne un tableau contenant les données concernant l'objet passé en paramètre
+ * @brief get_data() retourne un tableau contenant les données concernant l'objet passé en paramètre
  * @param $obj_manager Nom de la class manager
  * @param $obj_manager Nom de la class associé au manager $obj_manager
  * @param $method Nom de la method appartenant au manager que l'on souhaite appeler
@@ -79,4 +79,21 @@ function get_data($obj_manager, $obj_class, $method, $param=null){
         // var_dump($liste);
         return $liste;
     }
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_category_article() retourne la liste des catégories
+ * @param $obj_manager Objet Article_manager
+ * @return Array
+ */
+function get_category_article($obj_manager){
+    $category = $obj_manager->getCategory();
+    $liste = array('-- Catégorie --');
+
+    foreach($category as $value){
+        array_push($liste, $value['categoryName']);
+    }
+
+    return $liste;
 }

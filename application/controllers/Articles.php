@@ -93,14 +93,7 @@ class Articles extends CI_Controller{
         }   
         
         //Affichage dynamique des catégories dans le champ select
-        $cat = $articleManager->getCategory();
-        $catData = array('-- Catégorie --');
-
-        foreach ($cat as $row)
-        {
-            array_push($catData, $row['categoryName']);
-        }
-
+        $catData = get_category_article($this->_article_manager);
         $this->smarty->assign('option', $catData); 
         $this->smarty->view('admin/dashboard.tpl');
     }
