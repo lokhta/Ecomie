@@ -5,20 +5,19 @@
         {/if}
     </div>
     <div class="contenaire__bloc">
-            {foreach from=$event item=val key=key}
-                <section class="savoir__faire">
-                            <h2>{$val.eventName}</h2>
-                            <p>{$val.eventContent}</p>
-                        </div>
-                    </a>
+        {foreach from=$event item=val key=key}
+            <section class="savoir__faire">
+                <a href="{base_url()}Events/events?event_id={$val.eventId}">
+                    <h2>{$val.eventName}</h2>
+                    <p>{$val.eventContent}</p>
+                </a>
+                </div>       
                     <div class="auteur">
                         <p>{$val.author}</p>
                         <p>{$val.eventDateStart} {$val.eventTimeStart}<br> {$val.eventDateEnd} {$val.eventTimeEnd} </p>
                     </div>
-                </section>
+                </section> 
             {/foreach}    
-         
-
         </div>
         <section class="astuce__fb">
             <p>Plein d'autres astuce sur notre page Facebook</p>
