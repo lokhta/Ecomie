@@ -38,6 +38,10 @@ class Article_manager extends CI_Model{
         $this->db->join('users', 'users.userId = articles.articleAuthor');
         $this->db->join('categories', 'categories.categoryId = articles.articleCategory');
 
+        if(current_url() == $url){
+            $this->db->where('articleValidate', 1);
+        }
+
         if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
