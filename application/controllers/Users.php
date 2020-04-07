@@ -3,12 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller{
         
+    private $_user_manager;
+    private $_user;
 // Fonction du constructeur
 
     public function __construct(){
             parent::__construct();
             $this->load->model('User_manager');
             $this->load->model('User');
+            $this->_user_manager = create_object('User_manager');
+            $this->_user = create_object('User');
     }
 
 // Fonction pour la vérification de connexion
@@ -94,7 +98,7 @@ class Users extends CI_Controller{
     public function profil()
     {
         $this->smarty->view('pages/profil.tpl');
-        if(!empty($_POST)){ 
+        if(!empty($_POST)){
             $userManager = new User_manager;
             $userObj = new User;
             $userObj->hydrate($_POST);
@@ -103,5 +107,15 @@ class Users extends CI_Controller{
             //Rafraichissement de la page
             //header('refresh:0');
         }
+    }
+
+    public function membres()
+    {
+        $userManager = new User_manager;
+        $user = new User;
+        $data = get_data($this->_user_manager, $this->_user, 'getAllUser');
+        //var_dump($data);
+        $this->smarty->assign('users', $data);
+        $this->smarty->view('admin/membre.tpl');
     }
 }
