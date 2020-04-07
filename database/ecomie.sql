@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 02 avr. 2020 à 14:49
+-- Généré le :  lun. 06 avr. 2020 à 13:40
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -248,10 +248,9 @@ CREATE TABLE IF NOT EXISTS `roles` (
 --
 
 INSERT INTO `roles` (`roleId`, `roleName`) VALUES
-(1, 'Admin'),
-(2, 'Moderator');
-(3, 'User'),
-
+(1, 'User'),
+(2, 'Admin'),
+(3, 'Moderator');
 
 -- --------------------------------------------------------
 
@@ -297,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userAvatar` varchar(255) NOT NULL,
   `userRole` int(11) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
@@ -307,8 +306,9 @@ INSERT INTO `users` (`userId`, `userName`, `userFirstname`, `userEmail`, `userPh
 (6, 'Ducharme', 'Christian', 'christianducharme@hotmail.com', '0288170297', '94 , avenue du Marechal Juin', '50000', 'Saint-Lô', '12345678', '', 3),
 (4, 'Cousteau', 'Antoine', 'antoinecousteau@gmail.com', '0188971387', '17, rue Pierre Motte', '97400', 'Saint-Denis', '12345678', '', 3),
 (3, 'Dionne', 'Victoire', 'victoiredionne@gmail.com', '0101633946', '32, Place de la Madeleine', '75010', 'Paris', '12345678', '', 3),
-(1, 'Admin', 'Admin', 'GanelonBarteaux@armyspy.com', '0623548797', '85, rue du Fossé des Tanneurs', '83100', 'Toulon', 'W!tn8$D7tr', 'admin', 1),
-(2, 'Modeur', 'Modeur', 'moderator.ecomie@gmail.com', '0785964123', '5 rue de Michelbach', '68330', 'Huningue', 'TqUAC5_E', 'moderator', 2);
+(44, 'moderator', 'moderator', 'mod.ecomie@test.com', NULL, 'Allen Haven Suite 173', '50276', 'Prescott', '$2y$10$tnh/7Kih1GjMFcATQQS3juX8ElD/1F2cicBjr6wQNV7uzM1BL9OjC', 'user-solid.svg', 2),
+(43, 'Admin', 'Admin', 'admin@test.com', NULL, '5 rue de l\'admin', '56894', 'LaVille', '$2y$10$ZXAmlvEVW.8sSO9s1bOUfO.uqUXnpM/d4mW5GLAR.kCiY5vaVQGPy', 'user-solid.svg', 1),
+(42, 'test', 'test', 'test@gmail.com', NULL, '5 rue de l\'auberge', '54568', 'Paris', '$2y$10$RCL5TbNnx/rLLCJqPfMInOL5K412xvyfknSzrveoSNZjcyigae7gm', 'user-solid.svg', 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
