@@ -103,7 +103,7 @@ class Users extends CI_Controller{
             $userObj = new User;
             $userObj->hydrate($_POST);
             $userManager->editUser($userObj);
-            var_dump($userObj);
+            //var_dump($userObj);
             //Rafraichissement de la page
             //header('refresh:0');
         }
@@ -113,7 +113,7 @@ class Users extends CI_Controller{
     {
         $userManager = new User_manager;
         $user = new User;
-        $data = get_data($this->_user_manager, $this->_user, 'getAllUser');
+        $data = get_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);
         $this->smarty->assign('users', $data);
         $this->smarty->view('admin/membre.tpl');

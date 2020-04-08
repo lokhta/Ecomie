@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
         public function getAllUser(){
             $query = $this->db
-            ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, roleName')
+            ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName')
             ->from('users')
             ->join('roles', 'roles.roleId = users.userRole')
             ->get();
