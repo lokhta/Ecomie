@@ -1,5 +1,7 @@
  {include file="header.tpl" title="Ecomie - Profil" name=$Name} 
-                    
+                    <div class="btn-content">
+                        <a href="{base_url()}dashboard" class="btn">Retour</a>
+                    </div>
                     <div>
                         {if $smarty.session.id}
                             {form_open('users/profil')}
@@ -33,15 +35,13 @@
                         
                         
                             {form_label("Mot de passe*")}
-                            {form_input("userPwd", $smarty.session.pwd, "id='userPwd'")}
+                            {form_input("userPwd", '', "id='userPwd'")}
                         
                             {form_submit('submit', "Mettre à jour")}
                         
                             {form_close()}
                             {else}
-                                <div>
-                                 <p>not registered</p>  
-                                </div>
+                                 <p>Vous n'êtes pas connecté</p>  
                         {/if}
                     </div>
 
