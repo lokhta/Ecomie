@@ -117,5 +117,12 @@ class Users extends CI_Controller{
         //var_dump($data);
         $this->smarty->assign('users', $data);
         $this->smarty->view('admin/membre.tpl');
+
+        // Suppression user
+        if(!empty($_GET['user_id']) && !empty($_GET['del'])){
+            del_data($this->_user_manager, 'deleteUser', $_GET['user_id']);
+            redirect(base_url()."users/membres", 'location');
+        }
     }
+
 }

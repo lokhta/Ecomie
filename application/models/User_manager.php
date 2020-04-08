@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return  $this->db->where('userId', $user->getId())->update('users',  $user->getData());
         }
     
-        public function deleteUser(){
-    
+        public function deleteUser($user_id){
+            return $this->db->where('userId', $user_id)->delete('users');
         }
     
         public function getUser(){
