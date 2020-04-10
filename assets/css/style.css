@@ -1016,6 +1016,114 @@ PAGE SAVOIR-FAIRE***************************************************************
 }
 
 /************************************
+Page évènements
+************************************/
+
+.btn-event{
+    width: 150px;
+    padding: 2px;
+    background: #00aeef;
+    color : #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.btn-event:hover{
+    background: #0079a7;
+}
+
+.event__bloc{
+    width: 70%;
+    height: auto;
+    margin: auto;
+    
+}
+
+.event__content {
+    background-color: rgb(141, 191, 59);
+    padding: 10px;
+}
+
+.event__bloc a {
+    text-decoration: none;
+}
+
+.event__bloc h2 {
+    font-size: 1.4em;
+    color:black;
+    font-weight: normal;
+    margin-right: 15px ;
+}
+
+.event__bloc p {
+    text-decoration: none; 
+    color: black;
+}
+
+.event__auteur {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(166, 212, 251);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+.event__auteur p {
+    margin: auto 25px;
+    font-size: 1.1em;
+}
+.event__auteur {
+    margin: auto auto;
+    font-size: 0.9em;
+}
+.event__auteur--date {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0px;
+}
+.event__date {   
+    margin: auto 20px;
+    font-size: 0.9em;
+}
+.event__event {
+    margin: 25px auto;
+    padding:10px;
+    background-color: rgb(141, 191, 59);
+}
+
+@media screen and (max-width: 768px) { 
+
+    .event__auteur {
+        width: 100%;
+        height: auto;
+        background-color: rgb(166, 212, 251);
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 50px;
+    }
+    .event__auteur p {
+        display: block;
+        margin: auto 5pxpx;
+        width: 50%;
+        height: auto;
+        font-size: 1.1em;
+    }
+    .event__auteur--date {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: auto;
+    }
+    .event__date {   
+        margin: 5px auto;
+        font-size: 0.9em;
+    }
+}
+/************************************
 Galerie
 ************************************/
 
@@ -1397,7 +1505,6 @@ a.link_admin {
 #modal{
     width: 1080px;
     margin: 0 auto;
-    background: #fff;
     padding: 15px;
 }
 

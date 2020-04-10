@@ -1,13 +1,14 @@
   {include file="header.tpl" title="Ecomie - Article" name=$Name}
 
     <div id="modal">
-        <div>
+        
             <div class="btn-content">
                 <a href="{base_url()}Events/events" class="btn">Retour</a>
             </div>
-        
-            <h2>{$eventdetail.eventName}</h2>
-            <span>Publié par {$eventDetail.eventAuthor} - {$eventDetail.eventDateStart} - {$eventDetail.eventTimeStart}
+            <div class="event__event">
+            <h2>{$eventDetail.eventName}</h2>
+            <span>Publié par {$eventDetail.eventAuthor} </span>
+            <span> Date {$eventDetail.eventDateStart} - {$eventDetail.eventTimeStart} /
                 {$eventDetail.eventDateEnd}   {$eventDetail.eventTimeEnd}</span>
             <p>{$eventDetail.eventContent}</p>
             
