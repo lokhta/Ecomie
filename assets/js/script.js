@@ -20,14 +20,7 @@ editor('articleContent');
  ******************/
 
  //Page article
-var commentForm = document.getElementById('comment');
-var btnComment = document.getElementById('commentBtn');
-
-// if(btnComment){
-//     btnComment.addEventListener('click', function(){
-//         commentForm.style.display = "block";
-//     })
     
-    editor('commentContent');
-// }
+editor('commentContent');//Pour commentaire
+
 

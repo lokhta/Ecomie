@@ -2,21 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Classe Article
+ * Classe Comment
  * \author Sofiane AL AMRI
  * \version 1.0
  * 
  */
 
-class Article extends CI_Model{
-
-    private $_articleId;
-    private $_articleTitle;
-    private $_articleContent;
-    private $_articleDate;
-    private $_articleValidate;
-    private $_articleCategory;
-    private $_articleAuthor;
+class Comment extends CI_Model{
+    private $_commentId;
+    private $_commentContent;
+    private $_commentDate;
+    private $_commentReport;
+    private $_commentAuthor;
+    private $_commentArticle;
+    private $_commentEvent;
 
     public function __construct(){
         parent::__construct();
@@ -30,7 +29,7 @@ class Article extends CI_Model{
 
     public function hydrate($data){
         foreach($data as $key => $value){
-            $method = 'set'.str_replace('article','',$key);
+            $method = 'set'.str_replace('comment','',$key);
 
             if(method_exists($this, $method)){
                 $this->$method($value);
@@ -38,22 +37,13 @@ class Article extends CI_Model{
         }
     }
 
-
     //Setters
     /**
      * @brief Fonction setter pour ajouter un id à la class
      * @param $id integer
      */
     public function setId($id){
-        $this->_articleId = $id;
-    }
-
-    /**
-     * @brief Fonction setter pour ajouter un titre
-     * @param $title string
-     */
-    public function setTitle($title){
-        $this->_articleTitle =$title;
+        $this->_commentId = $id;
     }
 
     /**
@@ -61,7 +51,7 @@ class Article extends CI_Model{
      * @param $content string
      */
     public function setContent($content){
-        $this->_articleContent = $content;
+        $this->_commentContent = $content;
     }
 
     /**
@@ -69,65 +59,71 @@ class Article extends CI_Model{
      * @param $dt 
      */
     public function setDate($dt){
-        $this->_articleDate = $dt;
+        $this->_commentDate = $dt;
     }
 
     /**
      * @brief Fonction setter pour ajouter une valeur à $_validate
-     * @param $valid integer
+     * @param $report integer
      */
-    public function setValidate($valid){
-        $this->_articleValidate = $valid;
+    public function setReport($report){
+        $this->_commentReport = $report;
     }
-
-    /**
-     * @brief Fonction setter pour ajouter un categorie
-     * @param $cat
-     */
-    public function setCategory($cat){
-        $this->_articleCategory = $cat;
-    }
-
-
 
     /**
      * @brief Fonction setter pour ajouter un auteur
      * @param $author
      */
     public function setAuthor($author){
-        $this->_articleAuthor = $author;
+        $this->_commentAuthor = $author;
     }
 
-    
+    /**
+     * @brief Fonction setter pour ajouter un l'id de l'article commenté
+     * @param $article
+     */
+    public function setArticle($article){
+        $this->_commentArticle = $article;
+    }
+
+    /**
+     * @brief Fonction setter pour ajouter un l'id de l'article commenté
+     * @param $article
+     */
+    public function setEvent($event){
+        $this->_commentEvent = $event;
+    }
     //Getters
 
     public function getId(){
-        return $this->_articleId;
-    }
-
-    public function getTitle(){
-        return $this->_articleTitle;
+        return $this->_commentId;
     }
 
     public function getContent(){
-        return $this->_articleContent;
+        return $this->_commentContent;
     }
 
     public function getDate(){
-        return $this->_articleDate;
+        return $this->_commentDate;
     }
 
-    public function getValidate(){
-        return $this->_articleValidate;
-    }
-
-    public function getCategory(){
-        return $this->_articleCategory;
+    public function getReport(){
+        return $this->_commentReport;
     }
 
     public function getAuthor(){
-        return $this->_articleAuthor;
+        return $this->_commentAuthor;
     }
+
+    public function getArticle(){
+        return $this->_commentArticle;
+    }
+
+    public function getEvent(){
+        return $this->_commentEvent;
+    }
+
+
 
     public function getData(){
         $articleData = get_object_vars($this);

@@ -11,14 +11,14 @@
         {var_dump($event)}
         {foreach from=$event key=key item=val}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
-                <td>{$event.eventId}</td>
-                <td>{$event.eventName}</td>
-                <td>{$event.eventDate}</td>
-                    <td>{$event.eventAuthor}</td>
+                <td>{$val.eventId}</td>
+                <td>{$val.eventName}</td>
+                <td>{$val.eventDate}</td>
+                    <td>{$val.eventAuthor}</td>
         
                 <td class="link_gestion">
-                    <a href="{base_url()}Events/dashboard?event_id={$event.eventId}"><i class="fas fa-search"></i></a>
-                    <a href="{base_url()}Events/dashboard?event_id={$event.eventId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{base_url()}Events/dashboard?event_id={$val.eventId}"><i class="fas fa-search"></i></a>
+                    <a href="{base_url()}Events/dashboard?event_id={$val.eventId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {/foreach}

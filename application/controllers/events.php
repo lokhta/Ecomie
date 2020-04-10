@@ -95,9 +95,9 @@ class Events extends CI_Controller{
         $data = get_data($this->_event_manager, $this->_event, 'getAllEvent');
         $this->smarty->assign('event', $data);
         $this->smarty->assign('page', 'admin/event.tpl');
-        var_dump($data);
+        // var_dump($data);
     }   
-    
+    $this->smarty->view('admin/dashboard.tpl');
 }
 
   /* public function dashboard(){
