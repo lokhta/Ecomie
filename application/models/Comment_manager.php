@@ -19,26 +19,18 @@ class Comment_manager extends CI_Model{
         return $this->db->where('commentId', $comment_id)->delete('comments');
     }
     
-    public function getComment($comment_id){
-        $query = $this->db
-        ->select('*')
-        ->from('comment')
-        ->join('users', 'users.userId = comments.commentAuthor')
-        ->join('events', 'events.eventId = comments.commentEvent')
-        ->join('articles', 'articles.articleId = comments.commentArticle')
-        ->where('commentId', $comment_id)
-        ->get();
-        return $query->row_array();
-    }
+    public function getComment($id){
 
-    public function getAllComment($field, $id){
-
-        $this->db->select('*');
-        $this->db->from('comment');
+        $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname');
+        $this->db->from('comments');
         $this->db->join('users', 'users.userId = comments.commentAuthor');
-        $this->db->join('events', 'events.eventId = comments.commentEvent');
-        $this->db->join('articles', 'articles.articleId = comments.commentArticle');
-        $this->db->where($field, $id);
+        if(current_url() == base_url()."Articles/articles"){
+            $this->db->join('articles', 'articles.articleId = comments.commentArticle');
+            $this->db->where('commentArticle', $id);
+        }elseif(current_url() == base_url()."Events/events"){
+            $this->db->join('events', 'events.eventId = comments.commentEvent');
+        }
+        $this->db->order_by('commentDate', 'DESC');
         $query = $this->db->get();
         return $query->result_array();
     }

@@ -18,11 +18,21 @@ class Articles extends CI_Controller{
         //Afficher un seul article
         if(!empty($_GET['article_id'])){            
             $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
-
             $this->smarty->assign('articleDetail', $data);
+
+            //Affichage des commentaires d'un article
+            $this->load->model('Comment_manager');
+            $this->load->model('Comment');
+            $comment_manager = create_object('Comment_manager');
+            $comment = create_object('Comment');
+
+            $comment_data = get_all_data($comment_manager, $comment, 'getComment',$_GET['article_id']);
+            // var_dump($comment_data);
+            $this->smarty->assign('comment', $comment_data);
+
             $this->smarty->view('pages/article.tpl');
         }else{//Afficher tout les articles
-            $data = get_data($this->_article_manager, $this->_article, 'getAllArticle');
+            $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
 
             $this->smarty->assign('article', $data);
             $this->smarty->view('pages/savoir_faire.tpl');
@@ -77,7 +87,7 @@ class Articles extends CI_Controller{
             }
 
         }else{ //Pour affichage de la liste des articles
-            $data = get_data($this->_article_manager, $this->_article, 'getAllArticle');
+            $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             $this->smarty->assign('article', $data);
             $this->smarty->assign('page', 'admin/article.tpl');
         }   

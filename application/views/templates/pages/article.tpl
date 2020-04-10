@@ -10,7 +10,18 @@
             <span>Publié par {$articleDetail.articleAuthor} - {$articleDetail.articleDate}</span>
             <p>{$articleDetail.articleContent}</p>
             <div id="comments">
-                
+                {if !$comment}
+                    <p>Cette article n'a pas encore de commentaires</p>
+                    {else}
+                        {foreach from=$comment item=val key=key}
+                            <div class="comments">
+                                <p class="header_comment"><span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</p>
+                                <p class="comment_content">{$val.commentContent}</p>
+                            </div>
+                            <hr>
+                         {/foreach}   
+                {/if}
+
             </div>
             {if $smarty.session.id}
                 <button id="commentBtn">Ajouter un commentaire</button>

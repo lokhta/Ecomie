@@ -113,7 +113,7 @@ class Users extends CI_Controller{
     {
         $userManager = new User_manager;
         $user = new User;
-        $data = get_data($this->_user_manager, $this->_user,'getAllUser');
+        $data = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);
         $this->smarty->assign('users', $data);
         $this->smarty->view('admin/membre.tpl');

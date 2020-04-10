@@ -1670,3 +1670,21 @@ input#submit:hover{
     background: #239B56;
 }
 
+/*Commentaires - Article*/
+#comments {
+    background: #fff;
+    padding: 10px;
+    font-size: 14px;
+    border: solid 1px #c0c0c0;
+    margin-bottom: 15px;
+}
+
+
+.header_comment {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+span.comment_author {
+    font-weight: bold;
+}
