@@ -40,17 +40,22 @@ class Articles extends CI_Controller{
             }
 
             //Modifier un commentaire
-            if(!empty($_POST) && !empty($_GET['comment_id']) &&$_GET['edit_com'] == 1){
-
+            if(!empty($_GET['comment_id'])){
                 get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
 
-                $date_modif = date('Y-m-d H:i:s');
-                $data = array(
-                    'commentDate' => $date_modif,
-                );
+                if(!empty($_POST) && $_GET['edit_com'] == 1){
+                    $date_modif = date('Y-m-d H:i:s');
+                    $data = array(
+                        'commentDate' => $date_modif,
+                    );
+    
+                    write_data($comment_manager, $comment, 'editComment', $_POST, $data);
+                    redirect($url, 'refresh');
 
-                write_data($comment_manager, $comment, 'editComment', $_POST, $data);
-                redirect($url, 'refresh');
+                }elseif($_GET['del_com'] == 1){
+                    del_data($comment_manager, 'deleteComment', $_GET['comment_id']);
+                    redirect($url, 'refresh');
+                }
             }
 
             //Affichage des commentaires d'un article
