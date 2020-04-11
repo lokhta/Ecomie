@@ -25,7 +25,7 @@
                 <td>{$val.userCp}</td>
                 <td>{$val.userCity}</td>
                 <td>{$val.userAddress}</td>
-                <td>{$val.userRole}</td>
+                <td>{$val.roleName}</td>
                 <td class="link_gestion">
                     <a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
                 </td>

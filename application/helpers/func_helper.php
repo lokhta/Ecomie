@@ -143,7 +143,7 @@ function del_data($obj_manager, $method, $id){
  */
 function get_all_data($obj_manager, $obj_class, $method, $param=null){
     $get_method = get_class_methods($obj_manager);
-    // var_dump($get_method);
+    //var_dump($get_method);
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
@@ -156,40 +156,49 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
         $get_data_in_base = $obj_manager->$method();
     }
 
-    // var_dump($get_data_in_base);
+    //var_dump($get_data_in_base);
 
     $liste = array();
 
     foreach($get_data_in_base as $key => $value){
         $obj_class->hydrate($value);
-
+        //var_dump($obj_class);
         $data = $obj_class->getData();
+        //var_dump($data);
+        //var_dump($obj_manager);
+        //var_dump($obj_class);
 
-        if(!empty($value['categoryName'])){
-            $data['category'] = $value['categoryName'];
-        }
+        if(!empty($value['roleName'])){
+            $data['roleName'] = $value['roleName'];
+        }else{
+
+            if(!empty($value['categoryName'])){
+                $data['category'] = $value['categoryName'];
+            }
+                
+            if(!empty($value['userFirstname'])){
+                $data['author'] = $value['userFirstname'];
+            }
+    }
         
-        if(!empty($value['userFirstname'])){
-            $data['author'] = $value['userFirstname'];
-        }
 
         // if($key == 'commentDate'){
         //     var_dump($value['commentDate']);exit;
         // }
 
- 
-
-        foreach($value as $k => $v){
-            if(strpos($k, 'Date') !== false){
-                $convertDate = strtotime($v);
-            }
-        }
         
-        $date = date('d/m/Y', $convertDate);
-        $time = date('H:i:s', $convertDate);
+        if(!empty($value['articleDate'])){
+            foreach($value as $k => $v){
+                if(strpos($k, 'Date') !== false){
+                    $convertDate = strtotime($v);
+                }
+            }
+            $date = date('d/m/Y', $convertDate);
+            $time = date('H:i:s', $convertDate);
 
-        $data['date'] = $date;
-        $data['time'] = $time;
+            $data['date'] = $date;
+            $data['time'] = $time;
+        }
 
         // var_dump($data);
         array_push($liste, $data);
