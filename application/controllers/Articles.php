@@ -8,8 +8,7 @@ class Articles extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Article_manager');
-        $this->load->model('Article');
+
         $this->_article_manager = create_object('Article_manager');
         $this->_article = create_object('Article');
     }
@@ -20,17 +19,32 @@ class Articles extends CI_Controller{
             $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
             $this->smarty->assign('articleDetail', $data);
 
-            //Affichage des commentaires d'un article
-            $this->load->model('Comment_manager');
-            $this->load->model('Comment');
+        //============= DEBUT GESTION COMMENTAIRE ARTICLE ==============
             $comment_manager = create_object('Comment_manager');
             $comment = create_object('Comment');
 
+            $url = base_url()."Articles/articles?article_id=".$_GET['article_id'];
+            $this->smarty->assign('url', $url);
+
+            //Ajouter un commentaire
+            if(!empty($_POST)){
+                $data = array(
+                    'commentAuthor' => $_SESSION['id'],
+                    'commentArticle' => $_GET['article_id'],
+                );
+                write_data($comment_manager, $comment, 'addComment', $_POST, $data);
+                redirect($url, 'refresh');
+            }
+            
+            //Affichage des commentaires d'un article
             $comment_data = get_all_data($comment_manager, $comment, 'getComment',$_GET['article_id']);
             // var_dump($comment_data);
+
             $this->smarty->assign('comment', $comment_data);
+        //============= FIN GESTION COMMENTAIRE ARTICLE ==============
 
             $this->smarty->view('pages/article.tpl');
+
         }else{//Afficher tout les articles
             $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
 
@@ -42,7 +56,7 @@ class Articles extends CI_Controller{
     public function dashboard(){
         //Pour insertion dans la BDD
         if(!empty($_POST) && empty($_GET)){
-            write_data($this->_article_manager, $this->_article, 'addArticle', $_POST, 'articleAuthor', $_SESSION['id']);
+            write_data($this->_article_manager, $this->_article, 'addArticle', $_POST, array('articleAuthor' => $_SESSION['id']));
             redirect(base_url()."Articles/dashboard", 'location');
         }
 
@@ -66,7 +80,7 @@ class Articles extends CI_Controller{
             if(!empty($_GET['valide'])){
                 $data_edit_validate = array();
 
-                write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, 'articleValidate', $_GET['valide']);
+                write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
 
                 redirect($url, 'location'); 
             }
@@ -75,7 +89,7 @@ class Articles extends CI_Controller{
             if(!empty($_POST) && !empty($_GET['update'])){
                 $date_modif = date('Y-m-d H:i:s');
 
-                write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, 'articleDate', $date_modif);
+                write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, array('articleDate'=>$date_modif));
 
                 redirect($url, 'location');
             }

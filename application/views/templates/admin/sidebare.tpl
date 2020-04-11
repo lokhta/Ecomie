@@ -29,7 +29,7 @@
             <div class="content_ico">
                 <i class="fas fa-calendar-alt ico_admin"></i>
             </div>
-            <a href="{base_url()}dashboard/evenements" class="link_admin">Evénements</a>
+            <a href="{base_url()}events/dashboard" class="link_admin">Evénements</a>
         </div>
         <div class="link-nav-admin">
                 <div class="content_ico">

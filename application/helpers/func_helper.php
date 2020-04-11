@@ -14,6 +14,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  * @return Object
  */
 function create_object($class){
+
+    $ci = get_instance();
+    $ci->load->model($class);
+
     if(!class_exists($class)){
         echo "Erreur : La class que vous avez renseigné n'existe pas";
         exit;
@@ -49,9 +53,18 @@ function get_data($obj_manager, $obj_class, $method, $param){
     $data = $obj_class->getData();
     // var_dump($data);
 
-    if($obj_manager == 'Article_manager' || $obj_class == 'Article'){
-        $data['author'] = $get_data_in_base['userFirstname'];
+    if(!empty($get_data_in_base['categoryName'])){
         $data['category'] = $get_data_in_base['categoryName'];
+    }
+    
+    if(!empty($get_data_in_base['userFirstname'])){
+        $data['author'] = $get_data_in_base['userFirstname'];
+    }
+
+    $date_time = get_date($get_data_in_base);
+    if(!empty($date_time)){
+        $data['date'] = $date_time['date'];
+        $data['time'] = $date_time['time'];
     }
 
     // var_dump($data);
@@ -83,10 +96,9 @@ function get_category_article($obj_manager){
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
  * @param $data Tableau contenant les informations permetant d'inserer ou mettre à jour la base de données.
- * @param $key Nom du champ qui est utilisé pour le WHERE de la réquete sql. Inialiser à null si la requête n'utilise pas de WHERE. Si $key n'est pas null, $value ne peut pas être null.
- * @param $value Valeur qui permet de filtrer la requete sql avec WHERE. Initialiser a null. 
+ * @param $data Tableau associatif qui a pour clé le nom d'un champ de table et pour valeur la donnée à insérer ou l'id qui sera utilisé dans un WHERE pour modification
  */
-function write_data($obj_manager, $obj_class, $method, array $data, $key = null, $value = null){
+function write_data($obj_manager, $obj_class, $method, array $post, array $data){
     $get_method = get_class_methods($obj_manager);
 
     if(!in_array($method, $get_method)){
@@ -94,12 +106,12 @@ function write_data($obj_manager, $obj_class, $method, array $data, $key = null,
         exit;
     }
 
-    if($key && $value){
-        $data[$key] = $value;
+    foreach($data as $key => $value){
+        $post[$key] = $value;
     }
     // var_dump($data);
 
-    $obj_class->hydrate($data);
+    $obj_class->hydrate($post);
     // var_dump($obj_class);
 
     if($method == 'editUser'){
@@ -173,27 +185,36 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             $data['author'] = $value['userFirstname'];
         }
 
-        // if($key == 'commentDate'){
-        //     var_dump($value['commentDate']);exit;
-        // }
-
- 
-
-        foreach($value as $k => $v){
-            if(strpos($k, 'Date') !== false){
-                $convertDate = strtotime($v);
-            }
+        $date_time = get_date($value);
+        if(!empty($date_time)){
+            $data['date'] = $date_time['date'];
+            $data['time'] = $date_time['time'];
         }
-        
-        $date = date('d/m/Y', $convertDate);
-        $time = date('H:i:s', $convertDate);
-
-        $data['date'] = $date;
-        $data['time'] = $time;
 
         // var_dump($data);
         array_push($liste, $data);
     }
     // var_dump($liste);
     return $liste;
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_date() recherche dans un tableau si une date est présente dans un tableau et l'a formate
+ * @param $data Tableau associatif dont une dès clé contient le mot Date
+ */
+function get_date($data){
+    foreach($data as $k => $v){
+        if(strpos($k, 'Date') !== false){
+            $convertDate = strtotime($v);
+        }
+    }
+    
+    if(isset($convertDate)){
+        $date = date('d/m/Y', $convertDate);
+        $time = date('H:i:s', $convertDate);
+
+    }
+
+    return array('date' => $date, 'time' => $time);
 }
