@@ -110,8 +110,10 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data)
         $post[$key] = $value;
     }
     // var_dump($data);
+    // var_dump($obj_class);
 
     $obj_class->hydrate($post);
+    
     // var_dump($obj_class);
 
     if($method == 'editUser'){

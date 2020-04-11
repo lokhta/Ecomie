@@ -17,7 +17,10 @@ class Articles extends CI_Controller{
         //Afficher un seul article
         if(!empty($_GET['article_id'])){            
             $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
+            // var_dump($data);
             $this->smarty->assign('articleDetail', $data);
+
+
 
         //============= DEBUT GESTION COMMENTAIRE ARTICLE ==============
             $comment_manager = create_object('Comment_manager');
@@ -27,7 +30,7 @@ class Articles extends CI_Controller{
             $this->smarty->assign('url', $url);
 
             //Ajouter un commentaire
-            if(!empty($_POST)){
+            if(!empty($_POST) && empty($_GET['edit_com'])){
                 $data = array(
                     'commentAuthor' => $_SESSION['id'],
                     'commentArticle' => $_GET['article_id'],
@@ -35,13 +38,30 @@ class Articles extends CI_Controller{
                 write_data($comment_manager, $comment, 'addComment', $_POST, $data);
                 redirect($url, 'refresh');
             }
-            
+
+            //Modifier un commentaire
+            if(!empty($_POST) && !empty($_GET['comment_id']) &&$_GET['edit_com'] == 1){
+
+                get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
+
+                $date_modif = date('Y-m-d H:i:s');
+                $data = array(
+                    'commentDate' => $date_modif,
+                );
+
+                write_data($comment_manager, $comment, 'editComment', $_POST, $data);
+                redirect($url, 'refresh');
+            }
+
             //Affichage des commentaires d'un article
-            $comment_data = get_all_data($comment_manager, $comment, 'getComment',$_GET['article_id']);
+            $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['article_id']);
             // var_dump($comment_data);
+
 
             $this->smarty->assign('comment', $comment_data);
         //============= FIN GESTION COMMENTAIRE ARTICLE ==============
+
+        
 
             $this->smarty->view('pages/article.tpl');
 

@@ -17,14 +17,23 @@
                         {foreach from=$comment item=val key=key}
                             <div class="comments">
                                 <p class="header_comment"><span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</p>
+
                                 {if $val.commentAuthor !==  $smarty.session.id}
                                     <a href="#">Signaler</a>
                                 {/if}
+
                                 {if $val.commentAuthor == $smarty.session.id }
-                                    <a href="#">Modifier</a>
-                                    <a href="#">Supprimer</a>
+                                    <button class="edit_com_btn">Modifier</button>
+                                    <button href="#">Supprimer</button>
                                 {/if}
-                                <p class="comment_content">{$val.commentContent}</p>
+
+                                <div class="comment_content">{$val.commentContent}</div>
+                                <div class="edit_com">
+                                    <form action="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;edit_com=1" method="post">
+                                    <textarea name="commentContent" id="commentContent" value="{$val.commentContent}" ></textarea>
+                                    <input type='submit' value="Modifier" id="submit">
+                                    </form>
+                                </div>
                             </div>
                             <hr>
                          {/foreach}   
@@ -38,7 +47,7 @@
         
         <div class="formContent" id="comment">
             {form_open($url)}
-                {form_textarea('commentContent','','id="commentContent" class="ckeditor"')}
+                {form_textarea('commentContent','','id="commentContent"')}
                 {form_submit('valider','Valider','id="submit"')}
             {form_close()}
         </div>

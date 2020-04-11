@@ -1688,3 +1688,18 @@ input#submit:hover{
 span.comment_author {
     font-weight: bold;
 }
+
+.edit_class textarea{
+    height: 70px !important;
+}
+
+.edit_com form {
+    max-width: 100%;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.edit_com{
+    display: none;
+}
