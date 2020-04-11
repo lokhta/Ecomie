@@ -113,7 +113,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data)
     // var_dump($obj_class);
 
     $obj_class->hydrate($post);
-    
+
     // var_dump($obj_class);
 
     if($method == 'editUser'){
@@ -187,11 +187,14 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             $data['author'] = $value['userFirstname'];
         }
 
-        $date_time = get_date($value);
-        if(!empty($date_time)){
-            $data['date'] = $date_time['date'];
-            $data['time'] = $date_time['time'];
+        if(get_class($obj_manager) !== 'User_manager'){
+            $date_time = get_date($value);
+            if(!empty($date_time)){
+                $data['date'] = $date_time['date'];
+                $data['time'] = $date_time['time'];
+            }
         }
+
 
         // var_dump($data);
         array_push($liste, $data);
