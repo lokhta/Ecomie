@@ -144,6 +144,7 @@ function del_data($obj_manager, $method, $id){
     }
 
     $obj_manager->$method($id);
+    // var_dump($obj_manager->$method($id));
 }
 
 /**

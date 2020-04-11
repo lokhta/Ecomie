@@ -23,8 +23,8 @@
                                 {/if}
 
                                 {if $val.commentAuthor == $smarty.session.id }
-                                    <button class="edit_com_btn">Modifier</button>
-                                    <button href="#">Supprimer</button>
+                                    <button class="edit_com_btn btn">Modifier</button>
+                                    <a href="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;del_com=1" class="btn">Supprimer</a>
                                 {/if}
 
                                 <div class="comment_content">{$val.commentContent}</div>
