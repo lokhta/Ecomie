@@ -134,6 +134,7 @@ class Articles extends CI_Controller{
         }else{ //Pour affichage de la liste des articles
             $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             $this->smarty->assign('article', $data);
+            $this->smarty->assign('title', 'Dashboard - Articles');
             $this->smarty->assign('page', 'admin/article.tpl');
         }   
         
