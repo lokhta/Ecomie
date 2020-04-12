@@ -1679,11 +1679,27 @@ input#submit:hover{
     margin-bottom: 15px;
 }
 
-
 .header_comment {
+    display: flex;
+    align-items: center;
+}
+.header_comment p {
     font-style: italic;
     text-decoration: underline;
 }
+
+.btn_content{
+    display: flex;
+}
+
+.btn_content .btn{
+    border: none;  
+    height: 20px;
+    font-size: 15px;
+    margin: 0 10px;
+    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
+}
+
 
 span.comment_author {
     font-weight: bold;
