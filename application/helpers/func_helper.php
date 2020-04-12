@@ -188,7 +188,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             $data['author'] = $value['userFirstname'];
         }
 
-        if(get_class($obj_manager) !== 'User_manager'){
+        if(!in_array(get_class($obj_manager), array('User_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
