@@ -43,6 +43,8 @@ class Articles extends CI_Controller{
             if(!empty($_GET['comment_id'])){
                 get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
 
+                
+
                 if(!empty($_POST) && $_GET['edit_com'] == 1){
                     $date_modif = date('Y-m-d H:i:s');
                     $data = array(
@@ -50,6 +52,10 @@ class Articles extends CI_Controller{
                     );
     
                     write_data($comment_manager, $comment, 'editComment', $_POST, $data);
+                    redirect($url, 'refresh');
+
+                }elseif($_GET['report_com'] == 1){
+                    write_data($comment_manager, $comment, 'editComment', $_POST, array('commentReport' => 1));
                     redirect($url, 'refresh');
 
                 }elseif($_GET['del_com'] == 1){
@@ -128,6 +134,7 @@ class Articles extends CI_Controller{
         }else{ //Pour affichage de la liste des articles
             $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             $this->smarty->assign('article', $data);
+            $this->smarty->assign('title', 'Dashboard - Articles');
             $this->smarty->assign('page', 'admin/article.tpl');
         }   
         
