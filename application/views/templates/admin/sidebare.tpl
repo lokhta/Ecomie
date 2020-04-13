@@ -29,7 +29,7 @@
             <div class="content_ico">
                 <i class="fas fa-calendar-alt ico_admin"></i>
             </div>
-            <a href="{base_url()}events/dashboard" class="link_admin">Evénements</a>
+            <a href="{base_url()}Events/dashboard" class="link_admin">Evénements</a>
         </div>
         <div class="link-nav-admin">
                 <div class="content_ico">
@@ -41,7 +41,7 @@
             <div class="content_ico">
                 <i class="fas fa-envelope ico_admin"></i>
             </div>
-            <a href="{base_url()}dashboard/messagerie" class="link_admin">Messagerie</a>
+            <a href="{base_url()}forms/dashboard" class="link_admin">Messagerie</a>
         </div>
         <div class="link-nav-admin">
             <div class="content_ico">            

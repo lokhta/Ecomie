@@ -53,11 +53,12 @@ class Events extends CI_Controller{
 
   public function dashboard(){
     //Pour insertion dans la BDD
+    
     if(!empty($_POST) && empty($_GET)){
         write_data($this->_event_manager, $this->_event, 'addEvent', $_POST, array('eventAuthor'=> $_SESSION['id']));
         redirect(base_url()."Events/dashboard", 'location');
     }
-
+  
     if($_GET){
         $url = "Events/dashboard?event_id=".$_GET['event_id'];
 
@@ -72,6 +73,7 @@ class Events extends CI_Controller{
             $data = get_data($this->_event_manager, $this->_event, 'getEvent', $_GET['event_id']);
             $this->smarty->assign('eventDetail',$data);
             $this->smarty->assign('page', 'admin/event_detail.tpl');
+            $this->smarty->view('admin/dashboard.tpl');
         }
 
         //Modification évènement
@@ -94,7 +96,7 @@ class Events extends CI_Controller{
         // var_dump($data);
         $this->smarty->assign('event', $data);
         $this->smarty->assign('page', 'admin/event.tpl');
-        // var_dump($data);
+        $this->smarty->view('admin/dashboard.tpl');
     }   
     $this->smarty->view('admin/dashboard.tpl');
 }

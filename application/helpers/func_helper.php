@@ -109,10 +109,12 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data)
     foreach($data as $key => $value){
         $post[$key] = $value;
     }
-     var_dump($data);
+    // var_dump($data);
+    // var_dump($obj_class);
 
     $obj_class->hydrate($post);
-     var_dump($obj_class);
+
+    // var_dump($obj_class);
 
     if($method == 'editUser'){
         $userTab = $obj_class->getData();
@@ -142,6 +144,7 @@ function del_data($obj_manager, $method, $id){
     }
 
     $obj_manager->$method($id);
+    // var_dump($obj_manager->$method($id));
 }
 
 /**
@@ -194,11 +197,14 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
     }
         
 
-        $date_time = get_date($value);
-        if(!empty($date_time)){
-            $data['date'] = $date_time['date'];
-            $data['time'] = $date_time['time'];
+        if(!in_array(get_class($obj_manager), array('User_manager'))){
+            $date_time = get_date($value);
+            if(!empty($date_time)){
+                $data['date'] = $date_time['date'];
+                $data['time'] = $date_time['time'];
+            }
         }
+
 
         // var_dump($data);
         array_push($liste, $data);

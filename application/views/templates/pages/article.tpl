@@ -16,15 +16,29 @@
                     {else}
                         {foreach from=$comment item=val key=key}
                             <div class="comments">
-                                <p class="header_comment"><span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</p>
-                                {if $val.commentAuthor !==  $smarty.session.id}
-                                    <a href="#">Signaler</a>
-                                {/if}
-                                {if $val.commentAuthor == $smarty.session.id }
-                                    <a href="#">Modifier</a>
-                                    <a href="#">Supprimer</a>
-                                {/if}
-                                <p class="comment_content">{$val.commentContent}</p>
+                                <div class="header_comment">
+                                    <P>   <span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</span>
+                                    <div class="btn_content">
+                                        {if $val.commentAuthor !==  $smarty.session.id}
+                                            <a href="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;report_com=1" class="btn">Signaler</a>
+                                        {/if}
+
+                                        {if $val.commentAuthor == $smarty.session.id }
+                                                <button class="edit_com_btn btn">Modifier</button>
+                                                <a href="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;del_com=1" class="btn">Supprimer</a>
+                                        {/if}
+                                    </div>
+                                </div>
+
+
+
+                                <div class="comment_content">{$val.commentContent}</div>
+                                <div class="edit_com">
+                                    <form action="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;edit_com=1" method="post">
+                                    <textarea name="commentContent" id="commentContent" value="" >{$val.commentContent}</textarea>
+                                    <input type='submit' value="Modifier" id="submit">
+                                    </form>
+                                </div>
                             </div>
                             <hr>
                          {/foreach}   
@@ -38,7 +52,7 @@
         
         <div class="formContent" id="comment">
             {form_open($url)}
-                {form_textarea('commentContent','','id="commentContent" class="ckeditor"')}
+                {form_textarea('commentContent','','id="commentContent"')}
                 {form_submit('valider','Valider','id="submit"')}
             {form_close()}
         </div>

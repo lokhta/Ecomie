@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller{
 
     public function index(){
         $this->smarty->assign('page', 'admin/home.tpl');
+        $this->smarty->assign('title', 'Ecomie - Tableau de bord');
         $this->smarty->view('admin/dashboard.tpl');
     }
 
