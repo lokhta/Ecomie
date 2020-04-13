@@ -94,8 +94,6 @@ class Event extends CI_Model{
         $this->_eventDateEnd = $dateEnd;
     }
 
-
-
     /**
      * @fn setTimeEnd($timeEnd)
      * @brief Fonction setter pour ajouter une heure de fin à l'évènement
@@ -114,7 +112,6 @@ class Event extends CI_Model{
         $this->_eventAuthor = $author;
     }
     
-
     //Getters
 
     public function getId(){
