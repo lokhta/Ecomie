@@ -96,11 +96,7 @@ class Events extends CI_Controller{
         // var_dump($data);
         $this->smarty->assign('event', $data);
         $this->smarty->assign('page', 'admin/event.tpl');
-<<<<<<< HEAD
         $this->smarty->view('admin/dashboard.tpl');
-=======
-        // var_dump($data);
->>>>>>> 441c3807dc9316f0f8d19c07d4f7a96b30a5d3b9
     }   
     $this->smarty->view('admin/dashboard.tpl');
 }
