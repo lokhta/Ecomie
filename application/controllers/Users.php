@@ -99,11 +99,8 @@ class Users extends CI_Controller{
     {
         $this->smarty->view('pages/profil.tpl');
         if(!empty($_POST)){
-            $userManager = new User_manager;
-            $userObj = new User;
-            $userObj->hydrate($_POST);
-            $userManager->editUser($userObj);
-            //var_dump($userObj);
+            write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
+            //var_dump($_POST);
             //Rafraichissement de la page
             //header('refresh:0');
         }
