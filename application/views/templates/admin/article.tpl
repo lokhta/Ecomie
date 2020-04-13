@@ -21,7 +21,7 @@
                     <td><i class="far fa-times-circle"></i></td>
                 {/if}
                 <td>{$val.articleTitle}</td>
-                <td>{$val.articleDate}</td>
+                <td>{$val.date}</td>
                 {if $smarty.session.role == 1}
                     <td>{$val.author}</td>
                 {/if}

@@ -7,7 +7,7 @@
         <div>
             <div>
                 <h2>{$articleDetail.articleTitle}</h2>
-                <span>Publié par {$articleDetail.articleAuthor} - {$articleDetail.articleDate}</span>
+                <span>Créé par {$articleDetail.author} - {$articleDetail.date}</span>
                 <p>{$articleDetail.articleContent}</p>
             </div>
             <div class="content-action">

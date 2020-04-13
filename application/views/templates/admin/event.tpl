@@ -8,7 +8,6 @@
             <th>Auteur</th>
             <th>Actions</th>
         </tr>
-        {var_dump($event)}
         {foreach from=$event key=key item=val}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
                 <td>{$val.eventId}</td>

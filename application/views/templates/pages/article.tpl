@@ -1,5 +1,6 @@
     {include file="header.tpl" title="Ecomie - Article" name=$Name}
 
+
     <div id="modal">
         <div>
             <div class="btn-content">
@@ -7,7 +8,7 @@
             </div>
         
             <h2>{$articleDetail.articleTitle}</h2>
-            <span>Publié par {$articleDetail.articleAuthor} - {$articleDetail.articleDate}</span>
+            <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
             <p>{$articleDetail.articleContent}</p>
             <div id="comments">
                 {if !$comment}
@@ -16,6 +17,13 @@
                         {foreach from=$comment item=val key=key}
                             <div class="comments">
                                 <p class="header_comment"><span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</p>
+                                {if $val.commentAuthor !==  $smarty.session.id}
+                                    <a href="#">Signaler</a>
+                                {/if}
+                                {if $val.commentAuthor == $smarty.session.id }
+                                    <a href="#">Modifier</a>
+                                    <a href="#">Supprimer</a>
+                                {/if}
                                 <p class="comment_content">{$val.commentContent}</p>
                             </div>
                             <hr>
@@ -29,9 +37,9 @@
         </div>
         
         <div class="formContent" id="comment">
-        {form_open('pages/articles?article_id=', 'class="form"')}
-            {form_textarea('','','id="commentContent" class="ckeditor"')}
-            {form_submit('valider','Valider','id="submit"')}
+            {form_open($url)}
+                {form_textarea('commentContent','','id="commentContent" class="ckeditor"')}
+                {form_submit('valider','Valider','id="submit"')}
             {form_close()}
         </div>
 
