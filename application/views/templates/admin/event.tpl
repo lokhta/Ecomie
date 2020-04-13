@@ -5,11 +5,20 @@
             <th>Titre</th>
             <th>Actions</th>
         </tr>
+<<<<<<< HEAD
         
         {foreach from=$event item=val key=key}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
                 <td>{$val.eventId}</td>
                 <td>{$val.eventName}</td>
+=======
+        {foreach from=$event key=key item=val}
+            <tr style="background: {cycle values='#fff , #D6EAF8'}">
+                <td>{$val.eventId}</td>
+                <td>{$val.eventName}</td>
+                <td>{$val.eventDate}</td>
+                    <td>{$val.eventAuthor}</td>
+>>>>>>> 441c3807dc9316f0f8d19c07d4f7a96b30a5d3b9
         
                 <td class="link_gestion">
                     <a href="{base_url()}Events/dashboard?event_id={$val.eventId}"><i class="fas fa-search"></i></a>

@@ -9,8 +9,6 @@ class Events extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Event_manager');
-        $this->load->model('Event');
         $this->_event_manager = create_object('Event_manager');
         $this->_event = create_object('Event');
     }
@@ -57,7 +55,7 @@ class Events extends CI_Controller{
     //Pour insertion dans la BDD
     
     if(!empty($_POST) && empty($_GET)){
-        write_data($this->_event_manager, $this->_event, 'addEvent', $_POST, 'eventAuthor', $_SESSION['id']);
+        write_data($this->_event_manager, $this->_event, 'addEvent', $_POST, array('eventAuthor'=> $_SESSION['id']));
         redirect(base_url()."Events/dashboard", 'location');
     }
   
@@ -82,7 +80,7 @@ class Events extends CI_Controller{
         if(!empty($_POST) && !empty($_GET['update'])){
             $date_modif = date('Y-m-d H:i:s');
 
-            write_data($this->_event_manager, $this->_event, 'editEvent', $_POST, 'eventDate', $date_modif);
+            write_data($this->_event_manager, $this->_event, 'editEvent', $_POST, array('eventDate' => $date_modif));
 
             redirect($url, 'location');
         }
@@ -94,12 +92,17 @@ class Events extends CI_Controller{
         }
 
     }else{ //Pour affichage de la liste des évènements
-        $data = get_data($this->_event_manager, $this->_event, 'getAllEvent');
+        $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent');
+        // var_dump($data);
         $this->smarty->assign('event', $data);
         $this->smarty->assign('page', 'admin/event.tpl');
+<<<<<<< HEAD
         $this->smarty->view('admin/dashboard.tpl');
+=======
+        // var_dump($data);
+>>>>>>> 441c3807dc9316f0f8d19c07d4f7a96b30a5d3b9
     }   
-    
+    $this->smarty->view('admin/dashboard.tpl');
 }
 
   /* public function dashboard(){

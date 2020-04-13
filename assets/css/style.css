@@ -1452,9 +1452,66 @@ section.right_content {
 a.link_admin {
     font-size: 16px;
 }
+/*****************************
+    Home  dashboard
+*****************************/
 
+.flex_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+div#stats_dash, #dash_info {
+    display: flex;
+    justify-content: space-around;
+}
 
+div#dash_info div {
+    width: 50%;
+}
+
+#stats_dash .flex_column {
+    border: solid;
+    padding: 17px;
+    font-size: 30px;
+    margin-bottom: 50px;
+    color : #fff;
+}
+
+#stats_dash .flex_column span{
+    font-size: 50px;
+}
+
+.bg_green{
+    background: #2ECC71;
+}
+
+.bg_blue{
+    background: #2E86C1;
+}
+
+.bg_orange{
+    background: #F39C12;
+}
+
+div#dash_info .flex_column {
+    padding: 10px;
+}
+
+div#dash_info h3 {
+    /* border-bottom: #3498DB solid; */
+    width: 100%;
+    /* height: 100%; */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 20px;
+    color: #fff;
+    background: #566573;
+    font-size: 30px;
+}
 
 @media screen and (max-width : 1280px){
     .link-nav-admin {
@@ -1670,3 +1727,52 @@ input#submit:hover{
     background: #239B56;
 }
 
+/*Commentaires - Article*/
+#comments {
+    background: #fff;
+    padding: 10px;
+    font-size: 14px;
+    border: solid 1px #c0c0c0;
+    margin-bottom: 15px;
+}
+
+.header_comment {
+    display: flex;
+    align-items: center;
+}
+.header_comment p {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.btn_content{
+    display: flex;
+}
+
+.btn_content .btn{
+    border: none;  
+    height: 20px;
+    font-size: 15px;
+    margin: 0 10px;
+    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
+}
+
+
+span.comment_author {
+    font-weight: bold;
+}
+
+.edit_class textarea{
+    height: 70px !important;
+}
+
+.edit_com form {
+    max-width: 100%;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.edit_com{
+    display: none;
+}

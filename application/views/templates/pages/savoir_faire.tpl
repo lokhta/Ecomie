@@ -17,7 +17,7 @@
                     </a>
                     <div class="auteur">
                         <p>{$val.author}</p>
-                        <p>{$val.articleDate}</p>
+                        <p>{$val.date}</p>
                     </div>
                 </section>
             {/foreach}    

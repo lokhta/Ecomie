@@ -14,6 +14,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  * @return Object
  */
 function create_object($class){
+
+    $ci = get_instance();
+    $ci->load->model($class);
+
     if(!class_exists($class)){
         echo "Erreur : La class que vous avez renseigné n'existe pas";
         exit;
@@ -28,10 +32,10 @@ function create_object($class){
  * @param $obj_manager Nom de la class manager
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
- * @param  $param Permet d'ajouter un paramètre à $method. $param est initialisé à null par defaut si $method n'utilise pas de paramètre
+ * @param  $param Argument de $method
  * @return Array 
  */
-function get_data($obj_manager, $obj_class, $method, $param=null){
+function get_data($obj_manager, $obj_class, $method, $param){
     $get_method = get_class_methods($obj_manager);
     // var_dump($get_method);
 
@@ -39,46 +43,32 @@ function get_data($obj_manager, $obj_class, $method, $param=null){
         echo "La methode que vous souhaitez utiliser n'existe pas";
         exit;
     }
+    
+    $get_data_in_base = $obj_manager->$method($param);
+    // var_dump($get_data_in_base);
 
-    if($param){
-        $get_data_in_base = $obj_manager->$method($param);
-        // var_dump($get_data_in_base);
+    $obj_class->hydrate($get_data_in_base);
+    // var_dump($obj_class);
 
-        $obj_class->hydrate($get_data_in_base);
-        // var_dump($obj_class);
+    $data = $obj_class->getData();
+    // var_dump($data);
 
-        $data = $obj_class->getData();
-        // var_dump($data);
-
-        if($obj_manager == 'Article_manager' || $obj_class == 'Article'){
-            $data['author'] = $get_data_in_base['userFirstname'];
-            $data['category'] = $get_data_in_base['categoryName'];
-        }
-
-        // var_dump($data);
-        return $data;
-    }else{
-        $get_data_in_base = $obj_manager->$method();
-        // var_dump($get_data_in_base);
-
-        $liste = array();
-
-        foreach($get_data_in_base as $value){
-            $obj_class->hydrate($value);
-
-            $data = $obj_class->getData();
-
-            if(get_class($obj_manager) == 'Article_manager' || get_class($obj_class) == 'Article'){
-                $data['author'] = $value['userFirstname'];
-                $data['category'] = $value['categoryName'];
-                // var_dump($data);
-            }
-
-            array_push($liste, $data);
-        }
-        // var_dump($liste);
-        return $liste;
+    if(!empty($get_data_in_base['categoryName'])){
+        $data['category'] = $get_data_in_base['categoryName'];
     }
+    
+    if(!empty($get_data_in_base['userFirstname'])){
+        $data['author'] = $get_data_in_base['userFirstname'];
+    }
+
+    $date_time = get_date($get_data_in_base);
+    if(!empty($date_time)){
+        $data['date'] = $date_time['date'];
+        $data['time'] = $date_time['time'];
+    }
+
+    // var_dump($data);
+    return $data;
 }
 
 /**
@@ -106,10 +96,9 @@ function get_category_article($obj_manager){
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
  * @param $data Tableau contenant les informations permetant d'inserer ou mettre à jour la base de données.
- * @param $key Nom du champ qui est utilisé pour le WHERE de la réquete sql. Inialiser à null si la requête n'utilise pas de WHERE. Si $key n'est pas null, $value ne peut pas être null.
- * @param $value Valeur qui permet de filtrer la requete sql avec WHERE. Initialiser a null. 
+ * @param $data Tableau associatif qui a pour clé le nom d'un champ de table et pour valeur la donnée à insérer ou l'id qui sera utilisé dans un WHERE pour modification
  */
-function write_data($obj_manager, $obj_class, $method, array $data, $key = null, $value = null){
+function write_data($obj_manager, $obj_class, $method, array $post, array $data){
     $get_method = get_class_methods($obj_manager);
 
     if(!in_array($method, $get_method)){
@@ -117,12 +106,14 @@ function write_data($obj_manager, $obj_class, $method, array $data, $key = null,
         exit;
     }
 
-    if($key && $value){
-        $data[$key] = $value;
+    foreach($data as $key => $value){
+        $post[$key] = $value;
     }
     // var_dump($data);
+    // var_dump($obj_class);
 
-    $obj_class->hydrate($data);
+    $obj_class->hydrate($post);
+
     // var_dump($obj_class);
 
     if($method == 'editUser'){
@@ -153,4 +144,83 @@ function del_data($obj_manager, $method, $id){
     }
 
     $obj_manager->$method($id);
+    // var_dump($obj_manager->$method($id));
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_all_data permet de récupérer toutes les données d'une table
+ * @param $obj_manager Nom de la class manager
+ * @param $obj_class Nom de la class associé au manager $obj_manager
+ * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
+ * @param  $param Argument de $method. Initalisé a null si $method n'a pas d'argument
+ * @return Array
+ */
+function get_all_data($obj_manager, $obj_class, $method, $param=null){
+    $get_method = get_class_methods($obj_manager);
+    // var_dump($get_method);
+
+    if(!in_array($method, $get_method)){
+        echo "La methode que vous souhaitez utiliser n'existe pas";
+        exit;
+    }
+
+    if($param){
+        $get_data_in_base = $obj_manager->$method($param);
+    }else{
+        $get_data_in_base = $obj_manager->$method();
+    }
+
+    // var_dump($get_data_in_base);
+
+    $liste = array();
+
+    foreach($get_data_in_base as $key => $value){
+        $obj_class->hydrate($value);
+
+        $data = $obj_class->getData();
+
+        if(!empty($value['categoryName'])){
+            $data['category'] = $value['categoryName'];
+        }
+        
+        if(!empty($value['userFirstname'])){
+            $data['author'] = $value['userFirstname'];
+        }
+
+        if(!in_array(get_class($obj_manager), array('User_manager'))){
+            $date_time = get_date($value);
+            if(!empty($date_time)){
+                $data['date'] = $date_time['date'];
+                $data['time'] = $date_time['time'];
+            }
+        }
+
+
+        // var_dump($data);
+        array_push($liste, $data);
+    }
+    // var_dump($liste);
+    return $liste;
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_date() recherche dans un tableau si une date est présente dans un tableau et l'a formate
+ * @param $data Tableau associatif dont une dès clé contient le mot Date
+ */
+function get_date($data){
+    foreach($data as $k => $v){
+        if(strpos($k, 'Date') !== false){
+            $convertDate = strtotime($v);
+        }
+    }
+    
+    if(isset($convertDate)){
+        $date = date('d/m/Y', $convertDate);
+        $time = date('H:i:s', $convertDate);
+
+    }
+
+    return array('date' => $date, 'time' => $time);
 }
