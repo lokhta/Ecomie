@@ -109,8 +109,11 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data)
     foreach($data as $key => $value){
         $post[$key] = $value;
     }
-    // var_dump($data);
-    // var_dump($obj_class);
+    // var_dump($post);exit;
+    if($post['userPwd'] == ''){
+        unset($post['userPwd']);
+    }
+    // var_dump($post);;
 
     $obj_class->hydrate($post);
 
@@ -118,7 +121,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data)
 
     if($method == 'editUser'){
         $userTab = $obj_class->getData();
-        //var_dump($userTab);
+        // var_dump($userTab);;
         foreach($userTab as $key => $value){
             $key_session = lcfirst(str_replace('user', '', $key));
             $_SESSION[$key_session] = $value;
