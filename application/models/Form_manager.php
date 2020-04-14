@@ -7,7 +7,7 @@ class Form_manager extends CI_Model{
     }
 
     public function sendForm(Form $form){
-        return  $this->db->insert('articles', $form->getData()); 
+        return  $this->db->insert('form', $form->getData()); 
     }
 
 

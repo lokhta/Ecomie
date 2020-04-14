@@ -1,34 +1,33 @@
 {include file="header.tpl" title="Ecomie - Contact" name=$Name}
-<form method="POST" action="erreur.html">
-    <label for="Nom">Nom</label>
-    <input type="text" name="Nom" id="Nom" placeholder="Entrez votre nom">
+{form_open('forms/send_message')}
+    {form_label("Nom")}
+    {form_input("formSendername",'',"id='formSendername'")}
 
-    <label for="Mail">Mail</label>
-    <input type="email" name="Mail" id="Mail" placeholder="Entrez votre email">
+    {form_label("E-mail")}
+    {form_input("formSendermail",'',"id='formSendermail'")}
 
-    <label for="Sujet">Sujet</label>
-    <input type="text" name="Sujet" id="Sujet" placeholder="Sujet de votre message">
+    {form_label("Objet")}
+    {form_input("formSubject",'',"id='formSubject'")}
 
-    <label for="Message">Message</label>
-    <textarea name="Message" id="Message" cols="30" rows="10" placeholder="Entrez votre message"></textarea>
-    <div class="rgpd">
-        <input type="checkbox" id="rgpd" name="rgpd">
-        <label class="rgpd__text" for="rgpd"> J'ai lu et j'accepte les <a href="{$base_url}pages/cgu">conditions
-                génèrales d'utilisation.</a></label>
-    </div>
-    <input class="bouton__form" type="submit" value="Envoyer">
-</form>
+    {form_label("Message")}
+    {form_textarea('formMessage','','id="formMessage"')}
+
+    {form_checkbox()}      
+    <label class="rgpd__text" for="rgpd"> J'ai lu et j'accepte les <a href="{base_url()}pages/cgu">conditions génèrales d'utilisation.</a></label>
+
+    {form_submit('envoyer','Envoyer','class="bouton__form"')}
+{form_close()}
 <section class="contact__ecomie">
     <div class="contact">
-        <img src="{$base_url}assets/img/smartphone.png" alt="Smartphone">
+        <img src="{base_url()}assets/img/smartphone.png" alt="Smartphone">
         <p>03.88.69.68.67</p>
     </div>
     <div class="contact">
-        <a href="#"><img src="{$base_url}assets/img/fb.svg" alt=" Facebook"></a>
+        <a href="#"><img src="{base_url()}assets/img/fb.svg" alt=" Facebook"></a>
         <p>Ecomie</p>
     </div>
     <div class="contact">
-        <img src="{$base_url}assets/img/location.png" alt="Localisation">
+        <img src="{base_url()}assets/img/location.png" alt="Localisation">
         <p>27 rue de la république</br>67800 Hoenheim</p>
     </div>
 </section>

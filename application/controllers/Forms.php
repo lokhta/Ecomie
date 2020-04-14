@@ -20,4 +20,9 @@ class Forms extends CI_Controller{
         $this->smarty->assign('page', 'admin/messagerie.tpl');
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+    public function send_message(){
+        write_data($this->_form_manager, $this->_form, 'sendForm', $_POST);
+        redirect(base_url()."pages/contact", 'location');
+    }
 }
