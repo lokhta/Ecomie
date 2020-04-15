@@ -129,7 +129,7 @@ class Comment extends CI_Model{
         $eventData = get_object_vars($this);
 
         $data = array();
-        foreach($articleData as $key => $value){
+        foreach($eventData as $key => $value){
             $data[substr($key, 1)] = $value;
         }
       

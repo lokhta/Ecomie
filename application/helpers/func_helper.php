@@ -111,19 +111,17 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
             $post[$key] = $value;
         }
     }
-    
-    if($method == 'editUser'){
-        if($post['userPwd'] == ''){
-            unset($post['userPwd']);
-        }
-    }
-
 
     $obj_class->hydrate($post);
 
     // var_dump($obj_class);
 
     if($method == 'editUser'){
+
+        if($post['userPwd'] == ''){
+            unset($post['userPwd']);
+        }
+
         $userTab = $obj_class->getData();
         // var_dump($userTab);;
         foreach($userTab as $key => $value){
