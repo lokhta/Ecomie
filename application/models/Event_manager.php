@@ -6,7 +6,7 @@ class Event_manager extends CI_Model{
         parent::__construct();
     }
 
-    public function addEvent(Events $event){
+    public function addEvent(Event $event){
         return  $this->db->insert('events', $event->getData()); 
     }
 

@@ -110,14 +110,14 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
         foreach($data as $key => $value){
             $post[$key] = $value;
         }
-        // var_dump($data);
-        // var_dump($obj_class);
     }
-    // var_dump($post);exit;
-    if($post['userPwd'] == ''){
-        unset($post['userPwd']);
+    
+    if($method == 'editUser'){
+        if($post['userPwd'] == ''){
+            unset($post['userPwd']);
+        }
     }
-    // var_dump($post);;
+
 
     $obj_class->hydrate($post);
 
