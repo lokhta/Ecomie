@@ -95,10 +95,12 @@ class Users extends CI_Controller{
         redirect(base_url(), 'location');
     }
 
+// Fonction de la page modification des données utilisateurs
     public function profil()
     {
         $this->smarty->view('pages/profil.tpl');
         if(!empty($_POST)){
+            // Condition pour l'ajout de la photo de profil
             if(!empty($_FILES['userAvatar']['tmp_name'])){
                 $imgName = $_FILES['userAvatar']['tmp_name'];
                 var_dump($_FILES);
@@ -122,9 +124,8 @@ class Users extends CI_Controller{
                 $_POST['userAvatar']=$_SESSION['avatar'];
             }
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
-            //var_dump($_POST);
             //Rafraichissement de la page
-            //header('refresh:0');
+            header('refresh:0');
         }
     }
 
