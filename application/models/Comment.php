@@ -126,13 +126,13 @@ class Comment extends CI_Model{
 
 
     public function getData(){
-        $articleData = get_object_vars($this);
+        $eventData = get_object_vars($this);
 
         $data = array();
         foreach($articleData as $key => $value){
             $data[substr($key, 1)] = $value;
         }
-
+      
         $data = array_filter($data);
         // var_dump($data);
        return $data;
