@@ -99,6 +99,28 @@ class Users extends CI_Controller{
     {
         $this->smarty->view('pages/profil.tpl');
         if(!empty($_POST)){
+            if(!empty($_FILES['userAvatar']['tmp_name'])){
+                $imgName = $_FILES['userAvatar']['tmp_name'];
+                var_dump($_FILES);
+                if(($_FILES['userAvatar']['type'])=='image/jpeg'){
+                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.jpg';
+                    move_uploaded_file($imgName, $imgDest);
+                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.jpg';
+                }if(($_FILES['userAvatar']['type'])=='image/png'){
+                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.png';
+                    move_uploaded_file($imgName, $imgDest);
+                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.png';
+                }if(($_FILES['userAvatar']['type'])=='image/svg+xml'){
+                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.svg';
+                    move_uploaded_file($imgName, $imgDest);
+                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.svg';
+                }else{
+                    echo "Ce type de fichier n'est pas pris en charge !!!";
+                    $_POST['userAvatar']=$_SESSION['avatar'];
+                } 
+            }else{
+                $_POST['userAvatar']=$_SESSION['avatar'];
+            }
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
             //var_dump($_POST);
             //Rafraichissement de la page
