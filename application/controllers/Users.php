@@ -97,8 +97,11 @@ class Users extends CI_Controller{
 
 // Fonction de la page modification des données utilisateurs
     public function profil()
-    {
+    {   
+        $avatarIcon =  $_SESSION['avatar'];
+        $this->smarty->assign('avatar', $avatarIcon);
         $this->smarty->view('pages/profil.tpl');
+        
         if(!empty($_POST)){
             // Condition pour l'ajout de la photo de profil
             if(!empty($_FILES['userAvatar']['tmp_name'])){

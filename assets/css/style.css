@@ -1776,3 +1776,12 @@ span.comment_author {
 .edit_com{
     display: none;
 }
+
+/* ---------- Page Profil ---------*/
+
+.image{
+    max-width:100%;
+    height:auto;
+    border-radius: 50%;
+    border: solid 4px white;
+}

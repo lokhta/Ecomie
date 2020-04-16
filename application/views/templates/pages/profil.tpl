@@ -2,11 +2,15 @@
                     <div class="btn-content">
                         <a href="{base_url()}dashboard" class="btn">Retour</a>
                     </div>
+
                         <div>
                             {if $smarty.session.id}
                                 {form_open_multipart('users/profil')}
 
-                                <p>INFORMATIONS PERSONNELLES</p>
+                                <section>
+                                    <p>INFORMATIONS PERSONNELLES</p>
+                                    <img class="image" src="{base_url()}assets/img/{$avatar}" alt="">
+                                </section>
 
                                 {form_label("Nom")}
                                 {form_input("userName", $smarty.session.name , "id='userName'")}
@@ -37,7 +41,7 @@
                                 {form_label("Photo de profil")}
                                 <p>(types pris en charges uniquement : jpg / png / svg)</p>
 
-                                {form_upload("userAvatar", $smarty.session.avatar , "id='userAvatar'")}
+                                {form_upload("userAvatar", '' , "id='userAvatar'")}
 
                                 {form_label("Mot de passe")}
                                 {form_input("userPwd", '', "id='userPwd'")}
