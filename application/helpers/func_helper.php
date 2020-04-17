@@ -111,16 +111,17 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
             $post[$key] = $value;
         }
     }
+    // var_dump($post);
+
+    if($method == 'editUser' && $post['userPwd'] == ''){
+        unset($post['userPwd']);
+    }
 
     $obj_class->hydrate($post);
 
     // var_dump($obj_class);
 
     if($method == 'editUser'){
-
-        if($post['userPwd'] == ''){
-            unset($post['userPwd']);
-        }
 
         $userTab = $obj_class->getData();
         // var_dump($userTab);;
@@ -237,4 +238,13 @@ function get_date($data){
     }
 
     return array('date' => $date, 'time' => $time);
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief timestamp_to_date() retourne la date courante au format timestamp
+ */
+function timestamp_to_date(){
+    $date_to_day = date_create();
+    return  date_timestamp_get($date_to_day);
 }

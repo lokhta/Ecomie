@@ -103,32 +103,24 @@ class Users extends CI_Controller{
         $this->smarty->view('pages/profil.tpl');
         
         if(!empty($_POST)){
-            // Condition pour l'ajout de la photo de profil
-            if(!empty($_FILES['userAvatar']['tmp_name'])){
-                $imgName = $_FILES['userAvatar']['tmp_name'];
-                var_dump($_FILES);
-                if(($_FILES['userAvatar']['type'])=='image/jpeg'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.jpg';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.jpg';
-                }if(($_FILES['userAvatar']['type'])=='image/png'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.png';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.png';
-                }if(($_FILES['userAvatar']['type'])=='image/svg+xml'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.svg';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.svg';
-                }else{
-                    echo "Ce type de fichier n'est pas pris en charge !!!";
-                    $_POST['userAvatar']=$_SESSION['avatar'];
-                } 
+        
+            $timestamp_to_date = timestamp_to_date();
+            
+            $config['upload_path'] = "assets/img/upload";
+            $config['allowed_types'] = "gif|jpg|png";
+            $config['max_size'] = 70;
+            $config['file_name'] = $_SESSION['firstname'].'_'.$_SESSION['id'].'_'. $timestamp_to_date;
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('userAvatar')){
+                echo json_encode(array('error' => $this->upload->display_errors()));
+                
             }else{
-                $_POST['userAvatar']=$_SESSION['avatar'];
+                $upload_data = $this->upload->data();
+                echo json_encode(array('file_name' => $upload_data['file_name']));
+                $_POST['userAvatar'] = $upload_data['file_name'];
             }
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
-            //Rafraichissement de la page
-            header('refresh:0');
+            redirect(base_url()."users/profil", 'refresh');
         }
     }
 

@@ -9,7 +9,7 @@
 
                                 <section>
                                     <p>INFORMATIONS PERSONNELLES</p>
-                                    <img class="image" src="{base_url()}assets/img/{$avatar}" alt="">
+                                    <img class="image" src="{base_url()}assets/img/upload/{$avatar}" alt="">
                                 </section>
 
                                 {form_label("Nom")}
