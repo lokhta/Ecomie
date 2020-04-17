@@ -73,14 +73,18 @@ class Users extends CI_Controller{
         //Pour insertion dans la BDD
         //var_dump($_POST);
         if(!empty($_POST['userName'])){
-            
-            $userObj = new User;
-            $userObj->hydrate($_POST);
-            //var_dump($userObj);
-
-            $userManager->addUser($userObj);
-            //redirect(base_url()."Users/dashboard", 'location');
-            redirect("",'refresh');
+            if($_POST['userPwd'] == $_POST['confirmPwd']){
+                $userObj = new User;
+                $userObj->hydrate($_POST);
+                //var_dump($userObj);
+    
+                $userManager->addUser($userObj);
+                //redirect(base_url()."Users/dashboard", 'location');
+                redirect("",'refresh');
+            }else{
+                echo"formulaire non valide";
+                //redirect("",'refresh');
+            }
         }else{
             echo"formulaire non valide";
             //redirect("",'refresh');
@@ -107,22 +111,29 @@ class Users extends CI_Controller{
             if(!empty($_FILES['userAvatar']['tmp_name'])){
                 $imgName = $_FILES['userAvatar']['tmp_name'];
                 var_dump($_FILES);
+
                 if(($_FILES['userAvatar']['type'])=='image/jpeg'){
                     $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.jpg';
                     move_uploaded_file($imgName, $imgDest);
                     $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.jpg';
-                }if(($_FILES['userAvatar']['type'])=='image/png'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.png';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.png';
-                }if(($_FILES['userAvatar']['type'])=='image/svg+xml'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.svg';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.svg';
                 }else{
-                    echo "Ce type de fichier n'est pas pris en charge !!!";
-                    $_POST['userAvatar']=$_SESSION['avatar'];
-                } 
+
+                    if(($_FILES['userAvatar']['type'])=='image/png'){
+                        $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.png';
+                        move_uploaded_file($imgName, $imgDest);
+                        $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.png';
+                    }else{
+
+                        if(($_FILES['userAvatar']['type'])=='image/svg+xml'){
+                            $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.svg';
+                            move_uploaded_file($imgName, $imgDest);
+                            $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.svg';
+                        }else{
+                            echo "Ce type de fichier n'est pas pris en charge !!!";
+                            $_POST['userAvatar']=$_SESSION['avatar'];
+                            }
+                        }
+                }
             }else{
                 $_POST['userAvatar']=$_SESSION['avatar'];
             }
