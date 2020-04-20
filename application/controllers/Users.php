@@ -106,11 +106,26 @@ class Users extends CI_Controller{
         $this->smarty->assign('avatar', $avatarIcon);
         $this->smarty->view('pages/profil.tpl');
         
+        //Condition pour la suppression de l'image de profil
+        if ($_GET){
+            $_SESSION['avatar'] = 'user_solid.svg';
+            foreach($_SESSION as $key => $value){
+                $key= ucfirst($key);
+                $key_session = "user".$key;
+                $_GET[$key_session] = $value;
+            }
+            //$imagePath = 'C:\wamp64\www\Ecomie\assets\img\'.$_GET;
+            unlink($imagePath);
+            write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array('userId'=>$_SESSION['id']));
+            redirect(base_url()."users/profil");
+        }
+        
+
         if(!empty($_POST)){
+
             // Condition pour l'ajout de la photo de profil
             if(!empty($_FILES['userAvatar']['tmp_name'])){
                 $imgName = $_FILES['userAvatar']['tmp_name'];
-                var_dump($_FILES);
 
                 if(($_FILES['userAvatar']['type'])=='image/jpeg'){
                     $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.jpg';

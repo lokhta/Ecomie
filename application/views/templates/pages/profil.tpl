@@ -10,6 +10,7 @@
                                 <section>
                                     <p>INFORMATIONS PERSONNELLES</p>
                                     <img class="image" src="{base_url()}assets/img/{$avatar}" alt="">
+                                    <a href="{base_url()}users/profil?img_id={$avatar}">Supprimer mon image de profil</a>
                                 </section>
 
                                 {form_label("Nom")}
@@ -42,9 +43,9 @@
                                 <p>(types pris en charges uniquement : jpg / png / svg)</p>
 
                                 {form_upload("userAvatar", '' , "id='userAvatar'")}
-
+                                
                                 {form_label("Mot de passe")}
-                                {form_input("userPwd", '', "id='userPwd'")}
+                                {form_password("userPwd", '', "id='userPwd'")}
                             
                                 {form_submit('submit', "Mettre à jour")}
                                 {form_close()}
