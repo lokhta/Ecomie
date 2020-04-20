@@ -14,42 +14,76 @@ class Events extends CI_Controller{
     }
 
   public function events(){
-    $eventManager = new Event_manager;
-    $event = new Event;
 
-    //Afficher un seul évènement
-    if(!empty($_GET['event_id'])){
+        //Afficher un seul event
+        if(!empty($_GET['event_id'])){            
+            $data = get_data($this->_event_manager, $this->_event, 'getEvent', $_GET['event_id']);
+            // var_dump($data);
+            $this->smarty->assign('eventDetail', $data);
 
-        $eventArray = $eventManager->getEvent($_GET['event_id']);
-        $eventArray['author'] = $eventArray['userFirstname']; 
-        $event->hydrate($eventArray);
+
+
+        //============= DEBUT GESTION COMMENTAIRE EVENT ==============
+            $comment_manager = create_object('Comment_manager');
+            $comment = create_object('Comment');
+
+            $url = base_url()."Events/events?event_id=".$_GET['event_id'];
+            $this->smarty->assign('url', $url);
+
+            //Ajouter un commentaire
+            if(!empty($_POST) && empty($_GET['edit_com'])){
+                $data = array(
+                    'commentAuthor' => $_SESSION['id'],
+                    'commentEvent' => $_GET['event_id'],
+                );
+                write_data($comment_manager, $comment, 'addComment', $_POST, $data);
+                redirect($url, 'refresh');
+            }
+
+            //Modifier un commentaire
+            if(!empty($_GET['comment_id'])){
+                get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
+
+                
+
+                if(!empty($_POST) && $_GET['edit_com'] == 1){
+                    $date_modif = date('Y-m-d H:i:s');
+                    $data = array(
+                        'commentDate' => $date_modif,
+                    );
+    
+                    write_data($comment_manager, $comment, 'editComment', $_POST, $data);
+                    redirect($url, 'refresh');
+
+                }elseif($_GET['report_com'] == 1){
+                    write_data($comment_manager, $comment, 'editComment', $_POST, array('commentReport' => 1));
+                    redirect($url, 'refresh');
+
+                }elseif($_GET['del_com'] == 1){
+                    del_data($comment_manager, 'deleteComment', $_GET['comment_id']);
+                    redirect($url, 'refresh');
+                }
+            }
+
+            //Affichage des commentaires d'un Event
+            $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['event_id']);
+            // var_dump($comment_data);
+
+
+            $this->smarty->assign('comment', $comment_data);
+        //============= FIN GESTION COMMENTAIRE ARTICLE ==============
+
         
-         //var_dump($event);
 
-        $this->smarty->assign('eventDetail', $event->getData());
-        $this->smarty->view('pages/event.tpl');
-    }else{
-        //Afficher tout les events
-        $eventData = $eventManager->getAllEvent();
-        //var_dump($eventData);
+            $this->smarty->view('pages/event.tpl');
 
-        $eventList = array();
+        }else{//Afficher tout les events
+            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent');
 
-        foreach($eventData as $val){
-            
-            $event->hydrate($val);
-            //var_dump($val);
-
-            $data =  $event->getData();
-            $data['author'] = $val['userFirstname']; 
-            array_push($eventList, $data); 
+            $this->smarty->assign('event', $data);
+            $this->smarty->view('pages/events.tpl');
         }
-        //var_dump($eventList);
-
-        $this->smarty->assign('event', $eventList);
-        $this->smarty->view('pages/events.tpl');
     }
-  }
 
   public function dashboard(){
     //Pour insertion dans la BDD
