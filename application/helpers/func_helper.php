@@ -61,13 +61,20 @@ function get_data($obj_manager, $obj_class, $method, $param){
         $data['author'] = $get_data_in_base['userFirstname'];
     }
 
-    $date_time = get_date($get_data_in_base);
-    if(!empty($date_time)){
-        $data['date'] = $date_time['date'];
-        $data['time'] = $date_time['time'];
+    if(!empty($get_data_in_base['roleName'])){
+        $data['role'] = $get_data_in_base['roleName'];
+    }
+    
+
+    if(!in_array(get_class($obj_manager), array('User_manager'))){
+        $date_time = get_date($get_data_in_base);
+        if(!empty($date_time)){
+            $data['date'] = $date_time['date'];
+            $data['time'] = $date_time['time'];
+        }
     }
 
-    // var_dump($data);
+    var_dump($data);;
     return $data;
 }
 
@@ -85,7 +92,19 @@ function get_category_article($obj_manager){
         array_push($liste, $value['categoryName']);
     }
 
-    // vat_dump($liste);
+    var_dump($liste);
+    return $liste;
+}
+
+function get_role_user($obj_manager){
+    $role = $obj_manager->getRole();
+    $liste = array('-- Roles --');
+
+    foreach($role as $value){
+        array_push($liste, $value['roleName']);
+    }
+
+    var_dump($liste);
     return $liste;
 }
 
@@ -119,12 +138,12 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
 
     $obj_class->hydrate($post);
 
-    // var_dump($obj_class);
+    var_dump($obj_class);;
 
     if($method == 'editUser'){
 
         $userTab = $obj_class->getData();
-        // var_dump($userTab);;
+        var_dump($userTab);;
         foreach($userTab as $key => $value){
             $key_session = lcfirst(str_replace('user', '', $key));
             $_SESSION[$key_session] = $value;
@@ -200,7 +219,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             if(!empty($value['userFirstname'])){
                 $data['author'] = $value['userFirstname'];
             }
-    }
+        }
         
 
         if(!in_array(get_class($obj_manager), array('User_manager'))){

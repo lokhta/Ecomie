@@ -24,9 +24,9 @@ class Users extends CI_Controller{
         if ($_POST)
         {
             $userManager = New User_manager;
-            $getUser = $userManager->getUser();
+            $getUser = $userManager->inBase();
             //var_dump($_POST);
-            //var_dump($getUser);
+            // var_dump($getUser);
             if (!empty($_POST['userEmail']))
             {
                 if (!empty($_POST['userPwd']))
@@ -38,7 +38,7 @@ class Users extends CI_Controller{
                         {
                             $user = New User;
                             $user->hydrate($getUser);
-                            //var_dump($user);
+                            // var_dump($user);exit;
 
                             $userTab = $user->getData();
 
@@ -126,12 +126,29 @@ class Users extends CI_Controller{
 
     public function membres()
     {
-        $userManager = new User_manager;
-        $user = new User;
-        $data = get_all_data($this->_user_manager, $this->_user,'getAllUser');
+        // var_dump($_SESSION);
+        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);
-        $this->smarty->assign('users', $data);
-        $this->smarty->view('admin/membre.tpl');
+
+        if(!empty($_GET['user_id']) && empty($_GET['del'])){
+            $data_user = get_data($this->_user_manager, $this->_user, "getUser", $_GET['user_id']);
+
+            $role = get_role_user($this->_user_manager);
+
+            $this->smarty->assign('option', $role); 
+
+            $this->smarty->assign('user', $data_user);
+        }
+
+        if(!empty($_POST['userRole'])){
+            write_data($this->_user_manager, $this->_user, 'editUser', $_POST);
+            redirect(base_url()."users/membres", 'refresh');
+        }
+
+        
+        $this->smarty->assign('users_list', $data_list);
+        $this->smarty->assign('page', 'admin/membre.tpl');
+        $this->smarty->view('admin/dashboard.tpl');
 
         // Suppression user
         if(!empty($_GET['user_id']) && !empty($_GET['del'])){

@@ -22,11 +22,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->where('userId', $user_id)->delete('users');
         }
     
-        public function getUser(){
+        public function inBase(){
             $query = $this->db
             ->select('*')
             ->from('users')
             ->where('userEmail',$_POST['userEmail'])
+            ->get();
+            return $query->row_array();
+        }
+
+        public function getUser($user_id){
+            $query = $this->db
+            ->select('*')
+            ->from('users')
+            ->join('roles', 'roles.roleId = users.userRole')
+            ->where('userId',$user_id)
             ->get();
             return $query->row_array();
         }
@@ -36,6 +46,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName')
             ->from('users')
             ->join('roles', 'roles.roleId = users.userRole')
+            ->get();
+            return $query->result_array();
+        }
+
+        public function getRole(){
+            $query = $this->db
+            ->select('*')
+            ->from('roles')
+            ->order_by('roleId','ASC')
             ->get();
             return $query->result_array();
         }
