@@ -103,12 +103,13 @@ class Users extends CI_Controller{
     public function profil()
     {   
         $avatarIcon =  $_SESSION['avatar'];
+        var_dump($avatarIcon);
         $this->smarty->assign('avatar', $avatarIcon);
         $this->smarty->view('pages/profil.tpl');
         
         //Condition pour la suppression de l'image de profil
         if ($_GET){
-            $_SESSION['avatar'] = 'user_solid.svg';
+            $_SESSION['avatar'] = 'user-solid.svg';
             foreach($_SESSION as $key => $value){
                 $key= ucfirst($key);
                 $key_session = "user".$key;
