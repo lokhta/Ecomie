@@ -1636,9 +1636,11 @@ Article Dashboard
     width: 100%;
 }
 
-.thead {
+.thead, th{
     background: #229954;
     color: #fff;
+    font-weight: normal;
+    font-size: 20px;;
 }
 
 .tab tr, .tab td{
@@ -1679,24 +1681,24 @@ Article Dashboard
     margin: 12px;
     border-radius: 5px;
 }
-a.btn.btn-valid {
+.btn.btn-valid {
     background: #28B463;
 }
-a.btn.btn-valid:hover {
+.btn.btn-valid:hover {
     background: #2ECC71;
 }
 
-a.btn.btn-fail, a.btn.btn-del{
+.btn.btn-fail, a.btn.btn-del{
     background: #EA3725;
 }
-a.btn.btn-fail:hover, a.btn.btn-del:hover {
+.btn.btn-fail:hover, a.btn.btn-del:hover {
     background: #E74C3C;
 }
 
-a.btn.btn-edit {
+.btn.btn-edit {
     background: #F39C12;
 }
-a.btn.btn-edit:hover {
+.btn.btn-edit:hover {
     background: #F5B041;
 }
 
@@ -1736,7 +1738,7 @@ input#submit:hover{
     margin-bottom: 15px;
 }
 
-.header_comment {
+.header_comment, #btn_edit_role {
     display: flex;
     align-items: center;
 }
@@ -1784,4 +1786,97 @@ span.comment_author {
     height:auto;
     border-radius: 50%;
     border: solid 4px white;
+}
+
+/*****************************
+    Liste membre Admin
+*****************************/
+#tab_content{
+    display: flex;;
+    justify-content: center;
+}
+#tab_left, #tab_right{
+    width: 400px;
+    margin: 10px;
+}
+.row_info_membre form{
+    flex-direction: row;
+    background: none;
+    padding: 0;
+    margin : 0;
+}
+
+#tab_right .thead{
+    height: 50px;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.row_info_membre, #tab_right .thead{
+    margin : 0;
+}
+
+.row_info_membre form #role, .row_info_membre form #btn_submit{
+    height: 35px;
+    display:none;
+}
+
+.row_info_membre{
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.lab {
+    font-size: 19px;
+    display: inline-block;
+    width: 140px;
+    margin-right: 0;
+    padding-left: 15px;
+}
+
+.info_membre{
+    font-size : 19px;
+}
+
+.bluesky{
+    background: #D6EAF8;
+}
+
+.white{
+    background: #fff;
+}
+
+#btn_edit_role{
+    margin-left: 20px;
+    color : #7D3C98;
+}
+
+/*****************************
+    Profil
+*****************************/
+
+#gestion_photo_profil{
+    display: flex;
+    justify-content: center;
+}
+
+#gestion_photo_profil .btn{
+    margin: 10px;
+}
+
+.btn_edit_photo {
+    background: #F39C12;
+    cursor: pointer;
+}
+
+.btn_del_photo {
+    background: #EA3725;
+}
+
+#userAvatar{
+    display: none;
+    margin-top : 15px;
 }

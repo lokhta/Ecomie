@@ -24,9 +24,9 @@ class Users extends CI_Controller{
         if ($_POST)
         {
             $userManager = New User_manager;
-            $getUser = $userManager->getUser();
+            $getUser = $userManager->inBase();
             //var_dump($_POST);
-            //var_dump($getUser);
+            // var_dump($getUser);
             if (!empty($_POST['userEmail']))
             {
                 if (!empty($_POST['userPwd']))
@@ -38,7 +38,7 @@ class Users extends CI_Controller{
                         {
                             $user = New User;
                             $user->hydrate($getUser);
-                            //var_dump($user);
+                            // var_dump($user);exit;
 
                             $userTab = $user->getData();
 
@@ -102,71 +102,81 @@ class Users extends CI_Controller{
 // Fonction de la page modification des données utilisateurs
     public function profil()
     {   
+
+        
+        //Condition pour la suppression de l'image de profil
+        // if ($_GET){
+        //     $_SESSION['avatar'] = 'user-solid.svg';
+        //     foreach($_SESSION as $key => $value){
+        //         $key= ucfirst($key);
+        //         $key_session = "user".$key;
+        //         $_GET[$key_session] = $value;
+        //     }
+        //     //$imagePath = 'C:\wamp64\www\Ecomie\assets\img\'.$_GET;
+        //     // unlink($imagePath);
+        //     write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array('userId'=>$_SESSION['id']));
+        //     redirect(base_url()."users/profil");
+        // }
+
+        if(!empty($_GET['del']) && $_GET['del'] == 1){
+            $this->_user_manager->del_avatar($_SESSION['id']);
+            $this->smarty->assign('avatar', 'user-solid.svg');
+            $_SESSION['avatar'] =  'user-solid.svg';
+            redirect(base_url()."users/profil", 'refresh');
+        }
+
         $avatarIcon =  $_SESSION['avatar'];
         var_dump($avatarIcon);
         $this->smarty->assign('avatar', $avatarIcon);
         $this->smarty->view('pages/profil.tpl');
         
-        //Condition pour la suppression de l'image de profil
-        if ($_GET){
-            $_SESSION['avatar'] = 'user-solid.svg';
-            foreach($_SESSION as $key => $value){
-                $key= ucfirst($key);
-                $key_session = "user".$key;
-                $_GET[$key_session] = $value;
-            }
-            //$imagePath = 'C:\wamp64\www\Ecomie\assets\img\'.$_GET;
-            unlink($imagePath);
-            write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array('userId'=>$_SESSION['id']));
-            redirect(base_url()."users/profil");
-        }
-        
 
         if(!empty($_POST)){
-
-            // Condition pour l'ajout de la photo de profil
-            if(!empty($_FILES['userAvatar']['tmp_name'])){
-                $imgName = $_FILES['userAvatar']['tmp_name'];
-
-                if(($_FILES['userAvatar']['type'])=='image/jpeg'){
-                    $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.jpg';
-                    move_uploaded_file($imgName, $imgDest);
-                    $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.jpg';
-                }else{
-
-                    if(($_FILES['userAvatar']['type'])=='image/png'){
-                        $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.png';
-                        move_uploaded_file($imgName, $imgDest);
-                        $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.png';
-                    }else{
-
-                        if(($_FILES['userAvatar']['type'])=='image/svg+xml'){
-                            $imgDest = 'C:\wamp64\www\Ecomie\assets\img\profile_'.$_SESSION['id'].'.svg';
-                            move_uploaded_file($imgName, $imgDest);
-                            $_POST['userAvatar'] = 'profile_'.$_SESSION['id'].'.svg';
-                        }else{
-                            echo "Ce type de fichier n'est pas pris en charge !!!";
-                            $_POST['userAvatar']=$_SESSION['avatar'];
-                            }
-                        }
-                }
+            $timestamp_to_date = timestamp_to_date();
+            
+            $config['upload_path'] = "assets/img/upload";
+            $config['allowed_types'] = "gif|jpg|png";
+            $config['max_size'] = 70;
+            $config['file_name'] = $_SESSION['firstname'].'_'.$_SESSION['id'].'_'. $timestamp_to_date;
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('userAvatar')){
+                echo json_encode(array('error' => $this->upload->display_errors()));
+                
             }else{
-                $_POST['userAvatar']=$_SESSION['avatar'];
+                $upload_data = $this->upload->data();
+                echo json_encode(array('file_name' => $upload_data['file_name']));
+                $_POST['userAvatar'] = $upload_data['file_name'];
             }
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
-            //Rafraichissement de la page
-            header('refresh:0');
+            redirect(base_url()."users/profil", 'refresh');
         }
     }
 
     public function membres()
     {
-        $userManager = new User_manager;
-        $user = new User;
-        $data = get_all_data($this->_user_manager, $this->_user,'getAllUser');
+        // var_dump($_SESSION);
+        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);
-        $this->smarty->assign('users', $data);
-        $this->smarty->view('admin/membre.tpl');
+
+        if(!empty($_GET['user_id']) && empty($_GET['del'])){
+            $data_user = get_data($this->_user_manager, $this->_user, "getUser", $_GET['user_id']);
+
+            $role = get_role_user($this->_user_manager);
+
+            $this->smarty->assign('option', $role); 
+
+            $this->smarty->assign('user', $data_user);
+        }
+
+        if(!empty($_POST['userRole'])){
+            write_data($this->_user_manager, $this->_user, 'editUser', $_POST);
+            redirect(base_url()."users/membres", 'refresh');
+        }
+
+        
+        $this->smarty->assign('users_list', $data_list);
+        $this->smarty->assign('page', 'admin/membre.tpl');
+        $this->smarty->view('admin/dashboard.tpl');
 
         // Suppression user
         if(!empty($_GET['user_id']) && !empty($_GET['del'])){
