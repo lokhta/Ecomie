@@ -128,7 +128,8 @@ class Users extends CI_Controller{
         $avatarIcon =  $_SESSION['avatar'];
         var_dump($avatarIcon);
         $this->smarty->assign('avatar', $avatarIcon);
-        $this->smarty->view('pages/profil.tpl');
+        $this->smarty->assign('page', 'admin/profil.tpl');
+        $this->smarty->view('admin/dashboard.tpl');
         
 
         if(!empty($_POST)){

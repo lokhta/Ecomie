@@ -1,4 +1,4 @@
- {include file="header.tpl" title="Ecomie - Profil" name=$Name} 
+ 
                     <div class="btn-content">
                         <a href="{base_url()}dashboard" class="btn">Retour</a>
                     </div>
@@ -50,4 +50,3 @@
                             {/if}
                         </div>
 
-{include file="footer.tpl"}
