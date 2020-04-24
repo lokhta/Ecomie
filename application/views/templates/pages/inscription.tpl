@@ -1,32 +1,34 @@
     {include file="header.tpl" title="Ecomie - Accueil" name=$Name}
+
+        {$errors}
         {form_open('users/inscription')}
             
                 {form_label("Nom*")}
-                {form_input("userName", "", "id='userName'")}
+                {form_input("userName", $value_username, "id='userName'")}
             
             
                 {form_label("Prénom*")}
-                {form_input("userFirstname", "", "id='userFirstname'")}
+                {form_input("userFirstname", $value_Firstname, "id='userFirstname'")}
             
             
                 {form_label("Addresse mail*")}
-                {form_input("userEmail", "", "id='userEmail'")}
+                {form_input("userEmail", $value_Mail, "id='userEmail'")}
            
             
                 {form_label("N° de Téléphone")}
-                {form_input("userPhone", "", "id='userPhone'")}
+                {form_input("userPhone", $value_phone, "id='userPhone'")}
             
             
                 {form_label("Addresse postale*")}
-                {form_input("userAddress", "", "id='userAddress'")}
+                {form_input("userAddress", $value_address, "id='userAddress'")}
             
             
                 {form_label("Code postale*")}
-                {form_input("userCp", "", "id='userCp'")}
+                {form_input("userCp", $value_cp, "id='userCp'")}
             
             
                 {form_label("Ville*")}
-                {form_input("userCity", "", "id='userCity'")}
+                {form_input("userCity", $value_city, "id='userCity'")}
             
             
                 {form_label("Mot de passe*")}

@@ -68,27 +68,85 @@ class Users extends CI_Controller{
 
     public function inscription()
     {
-        $this->load->library('encryption');
-        $userManager = new User_manager;
-        //Pour insertion dans la BDD
-        //var_dump($_POST);
-        if(!empty($_POST['userName'])){
-            if($_POST['userPwd'] == $_POST['confirmPwd']){
-                $userObj = new User;
-                $userObj->hydrate($_POST);
-                //var_dump($userObj);
-    
-                $userManager->addUser($userObj);
-                //redirect(base_url()."Users/dashboard", 'location');
-                redirect("",'refresh');
-            }else{
-                echo"formulaire non valide";
-                //redirect("",'refresh');
-            }
-        }else{
-            echo"formulaire non valide";
-            //redirect("",'refresh');
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+
+        $config = array(
+                array(
+                    'field' => 'userName',
+                    'label' => 'Nom',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userFirstname',
+                    'label' => 'Prénom',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userEmail',
+                    'label' => 'E-mail',
+                    'rules' => 'required|valid_email|is_unique[users.userEmail]'
+                ),
+                array(
+                    'field' => 'userPhone',
+                    'label' => 'Numéro de téléphone',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userAddress',
+                    'label' => 'Adddresse postale',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userCp',
+                    'label' => 'Code postal',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userCity',
+                    'label' => 'Ville',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'userPwd',
+                    'label' => 'Mot de passe',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'confirmPwd',
+                    'label' => 'Confirmation mot de passe',
+                    'rules' => 'required|matches[userPwd]'
+                )
+            );
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->smarty->assign('value_username', set_value('userName'));
+            $this->smarty->assign('value_Firstname', set_value('userFirstname'));
+            $this->smarty->assign('value_Mail', set_value('userEmail'));
+            $this->smarty->assign('value_phone', set_value('userPhone'));
+            $this->smarty->assign('value_address', set_value('userAddress'));
+            $this->smarty->assign('value_cp', set_value('userCp'));
+            $this->smarty->assign('value_city', set_value('userCity'));
+
+            $errors = validation_errors();
+            $this->smarty->assign('errors', $errors);
+            $this->smarty->view('pages/inscription.tpl');
         }
+        else
+        {
+        // $this->load->library('encryption');
+        //Pour insertion dans la BDD
+
+        $userManager = new User_manager;
+        $userObj = new User;
+        $userObj->hydrate($_POST);
+        $userManager->addUser($userObj);
+        $this->smarty->view('pages/formsuccess.tpl');
+        }
+        
     }
 
 // Fonction de déconnexion / Kill la session
