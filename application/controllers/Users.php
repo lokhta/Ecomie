@@ -76,46 +76,46 @@ class Users extends CI_Controller{
                 array(
                     'field' => 'userName',
                     'label' => 'Nom',
-                    'rules' => 'required'
+                    'rules' => 'required|alpha|min_length[3]|max_length[12]'
                 ),
                 array(
                     'field' => 'userFirstname',
                     'label' => 'Prénom',
-                    'rules' => 'required'
+                    'rules' => 'required|alpha|min_length[3]|max_length[12]'
                 ),
                 array(
                     'field' => 'userEmail',
-                    'label' => 'E-mail',
+                    'label' => 'Addresse mail',
                     'rules' => 'required|valid_email|is_unique[users.userEmail]'
                 ),
                 array(
                     'field' => 'userPhone',
-                    'label' => 'Numéro de téléphone',
-                    'rules' => 'required'
+                    'label' => 'N° de Téléphone',
+                    'rules' => 'numeric|min_length[10]|max_length[10]'
                 ),
                 array(
                     'field' => 'userAddress',
                     'label' => 'Adddresse postale',
-                    'rules' => 'required'
+                    'rules' => 'required|alpha_numeric_spaces|max_length[30]'
                 ),
                 array(
                     'field' => 'userCp',
                     'label' => 'Code postal',
-                    'rules' => 'required'
+                    'rules' => 'required|numeric|min_length[5]|max_length[5]'
                 ),
                 array(
                     'field' => 'userCity',
                     'label' => 'Ville',
-                    'rules' => 'required'
+                    'rules' => 'required|alpha|max_length[30]'
                 ),
                 array(
                     'field' => 'userPwd',
                     'label' => 'Mot de passe',
-                    'rules' => 'required'
+                    'rules' => 'required|min_length[5]|alpha_numeric'
                 ),
                 array(
                     'field' => 'confirmPwd',
-                    'label' => 'Confirmation mot de passe',
+                    'label' => 'Confirmez le mot de passe',
                     'rules' => 'required|matches[userPwd]'
                 )
             );

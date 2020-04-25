@@ -1880,3 +1880,16 @@ span.comment_author {
     display: none;
     margin-top : 15px;
 }
+
+/*****************************
+    Inscription
+*****************************/
+
+.error{
+    margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}

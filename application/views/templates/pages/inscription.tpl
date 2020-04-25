@@ -1,8 +1,12 @@
     {include file="header.tpl" title="Ecomie - Accueil" name=$Name}
 
+        
         {$errors}
+
         {form_open('users/inscription')}
-            
+
+                <h3>Les champs marqués d'un (*) sont obligatoires.</h3> 
+
                 {form_label("Nom*")}
                 {form_input("userName", $value_username, "id='userName'")}
             
@@ -23,7 +27,7 @@
                 {form_input("userAddress", $value_address, "id='userAddress'")}
             
             
-                {form_label("Code postale*")}
+                {form_label("Code postal*")}
                 {form_input("userCp", $value_cp, "id='userCp'")}
             
             
