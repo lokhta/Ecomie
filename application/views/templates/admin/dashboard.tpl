@@ -37,5 +37,8 @@
             </footer>
         </div>
         <script src="{base_url()}assets/js/script.js"></script>
+        {if $url == "Articles/dashboard"}
+            {$script_ckeditor}
+        {/if}
     </body>
 </html>

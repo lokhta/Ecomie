@@ -141,6 +141,23 @@ class Articles extends CI_Controller{
         //Affichage dynamique des catégories dans le champ select
         $catData = get_category_article($this->_article_manager);
         $this->smarty->assign('option', $catData); 
+
+        $this->smarty->assign('url', 'Articles/dashboard');
+
+        //Chargement de l'editeur de texte
+        $script_ckeditor = 
+        "<script>
+            CKEDITOR.replace('articleContent', {
+                heigth : 400,
+                filebrowserUploadUrl: '".site_url('Articles/dashboard')."',
+                filebrowserImageUploadUrl: '".site_url('Articles/upload')."'})
+        </script>";
+
+        $this->smarty->assign('script_ckeditor', $script_ckeditor);
         $this->smarty->view('admin/dashboard.tpl');
+    }
+
+    public function upload(){
+        upload_image_ckeditor('articles');
     }
 }

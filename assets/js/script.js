@@ -7,20 +7,6 @@ function editor($field){
 }
 
 
-/*******************
- Admin
- ******************/
-
-//article => dashboard
-editor('articleContent');
-
-
-/*******************
- Site
- ******************/
-
- //Page article
-    
 // editor('commentContent');//Pour commentaire
 
 let edit_com_btn = document.querySelectorAll('.edit_com_btn');

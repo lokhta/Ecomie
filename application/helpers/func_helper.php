@@ -267,3 +267,41 @@ function timestamp_to_date(){
     $date_to_day = date_create();
     return  date_timestamp_get($date_to_day);
 }
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief upload_image_ckeditor() permet d'enregistrer une image sur le serveur depuis l'editeur de texte ckEditor.
+ * @param $type_text permet de construire le nom de l'image, ex: $type_texte = articles si l'image cocnerne un article.
+ */
+function upload_image_ckeditor($type_text){
+    $config['upload_path'] = "assets/img/upload";
+    $config['allowed_types'] = "gif|jpg|png";
+    $config['max_size'] = 70;
+    $dat = date_create();
+    $dat = date_timestamp_get($dat);
+    $config['file_name'] = $type_text.'_'.$dat;
+
+    $ci = get_instance();
+    $ci->load->library('upload', $config);
+
+    if(!$ci->upload->do_upload('upload')){
+        echo json_encode(array('error' => $ci->upload->display_errors()));
+    }else{
+        $upload_data = $ci->upload->data();
+        echo json_encode(array('file_name' => $upload_data['file_name']));
+
+        // Required: anonymous function reference number as explained above.
+        $funcNum = $_GET['CKEditorFuncNum'] ;
+        // Optional: instance name (might be used to load a specific configuration file or anything else).
+        $CKEditor = $_GET['CKEditor'] ;
+        // Optional: might be used to provide localized messages.
+        $langCode = $_GET['langCode'] ;
+
+        // Check the $_FILES array and save the file. Assign the correct path to a variable ($url).
+        $url = base_url().'assets/img/upload/'.$upload_data['file_name'];
+        // Usually you will only assign something here if the file could not be uploaded.
+        $message = '';
+
+        echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
+    }
+}
