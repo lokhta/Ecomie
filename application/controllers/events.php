@@ -68,7 +68,7 @@ class Events extends CI_Controller{
 
 
         $this->smarty->assign('comment', $comment_data);
-        //============= FIN GESTION COMMENTAIRE ARTICLE ==============
+        //============= FIN GESTION COMMENTAIRE EVENT ==============
 
         
 
