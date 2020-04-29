@@ -213,6 +213,7 @@ class Users extends CI_Controller{
 
     public function membres()
     {
+        $this->load->library('javascript/jquery');
         // var_dump($_SESSION);
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);
