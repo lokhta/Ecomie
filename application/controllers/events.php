@@ -70,13 +70,10 @@ class Events extends CI_Controller{
         $this->smarty->assign('comment', $comment_data);
         //============= FIN GESTION COMMENTAIRE EVENT ==============
 
-        
-
             $this->smarty->view('pages/event.tpl');
 
         }else{//Afficher tout les events
-            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent');
-
+            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent'); 
             $this->smarty->assign('event', $data);
             $this->smarty->view('pages/events.tpl');
         }
