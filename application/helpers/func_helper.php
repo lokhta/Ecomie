@@ -196,7 +196,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
         $get_data_in_base = $obj_manager->$method();
     }
 
-    //var_dump($get_data_in_base);
+    var_dump($get_data_in_base);
 
     $liste = array();
 

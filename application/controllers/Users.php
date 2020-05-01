@@ -132,6 +132,7 @@ class Users extends CI_Controller{
             $this->smarty->assign('value_city', set_value('userCity'));
 
             $errors = validation_errors();
+            var_dump($errors);exit;
             $this->smarty->assign('errors', $errors);
             $this->smarty->view('pages/inscription.tpl');
         }

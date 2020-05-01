@@ -22,7 +22,29 @@ class Forms extends CI_Controller{
     }
 
     public function send_message(){
-        write_data($this->_form_manager, $this->_form, 'sendForm', $_POST);
-        redirect(base_url()."pages/contact", 'location');
+        $this->form_validation->set_rules('formSendername', 'Nom', 'required');
+        $this->form_validation->set_rules('formSendermail', 'Email', 'required');
+        $this->form_validation->set_rules('formSubject', 'Objet', 'required');
+        $this->form_validation->set_rules('formMessage', 'Message', 'required');
+        $this->form_validation->set_rules('formRgpd', 'CGU', 'required', array('required'=>"Veuillez accépter les conditions génèrales d'utilisation"));
+
+        if($this->form_validation->run()) {
+            $array = array(
+            'success' => '<div class="alert alert-success">Votre message a bien été envoyé</div>'
+            );
+            write_data($this->_form_manager, $this->_form, 'sendForm', $_POST);
+            
+        }else{
+            $array = array(
+            'error'   => true,
+            'name_error' => form_error('formSendername'),
+            'email_error' => form_error('formSendermail'),
+            'subject_error' => form_error('formSubject'),
+            'message_error' => form_error('formMessage'),
+            'rgpd_error' => form_error('formRgpd')
+            );
+        }
+        
+        echo json_encode($array);
     }
 }
