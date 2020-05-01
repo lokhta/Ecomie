@@ -1590,6 +1590,23 @@ div#dash_info h3 {
     width: 150px;
 }
 
+#form_search{
+    flex-direction: row;
+    max-width: 50%;
+    background: none;
+}
+
+.field_search{
+    width: 100%;
+}
+
+input.btn.btn_search {
+    height: 50px;
+    border: none;
+    margin-left: 10px;
+    /* padding: 15px; */
+    width: 150px;
+}
 /******************
 Header logo
 ******************/

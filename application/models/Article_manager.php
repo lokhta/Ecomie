@@ -30,7 +30,7 @@ class Article_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllArticle(){
+    public function getAllArticle($keyword = null){
         $url = base_url()."Articles/articles";
 
         $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname');
@@ -40,6 +40,23 @@ class Article_manager extends CI_Model{
 
         if(current_url() == $url){
             $this->db->where('articleValidate', 1);
+
+            if(!empty($_GET['search']) && $_GET['search'] == 1 && $keyword){
+                $data = explode(' ', $keyword);
+                foreach($data as $key => $value){
+                    if($value == null){
+                        unset($data[$key]);
+                    }
+                }
+
+                $this->db->like('articleContent', $data[0]);
+
+                for($i = 1; $i< count($data); $i++){
+                    //var_dump($data[$i]);;
+                    $this->db->or_like('articleContent', $data[$i]);
+                }
+                // var_dump($data);;
+            }
         }
 
         if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
