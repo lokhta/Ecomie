@@ -56,11 +56,9 @@
     </ul>
   </div>
 </div>
-
-
 <div class="btn-content" id="btn-create-art">
         {if $smarty.session.id}
-            <a href="{base_url()}Archives/dashboard" class="btn-event">Créer une archive</a> 
+            <a href="{base_url()}Galeries/dashboard" class="btn-event">Créer une galerie</a> 
         {/if}
     </div>
     <div class="cadre_diapo">

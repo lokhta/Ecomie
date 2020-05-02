@@ -37,7 +37,7 @@
             </footer>
         </div>
         <script src="{base_url()}assets/js/script.js"></script>
-        {if $url == "Articles/dashboard" || $url == "Events/dashboard"}
+        {if $url == "Articles/dashboard" || $url == "Events/dashboard" || $url == "Galeries/dashboard"}
             {$script_ckeditor}
         {/if}
     </body>

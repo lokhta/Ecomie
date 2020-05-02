@@ -33,7 +33,7 @@ class Dashboard extends CI_Controller{
         $this->smarty->view('admin/dashboard.tpl');
     }
 
-    public function archives(){
+    public function Galeries(){
         $this->smarty->assign('page', 'admin/archive.tpl');
         $this->smarty->view('admin/dashboard.tpl');
     }

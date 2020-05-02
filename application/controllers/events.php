@@ -79,7 +79,6 @@ class Events extends CI_Controller{
         }
     }
 
-
     public function dashboard(){
         //Pour insertion dans la BDD
     

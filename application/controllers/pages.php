@@ -62,7 +62,7 @@ class Pages extends CI_Controller{
 
 
     public function galerie(){
-        $this->smarty->view('pages/galerie.tpl');
+        $this->smarty->view('pages/galeries.tpl');
     }
 
     public function contact(){
