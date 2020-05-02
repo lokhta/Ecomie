@@ -132,6 +132,7 @@ class Users extends CI_Controller{
             $this->smarty->assign('value_city', set_value('userCity'));
 
             $errors = validation_errors();
+            var_dump($errors);exit;
             $this->smarty->assign('errors', $errors);
             $this->smarty->view('pages/inscription.tpl');
         }
@@ -184,7 +185,7 @@ class Users extends CI_Controller{
         }
 
         $avatarIcon =  $_SESSION['avatar'];
-        var_dump($avatarIcon);
+        //var_dump($avatarIcon);
         $this->smarty->assign('avatar', $avatarIcon);
         $this->smarty->assign('page', 'admin/profil.tpl');
         $this->smarty->view('admin/dashboard.tpl');
@@ -213,7 +214,7 @@ class Users extends CI_Controller{
 
     public function membres()
     {
-        $this->load->library('javascript/jquery');
+        //$this->load->library('javascript/jquery');
         // var_dump($_SESSION);
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         //var_dump($data);

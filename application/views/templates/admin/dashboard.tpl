@@ -12,12 +12,16 @@
         <title>{$title}</title>
         <script src="https://kit.fontawesome.com/cefffb285d.js" crossorigin="anonymous"></script>
         <script src="{base_url()}assets/js/ckeditor/ckeditor.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     </head>
 
     <body>
         <div id="main_content">
             <header>
                 <div class="headerLogo headerAdmin">
+                    <div>
+                    <a href="{base_url()}"> Retourner à Ecomie / </a>
+                </div>
                     <div>
                         {if $smarty.session.id}
                             <a href="{base_url()}users/profil">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>

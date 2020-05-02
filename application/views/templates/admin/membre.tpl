@@ -1,40 +1,4 @@
 <div>
-    <div class="btn-content">
-        <a href="{base_url()}dashboard" class="btn">Retour</a>
-    </div>
-    {* {if $smarty.session.role == 1}
-    <table class="tab">
-        <tr class="thead">
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Adresse email</th>
-            <th>Téléphone</th>
-            <th>Code Postale</th>
-            <th>Ville</th>
-            <th>adresse complète</th>
-            <th>Rôle</th>
-            <th>Supprimer</th>
-        </tr>
-        {foreach from=$users key=key item=val}
-            <tr style="background: {cycle values='#fff , #D6EAF8'}">
-                <td>{$val.userName}</td>
-                <td>{$val.userFirstname}</td>
-                <td>{$val.userEmail}</td>
-                <td>{$val.userPhone}</td>
-                <td>{$val.userCp}</td>
-                <td>{$val.userCity}</td>
-                <td>{$val.userAddress}</td>
-                <td>{$val.roleName}</td>
-                <td class="link_gestion">
-                    <a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
-                </td>
-            </tr>
-        {/foreach}
-    </table>
-    {else}
-        <p>Vous n'avez pas l'autorisation d'accéder à cette page</p>
-    {/if} *}
-
 
     <div id="tab_content">
 
@@ -51,7 +15,9 @@
                         <td>{$val.userName}</td>
                         <td>{$val.userFirstname}</td>
                         <td class="link_gestion">
-                            <button id="action"><i class="fas fa-search"></i></button>
+                            <button class="action" data-name="{$val.userName}" data-firstname="{$val.userFirstname}" data-mail="{$val.userEmail}"
+                             data-phone="{$val.userPhone}" data-address="{$val.userAddress}" data-cp="{$val.userCp}" data-city="{$val.userCity}">
+                             <i class="fas fa-search"></i></button>
                             {*<a href="{base_url()}users/membres?user_id={$val.userId}"><i class="fas fa-search"></i></a>*}
                             <a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
                         </td>
@@ -65,31 +31,31 @@
             <p class="thead">Coordonnées</p>
             <p class="row_info_membre white">
                 <span class="lab">Nom</span>
-                <span class="info_membre">{$user.userName}</span>
+                <span id="name" class="info_membre"></span>
             </p>
             <p class="row_info_membre bluesky">
                 <span class="lab">Prénom</span>
-                <span class="info_membre">{$user.userFirstname}</span>
+                <span id="firstname" class="info_membre"></span>
             </p>
             <p class="row_info_membre white">
                 <span class="lab">Email</span>
-                <span class="info_membre">{$user.userEmail}</span>
+                <span id="mail" class="info_membre mail"></span>
             </p>
             <p class="row_info_membre bluesky">
                 <span class="lab">Téléphone</span>
-                <span class="info_membre">{$user.userPhone}</span>
+                <span id="phone" class="info_membre"></span>
             </p>
             <p class="row_info_membre white">
                 <span class="lab">Adresse</span>
-                <span class="info_membre">{$user.userAdresse}</span>
+                <span id="address" class="info_membre"></span>
             </p>
             <p class="row_info_membre bluesky">
                 <span class="lab">CP</span>
-                <span class="info_membre">{$user.userCp}</span>
+                <span id="cp" class="info_membre"></span>
             </p>
             <p class="row_info_membre white">
                 <span class="lab">Ville</span>
-                <span class="info_membre">{$user.userCity}</span>
+                <span id="city" class="info_membre"></span>
             </p>
             <div class="row_info_membre bluesky">
                 {form_open('users/membres')}
@@ -106,18 +72,28 @@
     </div>
 
 </div>
-
-<script src="jquery.js"></script>
     <script>
       $(function() {
-        $('#action').click(function() {
-        
-          //$.get('proverbes.php?l=9', function(data) {
-            alert("hello");
-          });    
-        });  
-      });
-</script>
+        $('.action').click(function() {
+            var current = $(this);
+            var name = current.data('name');
+            var firstname = current.data('firstname');
+            var mail = current.data('mail');
+            var phone = current.data('phone');
+            var address = current.data('address');
+            var cp = current.data('cp');
+            var city = current.data('city');
+
+            $('#name').text(name);
+            $('#firstname').text(firstname);
+            $('#mail').text(mail);
+            $('#phone').text(phone);
+            $('#address').text(address);
+            $('#cp').text(cp);
+            $('#city').text(city);
+            });
+          });
+    </script>
 
 
 

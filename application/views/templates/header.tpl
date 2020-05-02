@@ -13,6 +13,7 @@
     <title>{$title}</title>
      <script src="https://kit.fontawesome.com/cefffb285d.js" crossorigin="anonymous"></script>
      <script src="{base_url()}assets/js/ckeditor/ckeditor.js"></script>
+     <script> var base_url = "{base_url()}"; </script>
 </head>
 
 <body>

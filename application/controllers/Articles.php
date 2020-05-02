@@ -9,6 +9,7 @@ class Articles extends CI_Controller{
     public function __construct(){
         parent::__construct();
 
+        // var_dump($_POST);
         $this->_article_manager = create_object('Article_manager');
         $this->_article = create_object('Article');
     }
@@ -77,8 +78,11 @@ class Articles extends CI_Controller{
             $this->smarty->view('pages/article.tpl');
 
         }else{//Afficher tout les articles
-            $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
-
+            if(!empty($_GET['search']) && $_GET['search'] == 1){
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle', $_POST['keyword']);
+            }else{
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
+            }
             $this->smarty->assign('article', $data);
             $this->smarty->view('pages/savoir_faire.tpl');
         }

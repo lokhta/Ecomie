@@ -66,6 +66,7 @@ class Pages extends CI_Controller{
     }
 
     public function contact(){
+        //$array;
         $this->smarty->view('pages/contact.tpl');
     }
 

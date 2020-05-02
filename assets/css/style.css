@@ -1206,8 +1206,9 @@ form {
     flex-direction: column;
     max-width: 600px;
     background-color:rgb(166,212, 251) ;
-    margin: 50px auto 50px;
+    margin: 0 auto;
     padding: 20px; 
+    margin-top: 15px;
 }
 label {
         font-size: 1.2em;
@@ -1589,6 +1590,23 @@ div#dash_info h3 {
     width: 150px;
 }
 
+#form_search{
+    flex-direction: row;
+    max-width: 50%;
+    background: none;
+}
+
+.field_search{
+    width: 100%;
+}
+
+input.btn.btn_search {
+    height: 50px;
+    border: none;
+    margin-left: 10px;
+    /* padding: 15px; */
+    width: 150px;
+}
 /******************
 Header logo
 ******************/
@@ -1892,4 +1910,20 @@ span.comment_author {
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+.red_error{
+    color : #EA3725;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }
