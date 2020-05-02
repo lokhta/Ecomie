@@ -74,7 +74,7 @@ function get_data($obj_manager, $obj_class, $method, $param){
         }
     }
 
-    var_dump($data);;
+    // var_dump($data);;
     return $data;
 }
 
@@ -143,7 +143,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     if($method == 'editUser'){
 
         $userTab = $obj_class->getData();
-        var_dump($userTab);;
+        // var_dump($userTab);;
         foreach($userTab as $key => $value){
             $key_session = lcfirst(str_replace('user', '', $key));
             $_SESSION[$key_session] = $value;
@@ -196,7 +196,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
         $get_data_in_base = $obj_manager->$method();
     }
 
-    //var_dump($get_data_in_base);
+    // var_dump($get_data_in_base);
 
     $liste = array();
 

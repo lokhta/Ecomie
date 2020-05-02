@@ -31,15 +31,15 @@ class Event_manager extends CI_Model{
 
     public function getAllEvent(){
         $url = base_url()."Events/events";
-
-        $this->db->select('eventId, eventName, eventContent, eventDateStart, eventTimeStart, eventDateEnd, eventTimeEnd, eventAuthor, userFirstname');
+        $this->db->select('DATE(NOW()), eventId, eventName, eventContent, eventDateStart, eventTimeStart, eventDateEnd, eventTimeEnd, eventAuthor, userFirstname');
         $this->db->from('events');
         $this->db->join('users', 'users.userId = events.eventAuthor');
+        $this->db->where('eventDateEnd > DATE( NOW())');
 
         if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
             $this->db->where('eventAuthor', $_SESSION['id']);
         }
-
+        
         $query = $this->db->get();
         return $query->result_array();
     }
