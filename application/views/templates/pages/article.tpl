@@ -25,7 +25,7 @@
 
                                         {if $val.commentAuthor == $smarty.session.id }
                                                 <button class="edit_com_btn btn">Modifier</button>
-                                                <a href="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;del_com=1" class="btn">Supprimer</a>
+                                                <a href="{base_url()}Comments/edit_comment?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;del_com=1" class="btn">Supprimer</a>
                                         {/if}
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
 
                                 <div class="comment_content">{$val.commentContent}</div>
                                 <div class="edit_com">
-                                    <form action="{base_url()}Articles/articles?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;edit_com=1" method="post">
+                                    <form action="{base_url()}Comments/edit_comment?article_id={$smarty.get.article_id}&amp;comment_id={$val.commentId}&amp;edit_com=1" method="post">
                                     <textarea name="commentContent" id="commentContent" value="" >{$val.commentContent}</textarea>
                                     <input type='submit' value="Modifier" id="submit">
                                     </form>
@@ -59,5 +59,6 @@
 
     
     </div>
+    
 
     {include file="footer.tpl"}

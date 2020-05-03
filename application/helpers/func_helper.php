@@ -45,10 +45,10 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
     $get_data_in_base = $obj_manager->$method($param);
-    var_dump($get_data_in_base);;
+    //var_dump($get_data_in_base);;
 
     $obj_class->hydrate($get_data_in_base);
-    var_dump($obj_class);
+    //var_dump($obj_class);
 
     $data = $obj_class->getData();
     // var_dump($data);
