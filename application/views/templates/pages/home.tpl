@@ -36,7 +36,7 @@
             <p class="news">Ce n'est que le début </br>inscrit toi à la newsletter pour les derniéres astuces.</p>
             <div id="newsletter">
                 <label for="Newsletter"></label>
-                <input id="mail" type="text" id="Newsletter" placeholder="Entrez votre adresse mail">
+                <input id="mail" type="text" name ="subscribeEmail" id="Newsletter" placeholder="Entrez votre adresse mail">
                 <button class="bouton">Souscrivez </button>
             </div>
         </section>
