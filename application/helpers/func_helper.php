@@ -66,7 +66,7 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
 
-    if(!in_array(get_class($obj_manager), array('User_manager'))){
+    if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager'))){
         $date_time = get_date($get_data_in_base);
         if(!empty($date_time)){
             $data['date'] = $date_time['date'];
@@ -222,7 +222,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
         }
         
 
-        if(!in_array(get_class($obj_manager), array('User_manager'))){
+        if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];

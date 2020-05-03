@@ -1945,3 +1945,8 @@ div#oops img {
 #oops p{
     font-size: 30px;
 }
+/*Formualire inscription news*/
+form#form_news {
+    flex-direction: row;
+    background: none;
+}

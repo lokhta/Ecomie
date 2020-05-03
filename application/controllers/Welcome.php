@@ -32,6 +32,16 @@ class Welcome extends CI_Controller {
 
     public function index(){
 
+		//Inscription newsletter
+		if(!empty($_POST) && empty($_GET)){
+
+			$subscription_manager = create_object('Subscription_manager');
+			$subscription = create_object('Subscription');
+
+            write_data($subscription_manager, $subscription, 'addSubscriber', $_POST);
+            redirect(base_url(), 'location');
+		}
+		
 		$this->smarty->view('pages/home.tpl');
 		
 	}
