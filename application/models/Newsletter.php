@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Newsletter extends CI_Controller{
+class Newsletter extends CI_Model{
     private $_newsId;
     private $_newsTitle;
     private $_newsContent;
