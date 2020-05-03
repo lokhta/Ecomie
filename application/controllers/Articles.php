@@ -89,6 +89,11 @@ class Articles extends CI_Controller{
     }
 
     public function dashboard(){
+
+        if(empty($_SESSION['id'])){
+            redirect('pages/access_denied', 'location');
+        }
+        
         //Pour insertion dans la BDD
         if(!empty($_POST) && empty($_GET)){
             write_data($this->_article_manager, $this->_article, 'addArticle', $_POST, array('articleAuthor' => $_SESSION['id']));

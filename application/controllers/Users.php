@@ -214,6 +214,11 @@ class Users extends CI_Controller{
 
     public function membres()
     {
+
+        if(empty($_SESSION['id'])){
+            redirect('pages/access_denied', 'location');
+        }
+        
         //$this->load->library('javascript/jquery');
         // var_dump($_SESSION);
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
