@@ -111,10 +111,10 @@ class Form extends CI_Model{
     }
 
     public function getData(){
-        $articleData = get_object_vars($this);
+        $formData = get_object_vars($this);
 
         $data = array();
-        foreach($articleData as $key => $value){
+        foreach($formData as $key => $value){
             $data[substr($key, 1)] = $value;
         }
 
