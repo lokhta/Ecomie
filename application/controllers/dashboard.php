@@ -11,6 +11,21 @@ class Dashboard extends CI_Controller{
     }
 
     public function index(){
+        //var_dump($_POST);
+        $subscription_manager = create_object('Subscription_manager');
+        $subscription = create_object('Subscription');
+        
+        $is_in_base = $subscription_manager->inBase($_SESSION['email']);
+        
+        $this->smarty->assign('is_in_base', $is_in_base);
+
+        if(!empty($_POST['check_news']) && $_POST['check_news'] == 1 && !$is_in_base){
+            $subscription->hydrate(array('subscribeEmail'=>$_SESSION['email']));
+            write_data($subscription_manager, $subscription, 'addSubscriber', $_POST);
+            //$is_in_base = $subscription_manager->addSubscriber($subscription);
+            redirect(base_url().'dashboard', 'location');
+        }
+
         $this->smarty->assign('page', 'admin/home.tpl');
         $this->smarty->assign('title', 'Ecomie - Tableau de bord');
         $this->smarty->view('admin/dashboard.tpl');

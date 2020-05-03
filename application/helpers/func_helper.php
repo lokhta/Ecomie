@@ -45,10 +45,10 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
     $get_data_in_base = $obj_manager->$method($param);
-    // var_dump($get_data_in_base);
+    var_dump($get_data_in_base);;
 
     $obj_class->hydrate($get_data_in_base);
-    // var_dump($obj_class);
+    var_dump($obj_class);
 
     $data = $obj_class->getData();
     // var_dump($data);
@@ -66,7 +66,7 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
 
-    if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager'))){
+    if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'Subscription_manager'))){
         $date_time = get_date($get_data_in_base);
         if(!empty($date_time)){
             $data['date'] = $date_time['date'];
@@ -305,3 +305,4 @@ function upload_image_ckeditor($type_text){
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
     }
 }
+

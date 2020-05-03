@@ -17,4 +17,13 @@ class Subscription_manager extends CI_Model{
     public function deleteNews($subscribeMail){
         return $this->db->where('subscribeEmail', $subscribeMail)->delete('subscribes');
     }
+
+    public function inBase($subscribeEmail){
+        $query = $this->db
+        ->select('*')
+        ->from('subscribes')
+        ->where('subscribeEmail',$subscribeEmail)
+        ->get();
+        return $query->row_array();
+    }
 }

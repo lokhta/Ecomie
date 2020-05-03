@@ -1,3 +1,11 @@
+
+{if !$is_in_base}
+    {form_open('', 'id="checkbox_news"')}
+        {form_checkbox('check_news','1',TRUE,'id="check_news"')} 
+        {form_submit('valider',"M'inscrire à la newsletter",'id="submit"')} 
+    {form_close()}
+{/if}
+
 <div id="stats_dash">
     <div class="flex_column bg_green">
         <h3>Membres inscrit</h3>
