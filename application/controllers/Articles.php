@@ -96,13 +96,13 @@ class Articles extends CI_Controller{
         }
 
         if($_GET){
-            $url = "Articles/dashboard?article_id=".$_GET['article_id'];
+            $url_form = "Articles/dashboard?article_id=".$_GET['article_id'];
 
             if(!empty($_GET['edit'])){
-                $url .= "&edit=1&update=1";
+                $url_form .= "&edit=1&update=1";
             }
 
-            $this->smarty->assign('url', $url);
+            $this->smarty->assign('url_form', $url_form);
 
             //Afficher un seul article
             if(!empty($_GET['article_id'])){
@@ -117,7 +117,7 @@ class Articles extends CI_Controller{
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
 
-                redirect($url, 'location'); 
+                redirect($url_form, 'location'); 
             }
 
             //Modification article
@@ -126,7 +126,7 @@ class Articles extends CI_Controller{
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, array('articleDate'=>$date_modif));
 
-                redirect($url, 'location');
+                redirect($url_form, 'location');
             }
 
             //Suppression article

@@ -19,7 +19,7 @@
                 <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;del=1" class = "btn btn-del">Supprimer</a>
             </div>
             <div class="formContent" id="edit">
-                {form_open($url, "class='form'")}
+                {form_open($url_form, "class='form'")}
                     <p class="field-content">
                         {form_label("Catégorie")}
                         {form_dropdown('articleCategory', $option, "id='cat'")}

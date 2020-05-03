@@ -12,8 +12,8 @@
                 <td>{$val.newsTitle}</td>
                 <td>{$val.date}</td>
                 <td class="link_gestion">
-                    <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}"><i class="fas fa-search"></i></a>
-                    <a href="{base_url()}Articles/dashboard?article_id={$val.articleId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{base_url()}Newsletters/dashboard?news_id={$val.newsId}"><i class="fas fa-search"></i></a>
+                    <a href="{base_url()}Newsletters/dashboard?news_id={$val.newsId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {/foreach}
