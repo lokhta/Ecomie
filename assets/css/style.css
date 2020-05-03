@@ -1946,7 +1946,15 @@ div#oops img {
     font-size: 30px;
 }
 /*Formualire inscription news*/
-form#form_news {
+form#form_news, #checkbox_news{
     flex-direction: row;
     background: none;
+}
+
+#checkbox_news #check_news{
+    display: none;
+}
+
+#checkbox_news #submit{
+    width: 100%;
 }
