@@ -14,6 +14,12 @@ class Newsletters extends CI_Controller{
 
     public function dashboard(){
 
+        //Pour insertion dans la BDD
+        if(!empty($_POST) && empty($_GET)){
+            write_data($this->_newsletter_manager, $this->_newsletter, 'addNews', $_POST);
+            redirect(base_url()."Newsletters/dashboard", 'location');
+        }
+
         $data = get_all_data($this->_newsletter_manager, $this->_newsletter, 'getAllNews');
         $this->smarty->assign('news', $data);
         $this->smarty->assign('title', 'Dashboard - Newsletter');
