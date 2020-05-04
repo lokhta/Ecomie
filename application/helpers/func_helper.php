@@ -306,3 +306,10 @@ function upload_image_ckeditor($type_text){
     }
 }
 
+function get_comment($obj_manager, $obj_class, $method, $param){
+    $manager = create_object($obj_manager);
+    $class = create_object($obj_class);
+
+    $comment = get_all_data($manager, $class, $method, $param);
+    return json_encode($comment);
+}

@@ -1756,46 +1756,22 @@ input#submit:hover{
     margin-bottom: 15px;
 }
 
-.header_comment, #btn_edit_role {
-    display: flex;
-    align-items: center;
-}
-.header_comment p {
-    font-style: italic;
-    text-decoration: underline;
-}
-
-.btn_content{
-    display: flex;
-}
-
-.btn_content .btn{
-    border: none;  
-    height: 20px;
-    font-size: 15px;
-    margin: 0 10px;
-    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
-}
-
-
 span.comment_author {
     font-weight: bold;
 }
 
-.edit_class textarea{
-    height: 70px !important;
+.comments p{
+    display: flex;
+    align-items: baseline;
 }
 
-.edit_com form {
-    max-width: 100%;
-    background: none;
-    margin: 0;
-    padding: 0;
+.comments p .btn{
+    margin-left: 20px;;
+    border: none;
+    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
+    font-size: 15px;;
 }
 
-.edit_com{
-    display: none;
-}
 
 /* ---------- Page Profil ---------*/
 

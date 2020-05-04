@@ -20,21 +20,6 @@ class Events extends CI_Controller{
         // var_dump($data);
         $this->smarty->assign('eventDetail', $data);
 
-        //============= DEBUT GESTION COMMENTAIRE EVENT ==============
-        $comment_manager = create_object('Comment_manager');
-        $comment = create_object('Comment');
-
-        $url = base_url()."Comments/add_comment?event_id=".$_GET['event_id'];
-        $this->smarty->assign('url', $url);
-
-        //Affichage des commentaires d'un Event
-        $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['event_id']);
-        // var_dump($comment_data);
-
-
-        $this->smarty->assign('comment', $comment_data);
-        //============= FIN GESTION COMMENTAIRE EVENT ==============
-
             $this->smarty->view('pages/event.tpl');
 
         }else{//Afficher tout les events

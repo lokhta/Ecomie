@@ -38,10 +38,10 @@ class Comment_manager extends CI_Model{
         $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname');
         $this->db->from('comments');
         $this->db->join('users', 'users.userId = comments.commentAuthor');
-        if(current_url() == base_url()."Articles/articles"){
+        if(!empty($_GET['article_id'])){
             $this->db->join('articles', 'articles.articleId = comments.commentArticle');
             $this->db->where('commentArticle', $id);
-        }elseif(current_url() == base_url()."Events/events"){
+        }elseif(!empty($_GET['event_id'])){
             $this->db->join('events', 'events.eventId = comments.commentEvent');
         }
         $this->db->order_by('commentDate', 'DESC');

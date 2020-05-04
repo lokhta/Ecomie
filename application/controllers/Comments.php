@@ -37,9 +37,9 @@ class Comments extends CI_Controller{
         //var_dump($_GET);
 
         if(!empty($_POST) && empty($_GET['edit_com'])){
-
             write_data($this->_comment_manager, $this->_comment, 'addComment', $_POST, $data);
-            redirect($url, 'location');
+            echo json_encode(array("success" => "success"));
+            // redirect($url, 'location');
         }
     }
 
@@ -63,14 +63,28 @@ class Comments extends CI_Controller{
                 write_data($this->_comment_manager, $this->_comment, 'editComment', $_POST, $data);
                 redirect($url, 'location');
 
-            }elseif($_GET['report_com'] == 1){
+            }elseif(!empty($_GET['report_com']) && $_GET['report_com'] == 1){
                 write_data($this->_comment_manager, $this->_comment, 'editComment', $_POST, array('commentReport' => 1));
                 redirect($url, 'location');
 
-            }elseif($_GET['del_com'] == 1){
+            }elseif(!empty($_GET['del_com']) && $_GET['del_com'] == 1){
                 del_data($this->_comment_manager, 'deleteComment', $_GET['comment_id']);
+                
                 redirect($url, 'location');
             }
         }
+    }
+
+    public function get_comment(){
+
+        if(!empty($_GET['article_id'])){
+            $url = base_url()."Articles/articles?article_id=".$_GET['article_id'];
+            $json_data =  get_comment('Comment_manager', 'Comment', 'getAllComment',$_GET['article_id']);
+        }elseif(!empty($_GET['event_id'])){
+            $url = base_url()."Events/events?event_id=".$_GET['event_id'];
+            $json_data =  get_comment('Comment_manager', 'Comment', 'getAllComment',$_GET['event_id']);
+        } 
+        echo $json_data;
+
     }
 }
