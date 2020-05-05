@@ -24,22 +24,7 @@
                         {form_label("Titre")}
                         {form_input("eventName",$eventDetail.eventName,"id='title'")}
                     </p>
-                    <p class="field-content">
-            {form_label("Debut date")}
-            {form_date("eventDateStart",'',"id='Debut date'")}
-        </p>
-        <p class="field-content">
-            {form_label("Debut heure")}
-            {form_time("eventTimeStart",'',"id='Debut heure'")}
-        </p>
-        <p class="field-content">
-            {form_label("Fin jour")}
-            {form_date("eventDateEnd",'',"id='Fin jour'")}
-        </p>
-        <p class="field-content">
-            {form_label("Fin heure")}
-            {form_time("eventTimeEnd",'',"id='Fin heure'")}
-        </p>
+          
                 {form_textarea('eventContent',$eventDetail.eventContent,'id="eventContent" class="ckeditor"')}
                 {form_submit('valider','Valider','id="submit"')}
                 {form_close()}

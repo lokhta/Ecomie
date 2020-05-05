@@ -63,10 +63,10 @@
     </div>
     <div class="cadre_diapo">
       <div class="interieur_diapo">
-        {foreach from=$event item=val key=key}
+        {foreach from=$galerie item=val key=key}
             <section class="savoir__faire">
                     <h2>{$val.eventName}</h2>
-                    <p>{$val.eventContent}</p>
+                    <img src="{$val.imgName}"/>
                 </a>
               </section> 
             {/foreach}    

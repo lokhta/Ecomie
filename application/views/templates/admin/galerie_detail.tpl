@@ -8,10 +8,7 @@
             <div>
             
                 <h2>{$galerieDetail.eventName}</h2>
-                <span>Publié par {$galerieDetail.eventAuthor} </span>
-                <span>Date {$galerieDetail.eventDateStart} - {$galerieDetail.eventTimeStart} /
-                    {$galerieDetail.eventDateEnd}   {$galerieDetail.eventTimeEnd}</span>
-                <p>{$galerieDetail.eventContent}</p>
+             
             </div>
             <div class="content-action">
                 <a href="{base_url()}Galeries/dashboard?event_id={$smarty.get.event_id}&amp;edit=1" class = "btn btn-edit">Modifier</a>
