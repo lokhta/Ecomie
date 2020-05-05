@@ -1691,6 +1691,8 @@ Article Dashboard
     margin: 0px;
 }
 
+
+
 /*Article detail*/
 .content-action{
     display: flex;
@@ -1745,6 +1747,10 @@ input#submit{
 
 input#submit:hover{
     background: #239B56;
+}
+
+#edit{
+    display: none;
 }
 
 /*Commentaires - Article*/
