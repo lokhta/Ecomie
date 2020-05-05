@@ -1776,11 +1776,52 @@ span.comment_author {
 /* ---------- Page Profil ---------*/
 
 .image{
-    max-width:100%;
+    max-width:200px;
     height:auto;
-    border-radius: 50%;
-    border: solid 4px white;
 }
+
+#content_avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field_profil, #btn_submit{
+    display: none;
+}
+
+.info_profil {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.info_profil{
+    display: flex;
+    justify-content: space-between;
+}
+
+.info_profil td{
+    width: 50%;
+}
+
+.info_profil .field_profil{
+    height:  30px;;
+    margin-bottom: 0px;
+}
+
+table#tab_profil .info_profil td:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#btn_edit_profil{
+    display: none;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
 
 /*****************************
     Liste membre Admin
@@ -1874,6 +1915,8 @@ span.comment_author {
     display: none;
     margin-top : 15px;
 }
+
+
 
 /*****************************
     Inscription

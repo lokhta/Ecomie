@@ -130,18 +130,25 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
             $post[$key] = $value;
         }
     }
-    // var_dump($post);
 
-    if($method == 'editUser' && $post['userPwd'] == ''){
-        unset($post['userPwd']);
+
+    // Pour edit profil - On supprime les variables vide du tableau POST
+    if($_SESSION['id']){
+        foreach($post as $key=>$value){
+            if($post[$key] == ""){
+                unset($post[$key]);
+            }
+        }
+        $post['userRole'] = $_SESSION['role'];
+        // var_dump($post);exit;
     }
 
     $obj_class->hydrate($post);
 
     // var_dump($obj_class);;
 
+    //Actualisation de la session après la modificationd du profil
     if($method == 'editUser'){
-
         $userTab = $obj_class->getData();
         // var_dump($userTab);;
         foreach($userTab as $key => $value){
