@@ -19,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         private $_userCp;
         private $_userCity;
         private $_userPwd;
-		private $_userAvatar="user-solid.svg";
-		private $_userRole=3;
+		private $_userAvatar;
+		private $_userRole;
 		
 		/* CONSTRUCTEUR */
 		public function __construct(){

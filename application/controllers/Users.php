@@ -141,10 +141,13 @@ class Users extends CI_Controller{
         // $this->load->library('encryption');
         //Pour insertion dans la BDD
 
-        $userManager = new User_manager;
-        $userObj = new User;
-        $userObj->hydrate($_POST);
-        $userManager->addUser($userObj);
+        if(!empty($_POST)){
+            $_POST['userAvatar'] = "user-solid.svg";
+            $_POST['userRole'] = 3;
+
+            write_data($this->_user_manager, $this->_user, 'addUser', $_POST);
+        }
+        
         $this->smarty->view('pages/formsuccess.tpl');
         }
         
@@ -207,6 +210,8 @@ class Users extends CI_Controller{
                 echo json_encode(array('file_name' => $upload_data['file_name']));
                 $_POST['userAvatar'] = $upload_data['file_name'];
             }
+            
+            //var_dump($_POST);
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST, array('userId'=>$_SESSION['id']));
             redirect(base_url()."users/profil", 'refresh');
         }
