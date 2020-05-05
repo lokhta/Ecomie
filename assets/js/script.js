@@ -24,24 +24,26 @@ if(edit_com_btn){
 }
 
 /*******************
- List membre
+Edit profil
  ******************/
 
- let btn_edit_profil = document.querySelector('#btn_edit_role');
+let btn_edit_profil = document.querySelectorAll(".btn_edit_profil");
+let btn_submit = document.querySelector('#btn_edit_profil');
 
- if(btn_edit_profil){
-     let user_role = document.querySelector("#user_role");
-     let  role_list = document.querySelector('#role');
-     let  btn_submit = document.querySelector('#btn_submit');
+if(btn_edit_profil){
+    let field_profil = document.querySelectorAll('.field_profil');
+    let info_user = document.querySelectorAll('.info_user');
+    let btn_submit = document.querySelector('#btn_edit_profil');
 
-     btn_edit_profil.addEventListener('click', function(){
-         console.log('ok');
-         user_role.style.display = 'none';
-         btn_edit_profil.style.display = 'none';
-         role_list.style.display = 'block';
-         btn_submit.style.display = 'block';
-     })
- }
+    for(let i = 0; i<btn_edit_profil.length; i++){
+        btn_edit_profil[i].addEventListener('click', function(){
+            info_user[i].style.display = "none";
+            field_profil[i].style.display = "flex";
+            btn_submit.style.display = "flex";
+        })
+
+    }
+}
 
  let btn_edit_photo = document.querySelector('.btn_edit_photo');
  if(btn_edit_photo){
@@ -49,13 +51,17 @@ if(edit_com_btn){
     let userAvatar = document.querySelector('#userAvatar');
     let btn_del_photo = document.querySelector('.btn_del_photo');
     btn_edit_photo.addEventListener('click', function(){
+        console.log('ok');
         btn_edit_photo.style.display = 'none';
         btn_del_photo.style.display = "none";
         userAvatar.style.display = "block";
     })
  }
 
- /* Ajax validation form contact */
+
+/****************************
+ Ajax validation form contact
+ ******************************/
 
  $(document).ready(function(){
     $('#form_val').on('submit', function(event){
@@ -119,3 +125,6 @@ if(edit_com_btn){
         })
     });
 });
+
+
+
