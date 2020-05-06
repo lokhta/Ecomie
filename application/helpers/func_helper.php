@@ -229,17 +229,19 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             }
         }
         
+        //var_dump($data);
 
         if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'galerie_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
                 $data['time'] = $date_time['time'];
+                var_dump($data);
             }
         }
 
 
-        // var_dump($data);
+        
         array_push($liste, $data);
     }
     // var_dump($liste);
@@ -261,7 +263,9 @@ function get_date($data){
     if(isset($convertDate)){
         $date = date('d/m/Y', $convertDate);
         $time = date('H:i:s', $convertDate);
-
+    }else{
+        $date = '0';
+        $time = '0';
     }
 
     return array('date' => $date, 'time' => $time);
