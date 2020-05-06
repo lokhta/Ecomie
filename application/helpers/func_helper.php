@@ -158,6 +158,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
     $obj_manager->$method($obj_class);
+    // var_dump($obj_manager);;
 }
 
 /**

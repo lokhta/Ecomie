@@ -11,14 +11,16 @@
             <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
             <p>{$articleDetail.articleContent}</p>
             <div id="comments">
-                <div id="content_comments"></div>
+                <div id="content_comments">
+
+                </div>
             </div>
             {if $smarty.session.id}
-                <button id="commentBtn">Ajouter un commentaire</button>
+                <button id="event_btn">Ajouter un commentaire</button>
             {/if}
         </div>
         
-        <div class="formContent" id="comment">
+        <div class="formContent" id="display_content">
             {form_open("Comments/add_comment?article_id={$smarty.get.article_id}", "id='form_com'")}
                 {form_textarea('commentContent','','id="commentContent"')}
                 {form_submit('valider','Valider','id="submit"')}
@@ -48,12 +50,16 @@
                             }
                             html += "<p>"+elem.commentContent+"</p><hr></div>";
                         });
-                        $('#content_comments').html(html);
-                        
-                        
-                    }
+                        if(html == ""){
+                            $('#content_comments').html("<p>Cette article n'a pas de commentaires</p>");
+                        }else{
+                            $('#content_comments').html(html); 
+                        }
+                       
+                    }             
                 });
             }
+            
             getComment();
 
             $("#form_com").on("submit", function(event){

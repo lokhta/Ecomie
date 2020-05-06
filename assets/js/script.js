@@ -62,14 +62,14 @@ if(btn_edit_profil){
  Article detail - admin
  ******************************/
 
- let edit_article = document.querySelector("#edit_article");
+ let event_btn = document.querySelector("#event_btn");
 
- if(edit_article){
-     let edit_content = document.querySelector('#edit')
+ if(event_btn){
+     let display_content = document.querySelector('#display_content')
 
-     edit_article.addEventListener('click', function(event){
+     event_btn.addEventListener('click', function(event){
         event.preventDefault();
-        edit_content.style.display = "block";
+        display_content.style.display = "block";
      });
 
  }

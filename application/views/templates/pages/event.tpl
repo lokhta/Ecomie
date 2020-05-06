@@ -17,10 +17,10 @@
                     <div id="content_comments"></div>
             </div>    
       {if $smarty.session.id}
-                <button id="commentBtn">Ajouter un commentaire</button>
+                <button id="event_btn">Ajouter un commentaire</button>
                 
             {/if}   
-        <div class="formContent" id="comment">
+        <div class="formContent" id="display_content">
             {form_open("Comments/add_comment?event_id={$smarty.get.event_id}", "id='form_com'")}
                 {form_textarea('commentContent','','id="commentContent"')}
                 {form_submit('valider','Valider','id="submit"')}
@@ -48,7 +48,11 @@
                             }
                             html += "<p>"+elem.commentContent+"</p><hr></div>";
                         });
-                        $('#content_comments').html(html);
+                        if(html == ""){
+                            $('#content_comments').html("<p>Cette evenement n'a pas de commentaires</p>");
+                        }else{
+                            $('#content_comments').html(html); 
+                        }
                         
                         
                     }

@@ -1749,7 +1749,7 @@ input#submit:hover{
     background: #239B56;
 }
 
-#edit{
+#display_content{
     display: none;
 }
 
@@ -1765,6 +1765,8 @@ input#submit:hover{
 span.comment_author {
     font-weight: bold;
 }
+
+
 
 .comments p{
     display: flex;
@@ -1982,4 +1984,13 @@ form#form_news, #checkbox_news{
 
 #checkbox_news #submit{
     width: 100%;
+}
+
+button.action {
+    border: none;
+    background: none;
+}
+
+.link_gestion .fas{
+    font-size: 15px;
 }
