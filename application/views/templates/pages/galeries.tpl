@@ -56,8 +56,6 @@
     </ul>
   </div>
 </div>
-
-
 <div class="btn-content" id="btn-create-art">
         {if $smarty.session.id}
             <a href="{base_url()}Galeries/dashboard" class="btn-event">Créer une galerie</a> 
@@ -65,7 +63,7 @@
     </div>
     <div class="cadre_diapo">
       <div class="interieur_diapo">
-        {foreach from=$galerieDetail item=val key=key}
+        {foreach from=$galerie item=val key=key}
             <section class="savoir__faire">
                     <h2>{$val.eventName}</h2>
                     <img src="{$val.imgName}"/>

@@ -20,56 +20,6 @@ class Events extends CI_Controller{
         // var_dump($data);
         $this->smarty->assign('eventDetail', $data);
 
-        //============= DEBUT GESTION COMMENTAIRE EVENT ==============
-        $comment_manager = create_object('Comment_manager');
-        $comment = create_object('Comment');
-
-        $url = base_url()."Events/events?event_id=".$_GET['event_id'];
-        $this->smarty->assign('url', $url);
-
-        //Ajouter un commentaire
-        if(!empty($_POST) && empty($_GET['edit_com'])){
-            $data = array(
-                'commentAuthor' => $_SESSION['id'],
-                'commentEvent' => $_GET['event_id'],
-            );
-            write_data($comment_manager, $comment, 'addComment', $_POST, $data);
-            redirect($url, 'refresh');
-        }
-
-        //Modifier un commentaire
-        if(!empty($_GET['comment_id'])){
-            get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
-
-            
-
-            if(!empty($_POST) && $_GET['edit_com'] == 1){
-                $date_modif = date('Y-m-d H:i:s');
-                $data = array(
-                    'commentDate' => $date_modif,
-                );
-
-                write_data($comment_manager, $comment, 'editComment', $_POST, $data);
-                redirect($url, 'refresh');
-
-            }elseif($_GET['report_com'] == 1){
-                write_data($comment_manager, $comment, 'editComment', $_POST, array('commentReport' => 1));
-                redirect($url, 'refresh');
-
-            }elseif($_GET['del_com'] == 1){
-                del_data($comment_manager, 'deleteComment', $_GET['comment_id']);
-                redirect($url, 'refresh');
-            }
-        }
-
-        //Affichage des commentaires d'un Event
-        $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['event_id']);
-        // var_dump($comment_data);
-
-
-        $this->smarty->assign('comment', $comment_data);
-        //============= FIN GESTION COMMENTAIRE EVENT ==============
-
             $this->smarty->view('pages/event.tpl');
 
         }else{//Afficher tout les events
@@ -79,8 +29,12 @@ class Events extends CI_Controller{
         }
     }
 
-
     public function dashboard(){
+
+        if(empty($_SESSION['id'])){
+            redirect('pages/access_denied', 'location');
+        }
+        
         //Pour insertion dans la BDD
     
         if(!empty($_POST) && empty($_GET)){

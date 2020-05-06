@@ -14,6 +14,10 @@ class Forms extends CI_Controller{
 
     public function dashboard(){
 
+        if(empty($_SESSION['id'])){
+            redirect('pages/access_denied', 'location');
+        }
+
         $data = get_all_data($this->_form_manager, $this->_form, 'getFormMessage');
         $this->smarty->assign('message', $data);
 

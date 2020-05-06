@@ -45,10 +45,10 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
     $get_data_in_base = $obj_manager->$method($param);
-    // var_dump($get_data_in_base);
+    //var_dump($get_data_in_base);;
 
     $obj_class->hydrate($get_data_in_base);
-    // var_dump($obj_class);
+    //var_dump($obj_class);
 
     $data = $obj_class->getData();
     // var_dump($data);
@@ -66,7 +66,7 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
 
-    if(!in_array(get_class($obj_manager), array('User_manager'))){
+    if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'Subscription_manager'))){
         $date_time = get_date($get_data_in_base);
         if(!empty($date_time)){
             $data['date'] = $date_time['date'];
@@ -130,18 +130,25 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
             $post[$key] = $value;
         }
     }
-    // var_dump($post);
 
-    if($method == 'editUser' && $post['userPwd'] == ''){
-        unset($post['userPwd']);
+
+    // Pour edit profil - On supprime les variables vide du tableau POST
+    if($_SESSION['id']){
+        foreach($post as $key=>$value){
+            if($post[$key] == ""){
+                unset($post[$key]);
+            }
+        }
+        $post['userRole'] = $_SESSION['role'];
+        // var_dump($post);exit;
     }
 
     $obj_class->hydrate($post);
 
     // var_dump($obj_class);;
 
+    //Actualisation de la session après la modificationd du profil
     if($method == 'editUser'){
-
         $userTab = $obj_class->getData();
         // var_dump($userTab);;
         foreach($userTab as $key => $value){
@@ -222,7 +229,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
         }
         
 
-        if(!in_array(get_class($obj_manager), array('User_manager'))){
+        if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'galerie_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
@@ -304,4 +311,12 @@ function upload_image_ckeditor($type_text){
 
         echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>";
     }
+}
+
+function get_comment($obj_manager, $obj_class, $method, $param){
+    $manager = create_object($obj_manager);
+    $class = create_object($obj_class);
+
+    $comment = get_all_data($manager, $class, $method, $param);
+    return json_encode($comment);
 }

@@ -14,49 +14,64 @@
             </div>
        
             <div id="comments">
-                {if !$comment}
-                    <p>Cette événement n'a pas encore de commentaires</p>
-                    {else}
-                        {foreach from=$comment item=val key=key}
-                            <div class="comments">
-                                <div class="header_comment">
-                                    <P>   <span class="comment_author">{$val.author}</span> le {$val.date} à  {$val.time}</span>
-                                    <div class="btn_content">
-                                        {if $val.commentAuthor !==  $smarty.session.id}
-                                            <a href="{base_url()}Events/events?event_id={$smarty.get.event_id}&amp;comment_id={$val.commentId}&amp;report_com=1" class="btn">Signaler</a>
-                                        {/if}
-
-                                        {if $val.commentAuthor == $smarty.session.id }
-                                                <button class="edit_com_btn btn">Modifier</button>
-                                                <a href="{base_url()}Events/events?event_id={$smarty.get.event_id}&amp;comment_id={$val.commentId}&amp;del_com=1" class="btn">Supprimer</a>
-                                        {/if}
-                                    </div>
-                                </div>
-
-
-
-                                <div class="comment_content">{$val.commentContent}</div>
-                                <div class="edit_com">
-                                    <form action="{base_url()}Events/events?event_id={$smarty.get.event_id}&amp;comment_id={$val.commentId}&amp;edit_com=1" method="post">
-                                    <textarea name="commentContent" id="commentContent" value="" >{$val.commentContent}</textarea>
-                                    <input type='submit' value="Modifier" id="submit">
-                                    </form>
-                                </div>
-                            </div>
-                            <hr>
-                         {/foreach}   
-                {/if}
-
-     </div>    
+                    <div id="content_comments"></div>
+            </div>    
       {if $smarty.session.id}
                 <button id="commentBtn">Ajouter un commentaire</button>
                 
             {/if}   
         <div class="formContent" id="comment">
-            {form_open($url)}
+            {form_open("Comments/add_comment?event_id={$smarty.get.event_id}", "id='form_com'")}
                 {form_textarea('commentContent','','id="commentContent"')}
                 {form_submit('valider','Valider','id="submit"')}
             {form_close()}
         </div>  
     </div>
+    <script>
+        $(document).ready(function(){
+            author_id = "{$smarty.session.id}";
+            function getComment(){
+                $.ajax({
+                    url:"{base_url()}/Comments/get_comment?event_id={$smarty.get.event_id}",
+                    method: 'get',
+                    dataType: "json",
+
+                    success:function(data){
+                        html = '';
+                        $.each(data, function(index, elem){
+                            html += "<div class='comments'> <p> <span class='comment_author'>"+elem.author+"</span> le "+elem.date+" à "+elem.time+"</span>";
+                            if(elem.commentAuthor == author_id){
+                                html += "<button class='edit_com_btn btn'>Modifier</button>";
+                                html+= "<a href='{base_url()}Comments/edit_comment?event_id={$smarty.get.event_id}&amp;comment_id="+elem.commentId+"&amp;del_com=1' class='btn' id='del_com'>Supprimer</a> </p>"
+                            }else{
+                                html+= "<a href='{base_url()}Articles/articles?event_id={$smarty.get.event_id}&amp;comment_id="+elem.commentId+"&amp;report_com=1' class='btn'>Signaler</a>"
+                            }
+                            html += "<p>"+elem.commentContent+"</p><hr></div>";
+                        });
+                        $('#content_comments').html(html);
+                        
+                        
+                    }
+                });
+            }
+            getComment();
+
+            $("#form_com").on("submit", function(event){
+                event.preventDefault();
+                $.ajax({
+                    url: "http://localhost/ecomie/Comments/add_comment?event_id={$smarty.get.event_id}",
+                    method: "post",
+                    data: $(this).serialize(),
+                    dataType:"json",
+
+                    success:function(data){
+                        if(data.success){
+                            $('#commentContent').html('');
+                            getComment();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     {include file="footer.tpl"}

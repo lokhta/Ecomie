@@ -1756,55 +1756,72 @@ input#submit:hover{
     margin-bottom: 15px;
 }
 
-.header_comment, #btn_edit_role {
-    display: flex;
-    align-items: center;
-}
-.header_comment p {
-    font-style: italic;
-    text-decoration: underline;
-}
-
-.btn_content{
-    display: flex;
-}
-
-.btn_content .btn{
-    border: none;  
-    height: 20px;
-    font-size: 15px;
-    margin: 0 10px;
-    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
-}
-
-
 span.comment_author {
     font-weight: bold;
 }
 
-.edit_class textarea{
-    height: 70px !important;
+.comments p{
+    display: flex;
+    align-items: baseline;
 }
 
-.edit_com form {
-    max-width: 100%;
-    background: none;
-    margin: 0;
-    padding: 0;
+.comments p .btn{
+    margin-left: 20px;;
+    border: none;
+    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
+    font-size: 15px;;
 }
 
-.edit_com{
-    display: none;
-}
 
 /* ---------- Page Profil ---------*/
 
 .image{
-    max-width:100%;
+    max-width:200px;
     height:auto;
-    border-radius: 50%;
-    border: solid 4px white;
 }
+
+#content_avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field_profil, #btn_submit{
+    display: none;
+}
+
+.info_profil {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.info_profil{
+    display: flex;
+    justify-content: space-between;
+}
+
+.info_profil td{
+    width: 50%;
+}
+
+.info_profil .field_profil{
+    height:  30px;;
+    margin-bottom: 0px;
+}
+
+table#tab_profil .info_profil td:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#btn_edit_profil{
+    display: none;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
 
 /*****************************
     Liste membre Admin
@@ -1899,6 +1916,8 @@ span.comment_author {
     margin-top : 15px;
 }
 
+
+
 /*****************************
     Inscription
 *****************************/
@@ -1926,4 +1945,35 @@ span.comment_author {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+}
+
+
+/* PAGE ACCES REFUSER */
+
+div#oops {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+div#oops img {
+    width: 300px;
+}
+
+#oops p{
+    font-size: 30px;
+}
+/*Formualire inscription news*/
+form#form_news, #checkbox_news{
+    flex-direction: row;
+    background: none;
+}
+
+#checkbox_news #check_news{
+    display: none;
+}
+
+#checkbox_news #submit{
+    width: 100%;
 }

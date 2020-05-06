@@ -35,7 +35,7 @@
                 <div class="content_ico">
                     <i class="fas fa-paper-plane ico_admin"></i>
                 </div>
-            <a href="{base_url()}dashboard/newsletters" class="link_admin">Newsletters</a>
+            <a href="{base_url()}newsletters/dashboard" class="link_admin">Newsletters</a>
         </div>
         <div class="link-nav-admin">
             <div class="content_ico">
@@ -47,7 +47,7 @@
             <div class="content_ico">            
                 <i class="fas fa-archive ico_admin"></i>
             </div>
-            <a href="{base_url()}dashboard/archives" class="link_admin">Archives</a>
+            <a href="{base_url()}Galeries/dashboard" class="link_admin">Galeries</a>
         </div>
     </nav>
 </aside>

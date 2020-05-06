@@ -16,64 +16,11 @@ class Articles extends CI_Controller{
 
     public function articles(){
         //Afficher un seul article
-        if(!empty($_GET['article_id'])){            
+        if(!empty($_GET['article_id'])){   
+
             $data = get_data($this->_article_manager, $this->_article, 'getArticle', $_GET['article_id']);
             // var_dump($data);
             $this->smarty->assign('articleDetail', $data);
-
-
-
-        //============= DEBUT GESTION COMMENTAIRE ARTICLE ==============
-            $comment_manager = create_object('Comment_manager');
-            $comment = create_object('Comment');
-
-            $url = base_url()."Articles/articles?article_id=".$_GET['article_id'];
-            $this->smarty->assign('url', $url);
-
-            //Ajouter un commentaire
-            if(!empty($_POST) && empty($_GET['edit_com'])){
-                $data = array(
-                    'commentAuthor' => $_SESSION['id'],
-                    'commentArticle' => $_GET['article_id'],
-                );
-                write_data($comment_manager, $comment, 'addComment', $_POST, $data);
-                redirect($url, 'refresh');
-            }
-
-            //Modifier un commentaire
-            if(!empty($_GET['comment_id'])){
-                get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
-
-                
-
-                if(!empty($_POST) && $_GET['edit_com'] == 1){
-                    $date_modif = date('Y-m-d H:i:s');
-                    $data = array(
-                        'commentDate' => $date_modif,
-                    );
-    
-                    write_data($comment_manager, $comment, 'editComment', $_POST, $data);
-                    redirect($url, 'refresh');
-
-                }elseif($_GET['report_com'] == 1){
-                    write_data($comment_manager, $comment, 'editComment', $_POST, array('commentReport' => 1));
-                    redirect($url, 'refresh');
-
-                }elseif($_GET['del_com'] == 1){
-                    del_data($comment_manager, 'deleteComment', $_GET['comment_id']);
-                    redirect($url, 'refresh');
-                }
-            }
-
-            //Affichage des commentaires d'un article
-            $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['article_id']);
-            // var_dump($comment_data);
-
-
-            $this->smarty->assign('comment', $comment_data);
-        //============= FIN GESTION COMMENTAIRE ARTICLE ==============
-
-        
 
             $this->smarty->view('pages/article.tpl');
 
@@ -83,12 +30,19 @@ class Articles extends CI_Controller{
             }else{
                 $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             }
+            $path = "Articles/articles";
+            $this->smarty->assign('current_url', $path); 
             $this->smarty->assign('article', $data);
             $this->smarty->view('pages/savoir_faire.tpl');
         }
     }
 
     public function dashboard(){
+
+        if(empty($_SESSION['id'])){
+            redirect('pages/access_denied', 'location');
+        }
+        
         //Pour insertion dans la BDD
         if(!empty($_POST) && empty($_GET)){
             write_data($this->_article_manager, $this->_article, 'addArticle', $_POST, array('articleAuthor' => $_SESSION['id']));
@@ -96,13 +50,13 @@ class Articles extends CI_Controller{
         }
 
         if($_GET){
-            $url = "Articles/dashboard?article_id=".$_GET['article_id'];
+            $url_form = "Articles/dashboard?article_id=".$_GET['article_id'];
 
             if(!empty($_GET['edit'])){
-                $url .= "&edit=1&update=1";
+                $url_form .= "&edit=1&update=1";
             }
 
-            $this->smarty->assign('url', $url);
+            $this->smarty->assign('url_form', $url_form);
 
             //Afficher un seul article
             if(!empty($_GET['article_id'])){
@@ -117,7 +71,7 @@ class Articles extends CI_Controller{
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
 
-                redirect($url, 'location'); 
+                redirect($url_form, 'location'); 
             }
 
             //Modification article
@@ -126,7 +80,7 @@ class Articles extends CI_Controller{
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, array('articleDate'=>$date_modif));
 
-                redirect($url, 'location');
+                redirect($url_form, 'location');
             }
 
             //Suppression article

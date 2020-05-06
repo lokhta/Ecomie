@@ -41,7 +41,7 @@
             </footer>
         </div>
         <script src="{base_url()}assets/js/script.js"></script>
-        {if $url == "Articles/dashboard" || $url == "Events/dashboard"}
+        {if in_array($url, array("Articles/dashboard", "Newsletters/dashboard", "Events/dashboard", "Galeries/dashboard"))}
             {$script_ckeditor}
         {/if}
     </body>
