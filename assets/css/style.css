@@ -1941,6 +1941,7 @@ table#tab_profil .info_profil td:nth-child(2) {
 
 .red_error{
     color : #EA3725;
+    padding: 10px 0;
 }
 
 .alert-success {
@@ -1993,4 +1994,9 @@ button.action {
 
 .link_gestion .fas{
     font-size: 15px;
+}
+
+.error{
+    display: block;
+    padding: 10px 0;
 }

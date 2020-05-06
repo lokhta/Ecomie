@@ -17,25 +17,20 @@ class Users extends CI_Controller{
 
 // Fonction pour la vérification de connexion
 
-    public function connexion()
-    {
-    $this->smarty->view('pages/connection.tpl');
-    $this->load->library('encryption');
+    public function connexion(){
+        //$this->smarty->view('pages/connection.tpl');
+
         if ($_POST)
         {
             $userManager = New User_manager;
             $getUser = $userManager->inBase();
             //var_dump($_POST);
             // var_dump($getUser);
-            if (!empty($_POST['userEmail']))
-            {
-                if (!empty($_POST['userPwd']))
-                {  
-                    if (!empty($getUser))
-                    {
+            if (!empty($_POST['userEmail'])){
+                if (!empty($_POST['userPwd'])){  
+                    if (!empty($getUser)){
                         //var_dump($getUser);
-                        if (password_verify($_POST['userPwd'], $getUser['userPwd']))
-                        {
+                        if (password_verify($_POST['userPwd'], $getUser['userPwd'])){
                             $user = New User;
                             $user->hydrate($getUser);
                             // var_dump($user);exit;
@@ -47,18 +42,18 @@ class Users extends CI_Controller{
                                 $keys = lcfirst(str_replace('user','',$key));
                                 $_SESSION[$keys] = $value;
                             }
-                            redirect(base_url()."users/profil", 'location');
+                            echo json_encode(array("success"=> true, "redirect" => base_url()."users/profil"));
                         }else{
-                                echo 'Identifiants incorrects';
+                                echo json_encode(array("error"=> true, "error_pwd"=>"Mot de passe incorrect"));
                         }
                     }else{
-                        echo 'Identifiants incorrects';
+                        echo json_encode(array("error"=> true, "error_email"=>"Adresse e-mail incorrect"));
                     }
                 }else{
-                    echo 'Veuillez renseigner un mot de passe';
+                    echo json_encode(array("error"=> true, "error_pwd"=>"Veuillez renseigner un mot de passe"));
                 }
             }else{
-                echo 'Veuillez renseigner une adresse mail';
+                echo json_encode(array("error"=> true, "error_email"=>"Veuillez renseigner une adresse mail"));
             }
         }
     }

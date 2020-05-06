@@ -139,6 +139,39 @@ if(btn_edit_profil){
             }
         })
     });
+
+
+    /*Controle connexion AJAX */
+    $("#form").on("submit", function(event){
+        event.preventDefault();
+
+        $.ajax({
+            url: "http://localhost/ecomie/users/connexion",
+            method: "POST",
+            data:$(this).serialize(),
+            dataType:"json",
+
+            success: function(data){
+                if(data.error){
+
+                    if(data.error_email != ''){
+                        $('#error_email').html(data.error_email);
+                    } else {
+                        $('#error_email').html('');
+                    }
+
+                    if(data.error_pwd != ''){
+                        $('#error_pwd').html(data.error_pwd);
+                    } else {
+                        $('#error_pwd').html('');
+                    }
+                }else if(data.success){
+                    window.location.href = data.redirect;
+                }
+                
+            }
+        });
+    });
 });
 
 
