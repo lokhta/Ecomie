@@ -132,7 +132,7 @@ class Users extends CI_Controller{
             $this->smarty->assign('value_city', set_value('userCity'));
 
             $errors = validation_errors();
-            var_dump($errors);exit;
+            //var_dump($errors);exit;
             $this->smarty->assign('errors', $errors);
             $this->smarty->view('pages/inscription.tpl');
         }
@@ -180,8 +180,9 @@ class Users extends CI_Controller{
         if(!empty($_GET['del']) && $_GET['del'] == 1){
             $this->_user_manager->del_avatar($_SESSION['id']);
             $this->smarty->assign('avatar', 'user-solid.svg');
+            
             $_SESSION['avatar'] =  'user-solid.svg';
-            redirect(base_url()."users/profil", 'refresh');
+            //redirect(base_url()."users/profil", 'refresh');
         }
 
         $avatarIcon =  $_SESSION['avatar'];

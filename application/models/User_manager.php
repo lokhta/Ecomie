@@ -61,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function del_avatar($user_id){
             $data = array('userAvatar'=>'user-solid.svg');
+            var_dump($data);
             $id = (int)$user_id;
             return  $this->db->where('userId', $id)->update('users', $data);
         }
