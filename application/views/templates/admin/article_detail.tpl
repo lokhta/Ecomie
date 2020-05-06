@@ -15,10 +15,10 @@
                     <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=1" class="btn btn-valid">Valider</a>
                     <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=2" class = "btn btn-fail">Refuser</a>
                 {/if}
-                <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;edit=1" class = "btn btn-edit">Modifier</a>
+                <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;edit=1" class = "btn btn-edit" id="event_btn">Modifier</a>
                 <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;del=1" class = "btn btn-del">Supprimer</a>
             </div>
-            <div class="formContent" id="edit">
+            <div class="formContent" id="display_content">
                 {form_open($url_form, "class='form'")}
                     <p class="field-content">
                         {form_label("Catégorie")}

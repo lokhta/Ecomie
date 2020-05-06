@@ -1691,6 +1691,8 @@ Article Dashboard
     margin: 0px;
 }
 
+
+
 /*Article detail*/
 .content-action{
     display: flex;
@@ -1747,6 +1749,10 @@ input#submit:hover{
     background: #239B56;
 }
 
+#display_content{
+    display: none;
+}
+
 /*Commentaires - Article*/
 #comments {
     background: #fff;
@@ -1759,6 +1765,8 @@ input#submit:hover{
 span.comment_author {
     font-weight: bold;
 }
+
+
 
 .comments p{
     display: flex;
@@ -1976,4 +1984,13 @@ form#form_news, #checkbox_news{
 
 #checkbox_news #submit{
     width: 100%;
+}
+
+button.action {
+    border: none;
+    background: none;
+}
+
+.link_gestion .fas{
+    font-size: 15px;
 }

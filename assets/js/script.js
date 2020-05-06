@@ -58,6 +58,21 @@ if(btn_edit_profil){
     })
  }
 
+ /****************************
+ Article detail - admin
+ ******************************/
+
+ let event_btn = document.querySelector("#event_btn");
+
+ if(event_btn){
+     let display_content = document.querySelector('#display_content')
+
+     event_btn.addEventListener('click', function(event){
+        event.preventDefault();
+        display_content.style.display = "block";
+     });
+
+ }
 
 /****************************
  Ajax validation form contact

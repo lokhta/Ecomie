@@ -50,11 +50,8 @@ class Articles extends CI_Controller{
         }
 
         if($_GET){
-            $url_form = "Articles/dashboard?article_id=".$_GET['article_id'];
-
-            if(!empty($_GET['edit'])){
-                $url_form .= "&edit=1&update=1";
-            }
+            $url = "Articles/dashboard?article_id=".$_GET['article_id'];
+            $url_form = $url."&edit=1";
 
             $this->smarty->assign('url_form', $url_form);
 
@@ -71,16 +68,16 @@ class Articles extends CI_Controller{
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
 
-                redirect($url_form, 'location'); 
+                redirect($url, 'location'); 
             }
 
             //Modification article
-            if(!empty($_POST) && !empty($_GET['update'])){
+            if(!empty($_POST) && !empty($_GET['edit'])){
                 $date_modif = date('Y-m-d H:i:s');
 
                 write_data($this->_article_manager, $this->_article, 'editArticle', $_POST, array('articleDate'=>$date_modif));
 
-                redirect($url_form, 'location');
+                redirect($url, 'location');
             }
 
             //Suppression article
