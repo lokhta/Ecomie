@@ -132,8 +132,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
 
-    // Pour edit profil - On supprime les variables vide du tableau POST
-    if($_SESSION['id']){
+    if(!empty($_SESSION['id']) && $method == 'editUser'){
         foreach($post as $key=>$value){
             if($post[$key] == ""){
                 unset($post[$key]);

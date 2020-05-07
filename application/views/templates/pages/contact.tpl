@@ -2,7 +2,7 @@
 <span id="success_message"></span>
 
 
-    {form_open('','id="form_val"')}
+    {form_open($url_form,'id="form_val"')}
         {form_label("Nom")}
         {form_input("formSendername",'',"id='formSendername'")}
         <span id="name_error" class="red_error"></span>

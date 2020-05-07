@@ -118,33 +118,30 @@ class Users extends CI_Controller{
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->smarty->assign('value_username', set_value('userName'));
-            $this->smarty->assign('value_Firstname', set_value('userFirstname'));
-            $this->smarty->assign('value_Mail', set_value('userEmail'));
-            $this->smarty->assign('value_phone', set_value('userPhone'));
-            $this->smarty->assign('value_address', set_value('userAddress'));
-            $this->smarty->assign('value_cp', set_value('userCp'));
-            $this->smarty->assign('value_city', set_value('userCity'));
-
-            $errors = validation_errors();
-            //var_dump($errors);exit;
-            $this->smarty->assign('errors', $errors);
-            $this->smarty->view('pages/inscription.tpl');
+            $array = array(
+                'error'   => true,
+                'name_error' => form_error('userName'),
+                'firstname_error' => form_error('userFirstname'),
+                'email_error' => form_error('userEmail'),
+                'address_error' => form_error('userAddress'),
+                'cp_error' => form_error('userCp'),
+                'city_error' => form_error('userCity'),
+                'pwd_error' => form_error('userPwd'),
+                'confirmPwd_error' => form_error('confirmPwd')
+            );
         }
         else
         {
-        // $this->load->library('encryption');
-        //Pour insertion dans la BDD
+            $array = array(
+                'success' => '<div class="alert alert-success">Votre inscription a bien été enregistrée</div>'
+            );
 
-        if(!empty($_POST)){
             $_POST['userAvatar'] = "user-solid.svg";
             $_POST['userRole'] = 3;
-
             write_data($this->_user_manager, $this->_user, 'addUser', $_POST);
         }
-        
-        $this->smarty->view('pages/formsuccess.tpl');
-        }
+
+        echo json_encode($array);
         
     }
 

@@ -10,6 +10,7 @@ class Pages extends CI_Controller{
     }
 
     public function inscription(){
+        $this->smarty->assign('url_form', base_url()."users/inscription");
         $this->smarty->view('pages/inscription.tpl');
     }
 
@@ -19,7 +20,7 @@ class Pages extends CI_Controller{
     }
 
     public function contact(){
-        //$array;
+        $this->smarty->assign('url_form', base_url()."forms/send_message");
         $this->smarty->view('pages/contact.tpl');
     }
 

@@ -1211,7 +1211,7 @@ form {
     margin-top: 15px;
 }
 label {
-        font-size: 1.2em;
+        font-size: 1em;
         margin-right: 30px;
 }
 input {
@@ -1930,18 +1930,26 @@ table#tab_profil .info_profil td:nth-child(2) {
     Inscription
 *****************************/
 
-.error{
+/* .error{
     margin: auto;
   width: 50%;
   border: 3px solid green;
   padding: 10px;
   display: flex;
   justify-content: center;
-}
+} */
 
 .red_error{
     color : #EA3725;
-    padding: 10px 0;
+    padding-bottom: 10px
+}
+
+#form_val p{
+    margin: 0;
+}
+
+#form_val input{
+    margin-bottom: 10px;;
 }
 
 .alert-success {
@@ -2000,3 +2008,21 @@ button.action {
     display: block;
     padding: 10px 0;
 }
+
+.form_field{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.form_field label{
+    width: 221px;
+    margin-right: 0px;;
+} 
+
+.form_field input{
+    margin-bottom: 0px;
+    height: 40px;
+    width: 350px;
+}
+

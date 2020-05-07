@@ -74,15 +74,17 @@ if(btn_edit_profil){
 
  }
 
-/****************************
- Ajax validation form contact
- ******************************/
+
+/*AJAX*/
 
  $(document).ready(function(){
+/****************************
+ Ajax validation form contact et inscription
+ ******************************/
     $('#form_val').on('submit', function(event){
         event.preventDefault();
         $.ajax({
-        url: base_url+"forms/send_message",
+        url: $(this).attr("action"),
         method:"POST",
         data:$(this).serialize(),
         dataType:"json",
@@ -99,11 +101,50 @@ if(btn_edit_profil){
                         $('#name_error').html('');
                     }
 
+                    if(data.firstname_error != ''){
+                        $('#firstname_error').html(data.firstname_error);
+                    } else {
+                        $('#firstname_error').html('');
+                    }
+
                     if(data.email_error != ''){
                         $('#email_error').html(data.email_error);
                     }else{
                         $('#email_error').html('');
                     }
+
+                    if(data.address_error != ''){
+                        $('#address_error').html(data.address_error);
+                    }else{
+                        $('#address_error').html('');
+                    }
+
+                    
+                    if(data.pwd_error != ''){
+                        $('#pwd_error').html(data.pwd_error);
+                    }else{
+                        $('#pwd_error').html('');
+                    }
+
+                    if(data.confirmPwd_error != ''){
+                        $('#confirmPwd_error').html(data.confirmPwd_error);
+                    }else{
+                        $('#confirmPwd_error').html('');
+                    }
+
+
+                    if(data.city_error != ''){
+                        $('#city_error').html(data.city_error);
+                    }else{
+                        $('#city_error').html('');
+                    }
+
+                    if(data.cp_error != ''){
+                        $('#cp_error').html(data.cp_error);
+                    }else{
+                        $('#cp_error').html('');
+                    }
+
 
                     if(data.subject_error != ''){
                         $('#subject_error').html(data.subject_error);
@@ -131,7 +172,13 @@ if(btn_edit_profil){
                     $('#email_error').html('');
                     $('#subject_error').html('');
                     $('#message_error').html('');
-                    $('#rgpd_error').html('');
+                    $('#firstname_error').html('');
+                    $('#address_error').html('');
+                    $('#cp_error').html('');
+                    $('#city_error').html('');
+                    $('#pwd_error').html('');
+                    $('#confirmPwd_error').html('');
+                    //$('#rgpd_error').html('');
                     $('#form_val')[0].reset();
                 }
 
