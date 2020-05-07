@@ -6,17 +6,29 @@
             <div class="btn-content">
                 <a href="{base_url()}Articles/articles" class="btn">Retour</a>
             </div>
-        
+            {* article start *}
             <h2>{$articleDetail.articleTitle}</h2>
             <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
             <p>{$articleDetail.articleContent}</p>
-            <div id="article_comment">
-                <div id="comments">
-                    <div id="content_comments">
+            {* article end *}
 
-                    </div>
+            {* partage start *}
+            <div id="share_content">
+                <button id="share_btn"><i class="fas fa-share-alt"></i> Partager</button><span id="success"></span>
+                <div id='share_form_content'>
+                    <form action='{base_url()}Email/send_page' id='share_form'>
+                    </form>
                 </div>
             </div>
+            {* paratge end *}
+
+            {* Commentaire start *}
+            <div id="comments">
+                <div id="content_comments">
+
+                </div>
+            </div>
+
             {if $smarty.session.id}
                 <button id="event_btn">Ajouter un commentaire</button>
             {/if}
@@ -28,11 +40,15 @@
                 {form_submit('valider','Valider','id="submit"')}
             {form_close()}
         </div>
-
+        {* Commentaire end *}
     
     </div>
     <script>
+
+        
         $(document).ready(function(){
+            
+            //Ajax commentaire
             let path_page = "Articles/articles";
             let get_name = "article_id";
             let get_value = "{$smarty.get.article_id}";
@@ -41,7 +57,15 @@
             let url_page = base_url+path_page+"?"+get_name+"="+get_value;
         
             ajax_comment(url_page, get_name, get_value, path_page, author_id);
-        })
+
+
+            //Partager un article
+            let url_com = "{base_url()}Articles/articles?article_id={$smarty.get.article_id}";
+            send_page_email(url_com);
+        });
+
+
+
     </script>
 
 

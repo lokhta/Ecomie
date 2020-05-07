@@ -275,6 +275,47 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
     });
 }
 
+/* Fonction pour cacher le message ajax*/
+function hideMessage(){
+    $("#success").html("");
+}
+
+/* Ajax partager un article*/
+function send_page_email(url){
+
+    $("#share_form_content").css("display","none");
+    $("#share_btn").on("click", function(){
+        let html_email = "<label>Votre nom</label><input type='text' name='sender' id='sender' required><label>L'adresse email de votre ami(e)</label><input type='email' name='recipient' id='recipient' required><input type=checkbox name='url' value='"+url+"' checked style='display:none;'><input type='submit' id='do_send' value='Partager'>";
+        $("#share_form_content").css("display","block");
+        $("#share_form").append(html_email);
+    })
+
+    $("#share_form").on("submit", function(event){
+        event.preventDefault();
+        $.ajax({
+            url:$(this).attr("action"),
+            method: "get",
+            data:$(this).serialize(),
+            dataType: "json",
+
+            success: function(data){
+                
+                if(data.error){
+                    $("#success").html(data.error);
+                }else if(data.success){
+                    $("#success").html(data.success);
+                }
+                
+                //IMPORTANT CORRIGER EVENT : empêcher la création de plusieur formulaire quand on clique sur partager
+                $("#share_form_content").css("display", "none");
+
+                setTimeout(hideMessage, 3000);
+            }
+
+        });
+    });
+}
+
 
 
 
