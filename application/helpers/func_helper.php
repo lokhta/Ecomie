@@ -235,7 +235,7 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
                 $data['time'] = $date_time['time'];
-                var_dump($data);
+                // var_dump($data);
             }
         }
 

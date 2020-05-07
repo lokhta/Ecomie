@@ -222,4 +222,61 @@ if(btn_edit_profil){
 });
 
 
+/**********************
+ AJAX COMMENTAIRES
+ ***************************/
+function ajax_comment(url_page,get_name,get_value,path_page,author_id){
+    function getComment(){
+        let remote_url = base_url+"Comments/get_comment?"+get_name+"="+get_value;
+        $.ajax({
+            url: remote_url,
+            method: 'get',
+            dataType: "json",
+
+            success:function(data){
+                html = '';
+                $.each(data, function(index, elem){
+                    html += "<div class='comments'> <p> <span class='comment_author'>"+elem.author+"</span> le "+elem.date+" à "+elem.time+"</span>";
+                    if(elem.commentAuthor == author_id){
+                        html += "<button class='edit_com_btn btn'>Modifier</button>";
+                        html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&comment_id="+elem.commentId+"&amp;del_com=1' class='btn' id='del_com'>Supprimer</a> </p>"
+                    }else{
+                        html+= "<a href='"+url_page+"&comment_id="+elem.commentId+"&amp;report_com=1' class='btn'>Signaler</a>"
+                    }
+                    html += "<p>"+elem.commentContent+"</p><hr></div>";
+                });
+                if(html == ""){
+                    $('#content_comments').html("<p>Aucun commentaires</p>");
+                }else{
+                    $('#content_comments').html(html); 
+                }
+            
+            }             
+        });
+    }
+
+    getComment();
+
+    $("#form_com").on("submit", function(event){
+        event.preventDefault();
+        $.ajax({
+            url: base_url+"Comments/add_comment?"+get_name+"="+get_value,
+            method: "post",
+            data: $(this).serialize(),
+            dataType:"json",
+
+            success:function(data){
+                if(data.success){
+                    $('#commentContent').html('');
+                    getComment();
+                }
+            }
+        });
+    });
+}
+
+
+
+
+
 
