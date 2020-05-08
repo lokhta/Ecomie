@@ -37,7 +37,7 @@ function create_object($class){
  */
 function get_data($obj_manager, $obj_class, $method, $param){
     $get_method = get_class_methods($obj_manager);
-    // var_dump($get_method);
+    //var_dump($get_method);
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";

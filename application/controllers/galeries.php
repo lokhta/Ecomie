@@ -16,10 +16,10 @@ class Galeries extends CI_Controller{
 
    
     public function galeries() {
-        //Afficher une seule archive
+        //Afficher une seule galerie
         if(!empty($_GET['event_id'])){            
         $data = get_data($this->_galerie_manager, $this->_galerie, 'getGalerie', $_GET['event_id']);
-        var_dump($data);
+        //var_dump($data);
         $this->smarty->assign('galerieDetail', $data);
 
         //============= DEBUT GESTION COMMENTAIRE ARCHIVE ==============
@@ -76,7 +76,6 @@ class Galeries extends CI_Controller{
 
         }else{//Afficher toutes les galeries
            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie'); 
-           var_dump($data);
             $this->smarty->assign('galerie', $data);
             $this->smarty->view('pages/galeries.tpl');
         }
@@ -125,7 +124,7 @@ class Galeries extends CI_Controller{
 
         }else{ //Pour affichage de la liste des galeries
             $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getDashGalerie');
-            var_dump($data);
+            //var_dump($data);
             $this->smarty->assign('galerie', $data);
             $this->smarty->assign('page', 'admin/galerie.tpl');
             $this->smarty->view('admin/dashboard.tpl');

@@ -1127,76 +1127,24 @@ Page évènements
 Galerie
 ************************************/
 
-*{box-sizing: border-box}
-
-.galerie {	
-	margin:0;
-	padding:1rem;
-	height:100vh;
-	display:flex;
-	align-items:center	
-}
-.galerie img{
-max-width: 100%;
-height:auto	
-}
-.target{
-	display:none
-	}
-.cadre_diapo{
-max-width:600px;
-margin:2rem auto;
-overflow:hidden;
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    margin : 50px, 0px;
 }
 
-.interieur_diapo{	
-display: flex;
-width: 400%;
-transition: transform .6s ease-in-out;
-overflow: hidden;
-}
-.description{
-position:relative;
-}
-.description span{
-position:absolute;
-left:0;
-top:2%;
-font-size:75%;
-display:flex;
-padding:.5rem;
-justify-content: center;
-color:white;
-background:hsla(0,0%,0%,.35)
-}	
-#votre_id1:target ~ .cadre_diapo .interieur_diapo{transform:translatex(0)}/*image 1*/
-#votre_id2:target ~ .cadre_diapo .interieur_diapo{transform:translatex(-25%)}/*image 2*/
-#votre_id3:target ~ .cadre_diapo .interieur_diapo{transform:translatex(-50%)}/*image 3*/
-#votre_id4:target ~ .cadre_diapo .interieur_diapo{transform:translatex(-75%)}/*image 4*/
-
-/*navigation avec images miniatures*/
-.navigation_diapo{	
-display: flex;
-list-style-type: none;
-margin: 0;
-padding: 0;
-}
-.navigation_diapo li {	
-	padding: .25rem,
-	}
-.navigation_diapo img{
-border: 3px solid white;
-box-shadow:0 0 5px hsla(0,0%,0%,.4);
+.galerie__container {
+   flex-direction: row;
+   margin: 20px 10px;
 }
 
-    @media (min-width:31.25rem){
-		
-		.description span{
-			font-size: initial
-		}
-	}
-
-
+.galerie__container a img {
+    border: #00aeef solid 5px;
+    width: 200px;
+    height: 200px;
+}
 
 /***************************
 ******   Contact.html   **************/
