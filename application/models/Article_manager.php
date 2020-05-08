@@ -31,14 +31,14 @@ class Article_manager extends CI_Model{
     }
 
     public function getAllArticle($limit, $offset, $keyword = null){
-        $url = base_url()."Articles/articles";
+        // $url = base_url()."Articles/articles";
 
         $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname');
         $this->db->from('articles');
         $this->db->join('users', 'users.userId = articles.articleAuthor');
         $this->db->join('categories', 'categories.categoryId = articles.articleCategory');
 
-        if(current_url() == $url){
+        if(current_url() == base_url()."Articles/articles"){
             $this->db->where('articleValidate', 1);
 
             if(!empty($_GET['search']) && $_GET['search'] == 1 && $keyword){
@@ -61,12 +61,17 @@ class Article_manager extends CI_Model{
             }
         }
 
-        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== base_url()."Articles/articles"){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
 
-        //limit 3
         $this->db->limit($limit,$offset);
+
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 1 && current_url() == base_url()."Articles/dashboard"){
+            $this->db->order_by('articleValidate', 'ASC');
+        }
+
+        //ORDER BY validation ASC si article dashboard
         $query = $this->db->get();
         return $query->result_array();
     }
