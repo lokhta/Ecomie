@@ -33,7 +33,6 @@ let btn_submit = document.querySelector('#btn_edit_profil');
 if(btn_edit_profil){
     let field_profil = document.querySelectorAll('.field_profil');
     let info_user = document.querySelectorAll('.info_user');
-    let btn_submit = document.querySelector('#btn_edit_profil');
 
     for(let i = 0; i<btn_edit_profil.length; i++){
         btn_edit_profil[i].addEventListener('click', function(){
@@ -55,6 +54,7 @@ if(btn_edit_profil){
         btn_edit_photo.style.display = 'none';
         btn_del_photo.style.display = "none";
         userAvatar.style.display = "block";
+        btn_submit.style.display = "flex";
     })
  }
 

@@ -188,11 +188,12 @@ class Users extends CI_Controller{
         
 
         if(!empty($_POST)){
+
             $timestamp_to_date = timestamp_to_date();
             
             $config['upload_path'] = "assets/img/upload";
             $config['allowed_types'] = "gif|jpg|png";
-            $config['max_size'] = 70;
+            $config['max_size'] = 2000;
             $config['file_name'] = $_SESSION['firstname'].'_'.$_SESSION['id'].'_'. $timestamp_to_date;
             $this->load->library('upload', $config);
             if(!$this->upload->do_upload('userAvatar')){
@@ -200,7 +201,22 @@ class Users extends CI_Controller{
                 
             }else{
                 $upload_data = $this->upload->data();
+
+                $this->load->library("image_lib");
+
+                /*Resize image uploader */
+                $resize_image["image_library"] = "gd2";
+                $resize_image["source_image"] = $upload_data['full_path'];
+                $config['create_thumb'] = FALSE;
+                $resize_image["maintient_ratio"] = FALSE;
+                $resize_image["width"] = 200;
+                $resize_image["height"] = 200;
+
+                $this->image_lib->initialize($resize_image);
+                $this->image_lib->resize();
+
                 echo json_encode(array('file_name' => $upload_data['file_name']));
+
                 $_POST['userAvatar'] = $upload_data['file_name'];
             }
             
