@@ -85,6 +85,10 @@ class Galeries extends CI_Controller{
     public function dashboard(){
         //Pour insertion dans la BDD
     
+        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
+            redirect('pages/access_denied', 'location');
+        }
+
         if(!empty($_POST) && empty($_GET)){
             write_data($this->_galerie_manager, $this->_galerie, 'addGalerie', $_POST, array('eventAuthor'=> $_SESSION['id']));
             redirect(base_url()."Galeries/dashboard", 'location');

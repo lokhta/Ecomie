@@ -31,10 +31,10 @@ class Events extends CI_Controller{
 
     public function dashboard(){
 
-        if(empty($_SESSION['id'])){
+        if((empty($_SESSION['id']))||(($_SESSION['role'])=='3')){
             redirect('pages/access_denied', 'location');
         }
-        
+
         //Pour insertion dans la BDD
     
         if(!empty($_POST) && empty($_GET)){

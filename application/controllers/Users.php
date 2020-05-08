@@ -213,7 +213,7 @@ class Users extends CI_Controller{
     public function membres()
     {
 
-        if(empty($_SESSION['id'])){
+        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
             redirect('pages/access_denied', 'location');
         }
         

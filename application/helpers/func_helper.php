@@ -92,7 +92,6 @@ function get_category_article($obj_manager){
         array_push($liste, $value['categoryName']);
     }
 
-    var_dump($liste);
     return $liste;
 }
 

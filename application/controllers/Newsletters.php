@@ -13,7 +13,7 @@ class Newsletters extends CI_Controller{
     }
 
     public function dashboard(){
-        if(empty($_SESSION['id'])){
+        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
             redirect('pages/access_denied', 'location');
         }
         

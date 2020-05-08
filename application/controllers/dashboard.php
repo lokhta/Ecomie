@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller{
     public function __construct(){
         parent::__construct();
 
-        if(empty($_SESSION['id'])){
+        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
             redirect('pages/access_denied', 'location');
         }
     }
