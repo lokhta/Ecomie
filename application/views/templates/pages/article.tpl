@@ -24,6 +24,7 @@
 
             {* Commentaire start *}
             <div id="comments">
+            <div class="pagination_link">{$pagination}</div>
                 <div id="content_comments">
 
                 </div>

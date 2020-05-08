@@ -18,7 +18,17 @@ class Forms extends CI_Controller{
             redirect('pages/access_denied', 'location');
         }
 
-        $data = get_all_data($this->_form_manager, $this->_form, 'getFormMessage');
+        /* pagination start */
+        $page_url= base_url()."forms/dashboard";
+        $total_rows = $this->_form_manager->count_message();
+        //var_dump($total_rows);
+        $data_pagination = pagination($page_url, $total_rows, 10);
+        $pagination_link = $data_pagination['pagination_link'];
+
+        $this->smarty->assign('pagination', $pagination_link);
+        /*pagination end*/
+
+        $data = get_all_data($this->_form_manager, $this->_form, 'getFormMessage', $data_pagination['limit'], $data_pagination['offset']);
         $this->smarty->assign('message', $data);
 
         $this->smarty->assign('page', 'admin/messagerie.tpl');

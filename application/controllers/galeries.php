@@ -75,7 +75,16 @@ class Galeries extends CI_Controller{
             $this->smarty->view('pages/galerie.tpl');
 
         }else{//Afficher toutes les galeries
-           $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie'); 
+            /*pagination start */
+            $page_url= base_url()."Galeries/galerie";
+            $total_rows = $this->_galerie_manager->count_galerie();
+
+            $data_pagination = pagination($page_url, $total_rows, 6);
+            $pagination_link = $data_pagination['pagination_link'];
+
+            $this->smarty->assign('pagination', $pagination_link);
+            /*pagination end*/
+           $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie', $data_pagination['limit'], $data_pagination['offset']); 
            var_dump($data);
             $this->smarty->assign('galerie', $data);
             $this->smarty->view('pages/galeries.tpl');
@@ -124,7 +133,18 @@ class Galeries extends CI_Controller{
             }
 
         }else{ //Pour affichage de la liste des galeries
-            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getDashGalerie');
+
+            /*pagination start */
+            $page_url= base_url()."Galeries/dashboard";
+            $total_rows = $this->_galerie_manager->count_galerie();
+
+            $data_pagination = pagination($page_url, $total_rows, 10);
+            $pagination_link = $data_pagination['pagination_link'];
+
+            $this->smarty->assign('pagination', $pagination_link);
+            /*pagination end*/
+
+            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getDashGalerie', $data_pagination['limit'], $data_pagination['offset']);
             var_dump($data);
             $this->smarty->assign('galerie', $data);
             $this->smarty->assign('page', 'admin/galerie.tpl');

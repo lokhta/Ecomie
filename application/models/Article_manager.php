@@ -38,7 +38,7 @@ class Article_manager extends CI_Model{
         $this->db->join('users', 'users.userId = articles.articleAuthor');
         $this->db->join('categories', 'categories.categoryId = articles.articleCategory');
 
-        if(current_url() == base_url()."Articles/articles"){
+        if(strpos(current_url(),"Articles/articles") != false){
             $this->db->where('articleValidate', 1);
 
             if(!empty($_GET['search']) && $_GET['search'] == 1 && $keyword){
@@ -61,13 +61,13 @@ class Article_manager extends CI_Model{
             }
         }
 
-        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== base_url()."Articles/articles"){
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && strpos(current_url(),"Articles/articles") == false){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
 
         $this->db->limit($limit,$offset);
 
-        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 1 && current_url() == base_url()."Articles/dashboard"){
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 1 && strpos(current_url(),"Articles/dashboard") != false){
             $this->db->order_by('articleValidate', 'ASC');
         }
 
@@ -85,6 +85,13 @@ class Article_manager extends CI_Model{
     }
 
     public function count_article(){
-        return $this->db->get("articles")->num_rows();
+        $this->db->select('*');
+        $this->db->from('articles');
+        
+        if(strpos(current_url(),"Articles/articles")!= false){
+            $this->db->where('articleValidate', 1);
+        }
+        
+        return $this->db->get()->num_rows();
     }
 }

@@ -29,8 +29,8 @@ class Articles extends CI_Controller{
             /* pagination start */
             $page_url= base_url()."Articles/articles";
             $total_rows = $this->_article_manager->count_article();
-
-            $data_pagination = pagination($page_url, $total_rows, 6);
+           // var_dump($total_rows);;
+            $data_pagination = pagination($page_url, $total_rows , 6);
             $pagination_link = $data_pagination['pagination_link'];
 
             $this->smarty->assign('pagination', $pagination_link);
@@ -105,7 +105,7 @@ class Articles extends CI_Controller{
             /* pagination start */
             $page_url= base_url()."Articles/dashboard";
             $total_rows = $this->_article_manager->count_article();
-
+            var_dump($total_rows);
             $data_pagination = pagination($page_url, $total_rows, 10);
             $pagination_link = $data_pagination['pagination_link'];
 

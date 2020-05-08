@@ -1,4 +1,5 @@
 <div>
+    <div class="pagination_link">{$pagination}</div>
     <table class="tab">
         <tr class="thead">
             <th>N° article</th>

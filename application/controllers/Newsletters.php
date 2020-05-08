@@ -55,7 +55,17 @@ class Newsletters extends CI_Controller{
             }
 
         }else{
-            $data = get_all_data($this->_newsletter_manager, $this->_newsletter, 'getAllNews');
+            /* pagination start */
+            $page_url= base_url()."newsletters/dashboard";
+            $total_rows = $this->_newsletter_manager->count_news();
+            //var_dump($total_rows);
+            $data_pagination = pagination($page_url, $total_rows, 10);
+            $pagination_link = $data_pagination['pagination_link'];
+
+            $this->smarty->assign('pagination', $pagination_link);
+            /*pagination end*/
+
+            $data = get_all_data($this->_newsletter_manager, $this->_newsletter, 'getAllNews', $data_pagination['limit'], $data_pagination['offset']);
             $this->smarty->assign('news', $data);
             $this->smarty->assign('title', 'Dashboard - Newsletter');
             $this->smarty->assign('page', 'admin/news.tpl');

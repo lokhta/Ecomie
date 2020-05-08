@@ -185,6 +185,8 @@ function del_data($obj_manager, $method, $id){
  * @param $obj_manager Nom de la class manager
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
+ * @param $limit Le nombre de ligne souhaité
+ * @param $offset Le nombre de ligne ignoré
  * @param  $param Argument de $method. Initalisé a null si $method n'a pas d'argument
  * @return Array
  */
@@ -198,7 +200,7 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
     }
 
     if($param){
-        $get_data_in_base = $obj_manager->$method($limit, $offset,$param);
+        $get_data_in_base = $obj_manager->$method($param,$limit, $offset);
     }else{
         $get_data_in_base = $obj_manager->$method($limit, $offset);
     }
@@ -317,13 +319,21 @@ function upload_image_ckeditor($type_text){
     }
 }
 
-// function get_comment($obj_manager, $obj_class, $method, $param){
-//     $manager = create_object($obj_manager);
-//     $class = create_object($obj_class);
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_comment() Renvoi la liste des commentaires  au format Json pour être traité en ajax
+ * @param $id Identifiant de l'article ou l'evenement 
+ * @param $limit Le nombre de ligne souhaité
+ * @param $offset Le nombre de ligne ignoré
+ */
+function get_comment($id, $limit, $offset){
+    $manager = create_object("Comment_manager");
+    $class = create_object("Comment");
 
-//     $comment = get_all_data($manager, $class, $method, $param);
-//     return json_encode($comment);
-// }
+    $comment = get_all_data($manager, $class, "getAllComment", $limit, $offset, $id,);
+
+    return json_encode($comment);
+}
 
 
 /**
@@ -339,7 +349,7 @@ function pagination($page_url, $total_rows, $per_page){
     $ci->load->library("pagination");
 
     $config['base_url'] = $page_url;
-    $config['total_rows'] = $total_rows;//$this->_article_manager->count_article();
+    $config['total_rows'] = $total_rows;
     $config['per_page'] = $per_page;
     $config["uri_segment"] = 3;
 

@@ -49,4 +49,13 @@ class Galerie_manager extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function count_galerie(){
+        $this->db->select('*');
+        $this->db->from('events');
+        if(strpos(current_url(),"Galeries/galeris")!= false){
+            $this->db->where('eventDateEnd < NOW()');
+        }
+        return $this->db->get()->num_rows();
+    }
 }

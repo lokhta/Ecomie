@@ -251,6 +251,10 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
                     }
                     html += "<p>"+elem.commentContent+"</p><hr></div>";
                 });
+
+                
+
+
                 if(html == ""){
                     $('#content_comments').html("<p>Aucun commentaires</p>");
                 }else{
