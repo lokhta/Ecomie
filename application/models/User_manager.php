@@ -41,11 +41,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row_array();
         }
     
-        public function getAllUser(){
+        public function getAllUser($limit, $offset){
             $query = $this->db
             ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName')
             ->from('users')
             ->join('roles', 'roles.roleId = users.userRole')
+            ->limit($limit, $offset)
             ->get();
             return $query->result_array();
         }
@@ -64,6 +65,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var_dump($data);
             $id = (int)$user_id;
             return  $this->db->where('userId', $id)->update('users', $data);
+        }
+
+        public function count_user(){
+            return $this->db->get("users")->num_rows();
         }
 }
 

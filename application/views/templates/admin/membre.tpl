@@ -4,6 +4,7 @@
 
 
         <div id="tab_left">
+        <div class="pagination_link">{$pagination}</div>
             <table class="tab">
                 <tr class="thead">
                     <th>Nom</th>

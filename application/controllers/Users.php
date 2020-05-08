@@ -216,10 +216,20 @@ class Users extends CI_Controller{
         if(empty($_SESSION['id'])){
             redirect('pages/access_denied', 'location');
         }
+
+        /* pagination start */
+        $page_url= base_url()."users/membres";
+        $total_rows = $this->_user_manager->count_user();
+
+        $data_pagination = pagination($page_url, $total_rows, 20);
+        $pagination_link = $data_pagination['pagination_link'];
+
+        $this->smarty->assign('pagination', $pagination_link);
+        /*pagination end*/
         
         //$this->load->library('javascript/jquery');
         // var_dump($_SESSION);
-        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
+        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser',$data_pagination['limit'], $data_pagination['offset']);
         //var_dump($data);
 
         if(!empty($_GET['user_id']) && empty($_GET['del'])){
