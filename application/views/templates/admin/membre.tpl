@@ -19,7 +19,8 @@
                              data-phone="{$val.userPhone}" data-address="{$val.userAddress}" data-cp="{$val.userCp}" data-city="{$val.userCity}">
                              <i class="fas fa-search"></i></button>
                             {*<a href="{base_url()}users/membres?user_id={$val.userId}"><i class="fas fa-search"></i></a>*}
-                            <a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
+                            {*<a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>*}
+                            <button class="delete" data-link="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
                 {/foreach}
@@ -59,12 +60,12 @@
             </p>
             <div class="row_info_membre bluesky">
                 {form_open('users/membres')}
-                 {form_label('Role', "role", 'class="lab"')}
+                {form_label('Role', "role", 'class="lab"')}
                 <span class="info_membre" id="user_role">{$user.role}</span>
                 {form_dropdown('userRole',$option,'',"id='role'")}
                 {form_submit('submit', "Valider", "id='btn_submit'")}
                 <span id="btn_edit_role"><i class="fas fa-edit"></i></span>
-                 {form_close()}
+                {form_close()}
             </div>
 
         </div>
@@ -72,6 +73,7 @@
     </div>
 
 </div>
+
     <script>
       $(function() {
         $('.action').click(function() {
@@ -92,6 +94,24 @@
             $('#cp').text(cp);
             $('#city').text(city);
             });
+
+        $('span#btn_edit_role').click(function() {
+            $('select#role').toggle();
+            $('input#btn_submit').toggle();
+        });
+
+        $('.delete').click(function() {
+            var ok = confirm('Etes-vous sûr de supprimer ?');
+            if(ok){
+                var current = $(this);
+                var link = current.data('link');
+                window.location.replace(link);
+            }
+
+        });
+
+
+
           });
     </script>
 
