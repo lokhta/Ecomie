@@ -13,6 +13,15 @@ body {
     padding: 0;
     font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
 }
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color:#000;
+}
 #principal {
    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
    background-color: rgb(250, 238, 238);
@@ -925,8 +934,10 @@ PAGE SAVOIR-FAIRE***************************************************************
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 70px;
+    width: 1240px;
+    margin: 0 auto;
 }
 .savoir__faire {
     display: flex;
@@ -1515,7 +1526,7 @@ div#dash_info h3 {
 }
 
 
-.btn{
+.btn, .pagination_link .pagination li{
     width: 100px;
     background: #00aeef;
     color : #fff;
@@ -1542,6 +1553,33 @@ div#dash_info h3 {
     flex-direction: row;
     max-width: 50%;
     background: none;
+    padding: 0px;
+}
+
+#form_search span, #search_cat span{
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    color: #838383;
+    font-style: italic;
+}
+
+#search_cat{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 10px 0 33px 0;
+}
+
+div#search_cat a {
+    margin-right:  15px;
+}
+
+
+#form_search input{
+    margin-bottom: 0px;;
 }
 
 .field_search{
@@ -1896,8 +1934,17 @@ table#tab_profil .info_profil td:nth-child(2) {
     margin: 0;
 }
 
+#form_val{
+    margin-top : 0px;
+}
+
 #form_val input{
     margin-bottom: 10px;;
+}
+
+.message_success{
+    display: block;
+    height: 50px;
 }
 
 .alert-success {
@@ -1909,7 +1956,7 @@ table#tab_profil .info_profil td:nth-child(2) {
     padding: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    /* //margin-top: 50px; */
 }
 
 
@@ -1974,3 +2021,32 @@ button.action {
     width: 350px;
 }
 
+.pagination_link{
+    width: 1240px;
+    margin: 0 auto;
+
+}
+
+.pagination_link .pagination{
+    display: flex;
+    padding: 0;
+}
+
+.pagination_link .pagination li{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background: none;
+}
+
+.pagination_link .pagination li a:hover{
+    color :  #00aeef
+}
+
+.active{
+    background: #00aeef !important;
+}
+
+.active a{
+    color : #fff;
+}

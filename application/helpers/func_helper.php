@@ -184,10 +184,12 @@ function del_data($obj_manager, $method, $id){
  * @param $obj_manager Nom de la class manager
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
+ * @param $limit Le nombre de ligne souhaité
+ * @param $offset Le nombre de ligne ignoré
  * @param  $param Argument de $method. Initalisé a null si $method n'a pas d'argument
  * @return Array
  */
-function get_all_data($obj_manager, $obj_class, $method, $param=null){
+function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param=null){
     $get_method = get_class_methods($obj_manager);
     //var_dump($get_method);
 
@@ -197,9 +199,9 @@ function get_all_data($obj_manager, $obj_class, $method, $param=null){
     }
 
     if($param){
-        $get_data_in_base = $obj_manager->$method($param);
+        $get_data_in_base = $obj_manager->$method($param,$limit, $offset);
     }else{
-        $get_data_in_base = $obj_manager->$method();
+        $get_data_in_base = $obj_manager->$method($limit, $offset);
     }
 
     // var_dump($get_data_in_base);
@@ -316,10 +318,79 @@ function upload_image_ckeditor($type_text){
     }
 }
 
-function get_comment($obj_manager, $obj_class, $method, $param){
-    $manager = create_object($obj_manager);
-    $class = create_object($obj_class);
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_comment() Renvoi la liste des commentaires  au format Json pour être traité en ajax
+ * @param $id Identifiant de l'article ou l'evenement 
+ * @param $limit Le nombre de ligne souhaité
+ * @param $offset Le nombre de ligne ignoré
+ */
+function get_comment($id, $limit, $offset){
+    $manager = create_object("Comment_manager");
+    $class = create_object("Comment");
 
-    $comment = get_all_data($manager, $class, $method, $param);
+    $comment = get_all_data($manager, $class, "getAllComment", $limit, $offset, $id,);
+
     return json_encode($comment);
+}
+
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief pagination() génére une pagination.
+ * @param $page_url Url de la page cible.
+ * @param $total_rows Nombre total de lignes dans le jeu de résultats pour lequel on crée la pagination
+ * @param $per_page Nombre d'éléments à afficher sur la page
+ */
+function pagination($page_url, $total_rows, $per_page){
+    $ci = get_instance();
+
+    $ci->load->library("pagination");
+
+    $config['base_url'] = $page_url;
+    $config['total_rows'] = $total_rows;
+    $config['per_page'] = $per_page;
+    $config["uri_segment"] = 3;
+
+    $config['use_page_numbers'] = TRUE;
+    $config['reuse_query_string'] = TRUE;
+
+    $config["full_tag_open"] = '<ul class="pagination">';
+    $config["full_tag_close"] = '</ul>';
+
+    $config["first_tag_open"] = '<li>';
+    $config["first_tag_close"] = '</li>';
+
+    $config["last_tag_open"] = '<li>';
+    $config["last_tag_close"] = '</li>';
+
+    $config['next_link'] = '<i class="fas fa-chevron-right"></i>';
+
+    $config["next_tag_open"] = '<li>';
+    $config["next_tag_close"] = '</li>';
+
+    $config["prev_link"] = "<i class='fas fa-chevron-left'></i>";
+
+    $config["prev_tag_open"] = "<li>";
+    $config["prev_tag_close"] = "</li>";
+
+    $config["cur_tag_open"] = "<li class='active'><a href='#'>";
+    $config["cur_tag_close"] = "</a></li>";
+
+    $config["num_tag_open"] = "<li>";
+    $config["num_tag_close"] = "</li>";
+
+    $page = ($ci->uri->segment(3)) ? ($ci->uri->segment(3) - 1) : 0;
+    $limit = $per_page;
+    $offset = $page*$limit;
+
+    $ci->pagination->initialize($config);
+
+    $pagination_data = array(
+        'pagination_link' => $ci->pagination->create_links(),
+        'limit' => $limit,
+        'offset' => $offset
+    );
+
+    return $pagination_data;
 }

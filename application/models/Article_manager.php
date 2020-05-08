@@ -30,15 +30,15 @@ class Article_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllArticle($keyword = null){
-        $url = base_url()."Articles/articles";
+    public function getAllArticle($limit, $offset, $keyword = null){
+        // $url = base_url()."Articles/articles";
 
         $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname');
         $this->db->from('articles');
         $this->db->join('users', 'users.userId = articles.articleAuthor');
         $this->db->join('categories', 'categories.categoryId = articles.articleCategory');
 
-        if(current_url() == $url){
+        if(strpos(current_url(),"Articles/articles") != false){
             $this->db->where('articleValidate', 1);
 
             if(!empty($_GET['search']) && $_GET['search'] == 1 && $keyword){
@@ -56,13 +56,22 @@ class Article_manager extends CI_Model{
                     $this->db->or_like('articleContent', $data[$i]);
                 }
                 // var_dump($data);;
+            }elseif(!empty($_GET['category_id']) && $keyword){
+                $this->db->where('articleCategory', $keyword);
             }
         }
 
-        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && strpos(current_url(),"Articles/articles") == false){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
 
+        $this->db->limit($limit,$offset);
+
+        if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 1 && strpos(current_url(),"Articles/dashboard") != false){
+            $this->db->order_by('articleValidate', 'ASC');
+        }
+
+        //ORDER BY validation ASC si article dashboard
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -73,5 +82,16 @@ class Article_manager extends CI_Model{
         ->from('categories')
         ->get();
         return $query->result_array();
+    }
+
+    public function count_article(){
+        $this->db->select('*');
+        $this->db->from('articles');
+        
+        if(strpos(current_url(),"Articles/articles")!= false){
+            $this->db->where('articleValidate', 1);
+        }
+        
+        return $this->db->get()->num_rows();
     }
 }

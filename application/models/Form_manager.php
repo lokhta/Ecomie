@@ -15,7 +15,7 @@ class Form_manager extends CI_Model{
         return $this->db->where('formId', $form_id)->delete('form');
     }
     
-    public function getFormMessage($form_id = null){
+    public function getFormMessage($limit, $offset, $form_id = null){
         $this->db->select('*');
         $this->db->from('form');
 
@@ -24,8 +24,13 @@ class Form_manager extends CI_Model{
             $query = $this->db->get();
             return $query->row_array();
         }else{
+            $this->db->limit($limit,$offset);
             $query = $this->db->get();
             return $query->result_array();
         }
+    }
+
+    public function count_message(){
+        return $this->db->get("form")->num_rows();
     }
 }

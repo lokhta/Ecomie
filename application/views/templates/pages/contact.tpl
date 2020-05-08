@@ -1,5 +1,5 @@
 {include file="header.tpl" title="Ecomie - Contact" name=$Name}
-<span id="success_message"></span>
+<span id="success" class="message_success"></span>
 
 
     {form_open($url_form,'id="form_val"')}

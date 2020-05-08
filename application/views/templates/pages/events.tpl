@@ -4,6 +4,7 @@
             <a href="{base_url()}Events/dashboard" class="btn-event">Créer un évènement</a> 
         {/if}
     </div>
+    <div class="pagination_link">{$pagination}</div>
     <div class="event__bloc">
         {foreach from=$event item=val key=key}
             <section class="savoir__faire">

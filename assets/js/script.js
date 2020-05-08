@@ -77,9 +77,14 @@ if(btn_edit_profil){
 
 /*AJAX*/
 
+/* Fonction pour cacher le message ajax*/
+function hideMessage(){
+    $("#success").html("");
+}
+
  $(document).ready(function(){
 /****************************
- Ajax validation form contact et inscription
+ Ajax validation page contact et inscription
  ******************************/
     $('#form_val').on('submit', function(event){
         event.preventDefault();
@@ -167,7 +172,7 @@ if(btn_edit_profil){
 
                 if(data.success)
                 {
-                    $('#success_message').html(data.success);
+                    $('#success').html(data.success);
                     $('#name_error').html('');
                     $('#email_error').html('');
                     $('#subject_error').html('');
@@ -178,8 +183,9 @@ if(btn_edit_profil){
                     $('#city_error').html('');
                     $('#pwd_error').html('');
                     $('#confirmPwd_error').html('');
-                    //$('#rgpd_error').html('');
+                    $('#rgpd_error').html('');
                     $('#form_val')[0].reset();
+                    setTimeout(hideMessage, 3000);
                 }
 
                 $('#bouton__form').attr('disabled', false);
@@ -245,6 +251,10 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
                     }
                     html += "<p>"+elem.commentContent+"</p><hr></div>";
                 });
+
+                
+
+
                 if(html == ""){
                     $('#content_comments').html("<p>Aucun commentaires</p>");
                 }else{
@@ -275,10 +285,7 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
     });
 }
 
-/* Fonction pour cacher le message ajax*/
-function hideMessage(){
-    $("#success").html("");
-}
+
 
 /* Ajax partager un article*/
 function send_page_email(url){
@@ -315,8 +322,6 @@ function send_page_email(url){
         });
     });
 }
-
-
 
 
 

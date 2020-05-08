@@ -15,9 +15,10 @@ class Newsletter_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllNews(){
+    public function getAllNews($limit, $offset){
         $this->db->select('*');
         $this->db->from('newsletters');
+        $this->db->limit($limit,$offset);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -32,5 +33,9 @@ class Newsletter_manager extends CI_Model{
 
     public function deleteNews($id){
         return $this->db->where('newsId', $id)->delete('newsletters');
+    }
+
+    public function count_news(){
+        return $this->db->get("newsletters")->num_rows();
     }
 }
