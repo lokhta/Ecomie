@@ -5,14 +5,18 @@
         {/if}
     </div>
     <div id="search_content">
-        {* {form_open('Articles/articles', 'id="form_search"')}
-            {{form_input("formContent",'',"id='formContent'")}}
-            {form_submit('envoyer','Envoyer','id="bouton__form"')}
-        {form_close()} *}
         <form action="{base_url()}Articles/articles?search=1" method="post" id="form_search">
+            <span>Rechercher par mots-clés : </span>
             <input type="text" name="keyword" class="field_search">
             <input type="submit" value="Rechercher" class="btn btn_search">
         </form>
+
+        <div id="search_cat">
+            <span>Rechercher par catégorie : </span>
+            <a href="{base_url()}Articles/articles?category_id=1" class="btn btn_search" id="search_savoir" data-category-name="Savoir">Savoir</a>
+            <a href="{base_url()}Articles/articles?category_id=2" class="btn btn_search" id="search_faire" data-category-name="Faire">Faire</a>
+        </div>
+
     </div>
     <div class="contenaire__bloc">
         {foreach from=$article item=val key=key}

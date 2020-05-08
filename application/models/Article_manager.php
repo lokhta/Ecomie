@@ -56,13 +56,14 @@ class Article_manager extends CI_Model{
                     $this->db->or_like('articleContent', $data[$i]);
                 }
                 // var_dump($data);;
+            }elseif(!empty($_GET['category_id']) && $keyword){
+                $this->db->where('articleCategory', $keyword);
             }
         }
 
         if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
-
         $query = $this->db->get();
         return $query->result_array();
     }

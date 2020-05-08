@@ -27,6 +27,8 @@ class Articles extends CI_Controller{
         }else{//Afficher tout les articles
             if(!empty($_GET['search']) && $_GET['search'] == 1){
                 $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle', $_POST['keyword']);
+            }elseif(!empty($_GET['category_id'])){
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle', $_GET['category_id']);
             }else{
                 $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             }
