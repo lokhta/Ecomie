@@ -322,5 +322,3 @@ function send_page_email(url){
 
 
 
-
-

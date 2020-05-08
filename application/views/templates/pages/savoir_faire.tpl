@@ -18,25 +18,31 @@
         </div>
 
     </div>
+    <div class="pagination_link">{$pagination}</div>
     <div class="contenaire__bloc">
-        {foreach from=$article item=val key=key}
-            <section class="savoir__faire">
-                <a class="{$val.category}__bloc" href="{base_url()}Articles/articles?article_id={$val.articleId}">
-                    <div class="{$val.category}__logo">
-                        <img src="{base_url()}assets/img/{$val.category}" alt="">
-                    </div>
-                    <div class="{$val.category}__titre">
-                        <h2>{$val.articleTitle}</h2>
-                    </div>
-                </a>
-                <div class="auteur">
-                    <p>{$val.author}</p>
-                    <p>{$val.date}</p>
-                </div>
-            </section>
-        {/foreach}    
+        {if !$article && $smarty.get.search}
+            <p>Aucuns articles n'a été trouvés</p>
+            {else}
+                {foreach from=$article item=val key=key}
 
+                    <section class="savoir__faire">
+                        <a class="{$val.category}__bloc" href="{base_url()}Articles/articles?article_id={$val.articleId}">
+                            <div class="{$val.category}__logo">
+                                <img src="{base_url()}assets/img/{$val.category}" alt="">
+                            </div>
+                            <div class="{$val.category}__titre">
+                                <h2>{$val.articleTitle}</h2>
+                            </div>
+                        </a>
+                        <div class="auteur">
+                            <p>{$val.author}</p>
+                            <p>{$val.date}</p>
+                        </div>
+                    </section>
+                {/foreach}     
+        {/if}
     </div>
+    <div class="pagination_link">{$pagination}</div>
         <section class="astuce__fb">
             <p>Plein d'autres astuce sur notre page Facebook</p>
             <a href="#"><img src="{base_url()}assets/img/facebook.svg" alt="Facebook"></a>

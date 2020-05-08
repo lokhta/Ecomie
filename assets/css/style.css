@@ -13,6 +13,15 @@ body {
     padding: 0;
     font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
 }
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color:#000;
+}
 #principal {
    font-family: 'Varela Round','caviar_dreamsbold',sans-serif;
    background-color: rgb(250, 238, 238);
@@ -925,8 +934,10 @@ PAGE SAVOIR-FAIRE***************************************************************
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 70px;
+    width: 1240px;
+    margin: 0 auto;
 }
 .savoir__faire {
     display: flex;
@@ -1567,7 +1578,7 @@ div#dash_info h3 {
 }
 
 
-.btn{
+.btn, .pagination_link .pagination li{
     width: 100px;
     background: #00aeef;
     color : #fff;
@@ -2062,3 +2073,32 @@ button.action {
     width: 350px;
 }
 
+.pagination_link{
+    width: 1240px;
+    margin: 0 auto;
+
+}
+
+.pagination_link .pagination{
+    display: flex;
+    padding: 0;
+}
+
+.pagination_link .pagination li{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background: none;
+}
+
+.pagination_link .pagination li a:hover{
+    color :  #00aeef
+}
+
+.active{
+    background: #00aeef !important;
+}
+
+.active a{
+    color : #fff;
+}

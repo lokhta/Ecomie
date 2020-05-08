@@ -30,7 +30,7 @@ class Article_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllArticle($keyword = null){
+    public function getAllArticle($limit, $offset, $keyword = null){
         $url = base_url()."Articles/articles";
 
         $this->db->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname');
@@ -64,6 +64,9 @@ class Article_manager extends CI_Model{
         if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
             $this->db->where('articleAuthor', $_SESSION['id']);
         }
+
+        //limit 3
+        $this->db->limit($limit,$offset);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -74,5 +77,9 @@ class Article_manager extends CI_Model{
         ->from('categories')
         ->get();
         return $query->result_array();
+    }
+
+    public function count_article(){
+        return $this->db->get("articles")->num_rows();
     }
 }
