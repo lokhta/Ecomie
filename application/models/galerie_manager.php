@@ -6,7 +6,7 @@ class Galerie_manager extends CI_Model{
         parent::__construct();
     }
 
-    public function addGalerie(Galerie $galerie){
+    public function addImage(Galerie $galerie){
         return  $this->db->insert('images', $galerie->getData()); 
     }
 
@@ -45,5 +45,23 @@ class Galerie_manager extends CI_Model{
         $this->db->select('imgEvent');
         $this->db->from('images');
         return $this->db->get()->num_rows();
+    }
+
+    public function count_image($event_id){
+        $this->db->select("imgId");
+        $this->db->from("images");
+        $this->db->where("imgEvent", $event_id);
+        return $this->db->get()->num_rows();
+    }
+
+    public function eventNotInBase(){
+        $query =  $this->db->query("SELECT eventId, eventName 
+        FROM images 
+        RIGHT JOIN events ON images.imgEvent = events.eventId 
+        WHERE eventDateEnd < NOW() GROUP BY imgEvent HAVING COUNT(imgEvent) <= 20
+        UNION
+        SELECT DISTINCT eventId, eventName FROM images RIGHT JOIN events ON images.imgEvent = events.eventId WHERE eventDateEnd < NOW() AND imgID IS NULL");
+
+        return $query->result_array();
     }
 }

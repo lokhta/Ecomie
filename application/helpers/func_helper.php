@@ -116,8 +116,23 @@ function get_role_user($obj_manager){
         array_push($liste, $value['roleName']);
     }
 
-    var_dump($liste);
+    // var_dump($liste);
     return $liste;
+}
+
+function get_option_select_input($obj_manager, $method,$return_id, $return_value,$name_default_option = null){
+    $liste = array();
+
+    if($name_default_option){
+        $liste = array("-- ".$name_default_option." --");
+    }
+
+    foreach($obj_manager->$method() as $value){
+        $liste[$value[$return_id]] = $value[$return_value];
+    }
+
+    return $liste;
+
 }
 
 /**
@@ -153,6 +168,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
         $post['userRole'] = $_SESSION['role'];
         // var_dump($post);exit;
     }
+    var_dump($post);;
 
     $obj_class->hydrate($post);
 

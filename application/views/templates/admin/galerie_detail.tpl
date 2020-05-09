@@ -1,8 +1,4 @@
 
-
-
-<a href="#" class="btn">Créer une galerie</a>
-
 <h1> {$galerieDetail[0]["eventName"]} <h2>
 
 <div id="content_gallery" name="slide">
