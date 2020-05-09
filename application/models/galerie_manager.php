@@ -22,10 +22,10 @@ class Galerie_manager extends CI_Model{
     public function getGalerie($event_id){
         
         $query = $this->db
-        ->select('imgName, imgAlt, imgEvent, eventName')
+        ->select('imgUrl, imgAlt, imgEvent, imgEventName')
         ->from('images')
         ->join('events', 'events.eventId = images.imgEvent')
-        ->where('eventId', $event_id)
+        ->where('eventId = imgEvent')
         ->get();
         return $query->row_array();
      
@@ -33,7 +33,7 @@ class Galerie_manager extends CI_Model{
  
     public function getAllGalerie(){  
        
-            $this->db->select('imgId, imgName, imgAlt, imgEvent, eventName');
+            $this->db->select('imgId, imgUrl, imgAlt, imgEvent, imgEventName');
             $this->db->from('images');
             $this->db->join('events', 'events.eventId = images.imgEvent');
             $this->db->where('eventDateEnd < DATE( NOW())');

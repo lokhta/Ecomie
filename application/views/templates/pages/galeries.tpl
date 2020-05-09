@@ -12,7 +12,7 @@
     <div class='galerie__container'>
          <p>{$val.imgAlt}</p>
               <a href="{base_url()}Galeries/galeries?event_id={$val.imgEvent}">
-                <img src="{$val.imgName}" alt="{$val.imgAlt}">
+                <img src="{$val.imgUrl}" alt="{$val.imgAlt}">
               </a>
         </div>
   {/foreach}

@@ -11,13 +11,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Galerie extends CI_Model{
 
     private $_imgId;
-    private $_imgName;
+    private $_imgUrl;
     private $_imgDateAdd;
     private $_imgAlt;
     private $_imgEvent;
     private $_imgArticle;
-    private $_EventId;
-    private $_EventName;
+    private $_imgEventName;
+    private $_eventId;
 
     public function __construct(){
         parent::__construct();
@@ -46,7 +46,7 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter un id à la class
      * @param $id integer
      */
-    public function setimgId($id){
+    public function setImgId($id){
         $this->_imgId = $id;
     }
 
@@ -55,8 +55,8 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter l'adresse
      * @param $name string
      */
-    public function setimgName($name){
-        $this->_imgName = $name;
+    public function setImgUrl($imgUrl){
+        $this->_imgUrl = $imgUrl;
     }
 
     /**
@@ -99,8 +99,8 @@ class Galerie extends CI_Model{
         $this->_eventId = $eventId;
     }
 
-    public function setEventName($eventName){
-        $this->_eventName = $eventName;
+    public function setImgEventName($imgEventName){
+        $this->_imgEventName = $imgEventName;
     }
 
     //Getters
@@ -109,7 +109,7 @@ class Galerie extends CI_Model{
         return $this->_imgId;
     }
 
-    public function getImgName(){
+    public function getImgUrl(){
         return $this->_imgName;
     }
 
@@ -133,8 +133,8 @@ class Galerie extends CI_Model{
         return $this->_eventId;
     }
 
-    public function getEventName(){
-        return $this->_eventName;
+    public function getImgEventName(){
+        return $this->_imgEventName;
     }
 
     public function getData(){
