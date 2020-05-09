@@ -171,7 +171,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
 
     $obj_class->hydrate($post);
 
-    // var_dump($obj_class);;
+    var_dump($obj_class);;
 
     //Actualisation de la session après la modificationd du profil
     if($method == 'editUser'){
@@ -423,4 +423,55 @@ function pagination($page_url, $total_rows, $per_page){
     );
 
     return $pagination_data;
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief upload_image() permet d'uploader des images
+ * @param $obj_manager Nom de la class manager
+ * @param $obj_class Nom de la class associé au manager $obj_manager
+ * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
+ * @param $input_name Nom du champs input de type upload; Le nom doit être identique au champ de la base de donnée
+ * @param $imageW Largeur de l'image souhaite lors de la redimenssion
+ * @param $imageH Hauteur de l'image souhaité lors de la redimenssion
+ * @param $data Tableau contenant les informations permetant d'inserer ou mettre à jour la base de données.
+ * @param $data Tableau associatif qui a pour clé le nom d'un champ de table et pour valeur la donnée à insérer ou l'id qui sera utilisé dans un WHERE pour modification
+ */
+function upload_image($obj_manager, $obj_class, $method,$input_name,int $imageW, int $imageH,array $post, array $data = null){
+    $ci = get_instance();
+        $timestamp_to_date = timestamp_to_date();
+        
+        $config['upload_path'] = "assets/img/upload";
+        $config['allowed_types'] = "gif|jpg|png";
+        $config['max_size'] = 2000;
+        $config['file_name'] = $timestamp_to_date;
+        $ci->load->library('upload', $config);
+
+
+        if(!$ci->upload->do_upload($input_name)){
+            echo json_encode(array('error' => $ci->upload->display_errors()));
+            
+        }else{
+            $upload_data = $ci->upload->data();
+
+            $ci->load->library("image_lib");
+
+            /*Resize image uploader */
+            $resize_image["image_library"] = "gd2";
+            $resize_image["source_image"] = $upload_data['full_path'];
+            $config['create_thumb'] = FALSE;
+            $resize_image["maintient_ratio"] = FALSE;
+            $resize_image["width"] = $imageW;
+            $resize_image["height"] = $imageH;
+
+            $ci->image_lib->initialize($resize_image);
+            $ci->image_lib->resize();
+
+            echo json_encode(array('file_name' => $upload_data['file_name']));
+            $post[$input_name] = $upload_data['file_name'];
+            // var_dump($_POST);
+
+            write_data($obj_manager, $obj_class, $method, $post, $data = null);
+        }
+    
 }

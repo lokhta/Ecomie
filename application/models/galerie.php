@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Galerie extends CI_Model{
 
     private $_imgId;
-    private $_imgUrl;
+    private $_imgName;
     private $_imgDateAdd;
     private $_imgAlt;
     private $_imgEvent;

@@ -199,7 +199,7 @@ function hideMessage(){
         event.preventDefault();
 
         $.ajax({
-            url: "http://localhost:8080/ecomie/users/connexion",
+            url: base_url+"users/connexion",
             method: "POST",
             data:$(this).serialize(),
             dataType:"json",
