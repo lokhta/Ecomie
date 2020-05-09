@@ -493,7 +493,7 @@ a{
     margin-right: 5px;
     top: 0;
     right: 0;
-    z-index: 5;
+    z-index: 0;
 }
 .slider {
     position: relative;
