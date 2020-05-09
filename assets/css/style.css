@@ -1922,6 +1922,8 @@ table#tab_profil .info_profil td:nth-child(2) {
 #gestion_photo_profil{
     display: flex;
     justify-content: center;
+    width: 100%;
+    align-items: center;
 }
 
 #gestion_photo_profil .btn{
@@ -2175,10 +2177,19 @@ div#content_gallery {
     color: #00aeef;
 }
 
-.help{
-    padding-left: 10px;;
+#help{
+    padding-left: 5px;
 }
 .fa-info-circle{
     font-size: 20px;
-    color : #1ABC9C;
+    color : #1A5276;
+}
+
+.info_bulle{
+    text-align: right;
+    color : #C0392B;
+}
+
+p#ulpload_field span {
+    margin-left: 0px !important;
 }

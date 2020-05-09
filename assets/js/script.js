@@ -232,6 +232,26 @@ function hideMessage(){
         $("#form")[0].reset();
     })
 
+    /*AIDE INFO BULLE */
+
+    /*info bulle form inscription*/
+    $("#help").on("mouseenter",function(){
+        $("#help_pwd").html("Votre mot de passe doit contenir au moins 5 caractères");
+    })
+   $("#help").on("mouseleave",function(){
+        $("#help_pwd").html("");
+    })
+    
+    /*info bulle upload image*/
+    $("#bulle_image").on("mouseenter",function(){
+        $("#help_image").html("2 Mo maximum");
+        $("#help_image").css("marginLeft", "-118.1px");
+    });
+
+   $("#bulle_image").on("mouseleave",function(){
+        $("#help_image").html("");
+       $("#help_image").css("marginLeft", "0");
+    })
 
 });
 

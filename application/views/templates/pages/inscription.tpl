@@ -59,9 +59,9 @@
                 <p class="form_field">
                     {form_label("Mot de passe*")}
                     {form_password("userPwd", "", "id='userPwd'")}
-                    <span id="#help_pwd" class="help"><i class="fas fa-info-circle"></i></span>
-
+                    <i class="fas fa-info-circle" id="help"></i>
                 </p>
+                <span id="help_pwd" class="info_bulle"></span>
                 <span id="pwd_error" class="red_error"></span>
 
 
@@ -76,4 +76,3 @@
         {form_close()}
 
     {include file="footer.tpl"}
-

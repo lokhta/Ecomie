@@ -428,16 +428,11 @@ function pagination($page_url, $total_rows, $per_page){
 /**
  * @author Sofiane AL AMRI
  * @brief upload_image() permet d'uploader des images
- * @param $obj_manager Nom de la class manager
- * @param $obj_class Nom de la class associé au manager $obj_manager
- * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
  * @param $input_name Nom du champs input de type upload; Le nom doit être identique au champ de la base de donnée
  * @param $imageW Largeur de l'image souhaite lors de la redimenssion
  * @param $imageH Hauteur de l'image souhaité lors de la redimenssion
- * @param $data Tableau contenant les informations permetant d'inserer ou mettre à jour la base de données.
- * @param $data Tableau associatif qui a pour clé le nom d'un champ de table et pour valeur la donnée à insérer ou l'id qui sera utilisé dans un WHERE pour modification
  */
-function upload_image($obj_manager, $obj_class, $method,$input_name,int $imageW, int $imageH,array $post, array $data = null){
+function upload_image($input_name,int $imageW, int $imageH){
     $ci = get_instance();
         $timestamp_to_date = timestamp_to_date();
         
@@ -479,7 +474,7 @@ function upload_image($obj_manager, $obj_class, $method,$input_name,int $imageW,
             $post[$input_name] = $upload_data['file_name'];
             // var_dump($_POST);
 
-            write_data($obj_manager, $obj_class, $method, $post, $data = null);
+
         }
     
 }

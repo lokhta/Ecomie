@@ -7,8 +7,11 @@
                                 <section id="content_avatar">
                                     <p>INFORMATIONS PERSONNELLES</p>
                                     <img class="image" src="{base_url()}assets/img/upload/{$avatar}" alt="">
-                                    <div id="gestion_photo_profil"><span class="btn btn_edit_photo">Modifier</span>
-                                    <button style="border:0px" class="delete btn btn_del_photo" data-link="{base_url()}users/profil?del=1">Supprimer</button>
+                                    <div id="gestion_photo_profil">
+                                        <span id="help_image" class="info_bulle"></span>
+                                        <i class="fas fa-info-circle" id="bulle_image"></i>
+                                        <span class="btn btn_edit_photo">Modifier</span>
+                                        <button style="border:0px" class="delete btn btn_del_photo" data-link="{base_url()}users/profil?del=1">Supprimer</button>
                                     </div>
                                     {form_upload("userAvatar",'',"id='userAvatar'")}
                                 </section>

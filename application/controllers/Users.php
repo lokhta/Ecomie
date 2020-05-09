@@ -172,7 +172,8 @@ class Users extends CI_Controller{
         
 
         if(!empty($_POST)){
-            upload_image($this->_user_manager, $this->_user, "editUser","userAvatar",600, 600, $_POST,$_POST, array('userId'=>$_SESSION['id']));
+            upload_image("userAvatar",600, 600);
+            write_data($this->_user_manager, $this->_user, "editUser", $_POST, array('userId'=>$_SESSION['id']));
             redirect(base_url()."users/profil", 'refresh');
         }
     }
