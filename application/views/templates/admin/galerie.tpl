@@ -12,7 +12,7 @@
         
                 <td class="link_gestion">
                     <a href="{base_url()}Galeries/dashboard?event_id={$val.eventId}"><i class="fas fa-search"></i></a>
-                    <a href="{base_url()}Galeries/dashboard?event_id={$val.eventId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
+                    <button style="border:0px" class="delete btn_basket" data-link="{base_url()}Galeries/dashboard?event_id={$val.eventId}&amp;del=1"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         {/foreach}
@@ -31,3 +31,17 @@
             </div>
     </div>
 </div>
+
+<script>
+        $(function() {
+
+            $('.delete').click(function() {
+                var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
+                if(ok){
+                var current = $(this);
+                var link = current.data('link');
+                window.location.replace(link);
+               }
+            });
+        });
+    </script>

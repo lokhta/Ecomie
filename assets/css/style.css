@@ -200,6 +200,7 @@ a{
     font-family: 'caviar_dreamsbold';
     font-size: 1.5em;
 }
+
 #mail {
     height: 50px;
     width:320px ;
@@ -209,6 +210,13 @@ a{
     border: none;
     margin-right: 40px;
 }
+
+#mail, .mail_membres {
+    background-color: rgb(255, 255, 255);
+    font-size: 19px;
+    height: auto;
+}
+
 .bouton {
     height: 50px;
     width: 200px;
@@ -1816,6 +1824,10 @@ table#tab_profil .info_profil td:nth-child(2) {
     margin-top: 20px;
 }
 
+#btn_edit_profil, .fas, .fas:hover{
+    cursor: pointer;
+}
+
 
 /*****************************
     Liste membre Admin
@@ -1903,6 +1915,26 @@ table#tab_profil .info_profil td:nth-child(2) {
 
 .btn_del_photo {
     background: #EA3725;
+}
+
+.btn_del_photo:hover {
+    cursor: pointer;
+}
+
+.btn_del{
+    background: #EA3725;
+}
+
+.btn_del:hover{
+    cursor: pointer;
+}
+
+.btn_more:hover{
+    cursor: pointer;
+}
+
+.btn_basket:hover{
+    cursor: pointer;
 }
 
 #userAvatar{

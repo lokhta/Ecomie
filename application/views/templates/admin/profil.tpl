@@ -7,7 +7,9 @@
                                 <section id="content_avatar">
                                     <p>INFORMATIONS PERSONNELLES</p>
                                     <img class="image" src="{base_url()}assets/img/upload/{$avatar}" alt="">
-                                    <div id="gestion_photo_profil"><span class="btn btn_edit_photo">Modifier</span><a href="{base_url()}users/profil?del=1" class="btn btn_del_photo">Supprimer</a> </div>
+                                    <div id="gestion_photo_profil"><span class="btn btn_edit_photo">Modifier</span>
+                                    <button style="border:0px" class="delete btn btn_del_photo" data-link="{base_url()}users/profil?del=1">Supprimer</button>
+                                    </div>
                                     {form_upload("userAvatar",'',"id='userAvatar'")}
                                 </section>
                                 <tr class="info_profil"></td>
@@ -86,11 +88,19 @@
                         {form_close()}
 
 
-                        <script>
+    <script>
+        $(function() {
 
-
-
-                        </script>
+            $('.delete').click(function() {
+                var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
+                if(ok){
+                var current = $(this);
+                var link = current.data('link');
+                window.location.replace(link);
+               }
+            });
+        });
+    </script>
 
                  
 

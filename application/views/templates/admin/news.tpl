@@ -14,7 +14,7 @@
                 <td>{$val.date}</td>
                 <td class="link_gestion">
                     <a href="{base_url()}Newsletters/dashboard?news_id={$val.newsId}"><i class="fas fa-search"></i></a>
-                    <a href="{base_url()}Newsletters/dashboard?news_id={$val.newsId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>
+                    <button style="border:0px" class="delete btn_basket" data-link="{base_url()}Newsletters/dashboard?news_id={$val.newsId}&amp;del=1"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
         {/foreach}
@@ -31,3 +31,17 @@
         {form_close()}
     </div>
 </div>
+
+<script>
+        $(function() {
+
+            $('.delete').click(function() {
+                var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
+                if(ok){
+                var current = $(this);
+                var link = current.data('link');
+                window.location.replace(link);
+               }
+            });
+        });
+    </script>
