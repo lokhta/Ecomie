@@ -59,7 +59,7 @@ class Galeries extends CI_Controller{
             $array_image = array();
 
             foreach($data as $key => $value){
-                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image' style='width:500px'>");
+                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image'>");
             }
 
             
@@ -95,12 +95,15 @@ class Galeries extends CI_Controller{
     }
     
     public function editor(){
-        // $count = $this->_galerie_manager->count_image("13");
+
         //$notBase = $this->_galerie_manager->eventNotInBase();
         // var_dump($notBase);
 
         if(!empty($_POST)){
-            upload_image($this->_galerie_manager, $this->_galerie, "addImage","imgName",600, 600, $_POST);
+            $count_image = $this->_galerie_manager->count_image($_POST['imgEvent']);
+            if($count_image < 20){
+                upload_image($this->_galerie_manager, $this->_galerie, "addImage","imgName",600, 600, $_POST);
+            }
         }
 
 
@@ -108,7 +111,9 @@ class Galeries extends CI_Controller{
         $this->smarty->assign("option", $option);
         // var_dump($option);
 
-        $this->smarty->view('admin/galerie_creator.tpl');
+
+        $this->smarty->assign('page','admin/galerie_creator.tpl');
+        $this->smarty->view('admin/dashboard.tpl');
     }
 
 

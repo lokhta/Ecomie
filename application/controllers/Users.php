@@ -199,20 +199,16 @@ class Users extends CI_Controller{
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser',$data_pagination['limit'], $data_pagination['offset']);
         //var_dump($data);
 
-        if(!empty($_GET['user_id']) && empty($_GET['del'])){
-            $data_user = get_data($this->_user_manager, $this->_user, "getUser", $_GET['user_id']);
-
-            $role = get_role_user($this->_user_manager);
-
-            $this->smarty->assign('option', $role); 
-
-            $this->smarty->assign('user', $data_user);
-        }
 
         if(!empty($_POST['userRole'])){
             write_data($this->_user_manager, $this->_user, 'editUser', $_POST);
-            redirect(base_url()."users/membres", 'refresh');
+            // redirect(base_url()."users/membres", 'refresh');
         }
+
+        
+        $role = get_role_user($this->_user_manager);
+
+        $this->smarty->assign('option', $role); 
 
         
         $this->smarty->assign('users_list', $data_list);

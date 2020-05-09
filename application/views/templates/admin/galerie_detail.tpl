@@ -5,7 +5,7 @@
     <div id="gallery"></div>
     <div id="btn_content">
         <button id="prev"><i class="fas fa-caret-square-left"></i></button>
-        <button id ="next"><i class="far fa-caret-square-right"></i></button>
+        <button id ="next"><i class="fas fa-caret-square-right"></i></i></button>
     </div>
     </div>
 

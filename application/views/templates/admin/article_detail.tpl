@@ -11,7 +11,7 @@
                 <p>{$articleDetail.articleContent}</p>
             </div>
             <div class="content-action">
-                {if $smarty.session.role == 2}
+                {if $smarty.session.role != 3}
                     <button style="border:0px" class="accept btn btn-valid" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=1">Valider</button>
                     <button style="border:0px" class="refuse btn btn-fail" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=2">Refuser</button>
                 {/if}

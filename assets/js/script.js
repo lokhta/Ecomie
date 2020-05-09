@@ -225,6 +225,14 @@ function hideMessage(){
             }
         });
     });
+
+    $("#form").on("submit", function(){
+        setTimeout(hideMessage, 3000);
+
+        $("#form")[0].reset();
+    })
+
+
 });
 
 
@@ -347,3 +355,5 @@ function gallery(image){
         $("#gallery").html(images[init]);
     });
 }
+
+

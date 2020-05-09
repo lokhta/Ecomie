@@ -167,11 +167,11 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
         $post['userRole'] = $_SESSION['role'];
         // var_dump($post);exit;
     }
-    var_dump($post);;
+    //  var_dump($post);;
 
     $obj_class->hydrate($post);
 
-    var_dump($obj_class);;
+    // var_dump($obj_class);exit;;
 
     //Actualisation de la session après la modificationd du profil
     if($method == 'editUser'){
@@ -184,7 +184,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
     $obj_manager->$method($obj_class);
-    // var_dump($obj_manager);;
+    // var_dump($obj_manager);;;
 }
 
 /**
@@ -449,7 +449,9 @@ function upload_image($obj_manager, $obj_class, $method,$input_name,int $imageW,
 
 
         if(!$ci->upload->do_upload($input_name)){
-            echo json_encode(array('error' => $ci->upload->display_errors()));
+            $message = '<div class="alert-error">'.$ci->upload->display_errors().'</div>';
+            $reponse = $message;
+            $ci->smarty->assign("reponse", $reponse);
             
         }else{
             $upload_data = $ci->upload->data();
@@ -467,7 +469,13 @@ function upload_image($obj_manager, $obj_class, $method,$input_name,int $imageW,
             $ci->image_lib->initialize($resize_image);
             $ci->image_lib->resize();
 
-            echo json_encode(array('file_name' => $upload_data['file_name']));
+            if($input_name == 'userAvatar'){
+                $message = "<div class='alert alert-success'>L'image de profil a été correctement modifié</div>";
+            }elseif($input_name == "imgName"){
+                $message = "<div class='alert alert-success'>L'image a bien été uploader</div>";
+            }
+            $reponse = $message;
+            $ci->smarty->assign("reponse", $reponse);
             $post[$input_name] = $upload_data['file_name'];
             // var_dump($_POST);
 

@@ -18,6 +18,7 @@ li{
     list-style: none;
 }
 
+
 a{
     text-decoration: none;
     color:#000;
@@ -2007,9 +2008,23 @@ table#tab_profil .info_profil td:nth-child(2) {
     padding: 20px;
     display: flex;
     justify-content: center;
-    /* //margin-top: 50px; */
+
 }
 
+.alert-error {
+    color: #763c3c;
+    background-color: #f0d8d8;
+    border-color: #e9c6c6;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.alert-error p{
+    margin : 0px;
+}
 
 /* PAGE ACCES REFUSER */
 
@@ -2101,4 +2116,69 @@ button.action {
 
 .active a{
     color : #fff;
+}
+/*GALERIE ADMIN*/
+
+a.btn.btn_create_gallery{
+    width: 200px;;
+}
+
+#form_image input, #imgEvent{
+    height: 30px;;
+    margin: 10px;;
+}
+
+#list_gallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#list_gallery div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+#list_gallery img{
+    width : 450px;
+    height: 250px;;
+}
+
+
+
+#list_gallery a:hover {
+    opacity: 0.7;
+}
+
+div#gallery img {
+    width: 600px;
+    height: 400px;
+}
+
+div#content_gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#content_gallery button{
+    background: none;
+    border: none;
+}
+
+#btn_content i {
+    font-size: 50px;
+    color: #00aeef;
+}
+
+.help{
+    padding-left: 10px;;
+}
+.fa-info-circle{
+    font-size: 20px;
+    color : #1ABC9C;
 }
