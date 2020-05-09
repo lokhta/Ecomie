@@ -203,7 +203,7 @@ a{
 
 #mail {
     height: 50px;
-    width:320px ;
+    width:300px;
     background-color: rgb(166, 212,251);
     font-size: 1.5em;
     text-align: center;
@@ -798,7 +798,15 @@ a{
     display: flex;
     flex-direction: column;
 }
+.news {
+    text-align: center;
+    font-family: 'caviar_dreamsbold';
+    font-size: 1.5em;
+}
 #mail {
+    width:280px;
+    text-align: center;
+    border: none;
     margin: auto;
   }
 .bouton {
@@ -942,9 +950,8 @@ PAGE SAVOIR-FAIRE***************************************************************
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 70px;
-    width: 1240px;
     margin: 0 auto;
 }
 .savoir__faire {
@@ -1179,7 +1186,7 @@ form {
 }
 label {
         font-size: 1em;
-        margin-right: 30px;
+   
 }
 input {
     /* max-width: 300px; */
@@ -1559,7 +1566,7 @@ div#dash_info h3 {
 
 #form_search{
     flex-direction: row;
-    max-width: 50%;
+    max-width: 70%;
     background: none;
     padding: 0px;
 }
@@ -1572,11 +1579,23 @@ div#dash_info h3 {
     color: #838383;
     font-style: italic;
 }
+@media screen and (max-width: 768px) {
+
+    #form_search span, #search_cat span{
+      display: none;
+    }
+    #form_search{
+        flex-direction: row;
+        max-width: 90%;
+        background: none;
+        padding: 0px;
+    }
+}
 
 #search_cat{
     display: flex;
     align-items: center;
-    max-width: 50%;
+    max-width: 70%;
     margin: 0 auto;
     padding: 10px 0 33px 0;
 }
@@ -2011,6 +2030,7 @@ div#oops img {
 /*Formualire inscription news*/
 form#form_news, #checkbox_news{
     flex-direction: row;
+    flex-wrap: wrap;
     background: none;
 }
 
