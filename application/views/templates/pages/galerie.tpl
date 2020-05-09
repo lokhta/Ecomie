@@ -1,18 +1,24 @@
 {include file="header.tpl" title="Ecomie - Galerie" name=$Name}
+<h1> {$galerieDetail[0]["eventName"]} <h2>
 
-<div id="modal">
-        
-            <div class="btn-content">
-                <a href="{base_url()}Galeries/galeries" class="btn">Retour</a>
-            </div>
-         <div class='galerie'>
-         {var_dump($galerieDetail)}
-            {foreach from=$galerieDetail item=val key=key}
-                <div class='galerie__container'>
-                    <p>{$val.imgAlt}</p>
-                    <img src="{$val.imgUrl}" alt="{$val.imgAlt}">
-                </div>
-            {/foreach}
-        </div>
+<div id="content_gallery" name="slide">
+    <div id="gallery"></div>
+    <div id="btn_content">
+        <button id="prev"><i class="fas fa-caret-square-left"></i></button>
+        <button id ="next"><i class="far fa-caret-square-right"></i></button>
+    </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function(){
+
+        let image = {$images|json_encode};
+        gallery(image);
+    })
+
+</script>
 
 {include file="footer.tpl"}

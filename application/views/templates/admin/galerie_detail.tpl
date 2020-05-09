@@ -1,43 +1,22 @@
-<div id="modal">
-    <div>
-        <div class="btn-content">
-            <a href="{base_url()}Galeries/dashboard" class="btn">Retour</a>
-        </div>
-    
-        <div>
-            <div>
-            
-                <h2>{$galerieDetail.eventName}</h2>
-             
-            </div>
-            <div class="content-action">
-                <a href="{base_url()}Galeries/dashboard?event_id={$smarty.get.event_id}&amp;edit=1" class = "btn btn-edit">Modifier</a>
-                <button style="border:0px" class="delete btn btn_del" data-link="{base_url()}Galeries/dashboard?event_id={$smarty.get.event_id}&amp;del=1">Supprimer</button>
-            </div>
-            <div class="formContent" id="edit">
-                {form_open($url, "class='form'")}
-                    <p class="field-content">
-                        {form_label("Titre")}
-                        {form_input("eventName",$galerieDetail.eventName,"id='title'")}
-                    </p>
-                {form_textarea('eventContent',$galerieDetail.eventContent,'id="eventContent" class="ckeditor"')}
-                {form_submit('valider','Valider','id="submit"')}
-                {form_close()}
-            </div>
-        </div>
+
+<h1> {$galerieDetail[0]["eventName"]} <h2>
+
+<div id="content_gallery" name="slide">
+    <div id="gallery"></div>
+    <div id="btn_content">
+        <button id="prev"><i class="fas fa-caret-square-left"></i></button>
+        <button id ="next"><i class="far fa-caret-square-right"></i></button>
     </div>
+    </div>
+
 </div>
 
 <script>
-        $(function() {
 
-            $('.delete').click(function() {
-                var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
-                if(ok){
-                var current = $(this);
-                var link = current.data('link');
-                window.location.replace(link);
-               }
-            });
-        });
+    $(document).ready(function(){
+
+        let image = {$images|json_encode};
+        gallery(image);
+    })
+
 </script>

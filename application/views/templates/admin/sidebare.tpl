@@ -55,7 +55,13 @@
             <div class="content_ico">            
                 <i class="fas fa-archive ico_admin"></i>
             </div>
-            <a href="{base_url()}Galeries/dashboard" class="link_admin">Galeries</a>
+            <a href="{base_url()}events/archives" class="link_admin">Archives</a>
+        </div>
+        <div class="link-nav-admin">
+            <div class="content_ico">            
+                <i class="fas fa-images"></i>
+            </div>
+            <a href="{base_url()}Galeries/dashboard" class="link_admin">Galerie</a>
         </div>
         {/if}
     </nav>

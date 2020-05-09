@@ -15,9 +15,6 @@ class Galerie extends CI_Model{
     private $_imgDateAdd;
     private $_imgAlt;
     private $_imgEvent;
-    private $_imgArticle;
-    private $_imgEventName;
-    private $_eventId;
 
     public function __construct(){
         parent::__construct();
@@ -31,7 +28,7 @@ class Galerie extends CI_Model{
 
     public function hydrate($data){
         foreach($data as $key => $value){
-            $method = 'set'.str_replace('galerie', '',$key);
+            $method = 'set'.str_replace('img','',$key);
 
             if(method_exists($this, $method)){
                 $this->$method($value);
@@ -46,7 +43,7 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter un id à la class
      * @param $id integer
      */
-    public function setImgId($id){
+    public function setId($id){
         $this->_imgId = $id;
     }
 
@@ -55,8 +52,8 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter l'adresse
      * @param $name string
      */
-    public function setImgUrl($imgUrl){
-        $this->_imgUrl = $imgUrl;
+    public function setName($name){
+        $this->_imgName = $name;
     }
 
     /**
@@ -64,7 +61,7 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter une date
      * @param $imgDate string
      */
-    public function setImgDateAdd($imgDate){
+    public function setDateAdd($imgDate){
         $this->_imgDateAdd = $imgDate;
     }
 
@@ -73,7 +70,7 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter la description d'une image
      * @param $alt string
      */
-    public function setImgAlt($alt){
+    public function setAlt($alt){
         $this->_imgAlt = $alt;
     }
 
@@ -82,60 +79,32 @@ class Galerie extends CI_Model{
      * @brief Fonction setter pour ajouter l'id de l'event en lien avec l'image
      * @param $imgEvent integer
      */
-    public function setImgEvent($imgEvent){
+    public function setEvent($imgEvent){
         $this->_imgEvent = $imgEvent;
-    }
-
-    /**
-     * @fn setImgArticle($imgArticle)
-     * @brief Fonction setter pour ajouter l'id de l'article en lien avec l'image
-     * @param $imgArticle integer
-     */
-    public function setImgArticle($imgArticle){
-        $this->_imgArticle = $imgArticle;
-    }
-
-    public function setEventId($eventId){
-        $this->_eventId = $eventId;
-    }
-
-    public function setImgEventName($imgEventName){
-        $this->_imgEventName = $imgEventName;
     }
 
     //Getters
 
-    public function getImgId(){
+    public function getId(){
         return $this->_imgId;
     }
 
-    public function getImgUrl(){
+    public function getName(){
         return $this->_imgName;
     }
 
-    public function getImgDateAdd(){
+    public function getDate(){
         return $this->_imgDateAdd;
     }
 
-    public function getImgAlt(){
+    public function getAlt(){
         return $this->_imgAlt;
     }
 
-    public function getImgEvent(){
+    public function getEvent(){
         return $this->_imgEvent;
     }
 
-    public function getImgArticle(){
-        return $this->_imgArticle;
-    }
-
-    public function getEventId(){
-        return $this->_eventId;
-    }
-
-    public function getImgEventName(){
-        return $this->_imgEventName;
-    }
 
     public function getData(){
         $galerieData = get_object_vars($this);

@@ -323,6 +323,27 @@ function send_page_email(url){
     });
 }
 
+function gallery(image){
+    let init = 0;
+    let images = image;
+    let count = Object.keys(image).length;
+    //console.log(count);
 
+    $("#gallery").html(images[0]); 
 
+    $("#next").on("click", function(){
+        init++;
+        if(init > count-1){
+            init = 0;
+        }
+        $("#gallery").html(images[init]);
+    });
 
+    $("#prev").on("click", function(){
+        console.log(init--);
+        if(init < 0){
+            init = count-1;
+        }
+        $("#gallery").html(images[init]);
+    });
+}

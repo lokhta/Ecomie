@@ -6,8 +6,6 @@ class Galeries extends CI_Controller{
    private $_galerie_manager;
    private $_galerie;
    
-  
-
     public function __construct(){
         parent::__construct();
         $this->_galerie_manager = create_object('Galerie_manager');
@@ -16,76 +14,37 @@ class Galeries extends CI_Controller{
 
    
     public function galeries() {
-        //Afficher une seule galerie
-        if(!empty($_GET['event_id'])){            
-        $data = get_data($this->_galerie_manager, $this->_galerie, 'getGalerie', $_GET['event_id']);
-        //var_dump($data);
-        $this->smarty->assign('galerieDetail', $data);
+        if(!empty($_GET['event_id'])){
+            $data = get_data($this->_galerie_manager, $this->_galerie, "getGalerie", $_GET['event_id']);
 
-        //============= DEBUT GESTION COMMENTAIRE ARCHIVE ==============
-        $comment_manager = create_object('Comment_manager');
-        $comment = create_object('Comment');
+            $array_image = array();
 
-        $url = base_url()."Galeries/galeries?event_id=".$_GET['event_id'];
-        $this->smarty->assign('url', $url);
-
-        //Ajouter un commentaire
-        if(!empty($_POST) && empty($_GET['edit_com'])){
-            $data = array(
-                'commentAuthor' => $_SESSION['id'],
-                'commentEvent' => $_GET['event_id'],
-            );
-            write_data($comment_manager, $comment, 'addComment', $_POST, $data);
-            redirect($url, 'refresh');
-        }
-
-        //Modifier un commentaire
-        if(!empty($_GET['comment_id'])){
-            get_data($comment_manager, $comment, 'getComment', $_GET['comment_id']);
-
-            
-
-            if(!empty($_POST) && $_GET['edit_com'] == 1){
-                $date_modif = date('Y-m-d H:i:s');
-                $data = array(
-                    'commentDate' => $date_modif,
-                );
-
-                write_data($comment_manager, $comment, 'editComment', $_POST, $data);
-                redirect($url, 'refresh');
-
-            }elseif($_GET['report_com'] == 1){
-                write_data($comment_manager, $comment, 'editComment', $_POST, array('commentReport' => 1));
-                redirect($url, 'refresh');
-
-            }elseif($_GET['del_com'] == 1){
-                del_data($comment_manager, 'deleteComment', $_GET['comment_id']);
-                redirect($url, 'refresh');
+            foreach($data as $key => $value){
+                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image' style='width:500px'>");
             }
-        }
 
-        //Affichage des commentaires de la galerie
-        $comment_data = get_all_data($comment_manager, $comment, 'getAllComment',$_GET['event_id']);
-        //var_dump($comment_data);
+            // var_dump($array_image);
+            $this->smarty->assign("images", $array_image);
 
+            $this->smarty->assign('galerieDetail', $data);
 
-        $this->smarty->assign('comment', $comment_data);
-        //============= FIN GESTION COMMENTAIRE GALERIE ==============
-
+            // var_dump($data);
             $this->smarty->view('pages/galerie.tpl');
-
-        }else{//Afficher toutes les galeries
+        }else{
             /*pagination start */
             $page_url= base_url()."Galeries/galerie";
             $total_rows = $this->_galerie_manager->count_galerie();
 
             $data_pagination = pagination($page_url, $total_rows, 6);
             $pagination_link = $data_pagination['pagination_link'];
-
+            //var_dump($total_rows);
             $this->smarty->assign('pagination', $pagination_link);
             /*pagination end*/
-           $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie', $data_pagination['limit'], $data_pagination['offset']); 
-           var_dump($data);
+
+            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie',$data_pagination['limit'], $data_pagination['offset']);
+           // $data = $this->_galerie_manager->getAllGalerie($data_pagination['limit'],$data_pagination['offset']);
+            //var_dump($data);
+
             $this->smarty->assign('galerie', $data);
             $this->smarty->view('pages/galeries.tpl');
         }
@@ -93,85 +52,99 @@ class Galeries extends CI_Controller{
 
 
     public function dashboard(){
-        //Pour insertion dans la BDD
-    
-        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
-            redirect('pages/access_denied', 'location');
-        }
 
-        if(!empty($_POST) && empty($_GET)){
-            write_data($this->_galerie_manager, $this->_galerie, 'addGalerie', $_POST, array('eventAuthor'=> $_SESSION['id']));
-            redirect(base_url()."Galeries/dashboard", 'location');
-        }
-  
-        if($_GET){
-            $url = "Galeries/dashboard?event_id=".$_GET['event_id'];
+        if(!empty($_GET['event_id'])){
+            $data = get_data($this->_galerie_manager, $this->_galerie, "getGalerie", $_GET['event_id']);
 
-            if(!empty($_GET['edit'])){
-                $url .= "&edit=1&update=1";
+            $array_image = array();
+
+            foreach($data as $key => $value){
+                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image' style='width:500px'>");
             }
 
-            $this->smarty->assign('url', $url);
+            
 
-            //Afficher une seule galerie
-            if(!empty($_GET['event_id'])){
-                $data = get_data($this->_galerie_manager, $this->_galerie, 'getGalerie', $_GET['event_id']);
-                $this->smarty->assign('galerieDetail',$data);
-                $this->smarty->assign('page', 'admin/galerie_detail.tpl');
-                $this->smarty->view('admin/dashboard.tpl');
-            }
+            // var_dump($array_image);
+            $this->smarty->assign("images", $array_image);
 
-            //Modification galerie
-            if(!empty($_POST) && !empty($_GET['update'])){
-                $date_modif = date('Y-m-d H:i:s');
+            $this->smarty->assign('galerieDetail', $data);
 
-                write_data($this->_galerie_manager, $this->_galerie, 'editGalerie', $_POST, array('eventDate' => $date_modif));
-
-                redirect($url, 'location');
-            }
-
-            //Suppression de la galerie
-            if(!empty($_GET['event_id']) && !empty($_GET['del'])){
-                del_data($this->_galerie_manager, 'deleteGalerie', $_GET['event_id']);
-                redirect(base_url()."Galeries/dashboard", 'location');
-            }
-
-        }else{ //Pour affichage de la liste des galeries
-
+            // var_dump($data);
+            $this->smarty->assign('page', 'admin/galerie_detail.tpl');
+        }else{
             /*pagination start */
             $page_url= base_url()."Galeries/dashboard";
             $total_rows = $this->_galerie_manager->count_galerie();
 
-            $data_pagination = pagination($page_url, $total_rows, 10);
+            $data_pagination = pagination($page_url, $total_rows, 9);
             $pagination_link = $data_pagination['pagination_link'];
-
+            //var_dump($total_rows);
             $this->smarty->assign('pagination', $pagination_link);
             /*pagination end*/
 
-            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getDashGalerie', $data_pagination['limit'], $data_pagination['offset']);
-            var_dump($data);
+            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie',$data_pagination['limit'], $data_pagination['offset']);
+           // $data = $this->_galerie_manager->getAllGalerie($data_pagination['limit'],$data_pagination['offset']);
+            //var_dump($data);
+
             $this->smarty->assign('galerie', $data);
             $this->smarty->assign('page', 'admin/galerie.tpl');
-            $this->smarty->view('admin/dashboard.tpl');
-        }   
-
-        $this->smarty->assign('url', 'Galeries/dashboard');
-
-        //Chargement de l'editeur de texte
-        $script_ckeditor = 
-        "<script>
-            CKEDITOR.replace('eventContent', {
-                heigth : 400,
-                filebrowserUploadUrl: '".site_url('Galeries/dashboard')."',
-                filebrowserImageUploadUrl: '".site_url('Galeries/upload')."'})
-        </script>";
-
-        $this->smarty->assign('script_ckeditor', $script_ckeditor);
+        }
 
         $this->smarty->view('admin/dashboard.tpl');
+
+    }
+    
+    public function editor(){
+        // $count = $this->_galerie_manager->count_image("13");
+        //$notBase = $this->_galerie_manager->eventNotInBase();
+        // var_dump($notBase);
+
+        if(!empty($_POST)){
+            $timestamp_to_date = timestamp_to_date();
+            
+            $config['upload_path'] = "assets/img/upload";
+            $config['allowed_types'] = "gif|jpg|png";
+            $config['max_size'] = 2000;
+            $config['file_name'] = $timestamp_to_date;
+            $this->load->library('upload', $config);
+
+
+
+            if(!$this->upload->do_upload('imgName')){
+                echo json_encode(array('error' => $this->upload->display_errors()));
+                
+            }else{
+                $upload_data = $this->upload->data();
+
+                $this->load->library("image_lib");
+
+                /*Resize image uploader */
+                $resize_image["image_library"] = "gd2";
+                $resize_image["source_image"] = $upload_data['full_path'];
+                $config['create_thumb'] = FALSE;
+                $resize_image["maintient_ratio"] = FALSE;
+                $resize_image["width"] = 600;
+                $resize_image["height"] = 600;
+
+                $this->image_lib->initialize($resize_image);
+                $this->image_lib->resize();
+
+                echo json_encode(array('file_name' => $upload_data['file_name']));
+                $_POST['imgName'] = $upload_data['file_name'];
+                write_data($this->_galerie_manager, $this->_galerie, 'addImage', $_POST);
+            }
+            
+            //var_dump($_POST);
+
+        }
+
+
+        $option = get_option_select_input($this->_galerie_manager, "eventNotInBase","eventId","eventName","Evénements");
+        $this->smarty->assign("option", $option);
+        // var_dump($option);
+
+        $this->smarty->view('admin/galerie_creator.tpl');
     }
 
-    public function upload(){
-        upload_image_ckeditor('images');
-    }
+
 }

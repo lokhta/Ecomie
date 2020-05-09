@@ -120,6 +120,30 @@ class Events extends CI_Controller{
         $this->smarty->view('admin/dashboard.tpl');
     }
 
+    public function archives(){
+        if(!empty($_GET['event_id'])){
+            $data = get_data($this->_event_manager, $this->_event, 'getEvent', $_GET['event_id']);
+            $this->smarty->assign('archiveDetail',$data);
+            $this->smarty->assign('page', 'admin/archive_detail.tpl');
+        }else{
+            /*pagination start */
+            $page_url= base_url()."Events/dashboard";
+            $total_rows = $this->_event_manager->count_event();
+
+            $data_pagination = pagination($page_url, $total_rows, 10);
+            $pagination_link = $data_pagination['pagination_link'];
+
+            $this->smarty->assign('pagination', $pagination_link);
+            /*pagination end*/
+
+            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent',$data_pagination['limit'], $data_pagination['offset']);
+            // var_dump($data);
+            $this->smarty->assign('archive', $data);
+            $this->smarty->assign('page', 'admin/archive.tpl');
+        }
+        $this->smarty->view('admin/dashboard.tpl');
+    }
+
     public function upload(){
         upload_image_ckeditor('events');
     }
