@@ -16,12 +16,9 @@
                         <td>{$val.userName}</td>
                         <td>{$val.userFirstname}</td>
                         <td class="link_gestion">
-                            <button class="action" data-name="{$val.userName}" data-firstname="{$val.userFirstname}" data-mail="{$val.userEmail}"
-                             data-phone="{$val.userPhone}" data-address="{$val.userAddress}" data-cp="{$val.userCp}" data-city="{$val.userCity}">
-                             <i class="fas fa-search"></i></button>
-                            {*<a href="{base_url()}users/membres?user_id={$val.userId}"><i class="fas fa-search"></i></a>*}
-                            {*<a href="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></a>*}
-                            <button class="delete" data-link="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></button>
+                            <button class="action btn_more" data-name="{$val.userName}" data-firstname="{$val.userFirstname}" data-mail="{$val.userEmail}"
+                             data-phone="{$val.userPhone}" data-address="{$val.userAddress}" data-cp="{$val.userCp}" data-city="{$val.userCity}"><i class="fas fa-search"></i></button>
+                            <button style="border:0px" class="delete btn_basket" data-link="{base_url()}users/membres?user_id={$val.userId}&amp;del=1"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
                 {/foreach}
@@ -40,7 +37,7 @@
                 <span id="firstname" class="info_membre"></span>
             </p>
             <p class="row_info_membre white">
-                <span class="lab">Email</span>
+                <span class="lab mail_membres">Email</span>
                 <span id="mail" class="info_membre mail"></span>
             </p>
             <p class="row_info_membre bluesky">
@@ -102,7 +99,7 @@
         });
 
         $('.delete').click(function() {
-            var ok = confirm('Etes-vous sûr de supprimer ?');
+            var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
             if(ok){
                 var current = $(this);
                 var link = current.data('link');
