@@ -21,41 +21,29 @@ class Galerie_manager extends CI_Model{
     
     public function getGalerie($event_id){
         $query = $this->db
-        ->select('imgName, imgAlt, imgEvent, eventName')
+        ->select('imgEvent,imgName, imgAlt, eventName')
         ->from('images')
         ->join('events', 'events.eventId = images.imgEvent')
-        ->where('eventId', $event_id)
+        ->where('imgEvent', $event_id)
         ->get();
-        return $query->row_array();
+        return $query->result_array();
     }
  
-    public function getAllGalerie(){  
-       
-            $this->db->select('imgName, imgAlt, eventName');
+    public function getAllGalerie($limit, $offset){  
+            $this->db->distinct();
+            $this->db->select('imgEvent,imgName, imgAlt,imgDateAdd, eventName');
             $this->db->from('images');
             $this->db->join('events', 'events.eventId = images.imgEvent');
-            $this->db->where('eventDateEnd < DATE( NOW())');
-
+            $this->db->group_by('imgEvent');
+            $this->db->limit($limit, $offset);
             $query = $this->db->get();
             return $query->result_array();
         }
 
-    public function getDashGalerie(){
-            $this->db->select('eventId, eventName');
-            $this->db->from('events');
-            $this->db->where('eventDateEnd < DATE( NOW())');
-        
-
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
     public function count_galerie(){
-        $this->db->select('*');
-        $this->db->from('events');
-        if(strpos(current_url(),"Galeries/galeris")!= false){
-            $this->db->where('eventDateEnd < NOW()');
-        }
+        $this->db->distinct();
+        $this->db->select('imgEvent');
+        $this->db->from('images');
         return $this->db->get()->num_rows();
     }
 }

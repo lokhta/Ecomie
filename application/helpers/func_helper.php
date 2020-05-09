@@ -45,35 +45,47 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
     $get_data_in_base = $obj_manager->$method($param);
-    //var_dump($get_data_in_base);;
+    // var_dump($get_data_in_base);;
 
-    $obj_class->hydrate($get_data_in_base);
-    //var_dump($obj_class);
 
-    $data = $obj_class->getData();
-    // var_dump($data);
+    if(get_class($obj_manager) == "Galerie_manager"){
+        $data = array();
+        foreach($get_data_in_base as $key => $value){
+            $obj_class->hydrate($value);
+            $array_data = $obj_class->getData();
 
-    if(!empty($get_data_in_base['categoryName'])){
-        $data['category'] = $get_data_in_base['categoryName'];
-    }
+            $array_data["eventName"] = $value["eventName"];
+            
+            array_push($data, $array_data);
+        }
+    }else{
+        $obj_class->hydrate($get_data_in_base);
+        //var_dump($obj_class);
     
-    if(!empty($get_data_in_base['userFirstname'])){
-        $data['author'] = $get_data_in_base['userFirstname'];
-    }
-
-    if(!empty($get_data_in_base['roleName'])){
-        $data['role'] = $get_data_in_base['roleName'];
-    }
+        $data = $obj_class->getData();
+        // var_dump($data);
     
-
-    if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'Subscription_manager'))){
-        $date_time = get_date($get_data_in_base);
-        if(!empty($date_time)){
-            $data['date'] = $date_time['date'];
-            $data['time'] = $date_time['time'];
+        if(!empty($get_data_in_base['categoryName'])){
+            $data['category'] = $get_data_in_base['categoryName'];
+        }
+        
+        if(!empty($get_data_in_base['userFirstname'])){
+            $data['author'] = $get_data_in_base['userFirstname'];
+        }
+    
+        if(!empty($get_data_in_base['roleName'])){
+            $data['role'] = $get_data_in_base['roleName'];
+        }
+        
+    
+        if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'Subscription_manager'))){
+            $date_time = get_date($get_data_in_base);
+            if(!empty($date_time)){
+                $data['date'] = $date_time['date'];
+                $data['time'] = $date_time['time'];
+            }
         }
     }
-
     // var_dump($data);;
     return $data;
 }
@@ -176,7 +188,7 @@ function del_data($obj_manager, $method, $id){
     }
 
     $obj_manager->$method($id);
-    // var_dump($obj_manager->$method($id));
+    //var_dump($obj_manager->$method($id));
 }
 
 /**
@@ -205,7 +217,7 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
         $get_data_in_base = $obj_manager->$method($limit, $offset);
     }
 
-    // var_dump($get_data_in_base);
+    //var_dump($get_data_in_base);
 
     $liste = array();
 
@@ -214,8 +226,6 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
         //var_dump($obj_class);
         $data = $obj_class->getData();
         //var_dump($data);
-        //var_dump($obj_manager);
-        //var_dump($obj_class);
 
         if(!empty($value['roleName'])){
             $data['roleName'] = $value['roleName'];
@@ -228,11 +238,15 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
             if(!empty($value['userFirstname'])){
                 $data['author'] = $value['userFirstname'];
             }
+
+            if(!empty($value['eventName']) && get_class($obj_manager) == "Galerie_manager"){
+                $data['eventName'] = $value['eventName'];
+            }
         }
         
         //var_dump($data);
 
-        if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager', 'galerie_manager'))){
+        if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
@@ -245,7 +259,7 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
         
         array_push($liste, $data);
     }
-    // var_dump($liste);
+    //var_dump($liste);
     return $liste;
 }
 
@@ -256,7 +270,7 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
  */
 function get_date($data){
     foreach($data as $k => $v){
-        if(strpos($k, 'Date') !== false){
+        if(strpos($k, 'Date') != false){
             $convertDate = strtotime($v);
         }
     }

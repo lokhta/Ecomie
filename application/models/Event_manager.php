@@ -34,7 +34,11 @@ class Event_manager extends CI_Model{
             $this->db->select('eventId, eventName, eventContent, eventDateStart, eventTimeStart, eventDateEnd, eventTimeEnd, eventAuthor, userFirstname');
             $this->db->from('events');
             $this->db->join('users', 'users.userId = events.eventAuthor');
-            $this->db->where('eventDateEnd > DATE( NOW())');
+            if(strpos(current_url(), "events/archives") != false){
+                $this->db->where('eventDateEnd < NOW()');
+            }else{
+                $this->db->where('eventDateEnd > NOW()');
+            }
             
 
             $this->db->limit($limit,$offset);
@@ -42,27 +46,17 @@ class Event_manager extends CI_Model{
             $query = $this->db->get();
             return $query->result_array();
     
-}
-    public function getAllGalerie(){  
-
-            $this->db->select('eventId, eventName, eventContent, eventDateStart, eventTimeStart, eventDateEnd, eventTimeEnd, eventAuthor, userFirstname');
-            $this->db->from('events');
-            $this->db->join('users', 'users.userId = events.eventAuthor');
-            $this->db->where('eventDateEnd > NOW()');
-            
-
-        // if(array_key_exists('role', $_SESSION) && $_SESSION['role'] == 3 && current_url() !== $url){
-        //     $this->db->where('eventAuthor', $_SESSION['id']);
-        // }
-
-        $query = $this->db->get();
-        return $query->result_array();
     }
+
 
     public function count_event(){
         $this->db->select('*');
         $this->db->from('events');
-        $this->db->where('eventDateEnd > NOW()');
+        if(strpos(current_url(), "events/archives") != false){
+            $this->db->where('eventDateEnd < NOW()');
+        }else{
+            $this->db->where('eventDateEnd > NOW()');
+        }
 
         return $this->db->get()->num_rows();
     }

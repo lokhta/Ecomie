@@ -156,22 +156,6 @@ class Users extends CI_Controller{
 // Fonction de la page modification des données utilisateurs
     public function profil()
     {   
-
-        
-        //Condition pour la suppression de l'image de profil
-        // if ($_GET){
-        //     $_SESSION['avatar'] = 'user-solid.svg';
-        //     foreach($_SESSION as $key => $value){
-        //         $key= ucfirst($key);
-        //         $key_session = "user".$key;
-        //         $_GET[$key_session] = $value;
-        //     }
-        //     //$imagePath = 'C:\wamp64\www\Ecomie\assets\img\'.$_GET;
-        //     // unlink($imagePath);
-        //     write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array('userId'=>$_SESSION['id']));
-        //     redirect(base_url()."users/profil");
-        // }
-
         if(!empty($_GET['del']) && $_GET['del'] == 1){
             $this->_user_manager->del_avatar($_SESSION['id']);
             $this->smarty->assign('avatar', 'user-solid.svg');
