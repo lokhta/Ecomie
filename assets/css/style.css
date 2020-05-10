@@ -1361,7 +1361,7 @@ Plan du site
 @media screen and (max-width: 576px) {
 
 .plan {
-    width: 320px;
+        width: 320px;
 }
 }
 
@@ -1374,12 +1374,9 @@ Article
     height: 500px;
 }
 @media screen and (max-width:1080px) {
-
     .article img {
-
         max-width: 750px;
         height: 450px;
-    
     }
 }
 
@@ -1396,10 +1393,8 @@ section.right_content {
     padding: 20px;
 }
 
-#sidebar{
-    
+#sidebar{ 
     width: 250px;
-
 }
 
 #sidebar nav ul li {
@@ -1593,16 +1588,9 @@ div#dash_info .flex_column {
     .link-nav-admin {
         color: white;
     }
-    
-    .link-nav-admin {
-
-    }
-   
     .content_ico{
         width: 70px;
         height: 50px;
-        display: flex;
-        justify-content: center;
         align-items: center;
     }
     
@@ -1613,6 +1601,20 @@ div#dash_info .flex_column {
     
     a.link_admin {
         display: none;
+    }
+}
+@media screen and (max-width: 572px) {
+    .content_ico{
+        width: 70px;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+        a.link_admin {
+        position: relative;
+        left: 39px;
+        top: -51px;
     }
 }
 
@@ -1798,6 +1800,20 @@ Article Dashboard
     margin: 0px;
 }
 
+@media screen and (max-width: 572px) {
+
+    tab tr, .tab td {
+        height: 50px;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+    .thead, th{
+        background: #229954;
+        color: #fff;
+        font-weight: normal;
+        font-size: 0.8rem;
+    }
+}
 
 
 /*Article detail*/
@@ -1859,6 +1875,7 @@ input#submit:hover{
 #display_content{
     display: none;
 }
+
 
 /*Commentaires - Article*/
 #comments {
