@@ -45,5 +45,17 @@ class Email extends CI_Controller{
         send_mail($_GET['sender'], $_GET['recipient'], $subject, $message, "text");
 
     }
+
+
+
+    // public function send_news(){
+    //     $subject = "Email envoyé par ".$_GET["sender"];
+    //     $message = $_GET["sender"]." vous a envoyé cette article qui pourrait vous plaire : ".$_GET["url"];
+    //     $liste = array();
+
+    //     foreach($liste as $email){
+    //         send_mail("Ecomie", $email, $subject, $message, "text");
+    //     }
+    // }
    
 }

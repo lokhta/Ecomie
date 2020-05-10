@@ -139,6 +139,11 @@ class Users extends CI_Controller{
             $_POST['userAvatar'] = "user-solid.svg";
             $_POST['userRole'] = 3;
             write_data($this->_user_manager, $this->_user, 'addUser', $_POST);
+
+
+            $subject= "Confirmation d'inscription";
+            $message = "<p>Bonjour ".$_POST["userFirstname"]."</p><p> Vous êtes désormais inscrit sur Ecomie. Nous somme heureux de vous compter parmis nos membres</p>";
+            send_mail("Ecomie", $_POST["userEmail"], $subject, $message, "html");
         }
 
         echo json_encode($array);

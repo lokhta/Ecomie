@@ -451,7 +451,9 @@ function send_mail($from, $to, $subject, $message, $format){
     // $this->email->send();
 
     if($ci->email->send()){
-        echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
+        if(!empty($_GET["sender"])){
+            echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
+        }
     }else{
         echo json_encode(array("error" => "<div class='red_error'>Une erreur s'est produite</div>"));
         // echo $this->email->print_debugger();
