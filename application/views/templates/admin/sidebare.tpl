@@ -58,7 +58,7 @@
             </div>
             <a href="{base_url()}forms/dashboard" class="link_admin">Messagerie</a>
         </div>
-        {if $smarty.session.role != 1}
+        {if $smarty.session.role != 3}
         <div class="link-nav-admin">
             <div class="content_ico">            
                 <i class="fas fa-archive ico_admin"></i>
