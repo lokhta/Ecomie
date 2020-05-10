@@ -24,11 +24,8 @@ class Newsletters extends CI_Controller{
         }
 
         if($_GET){
-            $url_form = "Newsletters/dashboard?news_id=".$_GET['news_id'];
-
-            if(!empty($_GET['edit'])){
-                $url_form .= "&edit=1&update=1";
-            }
+            $url = "Newsletters/dashboard?news_id=".$_GET['news_id'];
+            $url_form = $url."&edit=1";
 
             $this->smarty->assign('url_form', $url_form);
 
@@ -43,7 +40,7 @@ class Newsletters extends CI_Controller{
             }
 
             //Modification news
-            if(!empty($_POST) && !empty($_GET['update'])){
+            if(!empty($_POST) && !empty($_GET['edit'])){
                 $date_modif = date('Y-m-d H:i:s');
 
                 write_data($this->_newsletter_manager, $this->_newsletter, 'editNews', $_POST, array('newsDate'=>$date_modif));
@@ -55,6 +52,23 @@ class Newsletters extends CI_Controller{
             if(!empty($_GET['news_id']) && !empty($_GET['del'])){
                 del_data($this->_newsletter_manager, 'deleteNews', $_GET['news_id']);
                 redirect(base_url()."Newsletters/dashboard", 'location');
+            }
+
+            //Envoi de la newsletter aux abonné
+
+            if(!empty($_GET['send']) && $_GET['send'] == 1){
+                $subscription_manager = create_object("Subscription_manager");
+                $liste_emails = $subscription_manager->getEmails();
+                $news = get_data($this->_newsletter_manager, $this->_newsletter, "getNews", $_GET["news_id"]);
+
+                $subject = $news['newsTitle'];
+                $message = "<div><h1>".$subject."</h1>".$news['newsContent']."</div>";
+
+                foreach($liste_emails as $email){
+                    send_mail("ecomie", $email, $subject, $message, "html");
+                }
+                
+                $this->smarty->assign("success", "<div class='message_success alert-success'>La newsletter a été envoyé</div>");
             }
 
         }else{

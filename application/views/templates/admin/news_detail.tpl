@@ -1,4 +1,9 @@
 <div id="modal">
+<span id="success">
+{if $success}
+    {$success}
+{/if}
+</span>
     <div>
         <div class="btn-content">
             <a href="{base_url()}Newsletters/dashboard" class="btn">Retour</a>
@@ -12,12 +17,14 @@
             </div>
             <div class="content-action">
                 {if $smarty.session.role == 1}
-                    <a href="{base_url()}Newsletters/dashboard?news_id={$smarty.get.news_id}&amp;edit=1" class = "btn btn-edit">Modifier</a>
+                    <a href="{base_url()}Newsletters/dashboard?news_id={$smarty.get.news_id}&amp;edit=1" class = "btn btn-edit" id="event_btn">Modifier</a>
                     <button style="border:0px" class="delete btn btn_del" data-link="{base_url()}Newsletters/dashboard?news_id={$smarty.get.news_id}&amp;del=1">Supprimer</button>
                 {/if}
 
+                <a href="{base_url()}Newsletters/dashboard?news_id={$smarty.get.news_id}&amp;send=1" class="send btn btn_send">Envoyer à tous les abonnés</a>
+
             </div>
-            <div class="formContent" id="edit">
+            <div class="formContent" id="display_content">
                 {form_open($url_form, "class='form'")}
                     <p class="field-content">
                         {form_label("Titre")}
@@ -28,7 +35,7 @@
                 {form_close()}
             </div>
         </div>
-    </div>
+    </span>
 </div>
 
 <script>
@@ -43,4 +50,8 @@
                }
             });
         });
+
+        $(document).ready(function(){
+            setTimeout(hideMessage, 3000);
+        })
 </script>
