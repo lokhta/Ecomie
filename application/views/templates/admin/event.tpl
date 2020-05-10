@@ -5,7 +5,7 @@
             <th>Titre</th>
             <th>Actions</th>
         </tr>
-        
+
         {foreach from=$event item=val key=key}
             <tr style="background: {cycle values='#fff , #D6EAF8'}">
                 <td>{$val.eventId}</td>

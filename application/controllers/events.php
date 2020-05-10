@@ -84,6 +84,7 @@ class Events extends CI_Controller{
             $this->smarty->view('admin/dashboard.tpl');
         }   
 
+        
         $this->smarty->assign('url', 'Events/dashboard');
 
         //Chargement de l'editeur de texte

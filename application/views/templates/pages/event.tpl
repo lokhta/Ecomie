@@ -14,7 +14,7 @@
             </div>
         <div id="event_comment">
             <div id="comments">
-                    <div id="content_comments"></div>
+                <div id="content_comments"></div>
             </div>  
         </div>  
       {if $smarty.session.id}
