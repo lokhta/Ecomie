@@ -71,7 +71,6 @@ function get_data($obj_manager, $obj_class, $method, $param){
         
         if(!empty($get_data_in_base['userFirstname'])){
             $data['author'] = $get_data_in_base['userFirstname'];
-            $data['email'] = $get_data_in_base['userEmail'];
         }
     
         if(!empty($get_data_in_base['roleName'])){
