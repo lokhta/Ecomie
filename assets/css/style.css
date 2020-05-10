@@ -1457,7 +1457,7 @@ a.link_admin {
 
 .flex_column {
     
-    width: 300px;
+    width: 280px;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -1510,24 +1510,15 @@ div#dash_info .flex_column {
     flex-direction: column;
 }
 
-.dash_actu h3 {
-    display: flex;
-    justify-content: center;
-}
-
-.dash_activiter {
-   
-    
-}
 
 @media screen and (max-width : 1280px){
     .link-nav-admin {
-        height: 100px;
-        width: 70px;;
+        width: 70px;
         background: #2C3E50;
         display: block;
         overflow: hidden;
         position: relative;
+        margin: auto auto;
     }
 
     .link-nav-admin:hover{
@@ -1557,9 +1548,7 @@ div#dash_info .flex_column {
         display: flex;
         background: #EBEDEF;
     }
-    .link-nav-admin {
-        display: none;
-    }
+
     section.right_content {
         display: flex;
         flex-direction: column;
@@ -1569,20 +1558,15 @@ div#dash_info .flex_column {
         padding: 10px;
     }
     #sidebar {
-        width: 0px;
+        position: absolute;
+        width: 100%;
     }
 
     .side__nav { 
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 300px;
-    }
-    .side__nav { 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 300px;
+    width: 100%;
     }
     #sidebar nav ul li {
         list-style: none;
@@ -1611,11 +1595,7 @@ div#dash_info .flex_column {
     }
     
     .link-nav-admin {
-        display: flex;
-        align-items: center;
-        font-size: 30px;
-        background: #2C3E50;
-        height: 75px;
+
     }
    
     .content_ico{
