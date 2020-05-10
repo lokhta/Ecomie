@@ -7,7 +7,7 @@
                 <a href="{base_url()}Articles/articles" class="btn">Retour</a>
             </div>
             <div class="savoir__faire">
-                <div class="{$articleDetail.category}__article">
+                <div class="savoir__faire--article">
                 {* article start *}
                     <h2>{$articleDetail.articleTitle}</h2>
                     <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
