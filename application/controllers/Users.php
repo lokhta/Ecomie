@@ -193,22 +193,24 @@ class Users extends CI_Controller{
         
         //$this->load->library('javascript/jquery');
         // var_dump($_SESSION);
-        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
+
         //var_dump($data);
 
+        if(!empty($_GET['userRole'])){
 
-        if(!empty($_POST['userRole'])){
-            write_data($this->_user_manager, $this->_user, 'editUser', $_POST);
+            write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array("userId" => $_GET['userId']));
             // redirect(base_url()."users/membres", 'refresh');
         }
 
+        // var_dump($_SESSION);
         
         $role = get_role_user($this->_user_manager);
-
+        var_dump($role);
         $this->smarty->assign('option', $role); 
 
-        
+        $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
         $this->smarty->assign('users_list', $data_list);
+
         $this->smarty->assign('page', 'admin/membre.tpl');
         $this->smarty->view('admin/dashboard.tpl');
 

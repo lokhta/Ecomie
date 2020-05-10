@@ -149,38 +149,37 @@ function get_option_select_input($obj_manager, $method,$return_id, $return_value
  */
 function write_data($obj_manager, $obj_class, $method, array $post, array $data = null){
     $get_method = get_class_methods($obj_manager);
+    var_dump($post);;
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
         exit;
     }
 
+    //Crée paire clé valeur pour hydratation
     if($data){
         foreach($data as $key => $value){
             $post[$key] = $value;
         }
     }
 
-
-    if(!empty($_SESSION['id']) && $method == 'editUser'){
+    //Supprime les champs vide lors de la modification du profil
+    if(!empty($_SESSION['id']) && $method == 'editUser' && empty($_GET)){
         foreach($post as $key=>$value){
             if($post[$key] == ""){
                 unset($post[$key]);
             }
         }
         $post['userRole'] = $_SESSION['role'];
-        // var_dump($post);exit;
     }
-    // var_dump($post);;
 
-    $obj_class->hydrate($post);
-
-    //var_dump($obj_class);exit;;
+    $obj_class->hydrate($post);;
+    // var_dump($obj_class);
 
     //Actualisation de la session après la modificationd du profil
-    if($method == 'editUser'){
+    if($method == 'editUser' && empty($_GET)){
         $userTab = $obj_class->getData();
-        // var_dump($userTab);;
+        var_dump($userTab);;
         foreach($userTab as $key => $value){
             $key_session = lcfirst(str_replace('user', '', $key));
             $_SESSION[$key_session] = $value;
@@ -188,7 +187,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
     $obj_manager->$method($obj_class);
-    // var_dump($obj_manager);;;
+    // var_dump($obj_manager);;
 }
 
 /**

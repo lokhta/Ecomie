@@ -297,29 +297,7 @@ function hideMessage(){
         $(".tab_right_membre").css("display", "block");
     })
 
-    /*Affichage dynamique des infos membre */
-    $('.action').click(function() {
-        var current = $(this);
-        var name = current.data('name');
-        var firstname = current.data('firstname');
-        var mail = current.data('mail');
-        var phone = current.data('phone');
-        var address = current.data('address');
-        var cp = current.data('cp');
-        var city = current.data('city');
-        var id = current.data('id');
 
-        var url = "{base_url()}Users/membres?membre_id="+id;
-
-        $('#form_role').attr("action", url);
-        $('#name').text(name);
-        $('#firstname').text(firstname);
-        $('#mail').text(mail);
-        $('#phone').text(phone);
-        $('#address').text(address);
-        $('#cp').text(cp);
-        $('#city').text(city);
-        });
 
 
     $('.delete').click(function() {
