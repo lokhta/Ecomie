@@ -1,6 +1,6 @@
 <aside id="sidebar">
     <nav class="side__nav">
-    {if $smarty.session.role == 1}
+    {if $smarty.session.role != 3}
         <div class="link-nav-admin">
             <div class="content_ico">
                 <i class="fas fa-tachometer-alt ico_admin"></i>

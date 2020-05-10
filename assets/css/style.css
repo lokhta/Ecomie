@@ -2304,3 +2304,7 @@ p#ulpload_field span {
 #form_role input{
     margin-bottom: 0px;
 }
+
+.dash_activite td.col2 {
+    width : 70%;
+}

@@ -33,7 +33,7 @@ class Comment_manager extends CI_Model{
         return $query->row_array();
     }
     
-    public function getAllComment($id){
+    public function getAllComment($id = null){
 
         $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname');
         $this->db->from('comments');
@@ -43,6 +43,10 @@ class Comment_manager extends CI_Model{
             $this->db->where('commentArticle', $id);
         }elseif(!empty($_GET['event_id'])){
             $this->db->join('events', 'events.eventId = comments.commentEvent');
+        }
+
+        if(current_url() == base_url()."dashboard"){
+            $this->db->where("commentReport", 1);
         }
         $this->db->order_by('commentDate', 'DESC');
         $query = $this->db->get();
@@ -62,4 +66,5 @@ class Comment_manager extends CI_Model{
         }
         return $this->db->get("newsletters")->num_rows();
     }
+
 }

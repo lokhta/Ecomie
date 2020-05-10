@@ -52,7 +52,7 @@
                                 </tr>
 
                                 <tr class="info_profil">
-                                    <td>{form_label("Addresse postale")}</td>
+                                    <td>{form_label("Adresse postale")}</td>
                                     <td>
                                         <span class="info_user">{$smarty.session.address}</span>
                                         {form_input("userAddress", "", "id='userAddress' class='field_profil'")}

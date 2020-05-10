@@ -51,8 +51,8 @@ class Comments extends CI_Controller{
             $url = base_url()."Events/events?event_id=".$_GET['event_id'];
         }
 
-        if(!empty($_GET['comment_id'])){
-            get_data($this->_comment_manager, $this->_comment, 'getComment', $_GET['comment_id']);
+        if(!empty($_GET['commentId'])){
+            get_data($this->_comment_manager, $this->_comment, 'getComment', $_GET['commentId']);
 
             if(!empty($_POST) && $_GET['edit_com'] == 1){
                 $date_modif = date('Y-m-d H:i:s');
@@ -63,14 +63,19 @@ class Comments extends CI_Controller{
                 write_data($this->_comment_manager, $this->_comment, 'editComment', $_POST, $data);
                 redirect($url, 'location');
 
-            }elseif(!empty($_GET['report_com']) && $_GET['report_com'] == 1){
-                write_data($this->_comment_manager, $this->_comment, 'editComment', $_POST, array('commentReport' => 1));
+            }elseif(!empty($_GET['commentReport'])){
+                // var_dump($_GET);;
+                write_data($this->_comment_manager, $this->_comment, 'editComment', $_GET, array('commentId' => $_GET["commentId"]));
                 redirect($url, 'location');
 
             }elseif(!empty($_GET['del_com']) && $_GET['del_com'] == 1){
-                del_data($this->_comment_manager, 'deleteComment', $_GET['comment_id']);
-                
-                redirect($url, 'location');
+                del_data($this->_comment_manager, 'deleteComment', $_GET['commentId']);
+                if(!empty($_GET['dash'])){
+                    redirect(base_url()."dashboard", 'location');
+                }else{
+                    redirect($url, 'location');
+                }
+
             }
         }
     }

@@ -86,7 +86,7 @@ class Article_manager extends CI_Model{
         $this->db->select('*');
         $this->db->from('articles');
         
-        if(strpos(current_url(),"Articles/articles")!= false){
+        if(strpos(current_url(),"Articles/articles")!= false || current_url() == base_url()."dashboard"){
             $this->db->where('articleValidate', 1);
         }
         

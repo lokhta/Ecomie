@@ -56,14 +56,14 @@
         $(document).ready(function(){
             
             //Ajax commentaire
-            let path_page = "Articles/articles";
+            //let path_page = "Articles/articles";
             let get_name = "article_id";
             let get_value = "{$smarty.get.article_id}";
             let author_id = "{$smarty.session.id}";
         
-            let url_page = base_url+path_page+"?"+get_name+"="+get_value;
+            //let url_page = base_url+path_page+"?"+get_name+"="+get_value;
         
-            ajax_comment(url_page, get_name, get_value, path_page, author_id);
+            ajax_comment(get_name, get_value, author_id);
 
 
             //Partager un article

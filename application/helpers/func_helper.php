@@ -149,7 +149,7 @@ function get_option_select_input($obj_manager, $method,$return_id, $return_value
  */
 function write_data($obj_manager, $obj_class, $method, array $post, array $data = null){
     $get_method = get_class_methods($obj_manager);
-    var_dump($post);;
+    // var_dump($post);;
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
