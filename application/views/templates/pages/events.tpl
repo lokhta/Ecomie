@@ -14,10 +14,10 @@
                       
                     <div class="event__auteur">
                         <p>{$val.author}</p>
-                        <div class="event__auteur--date">
-                            <span class="event__date">Début <br>{$val.eventDateStart} <br>{$val.eventTimeStart}</span>
-                            <span class="event__date">Fin <br>{$val.eventDateEnd} <br>{$val.eventTimeEnd} </span>
-                        </div>
+                            <div class="event__auteur--date">
+                                <span class="event__date">Début <br>{$val.eventDateStart} <br>{$val.eventTimeStart}</span>
+                                <span class="event__date">Fin <br>{$val.eventDateEnd} <br>{$val.eventTimeEnd} </span>
+                            </div>
                     </div>
                 </section> 
             {/foreach}    

@@ -6,11 +6,16 @@
             <div class="btn-content">
                 <a href="{base_url()}Articles/articles" class="btn">Retour</a>
             </div>
-            {* article start *}
-            <h2>{$articleDetail.articleTitle}</h2>
-            <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
-            <p>{$articleDetail.articleContent}</p>
-            {* article end *}
+            <div class="savoir__faire">
+                <div class="{$articleDetail.category}__article">
+                {* article start *}
+                    <h2>{$articleDetail.articleTitle}</h2>
+                    <span>Publié par {$articleDetail.author} - {$articleDetail.date}</span>
+                    <p>{$articleDetail.articleContent}</p>
+                {* article end *}
+                </div>
+            </div>
+           
 
             {* partage start *}
             <div id="share_content">
@@ -23,6 +28,7 @@
             {* paratge end *}
 
             {* Commentaire start *}
+             
             <div id="comments">
                 <div id="content_comments">
 
@@ -33,6 +39,7 @@
                 <button id="event_btn">Ajouter un commentaire</button>
             {/if}
         </div>
+   
         
         <div class="formContent" id="display_content">
             {form_open("Comments/add_comment?article_id={$smarty.get.article_id}", "id='form_com'")}

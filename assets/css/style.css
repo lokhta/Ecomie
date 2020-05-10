@@ -959,8 +959,8 @@ PAGE SAVOIR-FAIRE***************************************************************
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    max-width: 1280px;
-    margin-bottom: 50px;
+    max-width: 100%;
+    margin: 50px auto;
 }   
 .Savoir__bloc {
     display: flex;
@@ -980,6 +980,11 @@ PAGE SAVOIR-FAIRE***************************************************************
        color:black;
        font-weight: normal;
        margin-right: 15px ;
+}
+.Savoir__article {
+    margin: 25px auto;
+    padding:10px;
+    background-color: rgb(141, 191, 59);
 }
 .auteur {
     width: 360px;
@@ -1020,6 +1025,12 @@ PAGE SAVOIR-FAIRE***************************************************************
     height: 70px;
     width: 70px;
     margin-top: -20px;
+}
+.Faire__article {
+    margin: auto;
+    max-width: 1280px;
+    padding:10px;
+    background-color: rgb(255, 229, 33);
 }
 
 @media screen and (max-width: 768px) {
@@ -1536,7 +1547,7 @@ div#dash_info h3 {
 } */
 
 #modal{
-    width: 1080px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 15px;
 }
@@ -1769,11 +1780,12 @@ input#submit:hover{
 
 /*Commentaires - Article*/
 #comments {
+    max-width: 1280px;
     background: #fff;
     padding: 10px;
     font-size: 14px;
     border: solid 1px #c0c0c0;
-    margin-bottom: 15px;
+    margin: 10px auto;
 }
 
 span.comment_author {
