@@ -751,9 +751,16 @@ a{
 
 @media screen and (max-width : 750px) {
 
-#background {
-    display: none;
-}
+    #background {
+        display: none;
+    }
+
+    #tab_content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
 }
 
 @media screen and (max-width : 610px) {
@@ -1254,6 +1261,10 @@ textarea {
     max-width: 550px;
     max-height: 400px;
     margin: auto;
+}
+
+.conditions {
+    display: flex;
 }
 
 @media screen and (max-width: 768px) {
@@ -1972,7 +1983,7 @@ table#tab_profil .info_profil td:nth-child(2) {
     justify-content: center;
 }
 #tab_left, #tab_right{
-    width: 400px;
+    width: 60%;
     margin: 10px;
 }
 .row_info_membre form{
