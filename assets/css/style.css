@@ -1980,7 +1980,7 @@ table#tab_profil .info_profil td:nth-child(2) {
     justify-content: center;
 }
 #tab_left, #tab_right{
-    width: 60%;
+    width: 90%;
     margin: 10px;
 }
 .row_info_membre form{
