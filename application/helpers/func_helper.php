@@ -254,7 +254,12 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
             }
                 
             if(!empty($value['userFirstname'])){
-                $data['author'] = $value['userFirstname'];
+                if($method == "getAllMessage"){
+                    $data['recipient'] = $value['userFirstname'];
+                }else{
+                    $data['author'] = $value['userFirstname'];
+                }
+
             }
 
             if(!empty($value['eventName']) && get_class($obj_manager) == "Galerie_manager"){
