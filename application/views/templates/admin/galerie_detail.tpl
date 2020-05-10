@@ -3,10 +3,12 @@
 
 <div id="content_gallery" name="slide">
     <div id="gallery"></div>
-    <div id="btn_content">
-        <button id="prev"><i class="fas fa-caret-square-left"></i></button>
-        <button id ="next"><i class="fas fa-caret-square-right"></i></i></button>
-    </div>
+    {if $galerieDetail|@count > 1}
+        <div id="btn_content">
+            <button id="prev"><i class="fas fa-caret-square-left"></i></button>
+            <button id ="next"><i class="fas fa-caret-square-right"></i></i></button>
+        </div>
+    {/if}
     </div>
 
 </div>

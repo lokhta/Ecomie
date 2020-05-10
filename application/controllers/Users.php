@@ -177,7 +177,7 @@ class Users extends CI_Controller{
         
 
         if(!empty($_POST)){
-            upload_image("userAvatar",600, 600);
+            $_POST['userAvatar'] = upload_image("userAvatar",200, 200);
             write_data($this->_user_manager, $this->_user, "editUser", $_POST, array('userId'=>$_SESSION['id']));
             redirect(base_url()."users/profil", 'refresh');
         }
@@ -186,9 +186,9 @@ class Users extends CI_Controller{
     public function membres()
     {
 
-        if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
-            redirect('pages/access_denied', 'location');
-        }
+        // if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
+        //     redirect('pages/access_denied', 'location');
+        // }
 
         
         //$this->load->library('javascript/jquery');

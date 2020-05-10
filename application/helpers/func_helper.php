@@ -409,10 +409,8 @@ function upload_image($input_name,int $imageW, int $imageH){
             }
             $reponse = $message;
             $ci->smarty->assign("reponse", $reponse);
-            $post[$input_name] = $upload_data['file_name'];
+            return  $upload_data['file_name'];
             // var_dump($_POST);
-
-
         }
     
 }
