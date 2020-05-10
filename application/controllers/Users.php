@@ -205,7 +205,7 @@ class Users extends CI_Controller{
         // var_dump($_SESSION);
         
         $role = get_role_user($this->_user_manager);
-       // var_dump($role);
+        var_dump($role);
         $this->smarty->assign('option', $role); 
 
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
