@@ -65,9 +65,16 @@ class Articles extends CI_Controller{
 
             //Validation des articles
             if(!empty($_GET['valide'])){
-                $data_edit_validate = array();
 
-                write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
+                if($_GET['valide'] == 1){
+                    $data_edit_validate = array();
+                    write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
+                    $message = "<p>Bonjour ".$_GET["author"]."</p><p>Nous vous informons que votre article : ".$_GET["article_title"]." a été validé. Il est désromais publié sur le site d'Ecomie : ".base_url()."</p>";
+                }elseif($_GET['valide'] == 2){
+                    $message = "<p>Bonjour ".$_GET["author"]."</p><p>Nous avons le regret de vous informer que votre article : ".$_GET["article_title"]." n'a pas été valider</p>";
+                }
+                $subject= "Validation article";
+                send_mail("Ecomie", $_GET["email"], $subject, $message, "html");
 
                 redirect($url, 'location'); 
             }

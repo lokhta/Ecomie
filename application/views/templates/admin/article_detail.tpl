@@ -12,8 +12,8 @@
             </div>
             <div class="content-action">
                 {if $smarty.session.role != 3}
-                    <button style="border:0px" class="accept btn btn-valid" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=1">Valider</button>
-                    <button style="border:0px" class="refuse btn btn-fail" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=2">Refuser</button>
+                    <button style="border:0px" class="accept btn btn-valid" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=1&amp;article_title={$articleDetail.articleTitle}&amp;author={$articleDetail.author}&amp;email={$articleDetail.email}">Valider</button>
+                    <button style="border:0px" class="refuse btn btn-fail" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;valide=2&amp;article_title={$articleDetail.articleTitle}&amp;author={$articleDetail.author}&amp;email={$articleDetail.email}">Refuser</button>
                 {/if}
                 <a href="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;edit=1" class = "btn btn-edit" id="event_btn">Modifier</a>
                 <button style="border:0px" class="delete btn btn_del" data-link="{base_url()}Articles/dashboard?article_id={$smarty.get.article_id}&amp;del=1">Supprimer</button>
