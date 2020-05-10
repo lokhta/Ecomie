@@ -751,9 +751,16 @@ a{
 
 @media screen and (max-width : 750px) {
 
-#background {
-    display: none;
-}
+    #background {
+        display: none;
+    }
+
+    #tab_content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
 }
 
 @media screen and (max-width : 610px) {
@@ -1256,6 +1263,10 @@ textarea {
     margin: auto;
 }
 
+.conditions {
+    display: flex;
+}
+
 @media screen and (max-width: 768px) {
 
 .contact__ecomie {
@@ -1350,7 +1361,7 @@ Plan du site
 @media screen and (max-width: 576px) {
 
 .plan {
-    width: 320px;
+        width: 320px;
 }
 }
 
@@ -1363,12 +1374,9 @@ Article
     height: 500px;
 }
 @media screen and (max-width:1080px) {
-
     .article img {
-
         max-width: 750px;
         height: 450px;
-    
     }
 }
 
@@ -1385,9 +1393,8 @@ section.right_content {
     padding: 20px;
 }
 
-#sidebar{
+#sidebar{ 
     width: 250px;
-
 }
 
 #sidebar nav ul li {
@@ -1443,7 +1450,10 @@ a.link_admin {
     Home  dashboard
 *****************************/
 
-.flex_column{
+.flex_column {
+    
+    width: 280px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1451,6 +1461,7 @@ a.link_admin {
 
 div#stats_dash, #dash_info {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 }
 
@@ -1480,34 +1491,29 @@ div#dash_info div {
 
 .bg_orange{
     background: #F39C12;
+    
 }
 
 div#dash_info .flex_column {
     padding: 10px;
 }
 
-div#dash_info h3 {
-    /* border-bottom: #3498DB solid; */
-    width: 100%;
-    /* height: 100%; */
-    margin: 0;
+
+#dash_actu {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    padding: 20px;
-    color: #fff;
-    background: #566573;
-    font-size: 30px;
+    flex-direction: column;
 }
+
 
 @media screen and (max-width : 1280px){
     .link-nav-admin {
-        height: 50px;
-        width: 70px;;
+        width: 70px;
         background: #2C3E50;
         display: block;
         overflow: hidden;
         position: relative;
+        margin: auto auto;
     }
 
     .link-nav-admin:hover{
@@ -1532,7 +1538,85 @@ div#dash_info h3 {
         top: -51px;
     }
 }
+@media screen and (max-width: 768px) {
+    #adminContent{
+        display: flex;
+        background: #EBEDEF;
+    }
 
+    section.right_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 100px;
+        padding: 10px;
+    }
+    #sidebar {
+        position: absolute;
+        width: 100%;
+    }
+
+    .side__nav { 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    }
+    #sidebar nav ul li {
+        list-style: none;
+    }
+    
+    #sidebar nav a {
+        display: flex;
+        height: 50px;
+        /* justify-content: stretch; */
+        align-items: center;
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    #sidebar nav a:hover{
+        color: #e5ce23;
+    }
+    
+    #sidebar nav a i{
+        margin-right: 25px;
+    
+    }
+    
+    .link-nav-admin {
+        color: white;
+    }
+    .content_ico{
+        width: 70px;
+        height: 50px;
+        align-items: center;
+    }
+    
+    .ico_admin:hover{
+        color: #ffe527;
+        
+    }
+    
+    a.link_admin {
+        display: none;
+    }
+}
+@media screen and (max-width: 572px) {
+    .content_ico{
+        width: 70px;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+        a.link_admin {
+        position: relative;
+        left: 39px;
+        top: -51px;
+    }
+}
 
 
 
@@ -1716,6 +1800,20 @@ Article Dashboard
     margin: 0px;
 }
 
+@media screen and (max-width: 572px) {
+
+    tab tr, .tab td {
+        height: 50px;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+    .thead, th{
+        background: #229954;
+        color: #fff;
+        font-weight: normal;
+        font-size: 0.8rem;
+    }
+}
 
 
 /*Article detail*/
@@ -1778,6 +1876,7 @@ input#submit:hover{
     display: none;
 }
 
+
 /*Commentaires - Article*/
 #comments {
     max-width: 1280px;
@@ -1836,7 +1935,7 @@ span.comment_author {
 }
 
 .info_profil td{
-    width: 50%;
+    width: 60%;
 }
 
 .info_profil .field_profil{
@@ -1861,6 +1960,17 @@ table#tab_profil .info_profil td:nth-child(2) {
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+
+    .info_profil{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+       
+    }
+
+}
 
 /*****************************
     Liste membre Admin
@@ -1870,7 +1980,7 @@ table#tab_profil .info_profil td:nth-child(2) {
     justify-content: center;
 }
 #tab_left, #tab_right{
-    width: 400px;
+    width: 60%;
     margin: 10px;
 }
 .row_info_membre form{
@@ -2117,6 +2227,7 @@ a.btn.btn_create_gallery{
 #list_gallery{
     display: flex;
     justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     margin-top: 20px;
 }
@@ -2130,7 +2241,7 @@ a.btn.btn_create_gallery{
 }
 
 #list_gallery img{
-    width : 450px;
+    width : 100%;
     height: 250px;;
 }
 
@@ -2141,8 +2252,8 @@ a.btn.btn_create_gallery{
 }
 
 div#gallery img {
-    width: 600px;
-    height: 400px;
+    width: 90%;
+    height: 100%;
 }
 
 div#content_gallery {

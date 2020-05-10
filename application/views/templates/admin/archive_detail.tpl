@@ -13,7 +13,7 @@
              
             </div>
             <div class="content-action">
-                <a href="{base_url()}Galeries/dashboard?event_id={$smarty.get.event_id}" class = "btn btn_create_gallery">Créer un galerie photo</a>
+                <a href="{base_url()}Galeries/editor" class = "btn btn_create_gallery">Créer une galerie photo</a>
             </div>
         </div>
     </div>

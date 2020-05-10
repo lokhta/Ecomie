@@ -1,5 +1,5 @@
-<aside id="sidebar" class="left_content">
-    <nav>
+<aside id="sidebar">
+    <nav class="side__nav">
     {if $smarty.session.role == 1}
         <div class="link-nav-admin">
             <div class="content_ico">

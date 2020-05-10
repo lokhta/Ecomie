@@ -16,12 +16,12 @@
         <span>0</span>
     </div>
     <div class="flex_column bg_orange">
-        <h3>Evenements à venir</h3>
+        <h3>Événements</h3>
         <span>0</span>
     </div>
 </div>
-<div id="dash_info">
-    <div class="flex_column ">
+<div id="dash_actu">
+    <div class="dash_activiter">
         <h3>Dernières activités</h3>
         <table class="tab">
             <tr class='thead'>
@@ -35,7 +35,7 @@
             {* {/foreach} *}
         </table>
     </div>
-    <div class="flex_column">
+    <div class="dash_activiter">
         <h3>Commentaires signalés</h3>
         <table class="tab">
             <tr class='thead'>

@@ -52,7 +52,7 @@
                 <div class="connexion__mobile">
                     <div>
                         {if $smarty.session.id}
-                            <a href="{base_url()}pages">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
+                            <a href="{base_url()}users/profil">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
                             {else}
                                 <a href="{base_url()}pages/inscription">Inscription</a><span>/</span><a href="{base_url()}pages/connexion">Connexion</a>       
                         {/if}

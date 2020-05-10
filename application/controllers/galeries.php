@@ -20,7 +20,7 @@ class Galeries extends CI_Controller{
             $array_image = array();
 
             foreach($data as $key => $value){
-                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image' style='width:500px'>");
+                array_push($array_image, "<img src='".base_url()."assets/img/upload/".$value["imgName"]."' alt='".$value["imgAlt"]."' class='slide_image'>");
             }
 
             // var_dump($array_image);

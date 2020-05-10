@@ -19,9 +19,11 @@
         {form_textarea('formMessage','','id="formMessage"')}
         <span id="message_error" class="red_error"></span>
 
+        <div class="conditions">
         {form_checkbox('formRgpd', 'true',FALSE,'id="formRgpd"')}      
         <label class="rgpd__text" for="rgpd"> J'ai lu et j'accepte les <a href="{base_url()}pages/cgu">conditions génèrales d'utilisation.</a></label>
         <span id="rgpd_error" class="red_error"></span>
+        </div>
 
         {form_submit('envoyer','Envoyer','id="bouton__form"')}
     {form_close()}
