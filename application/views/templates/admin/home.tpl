@@ -20,21 +20,6 @@
         <span>{$nb_events}</span>
     </div>
 </div>
-<!--<div id="dash_actu">
-    <div class="dash_activiter">
-        <h3>Dernières activités</h3>
-        <table class="tab">
-            <tr class='thead'>
-                <th>Catégorie</th>
-                <th>Titre</th>
-            </tr>
-            {* {foreach from= key=key item=val} *}
-                <tr style="background: {cycle values='#fff , #D6EAF8'}">
-                    <td></td>
-                </tr>
-            {* {/foreach} *}
-        </table>
-    </div>-->
    {if $smarty.session.role != 3}
         <div class="dash_activite">
             <h3>Commentaires signalés</h3>
