@@ -79,7 +79,7 @@ class Galeries extends CI_Controller{
         if(!empty($_POST)){
             $count_image = $this->_galerie_manager->count_image($_POST['imgEvent']);
             if($count_image < 20){
-                upload_image("imgName",600, 600);
+                $_POST['imgName'] = upload_image("imgName",600, 600);
                 write_data($this->_galerie_manager, $this->_galerie, "addImage",$_POST);
             }
         }
