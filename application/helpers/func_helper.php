@@ -71,6 +71,9 @@ function get_data($obj_manager, $obj_class, $method, $param){
         
         if(!empty($get_data_in_base['userFirstname'])){
             $data['author'] = $get_data_in_base['userFirstname'];
+        }
+
+        if(!empty($get_data_in_base['userEmail'])){
             $data['email'] = $get_data_in_base['userEmail'];
         }
     
@@ -168,11 +171,11 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
         $post['userRole'] = $_SESSION['role'];
         // var_dump($post);exit;
     }
-    //  var_dump($post);;
+    // var_dump($post);;
 
     $obj_class->hydrate($post);
 
-    // var_dump($obj_class);exit;;
+    //var_dump($obj_class);exit;;
 
     //Actualisation de la session après la modificationd du profil
     if($method == 'editUser'){

@@ -2181,3 +2181,7 @@ p#ulpload_field span {
 .btn_send{
     width: 230px;;
 }
+
+.tab_right_membre{
+    display: none;
+}

@@ -253,6 +253,85 @@ function hideMessage(){
        $("#help_image").css("marginLeft", "0");
     })
 
+
+
+    /*Ajax envoi message entre membre */
+    let id = null;
+    $(".btn_message").on("click", function(){
+        let current = $(this);
+        let id = current.data("id");
+        let html_form = "<label for='message'>Tapez votre message</label><textarea id='message' name='msgContent' rows='10' cols='30'></textarea><input type=checkbox name='msgSender' value='"+session_id+"' checked style='display:none;'><input type=checkbox name='msgRecipient' value='"+id+"' checked style='display:none;'><input type='submit' value='Envoyer' id='send_message'>";
+        $("#form_message").html(html_form);
+    });
+
+    function send_message(){
+        
+    }
+
+    $("#form_message").on("submit", function(event){
+        event.preventDefault();
+        $.ajax({
+            url: $(this).attr("action"),
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
+
+            success:function(data){
+                if(data.error){
+                    $("#success").html(data.error_message);
+                }else{
+                    $("#success").html(data.success);
+                }
+            }
+            
+        });
+    })
+
+    $("#form_message").on("submit", function(){
+        setTimeout(hideMessage, 3000);
+
+        $("#form_message")[0].reset();
+    })
+
+    $(".btn_display").on("click", function(){
+        $(".tab_right_membre").css("display", "block");
+    })
+
+    /*Affichage dynamique des infos membre */
+    $('.action').click(function() {
+        var current = $(this);
+        var name = current.data('name');
+        var firstname = current.data('firstname');
+        var mail = current.data('mail');
+        var phone = current.data('phone');
+        var address = current.data('address');
+        var cp = current.data('cp');
+        var city = current.data('city');
+        var id = current.data('id');
+
+        var url = "{base_url()}Users/membres?membre_id="+id;
+
+        $('#form_role').attr("action", url);
+        $('#name').text(name);
+        $('#firstname').text(firstname);
+        $('#mail').text(mail);
+        $('#phone').text(phone);
+        $('#address').text(address);
+        $('#cp').text(cp);
+        $('#city').text(city);
+        });
+
+
+    $('.delete').click(function() {
+        var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
+        if(ok){
+            var current = $(this);
+            var link = current.data('link');
+            window.location.replace(link);
+        }
+
+    });
+
 });
 
 
