@@ -71,12 +71,12 @@ class Users extends CI_Controller{
                 array(
                     'field' => 'userName',
                     'label' => 'Nom',
-                    'rules' => 'required|alpha|min_length[3]|max_length[12]'
+                    'rules' => 'required|min_length[3]|max_length[15]'
                 ),
                 array(
                     'field' => 'userFirstname',
                     'label' => 'Prénom',
-                    'rules' => 'required|alpha|min_length[3]|max_length[12]'
+                    'rules' => 'required|min_length[3]|max_length[15]'
                 ),
                 array(
                     'field' => 'userEmail',
@@ -91,7 +91,7 @@ class Users extends CI_Controller{
                 array(
                     'field' => 'userAddress',
                     'label' => 'Adddresse postale',
-                    'rules' => 'required|alpha_numeric_spaces|max_length[30]'
+                    'rules' => 'required|max_length[30]'
                 ),
                 array(
                     'field' => 'userCp',
@@ -101,12 +101,12 @@ class Users extends CI_Controller{
                 array(
                     'field' => 'userCity',
                     'label' => 'Ville',
-                    'rules' => 'required|alpha|max_length[30]'
+                    'rules' => 'required|max_length[30]'
                 ),
                 array(
                     'field' => 'userPwd',
                     'label' => 'Mot de passe',
-                    'rules' => 'required|min_length[5]|alpha_numeric'
+                    'rules' => 'required|min_length[5]'
                 ),
                 array(
                     'field' => 'confirmPwd',
