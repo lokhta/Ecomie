@@ -2177,3 +2177,7 @@ div#content_gallery {
 p#ulpload_field span {
     margin-left: 0px !important;
 }
+
+.btn_send{
+    width: 230px;;
+}

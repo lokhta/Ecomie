@@ -107,7 +107,7 @@ class Events extends CI_Controller{
             $this->smarty->assign('archiveDetail',$data);
             $this->smarty->assign('page', 'admin/archive_detail.tpl');
         }else{
-            $data = get_all_data($this->_event_manager, $this->_event);
+            $data = get_all_data($this->_event_manager, $this->_event, "getAllEvent");
             // var_dump($data);
             $this->smarty->assign('archive', $data);
             $this->smarty->assign('page', 'admin/archive.tpl');
