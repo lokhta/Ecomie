@@ -1847,6 +1847,7 @@ span.comment_author {
 table#tab_profil .info_profil td:nth-child(2) {
     display: flex;
     justify-content: space-between;
+    
 
 }
 
