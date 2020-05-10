@@ -30,13 +30,12 @@ class Galerie_manager extends CI_Model{
         return $query->result_array();
     }
  
-    public function getAllGalerie($limit, $offset){  
+    public function getAllGalerie(){  
             $this->db->distinct();
             $this->db->select('imgEvent,imgName, imgAlt,imgDateAdd, eventName');
             $this->db->from('images');
             $this->db->join('events', 'events.eventId = images.imgEvent');
             $this->db->group_by('imgEvent');
-            $this->db->limit($limit, $offset);
             $query = $this->db->get();
            return $query->result_array();
         }

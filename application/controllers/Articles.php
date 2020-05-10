@@ -26,26 +26,13 @@ class Articles extends CI_Controller{
 
         }else{//Afficher tout les articles
 
-            /* pagination start */
-            $page_url= base_url()."Articles/articles";
-            $total_rows = $this->_article_manager->count_article();
-           // var_dump($total_rows);;
-            $data_pagination = pagination($page_url, $total_rows , 6);
-            $pagination_link = $data_pagination['pagination_link'];
-
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
             if(!empty($_GET['search']) && $_GET['search'] == 1){
-                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle', $data_pagination['limit'], $data_pagination['offset'],$_POST['keyword']);
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle',$_POST['keyword']);
             }elseif(!empty($_GET['category_id'])){
-                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle',  $data_pagination['limit'], $data_pagination['offset'],$_GET['category_id']);
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle',$_GET['category_id']);
             }else{
-                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle', $data_pagination['limit'], $data_pagination['offset']);
+                $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             }
-            // $path = "Articles/articles";
-            // $this->smarty->assign('current_url', $path); 
-
             $this->smarty->assign('article', $data);
             $this->smarty->view('pages/savoir_faire.tpl');
         }
@@ -102,17 +89,8 @@ class Articles extends CI_Controller{
 
         }else{ //Pour affichage de la liste des articles
 
-            /* pagination start */
-            $page_url= base_url()."Articles/dashboard";
-            $total_rows = $this->_article_manager->count_article();
-            // var_dump($total_rows);
-            $data_pagination = pagination($page_url, $total_rows, 10);
-            $pagination_link = $data_pagination['pagination_link'];
 
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle',$data_pagination['limit'], $data_pagination['offset']);
+            $data = get_all_data($this->_article_manager, $this->_article, 'getAllArticle');
             $this->smarty->assign('article', $data);
             $this->smarty->assign('title', 'Dashboard - Articles');
             $this->smarty->assign('page', 'admin/article.tpl');

@@ -33,7 +33,7 @@ class Comment_manager extends CI_Model{
         return $query->row_array();
     }
     
-    public function getAllComment($id, $limit, $offsett){
+    public function getAllComment($id){
 
         $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname');
         $this->db->from('comments');
@@ -44,7 +44,6 @@ class Comment_manager extends CI_Model{
         }elseif(!empty($_GET['event_id'])){
             $this->db->join('events', 'events.eventId = comments.commentEvent');
         }
-        $this->db->limit($limit, $offsett);
         $this->db->order_by('commentDate', 'DESC');
         $query = $this->db->get();
         return $query->result_array();

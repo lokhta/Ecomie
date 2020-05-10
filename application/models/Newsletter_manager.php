@@ -15,10 +15,9 @@ class Newsletter_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllNews($limit, $offset){
+    public function getAllNews(){
         $this->db->select('*');
         $this->db->from('newsletters');
-        $this->db->limit($limit,$offset);
         $query = $this->db->get();
         return $query->result_array();
     }

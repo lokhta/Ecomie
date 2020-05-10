@@ -212,12 +212,10 @@ function del_data($obj_manager, $method, $id){
  * @param $obj_manager Nom de la class manager
  * @param $obj_class Nom de la class associé au manager $obj_manager
  * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
- * @param $limit Le nombre de ligne souhaité
- * @param $offset Le nombre de ligne ignoré
  * @param  $param Argument de $method. Initalisé a null si $method n'a pas d'argument
  * @return Array
  */
-function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param=null){
+function get_all_data($obj_manager, $obj_class, $method,$param=null){
     $get_method = get_class_methods($obj_manager);
     //var_dump($get_method);
 
@@ -227,12 +225,13 @@ function get_all_data($obj_manager, $obj_class, $method, $limit, $offset, $param
     }
 
     if($param){
-        $get_data_in_base = $obj_manager->$method($param,$limit, $offset);
+        $get_data_in_base = $obj_manager->$method($param);
+        //var_dump($get_data_in_base);
     }else{
-        $get_data_in_base = $obj_manager->$method($limit, $offset);
+        $get_data_in_base = $obj_manager->$method();
     }
 
-    //var_dump($get_data_in_base);
+    
 
     $liste = array();
 
@@ -352,78 +351,16 @@ function upload_image_ckeditor($type_text){
  * @author Sofiane AL AMRI
  * @brief get_comment() Renvoi la liste des commentaires  au format Json pour être traité en ajax
  * @param $id Identifiant de l'article ou l'evenement 
- * @param $limit Le nombre de ligne souhaité
- * @param $offset Le nombre de ligne ignoré
  */
-function get_comment($id, $limit, $offset){
+function get_comment($id){
     $manager = create_object("Comment_manager");
     $class = create_object("Comment");
 
-    $comment = get_all_data($manager, $class, "getAllComment", $limit, $offset, $id,);
+    $comment = get_all_data($manager, $class, "getAllComment", $id);
 
     return json_encode($comment);
 }
 
-
-/**
- * @author Sofiane AL AMRI
- * @brief pagination() génére une pagination.
- * @param $page_url Url de la page cible.
- * @param $total_rows Nombre total de lignes dans le jeu de résultats pour lequel on crée la pagination
- * @param $per_page Nombre d'éléments à afficher sur la page
- */
-function pagination($page_url, $total_rows, $per_page){
-    $ci = get_instance();
-
-    $ci->load->library("pagination");
-
-    $config['base_url'] = $page_url;
-    $config['total_rows'] = $total_rows;
-    $config['per_page'] = $per_page;
-    $config["uri_segment"] = 3;
-
-    $config['use_page_numbers'] = TRUE;
-    $config['reuse_query_string'] = TRUE;
-
-    $config["full_tag_open"] = '<ul class="pagination">';
-    $config["full_tag_close"] = '</ul>';
-
-    $config["first_tag_open"] = '<li>';
-    $config["first_tag_close"] = '</li>';
-
-    $config["last_tag_open"] = '<li>';
-    $config["last_tag_close"] = '</li>';
-
-    $config['next_link'] = '<i class="fas fa-chevron-right"></i>';
-
-    $config["next_tag_open"] = '<li>';
-    $config["next_tag_close"] = '</li>';
-
-    $config["prev_link"] = "<i class='fas fa-chevron-left'></i>";
-
-    $config["prev_tag_open"] = "<li>";
-    $config["prev_tag_close"] = "</li>";
-
-    $config["cur_tag_open"] = "<li class='active'><a href='#'>";
-    $config["cur_tag_close"] = "</a></li>";
-
-    $config["num_tag_open"] = "<li>";
-    $config["num_tag_close"] = "</li>";
-
-    $page = ($ci->uri->segment(3)) ? ($ci->uri->segment(3) - 1) : 0;
-    $limit = $per_page;
-    $offset = $page*$limit;
-
-    $ci->pagination->initialize($config);
-
-    $pagination_data = array(
-        'pagination_link' => $ci->pagination->create_links(),
-        'limit' => $limit,
-        'offset' => $offset
-    );
-
-    return $pagination_data;
-}
 
 /**
  * @author Sofiane AL AMRI
@@ -477,4 +414,47 @@ function upload_image($input_name,int $imageW, int $imageH){
 
         }
     
+}
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief send_mail() permet d'envoyer un email
+ * @param $from Nom de l'experiteur
+ * @param $to Email du déstinataire
+ * @param $subject Objet du mail
+ * @param $message a  envoyer
+ * @param $format Format du message (text ou html)
+ */
+function send_mail($from, $to, $subject, $message, $format){
+        $ci = get_instance();
+            $config = Array(
+            "protocol" => "smtp",
+            "smtp_host" => "ssl://smtp.gmail.com",
+            "smtp_port" => "465",
+            "smpt_timeout" => "7",
+            "smtp_crypto" => "SSL",
+            "smtp_user" => "ecomie67@gmail.com",
+            "smtp_pass" => "ecomie-disii",
+            "mailtype" => $format,
+            "charset" => "utf-8",
+            "wordwrap" => TRUE,
+            "validation" => TRUE
+        );
+
+        $ci->load->library('email', $config);
+        
+        $ci->email->set_newline("\r\n");
+        $ci->email->from("ecomie67@gmail.com", $from);
+        $ci->email->to($to);
+        $ci->email->subject($subject);
+        $ci->email->message($message);
+    // $this->email->send();
+
+    if($ci->email->send()){
+        echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
+    }else{
+        echo json_encode(array("error" => "<div class='red_error'>Une erreur s'est produite</div>"));
+        // echo $this->email->print_debugger();
+    }    
+
 }

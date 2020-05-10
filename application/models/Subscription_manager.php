@@ -26,4 +26,13 @@ class Subscription_manager extends CI_Model{
         ->get();
         return $query->row_array();
     }
+
+    public function getEmails(){
+        $query = $this->db
+        ->select("subscribeEmail")
+        ->from("subscribes")
+        ->get();
+        return $query->result_array();
+
+    }
 }

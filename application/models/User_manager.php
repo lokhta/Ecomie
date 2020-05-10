@@ -41,12 +41,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query->row_array();
         }
     
-        public function getAllUser($limit, $offset){
+        public function getAllUser(){
             $query = $this->db
             ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName')
             ->from('users')
             ->join('roles', 'roles.roleId = users.userRole')
-            ->limit($limit, $offset)
             ->get();
             return $query->result_array();
         }

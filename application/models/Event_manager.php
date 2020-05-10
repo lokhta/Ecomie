@@ -29,7 +29,7 @@ class Event_manager extends CI_Model{
         return $query->row_array();
     }
 
-    public function getAllEvent($limit, $offset){
+    public function getAllEvent(){
          
             $this->db->select('eventId, eventName, eventContent, eventDateStart, eventTimeStart, eventDateEnd, eventTimeEnd, eventAuthor, userFirstname');
             $this->db->from('events');
@@ -39,10 +39,6 @@ class Event_manager extends CI_Model{
             }else{
                 $this->db->where('eventDateEnd > NOW()');
             }
-            
-
-            $this->db->limit($limit,$offset);
-            
             $query = $this->db->get();
             return $query->result_array();
     

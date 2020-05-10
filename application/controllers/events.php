@@ -24,17 +24,7 @@ class Events extends CI_Controller{
 
         }else{//Afficher tout les events
 
-            /*pagination start */
-            $page_url= base_url()."Events/events";
-            $total_rows = $this->_event_manager->count_event();
-            var_dump($total_rows);
-            $data_pagination = pagination($page_url, $total_rows, 3);
-            $pagination_link = $data_pagination['pagination_link'];
-
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent', $data_pagination['limit'], $data_pagination['offset']); 
+            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent'); 
             $this->smarty->assign('event', $data);
             $this->smarty->view('pages/events.tpl');
         }
@@ -87,17 +77,7 @@ class Events extends CI_Controller{
 
         }else{ //Pour affichage de la liste des évènements
 
-            /*pagination start */
-            $page_url= base_url()."Events/dashboard";
-            $total_rows = $this->_event_manager->count_event();
-
-            $data_pagination = pagination($page_url, $total_rows, 10);
-            $pagination_link = $data_pagination['pagination_link'];
-
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent',$data_pagination['limit'], $data_pagination['offset']);
+            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent');
             // var_dump($data);
             $this->smarty->assign('event', $data);
             $this->smarty->assign('page', 'admin/event.tpl');
@@ -126,17 +106,7 @@ class Events extends CI_Controller{
             $this->smarty->assign('archiveDetail',$data);
             $this->smarty->assign('page', 'admin/archive_detail.tpl');
         }else{
-            /*pagination start */
-            $page_url= base_url()."Events/dashboard";
-            $total_rows = $this->_event_manager->count_event();
-
-            $data_pagination = pagination($page_url, $total_rows, 10);
-            $pagination_link = $data_pagination['pagination_link'];
-
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_event_manager, $this->_event, 'getAllEvent',$data_pagination['limit'], $data_pagination['offset']);
+            $data = get_all_data($this->_event_manager, $this->_event);
             // var_dump($data);
             $this->smarty->assign('archive', $data);
             $this->smarty->assign('page', 'admin/archive.tpl');

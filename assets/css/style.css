@@ -1542,7 +1542,7 @@ div#dash_info h3 {
 }
 
 
-.btn, .pagination_link .pagination li{
+.btn{
     width: 100px;
     background: #00aeef;
     color : #fff;
@@ -2090,35 +2090,6 @@ button.action {
     width: 350px;
 }
 
-.pagination_link{
-    width: 1240px;
-    margin: 0 auto;
-
-}
-
-.pagination_link .pagination{
-    display: flex;
-    padding: 0;
-}
-
-.pagination_link .pagination li{
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    background: none;
-}
-
-.pagination_link .pagination li a:hover{
-    color :  #00aeef
-}
-
-.active{
-    background: #00aeef !important;
-}
-
-.active a{
-    color : #fff;
-}
 /*GALERIE ADMIN*/
 
 a.btn.btn_create_gallery{

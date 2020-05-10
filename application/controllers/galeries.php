@@ -31,19 +31,7 @@ class Galeries extends CI_Controller{
             // var_dump($data);
             $this->smarty->view('pages/galerie.tpl');
         }else{
-            /*pagination start */
-            $page_url= base_url()."Galeries/galerie";
-            $total_rows = $this->_galerie_manager->count_galerie();
-
-            $data_pagination = pagination($page_url, $total_rows, 6);
-            $pagination_link = $data_pagination['pagination_link'];
-            //var_dump($total_rows);
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie',$data_pagination['limit'], $data_pagination['offset']);
-           // $data = $this->_galerie_manager->getAllGalerie($data_pagination['limit'],$data_pagination['offset']);
-            //var_dump($data);
+            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie');
 
             $this->smarty->assign('galerie', $data);
             $this->smarty->view('pages/galeries.tpl');
@@ -72,19 +60,8 @@ class Galeries extends CI_Controller{
             // var_dump($data);
             $this->smarty->assign('page', 'admin/galerie_detail.tpl');
         }else{
-            /*pagination start */
-            $page_url= base_url()."Galeries/dashboard";
-            $total_rows = $this->_galerie_manager->count_galerie();
+            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie');
 
-            $data_pagination = pagination($page_url, $total_rows, 9);
-            $pagination_link = $data_pagination['pagination_link'];
-            //var_dump($total_rows);
-            $this->smarty->assign('pagination', $pagination_link);
-            /*pagination end*/
-
-            $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie',$data_pagination['limit'], $data_pagination['offset']);
-           // $data = $this->_galerie_manager->getAllGalerie($data_pagination['limit'],$data_pagination['offset']);
-            //var_dump($data);
 
             $this->smarty->assign('galerie', $data);
             $this->smarty->assign('page', 'admin/galerie.tpl');

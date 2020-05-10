@@ -18,7 +18,6 @@
         </div>
 
     </div>
-    <div class="pagination_link">{$pagination}</div>
     <div class="contenaire__bloc">
         {if !$article && $smarty.get.search}
             <p>Aucuns articles n'a été trouvés</p>
@@ -42,7 +41,6 @@
                 {/foreach}     
         {/if}
     </div>
-    <div class="pagination_link">{$pagination}</div>
         <section class="astuce__fb">
             <p>Plein d'autres astuce sur notre page Facebook</p>
             <a href="#"><img src="{base_url()}assets/img/facebook.svg" alt="Facebook"></a>
