@@ -1954,6 +1954,9 @@ span.comment_author {
     display: flex;
     align-items: baseline;
 }
+.comments p span{
+    margin-right: 15px;
+}
 
 .comments p .btn{
     margin-left: 20px;;
