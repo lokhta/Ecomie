@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ent_5fquotes_3007',['ENT_QUOTES',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a426ce31754edd7d5eee7b9d7084d361d',1,'SMARTY_3.1_NOTES.txt']]],
-  ['eval_3008',['eval',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a47d6284f4fc9e50c9d5797978478cd6f',1,'SMARTY_3.1_NOTES.txt']]],
-  ['example_3009',['Example',['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#a1cf242705475865b0874a9a5bb3c74c7',1,'NEW_FEATURES.txt']]]
+  ['g_576',['g',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a101ea36ca01bcfd2f3ea540f454eaa25',1,'SMARTY_3.1_NOTES.txt']]],
+  ['getters_577',['getters',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a394f189e05b5708a72e2394e32f0078f',1,'SMARTY_3.1_NOTES.txt']]]
 ];

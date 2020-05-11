@@ -30,6 +30,12 @@ var dir_1eb344b275b24133ffc9e8a4f8ffbd57 =
     [ "galerie_manager.php", "galerie__manager_8php.html", [
       [ "Galerie_manager", "class_galerie__manager.html", "class_galerie__manager" ]
     ] ],
+    [ "Message.php", "_message_8php.html", [
+      [ "Message", "class_message.html", "class_message" ]
+    ] ],
+    [ "Message_manager.php", "_message__manager_8php.html", [
+      [ "Message_manager", "class_message__manager.html", "class_message__manager" ]
+    ] ],
     [ "Newsletter.php", "_newsletter_8php.html", [
       [ "Newsletter", "class_newsletter.html", "class_newsletter" ]
     ] ],

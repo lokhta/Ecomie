@@ -21,6 +21,9 @@ var dir_3381aea8a7c52ffda3b43c8e87387505 =
     [ "galeries.php", "galeries_8php.html", [
       [ "Galeries", "class_galeries.html", "class_galeries" ]
     ] ],
+    [ "Messages.php", "_messages_8php.html", [
+      [ "Messages", "class_messages.html", "class_messages" ]
+    ] ],
     [ "Newsletters.php", "_newsletters_8php.html", [
       [ "Newsletters", "class_newsletters.html", "class_newsletters" ]
     ] ],

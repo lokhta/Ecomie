@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tp_5fyystackentry_1703',['TP_yyStackEntry',['../class_t_p__yy_stack_entry.html',1,'']]],
-  ['tpc_5fyystackentry_1704',['TPC_yyStackEntry',['../class_t_p_c__yy_stack_entry.html',1,'']]]
+  ['subscription_321',['Subscription',['../class_subscription.html',1,'']]],
+  ['subscription_5fmanager_322',['Subscription_manager',['../class_subscription__manager.html',1,'']]]
 ];

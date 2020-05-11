@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['newsletter_1561',['Newsletter',['../class_newsletter.html',1,'']]],
-  ['newsletter_5fmanager_1562',['Newsletter_manager',['../class_newsletter__manager.html',1,'']]],
-  ['newsletters_1563',['Newsletters',['../class_newsletters.html',1,'']]]
+  ['message_313',['Message',['../class_message.html',1,'']]],
+  ['message_5fmanager_314',['Message_manager',['../class_message__manager.html',1,'']]],
+  ['messages_315',['Messages',['../class_messages.html',1,'']]]
 ];

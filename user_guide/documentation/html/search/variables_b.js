@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['literal_3024',['LITERAL',['../class_smarty___internal___templatelexer.html#af67e1d30de8b754b676c047149f0cc8a',1,'Smarty_Internal_Templatelexer']]]
+  ['prop_5f2_585',['prop_2',['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#ad4e2ab0796f79886c1fcd63d6e4d4165',1,'NEW_FEATURES.txt']]]
 ];

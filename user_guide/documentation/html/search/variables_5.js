@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['debug_5findividual_3001',['DEBUG_INDIVIDUAL',['../class_smarty.html#a2f89c36e75ce5004b4d25c496015fdaf',1,'Smarty']]],
-  ['debug_5foff_3002',['DEBUG_OFF',['../class_smarty.html#ad36a2f0b30093f91a7b53bd815a0a143',1,'Smarty']]],
-  ['debug_5fon_3003',['DEBUG_ON',['../class_smarty.html#a4ad6c64068c98eab00704fc69b0c7456',1,'Smarty']]],
-  ['debugging_3004',['debugging',['../index_8php.html#aea9d5e8f56bbeab9291d94598d0eddb3',1,'index.php']]],
-  ['do_3005',['do',['../smarty__internal__templatelexer_8php.html#a74042049fd49788eebcf021e2231d540',1,'smarty_internal_templatelexer.php']]],
-  ['doublequotedstring_3006',['DOUBLEQUOTEDSTRING',['../class_smarty___internal___templatelexer.html#ac16a7aab80a01216d6dcce0cbaad95d5',1,'Smarty_Internal_Templatelexer']]]
+  ['file_573',['File',['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#ac7459de6f9dc1e7612bcd638600bba06',1,'NEW_FEATURES.txt']]],
+  ['footprint_574',['footprint',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a33cd9001f14c8163cd38a8ede963059c',1,'SMARTY_3.1_NOTES.txt']]],
+  ['for_575',['for',['../_s_m_a_r_t_y__2___b_c___n_o_t_e_s_8txt.html#ae41db4dc8898fea3655d5af706bf52b0',1,'SMARTY_2_BC_NOTES.txt']]]
 ];

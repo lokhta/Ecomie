@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['liste_20des_20éléments_20obsolètes_3099',['Liste des éléments obsolètes',['../deprecated.html',1,'']]],
-  ['liste_20des_20choses_20à_20faire_3100',['Liste des choses à faire',['../todo.html',1,'']]]
+  ['smarty_203_20template_20engine_598',['Smarty 3 template engine',['../md__c_1_wamp64_www__ecomie_application_third_party_smarty__r_e_a_d_m_e.html',1,'']]]
 ];
