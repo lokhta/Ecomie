@@ -1,24 +1,53 @@
-<?php
+<?php  
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Classe Article Manageur
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ */
 
 class Article_manager extends CI_Model{
     public function __construct(){
         parent::__construct();
     }
 
+    /**
+	* Fonction permettant d'ajouter un article
+	* @param article tableau des données de l'article
+	* @return array ajoute les données du tableau dans la BDD
+    */
+
     public function addArticle(Article $article){
         return  $this->db->insert('articles', $article->getData()); 
     }
 
+    /**
+	* Fonction permettant de modifier les informations d'un article
+	* @param article tableau des données à modifier
+	* @return array remplace les données de la BDD avec celles du tableau
+    */
 
     public function editArticle(Article $article){
         return  $this->db->where('articleId', $article->getId())->update('articles',  $article->getData());
     }
 
+    /**
+	* Fonction permettant de supprimer un article
+	* @param article_id identifiant de l'article demandé
+	* @return array supprime le contenu de l'article dans la bdd en fonction de l'id
+    */
+
     public function deleteArticle($article_id){
         return $this->db->where('articleId', $article_id)->delete('articles');
     }
     
+    /**
+	* Fonction permettant de récupérer le contenu d'un article
+	* @param article_id identifiant de l'article demandé
+	* @return array Tableau d'un article
+    */
+        
     public function getArticle($article_id){
         $query = $this->db
         ->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname, userEmail')
@@ -29,6 +58,12 @@ class Article_manager extends CI_Model{
         ->get();
         return $query->row_array();
     }
+
+    /**
+	* Fonction permettant de récupéré la liste des articles
+	* @param keyword une variable booléenne permettant la recherche par mots clés si égal à 1
+	* @return array liste tout les articles dans un tableau
+    */
 
     public function getAllArticle($keyword = null){
         // $url = base_url()."Articles/articles";
@@ -74,6 +109,11 @@ class Article_manager extends CI_Model{
         return $query->result_array();
     }
 
+    /**
+	* Fonction permettant de récupérer la catégorie d'un article
+	* @return array Toutes les données d'un article en fonction de sa catégorie
+    */
+
     public function getCategory(){
         $query = $this->db
         ->select('*')
@@ -82,6 +122,10 @@ class Article_manager extends CI_Model{
         return $query->result_array();
     }
 
+    /**
+	* Fonction permettant de compter les articles
+	* @return array le nombre d'article validés
+    */
     public function count_article(){
         $this->db->select('*');
         $this->db->from('articles');
