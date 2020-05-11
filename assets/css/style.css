@@ -1034,6 +1034,10 @@ PAGE SAVOIR-FAIRE***************************************************************
     padding:10px;
     background-color: white;
 }
+.savoir__faire--article p img {
+   max-width : 50%;
+   height: 50%;
+}
 
 @media screen and (max-width: 768px) {
 
