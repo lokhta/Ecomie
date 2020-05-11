@@ -6,19 +6,40 @@ class Article_manager extends CI_Model{
         parent::__construct();
     }
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief addArticle() ajoute un article à la base de donnée
+     * @param $article Prend en paramètre une instance de la classe Article
+     */
     public function addArticle(Article $article){
         return  $this->db->insert('articles', $article->getData()); 
     }
 
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief editArticle() modifie un article
+     * @param $article Prend en paramètre une instance de la class Article 
+     */
     public function editArticle(Article $article){
         return  $this->db->where('articleId', $article->getId())->update('articles',  $article->getData());
     }
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief deleteArticle() supprime un article
+     * @param $article_id Prend en paramètre l'identifiant de l'article à supprimer
+     */
     public function deleteArticle($article_id){
         return $this->db->where('articleId', $article_id)->delete('articles');
     }
     
+    /**
+     * @author Sofiane AL AMRI
+     * @brief getArticle() retourne une ligne de la table article
+     * @param $article_id Prend en paramètre l'identifiant de l'article à retourner
+     * @return Array
+     */
     public function getArticle($article_id){
         $query = $this->db
         ->select('articleId, articleTitle, articleContent, articleDate, articleValidate,articleCategory,articleAuthor,categoryName, userFirstname, userEmail')
@@ -30,6 +51,12 @@ class Article_manager extends CI_Model{
         return $query->row_array();
     }
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief getAllArticle() retourne un tableau multidimensionnels contenant des articles
+     * @param $keywords Permet la recherche par mot clé, définis a null par défaut
+     * @return Array
+     */
     public function getAllArticle($keyword = null){
         // $url = base_url()."Articles/articles";
 
@@ -74,6 +101,11 @@ class Article_manager extends CI_Model{
         return $query->result_array();
     }
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief getCategory() Retourne un tableau multidimensionnels contenant les catégories d'articles
+     * @return Array
+     */
     public function getCategory(){
         $query = $this->db
         ->select('*')
@@ -82,6 +114,11 @@ class Article_manager extends CI_Model{
         return $query->result_array();
     }
 
+    /**
+     * @author Sofiane AL AMRI
+     * @brief count_article() Retourne d'articles présent dans la table articles
+     * @return Integer
+     */
     public function count_article(){
         $this->db->select('*');
         $this->db->from('articles');

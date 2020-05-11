@@ -142,7 +142,7 @@ class Users extends CI_Controller{
 
 
             $subject= "Confirmation d'inscription";
-            $message = "<p>Bonjour ".$_POST["userFirstname"]."</p><p> Vous êtes désormais inscrit sur Ecomie. Nous somme heureux de vous compter parmis nos membres</p>";
+            $message = "<p>Bonjour ".$_POST["userFirstname"]."</p><p> Vous êtes désormais inscrit sur Ecomie. Nous sommes heureux de vous compter parmis nos membres</p>";
             send_mail("Ecomie", $_POST["userEmail"], $subject, $message, "html");
         }
 

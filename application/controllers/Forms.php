@@ -29,7 +29,7 @@ class Forms extends CI_Controller{
         $this->form_validation->set_rules('formSendermail', 'Email', 'required');
         $this->form_validation->set_rules('formSubject', 'Objet', 'required');
         $this->form_validation->set_rules('formMessage', 'Message', 'required');
-        $this->form_validation->set_rules('formRgpd', 'CGU', 'required', array('required'=>"Veuillez accépter les conditions génèrales d'utilisation"));
+        $this->form_validation->set_rules('formRgpd', 'rgpd', 'required', array('required'=>"Veuillez accépter les conditions génèrales d'utilisation"));
 
         if($this->form_validation->run()) {
             $array = array(
