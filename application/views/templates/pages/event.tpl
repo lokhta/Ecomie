@@ -30,14 +30,11 @@
     </div>
     <script>
         $(document).ready(function(){
-            let path_page = "Events/events";
             let get_name = "event_id";
             let get_value = "{$smarty.get.event_id}";
             let author_id = "{$smarty.session.id}";
         
-            let url_page = base_url+path_page+"?"+get_name+"="+get_value;
-        
-            ajax_comment(url_page, get_name, get_value, path_page, author_id);
+            ajax_comment(get_name, get_value,author_id);
         })
     </script>
     {include file="footer.tpl"}

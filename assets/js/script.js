@@ -253,13 +253,76 @@ function hideMessage(){
        $("#help_image").css("marginLeft", "0");
     })
 
+
+
+    /*Ajax envoi message entre membre */
+    let id = null;
+    $(".btn_message").on("click", function(){
+        let current = $(this);
+        let id = current.data("id");
+        let html_form = "<label for='message'>Tapez votre message</label><textarea id='message' name='msgContent' rows='10' cols='30'></textarea><input type=checkbox name='msgSender' value='"+session_id+"' checked style='display:none;'><input type=checkbox name='msgRecipient' value='"+id+"' checked style='display:none;'><input type='submit' value='Envoyer' id='send_message'>";
+        $("#form_message").html(html_form);
+    });
+
+    function send_message(){
+        
+    }
+
+    $("#form_message").on("submit", function(event){
+        event.preventDefault();
+        $.ajax({
+            url: $(this).attr("action"),
+            method: "POST",
+            data: $(this).serialize(),
+            dataType: "JSON",
+
+            success:function(data){
+                if(data.error){
+                    $("#success").html(data.error_message);
+                }else{
+                    $("#success").html(data.success);
+                }
+            }
+            
+        });
+    })
+
+    $("#form_message").on("submit", function(){
+        setTimeout(hideMessage, 3000);
+
+        $("#form_message")[0].reset();
+    })
+
+    $(".btn_display").on("click", function(){
+        $(".tab_right_membre").css("display", "block");
+    })
+
+
+
+
+    $('.delete').click(function() {
+        var ok = confirm('Êtes-vous sûr de vouloir supprimer ?');
+        if(ok){
+            var current = $(this);
+            var link = current.data('link');
+            window.location.replace(link);
+        }
+
+    });
+
 });
 
 
 /**********************
  AJAX COMMENTAIRES
  ***************************/
-function ajax_comment(url_page,get_name,get_value,path_page,author_id){
+/**
+ * 
+ * @param {article_id pour une page d'article et event_id pour une page event} get_name 
+ * @param {id de l'article ou de l'event} get_value 
+ * @param {id de la session de l'auteur du commentaire} author_id 
+ */
+function ajax_comment(get_name,get_value,author_id){
     function getComment(){
         let remote_url = base_url+"Comments/get_comment?"+get_name+"="+get_value;
         $.ajax({
@@ -272,16 +335,13 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
                 $.each(data, function(index, elem){
                     html += "<div class='comments'> <p> <span class='comment_author'>"+elem.author+"</span> le "+elem.date+" à "+elem.time+"</span>";
                     if(elem.commentAuthor == author_id){
-                        html += "<button class='edit_com_btn btn'>Modifier</button>";
-                        html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&comment_id="+elem.commentId+"&amp;del_com=1' class='btn' id='del_com'>Supprimer</a> </p>"
+                        html += "<button class='edit_com_btn btn' data-id="+elem.commentId+">Modifier</button>";
+                        html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&commentId="+elem.commentId+"&amp;del_com=1' class='btn' id='del_com'>Supprimer</a> </p>"
                     }else{
-                        html+= "<a href='"+url_page+"&comment_id="+elem.commentId+"&amp;report_com=1' class='btn'>Signaler</a>"
+                        html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&commentId="+elem.commentId+"&amp;commentReport=1' class='btn'>Signaler</a>"
                     }
                     html += "<p>"+elem.commentContent+"</p><hr></div>";
                 });
-
-                
-
 
                 if(html == ""){
                     $('#content_comments').html("<p>Aucun commentaires</p>");
@@ -315,11 +375,12 @@ function ajax_comment(url_page,get_name,get_value,path_page,author_id){
 
 
 
+
 /* Ajax partager un article*/
 function send_page_email(url){
 
     $("#share_form_content").css("display","none");
-    $("#share_btn").on("click", function(){
+    $("#share_btn").one("click", function(){
         let html_email = "<label>Votre nom</label><input type='text' name='sender' id='sender' required><label>L'adresse email de votre ami(e)</label><input type='email' name='recipient' id='recipient' required><input type=checkbox name='url' value='"+url+"' checked style='display:none;'><input type='submit' id='do_send' value='Partager'>";
         $("#share_form_content").css("display","block");
         $("#share_form").append(html_email);
@@ -341,7 +402,6 @@ function send_page_email(url){
                     $("#success").html(data.success);
                 }
                 
-                //IMPORTANT CORRIGER EVENT : empêcher la création de plusieur formulaire quand on clique sur partager
                 $("#share_form_content").css("display", "none");
 
                 setTimeout(hideMessage, 3000);

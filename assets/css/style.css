@@ -988,11 +988,6 @@ PAGE SAVOIR-FAIRE***************************************************************
        font-weight: normal;
        margin-right: 15px ;
 }
-.Savoir__article {
-    margin: 25px auto;
-    padding:10px;
-    background-color: rgb(141, 191, 59);
-}
 .auteur {
     width: 360px;
     height: 80px;
@@ -1033,11 +1028,11 @@ PAGE SAVOIR-FAIRE***************************************************************
     width: 70px;
     margin-top: -20px;
 }
-.Faire__article {
+.savoir__faire--article {
     margin: auto;
     max-width: 1280px;
     padding:10px;
-    background-color: rgb(255, 229, 33);
+    background-color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -1604,6 +1599,22 @@ div#dash_info .flex_column {
     }
 }
 @media screen and (max-width: 572px) {
+    .content_ico{
+        width: 70px;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+        a.link_admin {
+        position: relative;
+        left: 50px;
+        top: -51px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
     .content_ico{
         width: 70px;
         height: 50px;
@@ -2291,4 +2302,20 @@ p#ulpload_field span {
 
 .btn_send{
     width: 230px;;
+}
+
+.tab_right_membre{
+    display: none;
+}
+
+#form_role{
+    align-items: center;
+}
+
+#form_role input{
+    margin-bottom: 0px;
+}
+
+.dash_activite td.col2 {
+    width : 70%;
 }

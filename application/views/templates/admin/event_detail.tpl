@@ -13,11 +13,11 @@
                 <p>{$eventDetail.eventContent}</p>
             </div>
             <div class="content-action">
-                <a href="{base_url()}Events/dashboard?event_id={$smarty.get.event_id}&amp;edit=1" class = "btn btn-edit">Modifier</a>
+                <a href="{base_url()}Events/dashboard?event_id={$smarty.get.event_id}&amp;edit=1" class = "btn btn-edit" id="event_btn">Modifier</a>
                 <button style="border:0px" class="delete btn btn_del" data-link="{base_url()}Events/dashboard?event_id={$smarty.get.event_id}&amp;del=1">Supprimer</button>
             </div>
-            <div class="formContent" id="edit">
-                {form_open($url, "class='form'")}
+            <div class="formContent" id="display_content">
+                {form_open($url_form, "class='form'")}
                     <p class="field-content">
                         {form_label("Titre")}
                         {form_input("eventName",$eventDetail.eventName,"id='title'")}

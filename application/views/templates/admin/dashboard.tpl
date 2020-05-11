@@ -14,6 +14,9 @@
         <script src="https://kit.fontawesome.com/cefffb285d.js" crossorigin="anonymous"></script>
         <script src="{base_url()}assets/js/ckeditor/ckeditor.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+        <script>
+            var session_id = "{$smarty.session.id}";
+        </script>
     </head>
 
     <body>
