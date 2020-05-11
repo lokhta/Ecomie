@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Classe Galerie
  * \author Jean-Baptiste Abeilhe
- * \version 1.0
+ * \version 3.0
  * 
  */
 
@@ -85,27 +85,51 @@ class Galerie extends CI_Model{
 
     //Getters
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'id d'une galerie
+     * @return integer l'identifiant d'une galerie
+     */
     public function getId(){
         return $this->_imgId;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le nom d'une galerie
+     * @return integer le nom d'une galerie
+     */
     public function getName(){
         return $this->_imgName;
     }
+
+    /**
+     * @brief Fonction getter permettant de récupérer la date d'une galerie
+     * @return integer la date d'une galerie
+     */
 
     public function getDate(){
         return $this->_imgDateAdd;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la description d'une galerie
+     * @return integer la description d'une galerie
+     */
     public function getAlt(){
         return $this->_imgAlt;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'id de l'évènement
+     * @return integer l'identifiant de l'évènement
+     */
     public function getEvent(){
         return $this->_imgEvent;
     }
 
-
+    /**
+     * @brief Fonction getter permettant de récupérer les données de la galerie
+     * @return integer toutes les données de la galerie
+     */
     public function getData(){
         $galerieData = get_object_vars($this);
 

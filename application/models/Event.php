@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Classe Event
  * \author Jean-Baptiste Abeilhe
- * \version 1.0
+ * \version 3.0
  * 
  */
 
@@ -114,38 +114,74 @@ class Event extends CI_Model{
     
     //Getters
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'id d'un évènement
+     * @return integer l'identifiant d'un évènement
+     */
     public function getId(){
         return $this->_eventId;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le nom d'un évènement
+     * @return integer le nom d'un évènement
+     */
     public function getName(){
         return $this->_eventName;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le contenu d'un évènement
+     * @return integer le contenu d'un évènement
+     */
     public function getContent(){
         return $this->_eventContent;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la date de début d'un évènement
+     * @return integer la date de début d'un évènement
+     */
     public function getDateStart(){
         return $this->_eventDateStart;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'heure de début d'un évènement
+     * @return integer l'heure de début d'un évènement
+     */
     public function getTimeStart(){
         return $this->_eventTimeStart;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la date de fin d'un évènement
+     * @return integer la date de fin d'un évènement
+     */
     public function getDateEnd(){
         return $this->_eventDateEnd;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'heure de fin d'un évènement
+     * @return integer l'heure de fin d'un évènement
+     */
     public function getTimeEnd(){
         return $this->_eventTimeEnd;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'auteur d'un évènement
+     * @return integer l'id de l'auteur
+     */
     public function getAuthor(){
         return $this->_eventAuthor;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer les données d'un évènement
+     * @return integer toutes les données d'un évènement
+     */
     public function getData(){
         $eventData = get_object_vars($this);
 
