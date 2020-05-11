@@ -1,5 +1,11 @@
-<?php
+<?php  
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Classe Article Manageur
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ */
 
 class Article_manager extends CI_Model{
     public function __construct(){
@@ -7,17 +13,14 @@ class Article_manager extends CI_Model{
     }
 
     /**
-     * @author Sofiane AL AMRI
-     * @brief addArticle() ajoute un article à la base de donnée
+     * @brief addArticle() ajoute un article dans la tables articles
      * @param $article Prend en paramètre une instance de la classe Article
      */
     public function addArticle(Article $article){
         return  $this->db->insert('articles', $article->getData()); 
     }
 
-
     /**
-     * @author Sofiane AL AMRI
      * @brief editArticle() modifie un article
      * @param $article Prend en paramètre une instance de la class Article 
      */
@@ -26,7 +29,6 @@ class Article_manager extends CI_Model{
     }
 
     /**
-     * @author Sofiane AL AMRI
      * @brief deleteArticle() supprime un article
      * @param $article_id Prend en paramètre l'identifiant de l'article à supprimer
      */
@@ -35,8 +37,7 @@ class Article_manager extends CI_Model{
     }
     
     /**
-     * @author Sofiane AL AMRI
-     * @brief getArticle() retourne une ligne de la table article
+     * @brief getArticle() retourne une ligne de la table articles
      * @param $article_id Prend en paramètre l'identifiant de l'article à retourner
      * @return Array
      */
@@ -52,7 +53,6 @@ class Article_manager extends CI_Model{
     }
 
     /**
-     * @author Sofiane AL AMRI
      * @brief getAllArticle() retourne un tableau multidimensionnels contenant des articles
      * @param $keywords Permet la recherche par mot clé, définis a null par défaut
      * @return Array
@@ -102,7 +102,6 @@ class Article_manager extends CI_Model{
     }
 
     /**
-     * @author Sofiane AL AMRI
      * @brief getCategory() Retourne un tableau multidimensionnels contenant les catégories d'articles
      * @return Array
      */
@@ -115,8 +114,7 @@ class Article_manager extends CI_Model{
     }
 
     /**
-     * @author Sofiane AL AMRI
-     * @brief count_article() Retourne d'articles présent dans la table articles
+     * @brief count_article() Retourne le nombre d'articles présent dans la table articles
      * @return Integer
      */
     public function count_article(){

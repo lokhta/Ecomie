@@ -325,7 +325,7 @@ function timestamp_to_date(){
 function upload_image_ckeditor($type_text){
     $config['upload_path'] = "assets/img/upload";
     $config['allowed_types'] = "gif|jpg|png";
-    $config['max_size'] = 70;
+    $config['max_size'] = 2000;
     $dat = date_create();
     $dat = date_timestamp_get($dat);
     $config['file_name'] = $type_text.'_'.$dat;
@@ -337,6 +337,19 @@ function upload_image_ckeditor($type_text){
         echo json_encode(array('error' => $ci->upload->display_errors()));
     }else{
         $upload_data = $ci->upload->data();
+
+        $ci->load->library("image_lib");
+
+        $resize_image["image_library"] = "gd2";
+        $resize_image["source_image"] = $upload_data['full_path'];
+        $resize_image['create_thumb'] = FALSE;
+        $resize_image["maintient_ratio"] = FALSE;
+        $resize_image["width"] = 500;
+        $resize_image["height"] = 500;
+
+        $ci->image_lib->initialize($resize_image);
+        $ci->image_lib->resize();
+
         echo json_encode(array('file_name' => $upload_data['file_name']));
 
         // Required: anonymous function reference number as explained above.

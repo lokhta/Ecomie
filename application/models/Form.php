@@ -2,10 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Classe Form
+ * Classe Form (model)
  * \author Sofiane AL AMRI
- * \version 1.0
- * 
+ * \version 3.0
+ * \brief Modèle pour la page contact, permettant d'envoyer ou de recevoir un message sur Ecomie
  */
 
 class Form extends CI_Model{
@@ -86,30 +86,57 @@ class Form extends CI_Model{
     }
     //Getters
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'id d'un message
+     * @return integer l'identifiant d'un message
+     */
     public function getId(){
         return $this->_formId;
     }
-
+    /**
+     * @brief Fonction getter permettant de récupérer le nom de l'expéditeur
+     * @return integer le nom de l'expéditeur
+     */
     public function getSendername(){
         return $this->_formSendername;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'adresse mail de l'expéditeur
+     * @return integer l'adresse mail de l'expéditeur
+     */
     public function getSendermail(){
         return $this->_formSendermail;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'objet du message
+     * @return integer l'objet du message
+     */
     public function getSubject(){
         return $this->_formSubject;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le contenu du message
+     * @return integer le contenu du message
+     */
     public function getMessage(){
         return $this->_formMessage;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer une valeur pour les conditions d'utilisations
+     * @return integer la valeur booléenne de l'acceptation des conditions
+     */
     public function getRead(){
         return $this->_formRead;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer les données d'un message
+     * @return integer toutes les données d'un message
+     */
     public function getData(){
         $formData = get_object_vars($this);
 

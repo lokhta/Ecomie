@@ -1,6 +1,6 @@
 {include file="header.tpl" title="Ecomie - Evénements" name=$Name}
   <div class="btn-content" id="btn-create-art">
-        {if $smarty.session.id}
+        {if $smarty.session.id && $smarty.session.role != 3}
             <a href="{base_url()}Events/dashboard" class="btn-event">Créer un évènement</a> 
         {/if}
     </div>

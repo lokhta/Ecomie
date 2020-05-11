@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Classe Comment
- * \author Sofiane AL AMRI
- * \version 1.0
+ * Classe Comment (model)
+ * \author Jean-Baptiste Abeilhe
+ * \version 3.0
  * 
  */
 
@@ -95,36 +95,68 @@ class Comment extends CI_Model{
     }
     //Getters
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'id d'un commentaire
+     * @return integer l'identifiant d'un commentaire
+     */
+
     public function getId(){
         return $this->_commentId;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le contenu d'un commentaire
+     * @return integer le contenu d'un commentaire
+     */
     public function getContent(){
         return $this->_commentContent;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la date d'un commentaire
+     * @return integer la date d'un commentaire
+     */
     public function getDate(){
         return $this->_commentDate;
     }
-
+    
+    /**
+     * @brief Fonction getter permettant de récupérer la valeur d'un commentaire signalé
+     * @return integer une valeur pour signaler un commentaire
+     */
     public function getReport(){
         return $this->_commentReport;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'auteur d'un commentaire
+     * @return integer l'id de l'auteur
+     */
     public function getAuthor(){
         return $this->_commentAuthor;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'article d'un commentaire
+     * @return integer l'id de l'article
+     */
     public function getArticle(){
         return $this->_commentArticle;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'événement d'un commentaire
+     * @return integer l'id de l'événement
+     */
     public function getEvent(){
         return $this->_commentEvent;
     }
 
 
-
+    /**
+     * @brief Fonction getter permettant de récupérer les données d'un commentaire
+     * @return integer toutes les données d'un commentaire
+     */
     public function getData(){
         $eventData = get_object_vars($this);
 

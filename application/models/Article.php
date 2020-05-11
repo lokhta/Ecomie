@@ -2,10 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Classe Article
+ * Classe Article (model)
  * \author Sofiane AL AMRI
- * \version 1.0
- * 
+ * \version 3.0
  */
 
 class Article extends CI_Model{
@@ -101,34 +100,66 @@ class Article extends CI_Model{
     
     //Getters
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'ID d'un article
+     * @return integer l'identifiant
+     */
     public function getId(){
         return $this->_articleId;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le titre d'un article
+     * @return integer le titre
+     */
     public function getTitle(){
         return $this->_articleTitle;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer le contenu d'un article
+     * @return integer le contenu
+     */
     public function getContent(){
         return $this->_articleContent;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la date d'un article
+     * @return integer la date
+     */
     public function getDate(){
         return $this->_articleDate;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la validation d'un article
+     * @return integer si l'article est validé ou non (booléan)
+     */
     public function getValidate(){
         return $this->_articleValidate;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer la catégorie d'un article
+     * @return integer l'id de la catégorie
+     */
     public function getCategory(){
         return $this->_articleCategory;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer l'auteur d'un article
+     * @return integer l'id de l'auteur
+     */
     public function getAuthor(){
         return $this->_articleAuthor;
     }
 
+    /**
+     * @brief Fonction getter permettant de récupérer les données d'un article
+     * @return integer toutes les données d'un article
+     */
     public function getData(){
         $articleData = get_object_vars($this);
 
@@ -138,7 +169,6 @@ class Article extends CI_Model{
         }
 
         $data = array_filter($data);
-        // var_dump($data);
        return $data;
     }
 }
