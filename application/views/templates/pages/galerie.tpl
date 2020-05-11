@@ -8,7 +8,7 @@
         <button id ="next"><i class="far fa-caret-square-right"></i></button>
     </div>
     </div>
-
+    {include file="footer.tpl"}
 </div>
 
 <script>
@@ -21,4 +21,3 @@
 
 </script>
 
-{include file="footer.tpl"}
