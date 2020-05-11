@@ -1035,12 +1035,26 @@ PAGE SAVOIR-FAIRE***************************************************************
     background-color: white;
 }
 
-@media screen and (max-width: 768px) {
-
-.savoir__faire {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.savoir__faire--article p img {  
+        max-width: 500px;
+        max-height: 500px;
 }
+@media screen and (max-width: 768px) {
+    .savoir__faire--article p img {  
+        max-width: 400px;
+        max-height: 400px;
+    }
+    .savoir__faire {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 572px) {
+    .savoir__faire--article p img {  
+        max-width: 200px;
+        max-height: 200px;
+    }
 }
 
 @media screen and (max-width: 350px) {
@@ -1102,6 +1116,12 @@ Page évènements
     text-decoration: none; 
     color: black;
 }
+.event__bloc p img {
+    max-width: 70%;
+    max-height: 70%;
+    text-decoration: none; 
+    color: black;
+}
 
 .event__auteur {
     width: 100%;
@@ -1134,6 +1154,14 @@ Page évènements
     padding:10px;
     background-color: rgb(141, 191, 59);
 }
+.event__bloc p img {  
+    max-width: 500px;
+    max-height: 500px;
+}
+.event__event p img {  
+    max-width: 500px;
+    max-height: 500px;
+}
 
 @media screen and (max-width: 768px) { 
 
@@ -1162,7 +1190,25 @@ Page évènements
         margin: 5px auto;
         font-size: 0.9em;
     }
+    .event__bloc p img {  
+        max-width: 400px;
+        max-height: 400px;
+    }
+    .event__event p img {  
+        max-width: 400px;
+        max-height: 400px;
+    }
 }
+@media screen and (max-width: 572px) {
+    .event__bloc p img {  
+        max-width: 200px;
+        max-height: 200px;
+    }
+    .event__event p img {  
+        max-width: 200px;
+        max-height: 200px;
+    }
+    }
 /************************************
 Galerie
 ************************************/
@@ -1907,6 +1953,9 @@ span.comment_author {
 .comments p{
     display: flex;
     align-items: baseline;
+}
+.comments p span{
+    margin-right: 15px;
 }
 
 .comments p .btn{
