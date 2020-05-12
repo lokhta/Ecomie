@@ -59,7 +59,7 @@ class Users extends CI_Controller{
                             
                             foreach($userTab as $key => $value){
                                 $keys = lcfirst(str_replace('user','',$key));
-                                var_dump($keys);
+                                //var_dump($keys);
                                 $_SESSION[$keys] = $value;
                             }
                             echo json_encode(array("success"=> true, "redirect" => base_url()."users/profil"));

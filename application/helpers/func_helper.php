@@ -218,11 +218,12 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
 
     if($param){
         $get_data_in_base = $obj_manager->$method($param);
+        
+        // var_dump($get_data_in_base);
     }else{
         $get_data_in_base = $obj_manager->$method();
     }
 
-    
 
     $liste = array();
 

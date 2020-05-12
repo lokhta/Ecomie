@@ -15,6 +15,7 @@ class Articles extends CI_Controller{
     }
 
     public function articles(){
+
         //Afficher un seul article
         if(!empty($_GET['article_id'])){   
 
