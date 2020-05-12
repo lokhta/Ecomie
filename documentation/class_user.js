@@ -1,0 +1,28 @@
+var class_user =
+[
+    [ "__construct", "class_user.html#a095c5d389db211932136b53f25f39685", null ],
+    [ "getAddress", "class_user.html#a59bc5cde6d5044bb76ee8464738a87a2", null ],
+    [ "getAvatar", "class_user.html#a1187cffccd2c30f1d108bd8388e19925", null ],
+    [ "getCity", "class_user.html#ae9ca906fce6e9fe5fab3a6b42209d6a1", null ],
+    [ "getCp", "class_user.html#a8c5e85bc0648c9752b112794765c2fb2", null ],
+    [ "getData", "class_user.html#a81a67162a6288d78fc4c55283325f0b4", null ],
+    [ "getEmail", "class_user.html#a02a01849f28e2535e888ae4ec87b20f2", null ],
+    [ "getFirstname", "class_user.html#a42c9621713b6dcdfb9edd5a7630b6d93", null ],
+    [ "getId", "class_user.html#a12251d0c022e9e21c137a105ff683f13", null ],
+    [ "getName", "class_user.html#a3d0963e68bb313b163a73f2803c64600", null ],
+    [ "getPhone", "class_user.html#a5e8a94cd59635ac689687849b9f5cd9d", null ],
+    [ "getPwd", "class_user.html#a0160ba4e6743352e15383ca3a47c1234", null ],
+    [ "getRole", "class_user.html#a0b2e7098f1c48a7439a42bada5b69689", null ],
+    [ "hydrate", "class_user.html#a2be44815edff85cab5e873ba4497c38b", null ],
+    [ "setAddress", "class_user.html#a2a35a13633af4f7db74d6f3e57d3a1a4", null ],
+    [ "setAvatar", "class_user.html#a7f103dcba197d6194121e9aefbd36829", null ],
+    [ "setCity", "class_user.html#a1a8bc54f3ed21e7a18b066bb88f63885", null ],
+    [ "setCp", "class_user.html#a4652e8823d1e21d4cca7bde99ecf0c75", null ],
+    [ "setEmail", "class_user.html#af0b516e2b29bf79624c2eab515ab823a", null ],
+    [ "setFirstname", "class_user.html#ab13f575e3c8b0a4c30eefb5e3d6e9a64", null ],
+    [ "setId", "class_user.html#a493d70a3f886f5351a427ec865b89710", null ],
+    [ "setName", "class_user.html#ab6e1d98b4a1d89cb886e70a44d6bd0aa", null ],
+    [ "setPhone", "class_user.html#ace69015fc21196bc3e3e48812d2a4dbf", null ],
+    [ "setPwd", "class_user.html#a75628505adfa8cb71b23eecda45cc993", null ],
+    [ "setRole", "class_user.html#a27e147a29a264f3d16b6be7e97db5754", null ]
+];

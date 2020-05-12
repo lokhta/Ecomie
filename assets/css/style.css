@@ -2365,3 +2365,11 @@ p#ulpload_field span {
 .dash_activite td.col2 {
     width : 70%;
 }
+
+#headerAdmin{
+    justify-content: space-between;
+}
+
+#link_headerAdmin{
+    display: flex;
+}

@@ -14,14 +14,14 @@
             </div>
             <a href="{base_url()}users/profil" class="link_admin">Profil</a>
         </div>
-        {if $smarty.session.role != 0}
+        
         <div class="link-nav-admin">
             <div class="content_ico"> 
                 <i class="fas fa-address-book ico_admin"></i>
             </div>
             <a href="{base_url()}users/membres" class="link_admin">Membres</a>
         </div>
-        {/if}
+
         <div class="link-nav-admin">
             <div class="content_ico">
                 <i class="fas fa-newspaper ico_admin"></i>

@@ -22,16 +22,22 @@
     <body>
         <div id="main_content">
             <header>
-                <div class="headerLogo headerAdmin">
-                    <div>
-                    <a href="{base_url()}"> Retourner à Ecomie / </a>
-                </div>
-                    <div>
-                        {if $smarty.session.id}
-                            <a href="{base_url()}users/profil">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
-                            {else}
-                                <a href="{base_url()}pages/inscription">Inscription</a><span>/</span><a href="{base_url()}pages/connexion">Connexion</a>       
-                        {/if}
+                <div class="headerLogo headerAdmin" id="headerAdmin">
+                    {if $smarty.session.role == 1}
+                        <a href="{base_url()}documentation/index.html">Accéder à la documentation technique</a>
+                    {/if}
+                    
+                    <div id="link_headerAdmin">
+                        <div>
+                            <a href="{base_url()}"> Retourner à Ecomie / </a>
+                        </div>
+                        <div>
+                            {if $smarty.session.id}
+                                <a href="{base_url()}users/profil">{$smarty.session.firstname}</a><span>/</span><a href="{base_url()}users/logout">Deconnexion</a>
+                                {else}
+                                    <a href="{base_url()}pages/inscription">Inscription</a><span>/</span><a href="{base_url()}pages/connexion">Connexion</a>       
+                            {/if}
+                        </div>
                     </div>
                 </div>
             </header>
