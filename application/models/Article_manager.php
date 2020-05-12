@@ -77,10 +77,12 @@ class Article_manager extends CI_Model{
                 }
 
                 $this->db->like('articleContent', $data[0]);
+                $this->db->or_like('articleTitle', $data[0]);
 
                 for($i = 1; $i< count($data); $i++){
                     //var_dump($data[$i]);;
-                    $this->db->or_like('articleContent', $data[$i]);
+                    $this->db->or_like('articleTitle', $data[$i]);
+                    $this->db->or_like('articleTitle', $data[$i]);
                 }
                 // var_dump($data);;
             }elseif(!empty($_GET['category_id']) && $keyword){
