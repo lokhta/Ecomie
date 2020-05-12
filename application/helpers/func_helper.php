@@ -37,7 +37,6 @@ function create_object($class){
  */
 function get_data($obj_manager, $obj_class, $method, $param){
     $get_method = get_class_methods($obj_manager);
-    //var_dump($get_method);
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
@@ -45,7 +44,6 @@ function get_data($obj_manager, $obj_class, $method, $param){
     }
     
     $get_data_in_base = $obj_manager->$method($param);
-    // var_dump($get_data_in_base);;
 
 
     if(get_class($obj_manager) == "Galerie_manager"){
@@ -60,10 +58,8 @@ function get_data($obj_manager, $obj_class, $method, $param){
         }
     }else{
         $obj_class->hydrate($get_data_in_base);
-        //var_dump($obj_class);
     
         $data = $obj_class->getData();
-        // var_dump($data);
     
         if(!empty($get_data_in_base['categoryName'])){
             $data['category'] = $get_data_in_base['categoryName'];
@@ -90,7 +86,6 @@ function get_data($obj_manager, $obj_class, $method, $param){
             }
         }
     }
-    // var_dump($data);;
     return $data;
 }
 
@@ -119,7 +114,6 @@ function get_role_user($obj_manager){
         array_push($liste, $value['roleName']);
     }
 
-    // var_dump($liste);
     return $liste;
 }
 
@@ -149,7 +143,6 @@ function get_option_select_input($obj_manager, $method,$return_id, $return_value
  */
 function write_data($obj_manager, $obj_class, $method, array $post, array $data = null){
     $get_method = get_class_methods($obj_manager);
-    // var_dump($post);;
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
@@ -174,7 +167,6 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
     $obj_class->hydrate($post);;
-    // var_dump($obj_class);
 
     //Actualisation de la session après la modificationd du profil
     if($method == 'editUser' && empty($_GET)){
@@ -187,7 +179,6 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     }
 
     $obj_manager->$method($obj_class);
-    // var_dump($obj_manager);;
 }
 
 /**
@@ -206,7 +197,6 @@ function del_data($obj_manager, $method, $id){
     }
 
     $obj_manager->$method($id);
-    //var_dump($obj_manager->$method($id));
 }
 
 /**
@@ -220,7 +210,6 @@ function del_data($obj_manager, $method, $id){
  */
 function get_all_data($obj_manager, $obj_class, $method,$param=null){
     $get_method = get_class_methods($obj_manager);
-    //var_dump($get_method);
 
     if(!in_array($method, $get_method)){
         echo "La methode que vous souhaitez utiliser n'existe pas";
@@ -229,7 +218,6 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
 
     if($param){
         $get_data_in_base = $obj_manager->$method($param);
-        //var_dump($get_data_in_base);
     }else{
         $get_data_in_base = $obj_manager->$method();
     }
@@ -240,9 +228,7 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
 
     foreach($get_data_in_base as $key => $value){
         $obj_class->hydrate($value);
-        //var_dump($obj_class);
         $data = $obj_class->getData();
-        //var_dump($data);
 
         if(!empty($value['roleName'])){
             $data['roleName'] = $value['roleName'];
@@ -266,14 +252,12 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
             }
         }
         
-        //var_dump($data);
 
         if(!in_array(get_class($obj_manager), array('User_manager', 'Form_manager'))){
             $date_time = get_date($value);
             if(!empty($date_time)){
                 $data['date'] = $date_time['date'];
                 $data['time'] = $date_time['time'];
-                // var_dump($data);
             }
         }
 
@@ -281,7 +265,6 @@ function get_all_data($obj_manager, $obj_class, $method,$param=null){
         
         array_push($liste, $data);
     }
-    //var_dump($liste);
     return $liste;
 }
 
@@ -430,7 +413,6 @@ function upload_image($input_name,int $imageW, int $imageH){
             $reponse = $message;
             $ci->smarty->assign("reponse", $reponse);
             return  $upload_data['file_name'];
-            // var_dump($_POST);
         }
     
 }
@@ -467,7 +449,6 @@ function send_mail($from, $to, $subject, $message, $format){
         $ci->email->to($to);
         $ci->email->subject($subject);
         $ci->email->message($message);
-    // $this->email->send();
 
     if($ci->email->send()){
         if(!empty($_GET["sender"])){
@@ -475,7 +456,6 @@ function send_mail($from, $to, $subject, $message, $format){
         }
     }else{
         echo json_encode(array("error" => "<div class='red_error'>Une erreur s'est produite</div>"));
-        // echo $this->email->print_debugger();
     }    
 
 }

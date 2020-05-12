@@ -5,6 +5,6 @@ var class_comment__manager =
     [ "count_comment", "class_comment__manager.html#a7fe0711d7dc962ef946c0091fac48d62", null ],
     [ "deleteComment", "class_comment__manager.html#ae4d79b84a29a7254a74b1b5e541ca6b1", null ],
     [ "editComment", "class_comment__manager.html#a97a7cb9e982691905c477b586ac7e361", null ],
-    [ "getAllComment", "class_comment__manager.html#ab7e0b9df9d8d4de8c4585d9efc375536", null ],
+    [ "getAllComment", "class_comment__manager.html#a6c657faf78a664911925375d6dc43390", null ],
     [ "getComment", "class_comment__manager.html#a6031236636315ee15aa78dfd355f59fc", null ]
 ];

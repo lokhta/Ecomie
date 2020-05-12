@@ -24,7 +24,6 @@ var annotated_dup =
     [ "Newsletter_manager", "class_newsletter__manager.html", "class_newsletter__manager" ],
     [ "Newsletters", "class_newsletters.html", "class_newsletters" ],
     [ "Pages", "class_pages.html", "class_pages" ],
-    [ "properties", "classproperties.html", null ],
     [ "Subscription", "class_subscription.html", "class_subscription" ],
     [ "Subscription_manager", "class_subscription__manager.html", "class_subscription__manager" ],
     [ "User", "class_user.html", "class_user" ],

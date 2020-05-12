@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['in_184',['in',['../_i_n_h_e_r_i_t_a_n_c_e___r_e_l_e_a_s_e___n_o_t_e_s_8txt.html#aeecb8bc21c7a7a92f72be591248dd0b4',1,'in():&#160;INHERITANCE_RELEASE_NOTES.txt'],['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#a8163bcb1ad061a8664f42ff064e031d4',1,'in():&#160;NEW_FEATURES.txt']]],
-  ['inbase_185',['inBase',['../class_subscription__manager.html#ac6fea0be1af9ac89b53deb5f83870c84',1,'Subscription_manager\inBase()'],['../class_user__manager.html#a10376eaf3fb1585d226393a8602cb76e',1,'User_manager\inBase()']]],
-  ['index_186',['index',['../class_dashboard.html#a149eb92716c1084a935e04a8d95f7347',1,'Dashboard\index()'],['../class_welcome.html#a149eb92716c1084a935e04a8d95f7347',1,'Welcome\index()'],['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#ae60deef8e270abc442a2778fbdfe7e05',1,'index():&#160;NEW_FEATURES.txt']]],
-  ['inheritance_5fmerge_5fcompiled_5fincludes_187',['inheritance_merge_compiled_includes',['../_i_n_h_e_r_i_t_a_n_c_e___r_e_l_e_a_s_e___n_o_t_e_s_8txt.html#add7a551a5d64ae88c3144d29066dd41e',1,'INHERITANCE_RELEASE_NOTES.txt']]],
-  ['inheritance_5frelease_5fnotes_2etxt_188',['INHERITANCE_RELEASE_NOTES.txt',['../_i_n_h_e_r_i_t_a_n_c_e___r_e_l_e_a_s_e___n_o_t_e_s_8txt.html',1,'']]],
-  ['inscription_189',['inscription',['../class_pages.html#a4557a98375bdb947deb544e20403b81a',1,'Pages\inscription()'],['../class_users.html#a4557a98375bdb947deb544e20403b81a',1,'Users\inscription()']]]
+  ['b091d690faab2d9daf76ad6d9e684f05a85140b4_5f0_2efile_2ehome_2etpl_2ephp_31',['b091d690faab2d9daf76ad6d9e684f05a85140b4_0.file.home.tpl.php',['../b091d690faab2d9daf76ad6d9e684f05a85140b4__0_8file_8home_8tpl_8php.html',1,'']]],
+  ['b0a575fab2660d2be925ffaaf887ec886c02571d_5f0_2efile_2econtact_2etpl_2ephp_32',['b0a575fab2660d2be925ffaaf887ec886c02571d_0.file.contact.tpl.php',['../b0a575fab2660d2be925ffaaf887ec886c02571d__0_8file_8contact_8tpl_8php.html',1,'']]],
+  ['b9b5a7a5017f86f4fec312cd08546dc9082eeb24_5f0_2efile_2earticle_2etpl_2ephp_33',['b9b5a7a5017f86f4fec312cd08546dc9082eeb24_0.file.article.tpl.php',['../b9b5a7a5017f86f4fec312cd08546dc9082eeb24__0_8file_8article_8tpl_8php.html',1,'']]],
+  ['bd8adf727c260b32993f13f9b33b242023dc07a9_5f0_2efile_2esidebare_2etpl_2ephp_34',['bd8adf727c260b32993f13f9b33b242023dc07a9_0.file.sidebare.tpl.php',['../bd8adf727c260b32993f13f9b33b242023dc07a9__0_8file_8sidebare_8tpl_8php.html',1,'']]]
 ];

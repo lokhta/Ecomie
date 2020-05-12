@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logout_489',['logout',['../class_users.html#a082405d89acd6835c3a7c7a08a7adbab',1,'Users']]]
+  ['membres_424',['membres',['../class_users.html#a668a19e7dd44dac4e0eb212ea32f7075',1,'Users']]],
+  ['mentions_425',['mentions',['../class_pages.html#a556098398af91f004876a2cc396b3d50',1,'Pages']]]
 ];

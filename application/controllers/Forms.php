@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Forms
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ * @brief  Ce contrôleur permet de gérer l'envoi et l'affichage des messages envoyés par la page contact
+ */
+
 class Forms extends CI_Controller{
 
     private $_form_manager;
@@ -11,6 +18,11 @@ class Forms extends CI_Controller{
         $this->_form_manager = create_object('Form_manager');
         $this->_form = create_object('Form');
     }
+
+    /**
+     * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
+     * @param $data contient les données du message qu'il récupère de la BDD
+     */
 
     public function dashboard(){
 
@@ -23,6 +35,12 @@ class Forms extends CI_Controller{
         $this->smarty->assign('page', 'admin/messagerie.tpl');
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+    /**
+     * @brief send_message() permet d'envoyer un message à travers la page contact
+     * @param form_validation est un helper de codeigniter permettant de gérer et d'afficher les erreurs de saisi
+     * @param $array est un tableau contenant un success ou un error qui sera utilisé après par le javascript
+     */
 
     public function send_message(){
         $this->form_validation->set_rules('formSendername', 'Nom', 'required');

@@ -25,10 +25,6 @@
 var NAVTREE =
 [
   [ "Ecomie", "index.html", [
-    [ "Smarty 3 template engine", "md__c_1_wamp64_www__ecomie_application_third_party_smarty__r_e_a_d_m_e.html", [
-      [ "Documentation", "md__c_1_wamp64_www__ecomie_application_third_party_smarty__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Distribution repository", "md__c_1_wamp64_www__ecomie_application_third_party_smarty__r_e_a_d_m_e.html#autotoc_md2", null ]
-    ] ],
     [ "Structures de données", "annotated.html", [
       [ "Structures de données", "annotated.html", "annotated_dup" ],
       [ "Index des structures de données", "classes.html", null ],
@@ -43,8 +39,7 @@ var NAVTREE =
       [ "Variables globale", "globals.html", [
         [ "Tout", "globals.html", null ],
         [ "Fonctions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Définitions de type", "globals_type.html", null ]
+        [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -52,8 +47,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_article_8php.html",
-"class_subscription.html#a87313ad678fb2a2a8efb435cf0bdb9a0"
+"031c94fe5adbbff1591fbe6639fbef5aed7ed803__0_8file_8article__detail_8tpl_8php.html",
+"class_pages.html#a45f6179ad7314bb04f81d00cc2e3af6b"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

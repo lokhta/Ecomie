@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['dashboard_2ephp_336',['dashboard.php',['../dashboard_8php.html',1,'']]],
-  ['database_2ephp_337',['database.php',['../database_8php.html',1,'']]]
+  ['577ced7bad3619aa3fcaab6891f507e58435b3e4_5f0_2efile_2eheader_2etpl_2ephp_268',['577ced7bad3619aa3fcaab6891f507e58435b3e4_0.file.header.tpl.php',['../577ced7bad3619aa3fcaab6891f507e58435b3e4__0_8file_8header_8tpl_8php.html',1,'']]]
 ];

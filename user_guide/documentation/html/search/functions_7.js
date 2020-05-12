@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['hydrate_485',['hydrate',['../class_article.html#a2be44815edff85cab5e873ba4497c38b',1,'Article\hydrate()'],['../class_comment.html#a2be44815edff85cab5e873ba4497c38b',1,'Comment\hydrate()'],['../class_event.html#a2be44815edff85cab5e873ba4497c38b',1,'Event\hydrate()'],['../class_form.html#a2be44815edff85cab5e873ba4497c38b',1,'Form\hydrate()'],['../class_galerie.html#a2be44815edff85cab5e873ba4497c38b',1,'Galerie\hydrate()'],['../class_message.html#a2be44815edff85cab5e873ba4497c38b',1,'Message\hydrate()'],['../class_newsletter.html#a2be44815edff85cab5e873ba4497c38b',1,'Newsletter\hydrate()'],['../class_subscription.html#a2be44815edff85cab5e873ba4497c38b',1,'Subscription\hydrate()'],['../class_user.html#a2be44815edff85cab5e873ba4497c38b',1,'User\hydrate()']]]
+  ['inbase_420',['inBase',['../class_subscription__manager.html#ac6fea0be1af9ac89b53deb5f83870c84',1,'Subscription_manager\inBase()'],['../class_user__manager.html#a10376eaf3fb1585d226393a8602cb76e',1,'User_manager\inBase()']]],
+  ['index_421',['index',['../class_dashboard.html#a149eb92716c1084a935e04a8d95f7347',1,'Dashboard\index()'],['../class_welcome.html#a149eb92716c1084a935e04a8d95f7347',1,'Welcome\index()']]],
+  ['inscription_422',['inscription',['../class_pages.html#a4557a98375bdb947deb544e20403b81a',1,'Pages\inscription()'],['../class_users.html#a4557a98375bdb947deb544e20403b81a',1,'Users\inscription()']]]
 ];

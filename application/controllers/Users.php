@@ -1,11 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+    /**
+    * Contrôleur Users
+    * \author Julien MARIUZZA
+    * \version 3.0
+    */
+
 class Users extends CI_Controller{
         
     private $_user_manager;
     private $_user;
 // Fonction du constructeur
+
+    /**
+    * @brief __construct() permet de charger les fonctions se trouvant dans les modèles User et User_manager
+    * @param _user_manager Devient un nouvel objet user_manager
+    * @param _user Devient un nouvel objet user
+    */
 
     public function __construct(){
             parent::__construct();
@@ -17,29 +29,37 @@ class Users extends CI_Controller{
 
 // Fonction pour la vérification de connexion
 
+    /**
+    * @brief connexion() permet au utilisateurs ayant déjà un compte créé, de se connecté
+    * @param $_POST contient les données du formulaire envoyé par l'utilisateur
+    * @param $userManager le nouvel objet user_manager devient une nouvelle variable $user_manager
+    * @param $getUser contient une ligne de la table user
+    * @param $user le nouvel objet user devient une nouvelle variable $user
+    * @param $userTab est un tableau contenant les données de l'objet $user
+    * @param $keys variable contenant le nom de la clé dans $userTab en effaçant le caractère "user" pour chaques clés
+    */
+
     public function connexion(){
-        //$this->smarty->view('pages/connection.tpl');
 
         if ($_POST)
         {
             $userManager = New User_manager;
             $getUser = $userManager->inBase();
-            //var_dump($_POST);
-            // var_dump($getUser);
             if (!empty($_POST['userEmail'])){
+
                 if (!empty($_POST['userPwd'])){  
+
                     if (!empty($getUser)){
-                        //var_dump($getUser);
+
                         if (password_verify($_POST['userPwd'], $getUser['userPwd'])){
+
                             $user = New User;
                             $user->hydrate($getUser);
-                            // var_dump($user);exit;
-
                             $userTab = $user->getData();
-
-                            //Création de la session 
+                            
                             foreach($userTab as $key => $value){
                                 $keys = lcfirst(str_replace('user','',$key));
+                                var_dump($keys);
                                 $_SESSION[$keys] = $value;
                             }
                             echo json_encode(array("success"=> true, "redirect" => base_url()."users/profil"));
@@ -60,6 +80,18 @@ class Users extends CI_Controller{
     
 
 // Fonction de création de compte
+
+    /**
+    * @brief inscription() permet aux visiteurs du site de s'inscrire en tant que membre
+    * @param helper permet de charger les helpers de codeigniter form et url
+    * @param library permet de charger la librairie codeigniter 'form_validation' pour afficher les messages d'erreurs des champs obligatoires
+    * @param set_error_delimiters est un paramètre de form_validation permettant d'ajouter la classe "error" dans la vue inscription
+    * @param $config contient un tableau à plusieurs dimension contenant les "rôles" de chaques champs dans le formulaire inscription
+    * @param set_rules met les rôles pour form_validation à jour avec le tableau $config
+    * @param run retourne faux si il y a une erreur dans form_validation et true si les champs sont bien renseignés
+    * @param write_data envoi les données reçus à la BDD pour les insérés dans la table users
+    * @param send_mail envoi un mail de confirmation au visiteur venant de s'inscrire
+    */
 
     public function inscription()
     {
@@ -152,6 +184,12 @@ class Users extends CI_Controller{
 
 // Fonction de déconnexion / Kill la session
 
+    /**
+    * @brief logout() permet aux utilisateurs connectés de se déconnecter
+    * @param session_destroy permet de "détruire" la session en cours
+    * @param redirect_base_url permet de rediriger la page en cours vers la page d'accueil du site
+    */
+
     public function logout()
     {
         session_destroy();
@@ -159,6 +197,16 @@ class Users extends CI_Controller{
     }
 
 // Fonction de la page modification des données utilisateurs
+
+    /**
+    * @brief profil() permet aux membres d'accéder à l'heure profil et de modifier leurs informations
+    * @param $_GET récupère la valeur pour ['del'] afin de supprimer la photo de profil ou non
+    * @param del_avatar supprime la photo de profil en fonction de l'identifiant de la session
+    * @param smarty->assign permet d'assigner une valeur à une variable smarty pour l'utiliser dans la vue
+    * @param $_SESSION contient les données de la session de l'utilisateur
+    * @param $_POST contient les données renseingés par l'utilisateurs dans le formulaire pour modifier ses informations
+    */
+
     public function profil()
     {   
         if(!empty($_GET['del']) && $_GET['del'] == 1){
@@ -183,29 +231,25 @@ class Users extends CI_Controller{
         }
     }
 
+    /**
+    * @brief membres() permet d'afficher la liste des utilisateurs dans la dashboard
+    * @param $_GET récupère la valeur pour modifier le rôle de l'utilisateur
+    * @param $role contient le role de l'utilisateur
+    * @param smarty->assign permet d'assigner une valeur à une variable smarty pour l'utiliser dans la vue
+    * @param $data_list contient un tableau de la liste des utilisateurs avec leurs données
+    * @param $_POST contient les données renseingés par l'utilisateurs dans le formulaire pour modifier ses informations
+    */
+
     public function membres()
     {
-
-        // if((empty($_SESSION['id']))||(($_SESSION['role'])!=='1')){
-        //     redirect('pages/access_denied', 'location');
-        // }
-
-        
-        //$this->load->library('javascript/jquery');
-        // var_dump($_SESSION);
-
-        //var_dump($data);
 
         if(!empty($_GET['userRole'])){
 
             write_data($this->_user_manager, $this->_user, 'editUser', $_GET, array("userId" => $_GET['userId']));
-            // redirect(base_url()."users/membres", 'refresh');
-        }
 
-        // var_dump($_SESSION);
+        }
         
         $role = get_role_user($this->_user_manager);
-        var_dump($role);
         $this->smarty->assign('option', $role); 
 
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
