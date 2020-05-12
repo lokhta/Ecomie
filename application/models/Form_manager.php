@@ -46,6 +46,15 @@ class Form_manager extends CI_Model{
         }
     }
 
+    public function getForm($form_id){
+        $query = $this->db
+        ->select('*')
+        ->from('form')
+        ->where('formId', $form_id)
+        ->get();
+        return $query->row_array();
+    }
+
     /**
      * @brief count_message() Retourne le nombre de message présent dans la table Form
      * @return Integer

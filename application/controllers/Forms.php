@@ -29,18 +29,26 @@ class Forms extends CI_Controller{
         if(empty($_SESSION['id'])){
             redirect('pages/access_denied', 'location');
         }
-        $data = get_all_data($this->_form_manager, $this->_form, 'getFormMessage');
-        $this->smarty->assign('message_forms', $data);
 
-        $this->smarty->assign('page', 'admin/messagerie.tpl');
+        if(!empty($_GET['form_id'])){
+            $data = get_data($this->_form_manager, $this->_form, 'getForm', $_GET['form_id']);
+            // var_dump($data);exit;
+            $this->smarty->assign('formDetail', $data);
+            $this->smarty->assign('page', 'admin/form_detail.tpl');
+
+            if(!empty($_GET['del'])){
+                del_data($this->_form_manager, 'deleteFormMessage', $_GET['form_id']);
+                redirect(base_url()."Forms/dashboard", 'location');
+            }
+
+        }else{
+            $data = get_all_data($this->_form_manager, $this->_form, 'getFormMessage');
+            $this->smarty->assign('message_forms', $data);
+    
+            $this->smarty->assign('page', 'admin/messagerie.tpl');
+        }
         $this->smarty->view('admin/dashboard.tpl');
     }
-
-    /**
-     * @brief send_message() permet d'envoyer un message à travers la page contact
-     * @param form_validation est un helper de codeigniter permettant de gérer et d'afficher les erreurs de saisi
-     * @param $array est un tableau contenant un success ou un error qui sera utilisé après par le javascript
-     */
 
     public function send_message(){
         $this->form_validation->set_rules('formSendername', 'Nom', 'required');
