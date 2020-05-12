@@ -225,6 +225,7 @@ class Users extends CI_Controller{
         $this->smarty->assign('option', $role); 
 
         $data_list = get_all_data($this->_user_manager, $this->_user,'getAllUser');
+        // var_dump($_SESSION);
         $this->smarty->assign('users_list', $data_list);
 
         $this->smarty->assign('page', 'admin/membre.tpl');

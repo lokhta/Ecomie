@@ -333,7 +333,6 @@ function ajax_comment(get_name,get_value,author_id){
                 $.each(data, function(index, elem){
                     html += "<div class='comments'> <p> <span class='comment_author'>"+elem.author+" </span><span>&nbsp;le "+elem.date+" à "+elem.time+"</span>";
                     if(elem.commentAuthor == author_id){
-                        html += "<button class='edit_com_btn btn' data-id="+elem.commentId+">Modifier</button>";
                         html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&commentId="+elem.commentId+"&amp;del_com=1' class='btn' id='del_com'>Supprimer</a> </p>"
                     }else{
                         html+= "<a href='"+base_url+"Comments/edit_comment?"+get_name+"="+get_value+"&commentId="+elem.commentId+"&amp;commentReport=1' class='btn'>Signaler</a>"

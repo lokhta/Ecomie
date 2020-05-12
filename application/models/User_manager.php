@@ -68,12 +68,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          * @return Array
          */
         public function getAllUser(){
-            $query = $this->db
-            ->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName')
-            ->from('users')
-            ->join('roles', 'roles.roleId = users.userRole')
-            ->get();
+        
+            $this->db->select('userId, userName, userFirstname, userEmail, userPhone, userAddress, userCp, userCity, userPwd, userAvatar, userRole, roleName');
+            $this->db->from('users');
+            $this->db->join('roles', 'roles.roleId = users.userRole');
+
+            if($_SESSION['role'] == '3'){
+                $this->db->where("userRole" , 3);
+            }
+
+            $query = $this->db->get();
             return $query->result_array();
+
         }
 
         /**
