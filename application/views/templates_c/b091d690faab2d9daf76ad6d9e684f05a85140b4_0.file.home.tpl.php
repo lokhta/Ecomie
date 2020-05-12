@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-29 17:11:19
+/* Smarty version 3.1.34-dev-7, created on 2020-05-12 20:36:54
   from 'C:\wamp64\www\Ecomie\application\views\templates\pages\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e5a9b37eea073_15245426',
+  'unifunc' => 'content_5ebb08e6b2e3a7_67780984',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b091d690faab2d9daf76ad6d9e684f05a85140b4' => 
     array (
       0 => 'C:\\wamp64\\www\\Ecomie\\application\\views\\templates\\pages\\home.tpl',
-      1 => 1582992983,
+      1 => 1589315794,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e5a9b37eea073_15245426 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebb08e6b2e3a7_67780984 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('title'=>"Ecomie - Accueil",'name'=>$_smarty_tpl->tpl_vars['Name']->value), 0, false);
 ?>
         <div id=background>
@@ -64,9 +64,13 @@ assets/img/qartier.png" alt="Quartier">
         <section id="letter">
             <p class="news">Ce n'est que le début </br>inscrit toi à la newsletter pour les derniéres astuces.</p>
             <div id="newsletter">
+                <?php echo form_open('','id="form_news"');?>
+
                 <label for="Newsletter"></label>
-                <input id="mail" type="text" id="Newsletter" placeholder="Entrez votre adresse mail">
-                <button class="bouton">Souscrivez </button>
+                <input id="mail" type="text" name ="subscribeEmail" id="Newsletter" placeholder="Entrez votre adresse mail">
+                <input type="submit" value ="Souscrivez"class="bouton">
+                <?php echo form_close();?>
+
             </div>
         </section>
         <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

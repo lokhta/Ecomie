@@ -1,134 +1,48 @@
     {include file="header.tpl" title="Ecomie - Savoir-Faire" name=$Name}
-      <div class="contenaire__bloc">
-        <section class="savoir__faire">
-            <a class="savoir__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="savoir__logo">
-                  <img src="{$base_url}assets/img/outils.svg" alt="outils"> 
-                 </div>
-             <div class="savoir__titre">      
-                  <h2>Recette pour faire sa propre lessive</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                <p>Ecomie</p>
-                <p>28/01/20</p>
-            </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="savoir__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="savoir__logo">
-                  <img src="{$base_url}assets/img/outils.svg" alt="Ampoule"> 
-                 </div>
-             <div class="savoir__titre">      
-                  <h2>Recette pour faire son propre savon</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>Ecomie</p>
-                    <p>18/01/20</p>
-               </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="faire__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils"> 
-                 </div>
-             <div class="faire__titre">      
-                  <h2>Prendre soin de ses plantes aromatiques</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>Didier</br>de la compta</p>
-                    <p>12/01/20</p>
-               </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="faire__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils"> 
-                 </div>
-             <div class="faire__titre">      
-                  <h2>Quoi troquer facilement ?</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>Billy</p>
-                    <p>30/12/19</p>
-               </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="savoir__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="savoir__logo">
-                  <img src="{$base_url}assets/img/outils.svg" alt="outils"> 
-                 </div>
-             <div class="savoir__titre">      
-                  <h2>Comment fabriquer son potager en ville ?</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                <p>Ecomie</p>
-                <p>28/12/19</p>
-            </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="faire__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils"> 
-             </div>
-             <div class="faire__titre">      
-                  <h2>Le boycott peut-il changer les choses ?</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>Eglantine </br>Bouvier</p>
-                    <p>08/12/19</p>
-               </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="faire__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils"> 
-                 </div>
-             <div class="faire__titre">      
-                  <h2>Quand avoir des voisins devient une chance</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>Ecomie</p>
-                    <p>28/11/19</p>
-               </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="savoir__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="savoir__logo">
-                  <img src="{$base_url}assets/img/outils.svg" alt="outils"> 
-                 </div>
-             <div class="savoir__titre">      
-                  <h2>Comment enlever l'odeur du compost ?</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                <p>Ecomie</p>
-                <p>27/10/19</p>
-            </div> 
-        </section>
-        <section class="savoir__faire">
-            <a class="faire__bloc" href="{$base_url}assets/img/Recette-lessive.png">
-              <div class="faire__logo">
-                  <img src="{$base_url}assets/img/ampoule (1).svg" alt="outils"> 
-                 </div>
-             <div class="faire__titre">      
-                  <h2>Consommer local et de saison ?</h2>
-             </div> 
-            </a>
-            <div class="auteur">
-                    <p>L'agriculteur</p>
-                    <p>02/09/19</p>
-               </div> 
-        </section>
+    <div class="btn-content" id="btn-create-art">
+        {if $smarty.session.id}
+            <a href="{base_url()}Articles/dashboard" class="btn">Créer un article</a> 
+        {/if}
+    </div>
+    <div id="search_content">
+        <form action="{base_url()}Articles/articles?search=1" method="post" id="form_search">
+            <span>Rechercher par mots-clés : </span>
+            <input type="text" name="keyword" class="field_search">
+            <input type="submit" value="Rechercher" class="btn btn_search">
+        </form>
+
+        <div id="search_cat">
+            <span>Rechercher par catégorie : </span>
+            <a href="{base_url()}Articles/articles?category_id=1" class="btn btn_search" id="search_savoir" data-category-name="Savoir">Savoir</a>
+            <a href="{base_url()}Articles/articles?category_id=2" class="btn btn_search" id="search_faire" data-category-name="Faire">Faire</a>
         </div>
+
+    </div>
+    <div class="contenaire__bloc">
+        {if !$article && $smarty.get.search}
+            <p>Aucuns articles n'a été trouvés</p>
+            {else}
+                {foreach from=$article item=val key=key}
+
+                    <section class="savoir__faire">
+                        <a class="{$val.category}__bloc" href="{base_url()}Articles/articles?article_id={$val.articleId}">
+                            <div class="{$val.category}__logo">
+                                <img src="{base_url()}assets/img/{$val.category}" alt="">
+                            </div>
+                            <div class="{$val.category}__titre">
+                                <h2>{$val.articleTitle}</h2>
+                            </div>
+                        </a>
+                        <div class="auteur">
+                            <p>{$val.author}</p>
+                            <p>{$val.date}</p>
+                        </div>
+                    </section>
+                {/foreach}     
+        {/if}
+    </div>
         <section class="astuce__fb">
             <p>Plein d'autres astuce sur notre page Facebook</p>
-            <a href="#"><img src="{$base_url}assets/img/facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="{base_url()}assets/img/facebook.svg" alt="Facebook"></a>
         </section>
 {include file="footer.tpl"}
