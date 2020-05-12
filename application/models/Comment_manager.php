@@ -62,7 +62,7 @@ class Comment_manager extends CI_Model{
      */
     public function getAllComment($id = null){
 
-        $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname');
+        $this->db->select('commentId, commentContent, commentDate, commentReport, commentAuthor, commentArticle, commentEvent, userFirstname, userEmail');
         $this->db->from('comments');
         $this->db->join('users', 'users.userId = comments.commentAuthor');
         if(!empty($_GET['article_id'])){

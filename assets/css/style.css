@@ -1833,7 +1833,7 @@ Article Dashboard
     text-align: center;
 }
 
-.tab .fa-archive, .tab .fa-hourglass-half{
+.tab .fa-archive, .tab .fa-hourglass-half, .fa-exclamation-triangle{
     color : #F1C40F;
 }
 

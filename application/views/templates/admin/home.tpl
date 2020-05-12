@@ -33,7 +33,10 @@
                     <tr style="background: {cycle values='#fff , #D6EAF8'}">
                         <td class="col1">{$val.userFirstname}</td>
                         <td class=col2>{$val.commentContent}</td>
-                        <td class="col3"><button style="border:0px" class="delete btn_basket" data-link="{base_url()}Comments/edit_comment?commentId={$val.commentId}&amp;del_com=1&dash=1"><i class="fas fa-trash-alt"></i></button></td>
+                        <td class="col3">
+                        <button style="border:0px" class="delete btn_basket" data-link="{base_url()}Comments/edit_comment?commentId={$val.commentId}&amp;del_com=1&dash=1"><i class="fas fa-trash-alt"></i></button>
+                        <a href="{base_url()}Email/send_warning?comment={$val.commentContent}&author{$val.userFirstname}&email={$val.userEmail}"><i class="fas fa-exclamation-triangle"></i></a>
+                        </td>
                     </tr>
                 {/foreach}
             </table>

@@ -26,6 +26,14 @@ class Email extends CI_Controller{
         send_mail($_GET['sender'], $_GET['recipient'], $subject, $message, "text");
     }
 
+    public function send_warning(){
+        $subject = "Avertissement : un de vos commentaires a été signalé";
+        $message ="<p>Bonjour ".$_GET["author"]."</p><p>Nous vous informons que votre commentaire ci-dessous a été signalé. Nous vous envoyons cette avertissement car votre commentaires a été jugé abusif, indésirable ou injurieux.</p><p>Commentaire signalé : </p><p>".$_GET["comment"]."</p>";
+        
+        send_mail("Ecomie", $_GET['email'], $subject, $message, "html");
+        redirect(base_url()."dashboard", "location");
+    }
+
     public function send_reponse(){
         send_mail("Ecomie", $_GET['recipient'], $_GET["subject"], $_GET["reponse"], "text");
     }
