@@ -96,7 +96,7 @@ class Users extends CI_Controller{
                 ),
                 array(
                     'field' => 'userEmail',
-                    'label' => 'Addresse mail',
+                    'label' => 'Adresse mail',
                     'rules' => 'required|valid_email|is_unique[users.userEmail]'
                 ),
                 array(

@@ -3,9 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Contrôleur Galeries
- * \author Jean-Baptiste Abeilhe
+ * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  permet d'afficher ou de gérer les images des galeries
  */
 
 class Galeries extends CI_Controller{
@@ -19,10 +18,7 @@ class Galeries extends CI_Controller{
         $this->_galerie = create_object('Galerie');
     }
 
-    /**
-     * @brief galeries() affiche les images de la galerie
-     */
-   
+
     public function galeries() {
         if(!empty($_GET['event_id'])){
             $data = get_data($this->_galerie_manager, $this->_galerie, "getGalerie", $_GET['event_id']);

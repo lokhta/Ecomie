@@ -5,14 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Events
  * \author Jean-Baptiste Abeilhe
  * \version 3.0
- * @brief  permet d'afficher ou de gérer les images des galeries
  */
 
 class Events extends CI_Controller{
     
    private $_event_manager;
    private $_event;
-
 
     public function __construct(){
         parent::__construct();
@@ -42,7 +40,7 @@ class Events extends CI_Controller{
     }
 
     /**
-     * @brief dashboard() Permet la gestion des évèneemnts dans le dashboard
+     * @brief dashboard() Permet la gestion des évènements dans le dashboard
      */
 
     public function dashboard(){

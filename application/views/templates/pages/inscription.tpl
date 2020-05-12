@@ -22,7 +22,7 @@
 
 
                 <p class="form_field">            
-                    {form_label("Addresse mail*")}
+                    {form_label("Adresse mail*")}
                     {form_input("userEmail", $value_Mail, "id='userEmail'")}
                 </p>
                 <span id="email_error" class="red_error"></span>
@@ -36,7 +36,7 @@
 
 
                 <p class="form_field">
-                    {form_label("Addresse postale*")}
+                    {form_label("Adresse postale*")}
                     {form_input("userAddress", $value_address, "id='userAddress'")}
                 </p>
                 <span id="address_error" class="red_error"></span>

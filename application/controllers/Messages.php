@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Messages
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  Ce contrôleur permet de gérer l'envoi et l'affichage des messages envoyés par la page contact
  */
 
 class Messages extends CI_Controller{
@@ -19,9 +18,8 @@ class Messages extends CI_Controller{
     }
 
     /**
-     * @brief send_message() enregistre les données dans la BDD et les affiches dans le dashboard
+     * @brief send_message() gére l'envoi de message entre membre
      */
-
     public function send_message(){
         if(!empty($_POST['msgContent'])){
             write_data($this->_message_manager, $this->_message,"addMessage" ,$_POST);
@@ -32,7 +30,7 @@ class Messages extends CI_Controller{
     }
 
     /**
-     * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
+     * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérer
      */
 
     public function dashboard(){

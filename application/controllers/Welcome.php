@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
 	* Contrôleur Welcome
-	* @brief Affiche la pge d'accueil avec l'inscription à la newsletter
+	* @brief Affiche la page d'accueil avec l'inscription à la newsletter
 */
 
 class Welcome extends CI_Controller {

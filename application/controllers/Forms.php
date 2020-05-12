@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Forms
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  Ce contrôleur permet de gérer l'envoi et l'affichage des messages envoyés par la page contact
  */
 
 class Forms extends CI_Controller{
@@ -20,7 +19,7 @@ class Forms extends CI_Controller{
     }
 
     /**
-     * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
+     * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérer
      */
 
     public function dashboard(){

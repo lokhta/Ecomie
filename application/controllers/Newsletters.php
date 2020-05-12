@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Newsletters
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  Ce contrôleur permet de gérer la newsletter, création/suppression/modification et envoi
  */
 
 class Newsletters extends CI_Controller{

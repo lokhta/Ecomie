@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Dashboard
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  Ce contrôleur permet d'afficher le tableau de bord du dashboard
  */
 
 class Dashboard extends CI_Controller{
@@ -58,13 +57,4 @@ class Dashboard extends CI_Controller{
         $this->smarty->view('admin/dashboard.tpl');
     }
 
-
-    /**
-     * @brief Galeries() assigne la variable smartie "page" avec la donnée 'admin/archive.tpl'
-     */
-
-    public function Galeries(){
-        $this->smarty->assign('page', 'admin/archive.tpl');
-        $this->smarty->view('admin/dashboard.tpl');
-    }
 }

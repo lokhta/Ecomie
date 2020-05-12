@@ -1383,27 +1383,21 @@ Plan du site
 .plan {
     display: flex;
     background-color:rgb(250, 238, 238); ;
-    width: 1080px;
     margin: auto;
 }
 
 @media screen and (max-width:1080px) {
-.plan {
-    width: 768px;
-}
+
 }
 
 @media screen and (max-width: 768px) {
-.plan {
-     width: 576px;        
-}
+
 }
 
-@media screen and (max-width: 576px) {
-
-.plan {
-        width: 320px;
-}
+@media screen and (max-width: 430px) {
+    .plan{
+        width: 100%;
+    }
 }
 
 /************************************
@@ -2313,6 +2307,10 @@ a.btn.btn_create_gallery{
 div#gallery img {
     width: 90%;
     height: 100%;
+}
+
+#gallery{
+    text-align: center;
 }
 
 div#content_gallery {

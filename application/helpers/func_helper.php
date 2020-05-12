@@ -106,6 +106,12 @@ function get_category_article($obj_manager){
     return $liste;
 }
 
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_role_user() retourne la liste des rôles
+ * @param $obj_manager Objet User_manager
+ * @return Array
+ */
 function get_role_user($obj_manager){
     $role = $obj_manager->getRole();
     $liste = array('-- Roles --');
@@ -117,6 +123,17 @@ function get_role_user($obj_manager){
     return $liste;
 }
 
+
+/**
+ * @author Sofiane AL AMRI
+ * @brief get_option_select_input() retourne un tableau contenant une liste de donnée qui est déstiné a être utilisé pour l'affichage dynamiqe d'un champ select de formulaire
+ * @param $obj_manager Nom de la class manager
+ * @param $method Nom de la methode appartenant au manager que l'on souhaite appeler
+ * @param $return_id Nom du champs contenant les ids de la table
+ * @param $return_value Nom du champ qui contient les valeurs qu'on veux retourner
+ * @param $name_default_option  Nom de la première valeur de la liste déroulante qu'on souhaite donner. Definit a null. Si ce paramètre n'est pas renseigné la première valeur retourné sera en tête de liste
+ * @return Array
+ */
 function get_option_select_input($obj_manager, $method,$return_id, $return_value,$name_default_option = null){
     $liste = array();
 
@@ -127,9 +144,7 @@ function get_option_select_input($obj_manager, $method,$return_id, $return_value
     foreach($obj_manager->$method() as $value){
         $liste[$value[$return_id]] = $value[$return_value];
     }
-
     return $liste;
-
 }
 
 /**
@@ -171,7 +186,7 @@ function write_data($obj_manager, $obj_class, $method, array $post, array $data 
     //Actualisation de la session après la modificationd du profil
     if($method == 'editUser' && empty($_GET)){
         $userTab = $obj_class->getData();
-        var_dump($userTab);;
+        //var_dump($userTab);;
         foreach($userTab as $key => $value){
             $key_session = lcfirst(str_replace('user', '', $key));
             $_SESSION[$key_session] = $value;
@@ -452,11 +467,13 @@ function send_mail($from, $to, $subject, $message, $format){
         $ci->email->message($message);
 
     if($ci->email->send()){
-        if(!empty($from)){
-            echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
-        }
-    }else{
-        echo json_encode(array("error" => "<div class='red_error'>Une erreur s'est produite</div>"));
-    }    
+        if(current_url() != base_url()."users/inscription" && empty($_GET["news_id"])){
+            if(!empty($from)){
+                echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
+            }else{
+                echo json_encode(array("error" => "<div class='red_error'>Une erreur s'est produite</div>"));
+            } 
 
+        }   
+    }
 }

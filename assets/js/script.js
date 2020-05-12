@@ -230,7 +230,7 @@ function hideMessage(){
         setTimeout(hideMessage, 3000);
 
         $("#form")[0].reset();
-    })
+    });
 
     /*AIDE INFO BULLE */
 
@@ -264,9 +264,6 @@ function hideMessage(){
         $("#form_message").html(html_form);
     });
 
-    function send_message(){
-        
-    }
 
     $("#form_message").on("submit", function(event){
         event.preventDefault();

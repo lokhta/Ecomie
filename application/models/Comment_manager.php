@@ -70,6 +70,7 @@ class Comment_manager extends CI_Model{
             $this->db->where('commentArticle', $id);
         }elseif(!empty($_GET['event_id'])){
             $this->db->join('events', 'events.eventId = comments.commentEvent');
+            $this->db->where('commentEvent', $id);
         }
 
         if(current_url() == base_url()."dashboard"){

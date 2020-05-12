@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Comments
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief  permet de gérer les commentaires pour les articles
  */
 
 class Comments extends CI_Controller{

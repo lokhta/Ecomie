@@ -5,7 +5,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Contrôleur Articles
  * \author Sofiane AL AMRI
  * \version 3.0
- * @brief Ce contrôleur permet d'afficher et de gérer les articles sur le site  
  */
 
 class Articles extends CI_Controller{
@@ -23,7 +22,6 @@ class Articles extends CI_Controller{
     /**
      * @brief articles() Affiche un ou plusieurs articles 
      */
-
     public function articles(){
 
         //Afficher un seul article
@@ -52,7 +50,6 @@ class Articles extends CI_Controller{
     /**
      * @brief articles() Permet de gérer les articles dans le dashboard
      */
-
     public function dashboard(){
 
         if(empty($_SESSION['id'])){
@@ -82,12 +79,12 @@ class Articles extends CI_Controller{
             if(!empty($_GET['valide'])){
 
                 if($_GET['valide'] == 1){
-                    $data_edit_validate = array();
-                    write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
                     $message = "<p>Bonjour ".$_GET["author"]."</p><p>Nous vous informons que votre article : ".$_GET["article_title"]." a été validé. Il est désormais publié sur le site d'Ecomie : ".base_url()."</p>";
                 }elseif($_GET['valide'] == 2){
                     $message = "<p>Bonjour ".$_GET["author"]."</p><p>Nous avons le regret de vous informer que votre article : ".$_GET["article_title"]." n'a pas été valider</p>";
                 }
+                $data_edit_validate = array();
+                write_data($this->_article_manager, $this->_article, 'editArticle', $data_edit_validate, array('articleValidate' => $_GET['valide']));
                 $subject= "Validation article";
                 send_mail("Ecomie", $_GET["email"], $subject, $message, "html");
 
@@ -141,7 +138,6 @@ class Articles extends CI_Controller{
     /**
      * @brief upload() permet de transférer un image avec ckeditor
      */
-
     public function upload(){
         upload_image_ckeditor('articles');
     }
