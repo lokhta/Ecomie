@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Classe Message
+ * Classe Message (model)
  * \author Sofiane AL AMRI
  * \version 1.0
  * 

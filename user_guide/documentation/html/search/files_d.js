@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['welcome_2ephp_368',['Welcome.php',['../_welcome_8php.html',1,'']]],
-  ['welcome_5fmessage_2ephp_369',['welcome_message.php',['../welcome__message_8php.html',1,'']]]
+  ['galerie_2ephp_298',['galerie.php',['../galerie_8php.html',1,'']]],
+  ['galerie_5fmanager_2ephp_299',['galerie_manager.php',['../galerie__manager_8php.html',1,'']]],
+  ['galeries_2ephp_300',['galeries.php',['../galeries_8php.html',1,'']]]
 ];

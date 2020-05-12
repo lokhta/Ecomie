@@ -33,9 +33,6 @@ class Comments extends CI_Controller{
                 );
         }
 
-        //$url = base_url()."Articles/articles?article_id=".$_GET['article_id'];
-        //var_dump($_GET);
-
         if(!empty($_POST) && empty($_GET['edit_com'])){
             write_data($this->_comment_manager, $this->_comment, 'addComment', $_POST, $data);
             echo json_encode(array("success" => "success"));

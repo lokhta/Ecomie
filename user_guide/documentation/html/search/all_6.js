@@ -1,23 +1,4 @@
 var searchData=
 [
-  ['edit_5fcomment_85',['edit_comment',['../class_comments.html#a8f745e9a594108b17bd45516efbf76f5',1,'Comments']]],
-  ['editarticle_86',['editArticle',['../class_article__manager.html#ae54c662590ef1228f1680a64701a201c',1,'Article_manager']]],
-  ['editcomment_87',['editComment',['../class_comment__manager.html#a97a7cb9e982691905c477b586ac7e361',1,'Comment_manager']]],
-  ['editevent_88',['editEvent',['../class_event__manager.html#a9858faa7f42350fa7b9d7e015d793459',1,'Event_manager']]],
-  ['editgalerie_89',['editGalerie',['../class_galerie__manager.html#abbd68a6bd640943a8ad807277f8df030',1,'Galerie_manager']]],
-  ['editnews_90',['editNews',['../class_newsletter__manager.html#a72eb7e2c00d7b7dbad93e5ad866941e0',1,'Newsletter_manager\editNews()'],['../class_subscription__manager.html#a18663258d0133b73da4cdb43b4561f7b',1,'Subscription_manager\editNews()']]],
-  ['editor_91',['editor',['../class_galeries.html#a9519adcc17294545fc907f0d7122cfe0',1,'Galeries']]],
-  ['edituser_92',['editUser',['../class_user__manager.html#adc3ed184dae87cc040d05ad603ca2e11',1,'User_manager']]],
-  ['email_93',['Email',['../class_email.html',1,'']]],
-  ['email_2ephp_94',['Email.php',['../_email_8php.html',1,'']]],
-  ['ent_5fquotes_95',['ENT_QUOTES',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a426ce31754edd7d5eee7b9d7084d361d',1,'SMARTY_3.1_NOTES.txt']]],
-  ['eval_96',['eval',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html#a47d6284f4fc9e50c9d5797978478cd6f',1,'SMARTY_3.1_NOTES.txt']]],
-  ['event_97',['Event',['../class_event.html',1,'']]],
-  ['event_2ephp_98',['Event.php',['../_event_8php.html',1,'']]],
-  ['event_5fmanager_99',['Event_manager',['../class_event__manager.html',1,'']]],
-  ['event_5fmanager_2ephp_100',['Event_manager.php',['../_event__manager_8php.html',1,'']]],
-  ['eventnotinbase_101',['eventNotInBase',['../class_galerie__manager.html#a593dc71bb0c138a31743f29cbcf40ed1',1,'Galerie_manager']]],
-  ['events_102',['Events',['../class_events.html',1,'Events'],['../class_events.html#ade509b07f1df45730d31589b81a26efb',1,'Events\events()']]],
-  ['events_2ephp_103',['events.php',['../events_8php.html',1,'']]],
-  ['example_104',['Example',['../_n_e_w___f_e_a_t_u_r_e_s_8txt.html#a1cf242705475865b0874a9a5bb3c74c7',1,'NEW_FEATURES.txt']]]
+  ['89ee96fb91650e4f656059632a63f549b61a4a7b_5f0_2efile_2efooter_2etpl_2ephp_11',['89ee96fb91650e4f656059632a63f549b61a4a7b_0.file.footer.tpl.php',['../89ee96fb91650e4f656059632a63f549b61a4a7b__0_8file_8footer_8tpl_8php.html',1,'']]]
 ];

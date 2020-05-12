@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['message_2ephp_350',['Message.php',['../_message_8php.html',1,'']]],
-  ['message_5fmanager_2ephp_351',['Message_manager.php',['../_message__manager_8php.html',1,'']]],
-  ['messages_2ephp_352',['Messages.php',['../_messages_8php.html',1,'']]]
+  ['article_2ephp_273',['Article.php',['../_article_8php.html',1,'']]],
+  ['article_5fmanager_2ephp_274',['Article_manager.php',['../_article__manager_8php.html',1,'']]],
+  ['articles_2ephp_275',['Articles.php',['../_articles_8php.html',1,'']]]
 ];

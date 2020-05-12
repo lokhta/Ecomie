@@ -1,12 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "$_abcdefghilmnoprstuvw",
+  0: "$0256789_abcdefghilmnprstuw",
   1: "acdefgmnpsuw",
-  2: "acdefgimnprsuw",
-  3: "_acdefghilmprstuw",
-  4: "$abcefghinopstuv",
-  5: "c",
-  6: "s"
+  2: "0256789abcdefgmnprsuw",
+  3: "_acdeghilmpstuw",
+  4: "$"
 };
 
 var indexSectionNames =
@@ -15,9 +13,7 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables",
-  5: "typedefs",
-  6: "pages"
+  4: "variables"
 };
 
 var indexSectionLabels =
@@ -26,8 +22,6 @@ var indexSectionLabels =
   1: "Structures de données",
   2: "Fichiers",
   3: "Fonctions",
-  4: "Variables",
-  5: "Définitions de type",
-  6: "Pages"
+  4: "Variables"
 };
 

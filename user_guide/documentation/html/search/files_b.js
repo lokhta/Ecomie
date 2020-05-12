@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['smarty_5f2_5fbc_5fnotes_2etxt_360',['SMARTY_2_BC_NOTES.txt',['../_s_m_a_r_t_y__2___b_c___n_o_t_e_s_8txt.html',1,'']]],
-  ['smarty_5f3_2e0_5fbc_5fnotes_2etxt_361',['SMARTY_3.0_BC_NOTES.txt',['../_s_m_a_r_t_y__3_80___b_c___n_o_t_e_s_8txt.html',1,'']]],
-  ['smarty_5f3_2e1_5fnotes_2etxt_362',['SMARTY_3.1_NOTES.txt',['../_s_m_a_r_t_y__3_81___n_o_t_e_s_8txt.html',1,'']]],
-  ['subscription_2ephp_363',['Subscription.php',['../_subscription_8php.html',1,'']]],
-  ['subscription_5fmanager_2ephp_364',['Subscription_manager.php',['../_subscription__manager_8php.html',1,'']]]
+  ['e0f30e020daba03cd787211eea07ef74a32d1093_5f0_2efile_2econnection_2etpl_2ephp_287',['e0f30e020daba03cd787211eea07ef74a32d1093_0.file.connection.tpl.php',['../e0f30e020daba03cd787211eea07ef74a32d1093__0_8file_8connection_8tpl_8php.html',1,'']]],
+  ['e13789b07c83c266538c02e0cf97440d5741dd19_5f0_2efile_2eevents_2etpl_2ephp_288',['e13789b07c83c266538c02e0cf97440d5741dd19_0.file.events.tpl.php',['../e13789b07c83c266538c02e0cf97440d5741dd19__0_8file_8events_8tpl_8php.html',1,'']]],
+  ['email_2ephp_289',['Email.php',['../_email_8php.html',1,'']]],
+  ['event_2ephp_290',['Event.php',['../_event_8php.html',1,'']]],
+  ['event_5fmanager_2ephp_291',['Event_manager.php',['../_event__manager_8php.html',1,'']]],
+  ['events_2ephp_292',['events.php',['../events_8php.html',1,'']]]
 ];

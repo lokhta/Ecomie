@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
+ * Classe Newsletter_manager
  * \author Sofiane AL AMRI
  * \version 3.0
 

@@ -1,17 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Dashboard
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ * @brief  Ce contrôleur permet d'afficher le tableau de bord du dashboard
+ */
+
 class Dashboard extends CI_Controller{
     public function __construct(){
         parent::__construct();
 
-        // if((empty($_SESSION['id']))||(($_SESSION['role']) =='3')){
-        //     redirect('pages/access_denied', 'location');
-        // }
     }
 
+    /**
+     * @brief index() affiche le tableau de bord
+     * @param $data contient les données du message qu'il récupère de la BDD
+     * @param $count_article contient le nombres d'article sur le site
+     * @param $count_user contient le nombre d'utilisateurs sur le site
+     * @param $count_event contient le nombre d'événements sur le site
+     * @param com_report contient les données d'un commentaire signalé par un utilisateur
+     */
+
     public function index(){
-        //var_dump($_POST);
+
         $subscription_manager = create_object('Subscription_manager');
         $subscription = create_object('Subscription');
         
@@ -40,18 +53,20 @@ class Dashboard extends CI_Controller{
         $count_event = $event_manager->count_event();
         $this->smarty->assign("nb_events", $count_event);
 
-        //Coment signalé
+        //Comment signalé
         $comment_manager = create_object("Comment_manager");
         $com_report = $comment_manager->getAllComment();
         $this->smarty->assign("com_report", $com_report);
-        // var_dump($com_report);
-
-
 
         $this->smarty->assign('page', 'admin/home.tpl');
         $this->smarty->assign('title', 'Ecomie - Tableau de bord');
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+
+    /**
+     * @brief Galeries() assigne la variable smartie "page" avec la donnée 'admin/archive.tpl'
+     */
 
     public function Galeries(){
         $this->smarty->assign('page', 'admin/archive.tpl');

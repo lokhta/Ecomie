@@ -1,5 +1,20 @@
 var searchData=
 [
-  ['https_182',['https',['../change__log_8txt.html#add765d258c991ebec210d24950b62a4f',1,'change_log.txt']]],
-  ['hydrate_183',['hydrate',['../class_article.html#a2be44815edff85cab5e873ba4497c38b',1,'Article\hydrate()'],['../class_comment.html#a2be44815edff85cab5e873ba4497c38b',1,'Comment\hydrate()'],['../class_event.html#a2be44815edff85cab5e873ba4497c38b',1,'Event\hydrate()'],['../class_form.html#a2be44815edff85cab5e873ba4497c38b',1,'Form\hydrate()'],['../class_galerie.html#a2be44815edff85cab5e873ba4497c38b',1,'Galerie\hydrate()'],['../class_message.html#a2be44815edff85cab5e873ba4497c38b',1,'Message\hydrate()'],['../class_newsletter.html#a2be44815edff85cab5e873ba4497c38b',1,'Newsletter\hydrate()'],['../class_subscription.html#a2be44815edff85cab5e873ba4497c38b',1,'Subscription\hydrate()'],['../class_user.html#a2be44815edff85cab5e873ba4497c38b',1,'User\hydrate()']]]
+  ['access_5fdenied_14',['access_denied',['../class_pages.html#a51d9a0b3f573a5faf6446945d70e1806',1,'Pages']]],
+  ['add_5fcomment_15',['add_comment',['../class_comments.html#a9e9badc9e6016e646656edbc6e8ad77f',1,'Comments']]],
+  ['addarticle_16',['addArticle',['../class_article__manager.html#a8bd171b5151aa1f2f24f940b40abcdcf',1,'Article_manager']]],
+  ['addcomment_17',['addComment',['../class_comment__manager.html#aa8fd802a5ef6804bc4033103454fb0b6',1,'Comment_manager']]],
+  ['addevent_18',['addEvent',['../class_event__manager.html#a1b5dc203d96bdae065cb281696117216',1,'Event_manager']]],
+  ['addimage_19',['addImage',['../class_galerie__manager.html#a8feefe48aa671e53da520151e7dec0d6',1,'Galerie_manager']]],
+  ['addmessage_20',['addMessage',['../class_message__manager.html#a7e5e02ece6070c6d3c69626a841fa1e7',1,'Message_manager']]],
+  ['addnews_21',['addNews',['../class_newsletter__manager.html#ae41f2547790b5f47b01ff97eb1893df7',1,'Newsletter_manager']]],
+  ['addsubscriber_22',['addSubscriber',['../class_subscription__manager.html#abe862f040c017320541efaa41e6c388c',1,'Subscription_manager']]],
+  ['adduser_23',['addUser',['../class_user__manager.html#af15e3605d4dc1c169f30bfb79314eed1',1,'User_manager']]],
+  ['archives_24',['archives',['../class_events.html#a371863ab6dcdb7c9bcc1a318835429eb',1,'Events']]],
+  ['article_25',['Article',['../class_article.html',1,'']]],
+  ['article_2ephp_26',['Article.php',['../_article_8php.html',1,'']]],
+  ['article_5fmanager_27',['Article_manager',['../class_article__manager.html',1,'']]],
+  ['article_5fmanager_2ephp_28',['Article_manager.php',['../_article__manager_8php.html',1,'']]],
+  ['articles_29',['Articles',['../class_articles.html',1,'Articles'],['../class_articles.html#a1b8e41d27b77b01e374945272faa3eca',1,'Articles\articles()']]],
+  ['articles_2ephp_30',['Articles.php',['../_articles_8php.html',1,'']]]
 ];
