@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Comments
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ * @brief  permet de gérer les commentaires pour les articles
+ */
+
 class Comments extends CI_Controller{
     private $_comment_manager;
     private $_comment;
@@ -8,11 +15,14 @@ class Comments extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
-
-        // var_dump($_POST);
         $this->_comment_manager = create_object('Comment_manager');
         $this->_comment = create_object('Comment');
     }
+
+
+    /**
+     * @brief add_comment() ajoute un commentaire
+     */
 
     public function add_comment(){
         //Ajouter un commentaire
@@ -39,6 +49,10 @@ class Comments extends CI_Controller{
             // redirect($url, 'location');
         }
     }
+
+    /**
+     * @brief edit_comment() modifie un commentaire
+     */
 
     public function edit_comment(){
 
@@ -77,11 +91,11 @@ class Comments extends CI_Controller{
         }
     }
 
-    public function get_comment(){
+    /**
+     * @brief get_comment() récupère un commentaire de la BDD pour l'afficher 
+     */
 
-        
-        
-        
+    public function get_comment(){
 
         if(!empty($_GET['article_id'])){
             $page_url = base_url()."Articles/articles?article_id=".$_GET['article_id'];

@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Newsletters
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ * @brief  Ce contrôleur permet de gérer la newsletter, création/suppression/modification et envoi
+ */
+
 class Newsletters extends CI_Controller{
     private $_newsletter_manager;
     private $_newsletter;
@@ -11,6 +18,10 @@ class Newsletters extends CI_Controller{
         $this->_newsletter_manager = create_object('Newsletter_manager');
         $this->_newsletter = create_object('Newsletter');
     }
+
+    /**
+     * @brief dashboard() permet d'afficher la page newsletter dans la dashboard et de gérer l'insertion dans la BDD, l'affichage, la modification, la suppression et l'envoi par mail d'une newsletter
+     */
 
     public function dashboard(){
         if((empty($_SESSION['id']))||(($_SESSION['role'])!='1')){
@@ -91,6 +102,10 @@ class Newsletters extends CI_Controller{
         $this->smarty->assign('script_ckeditor', $script_ckeditor);
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+    /**
+     * @brief upload() permet d'uploader une image avec ckeditor
+     */
 
     public function upload(){
         upload_image_ckeditor('newsletter');

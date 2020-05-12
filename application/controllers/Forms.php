@@ -21,7 +21,6 @@ class Forms extends CI_Controller{
 
     /**
      * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
-     * @param $data contient les données du message qu'il récupère de la BDD
      */
 
     public function dashboard(){
@@ -50,6 +49,13 @@ class Forms extends CI_Controller{
         $this->smarty->view('admin/dashboard.tpl');
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @brief send_message() permet d'envoyer un message à travers la page contact
+     */
+
+>>>>>>> cf91145ba0ffea61238a671a5ae7cabbde0cb9a2
     public function send_message(){
         $this->form_validation->set_rules('formSendername', 'Nom', 'required');
         $this->form_validation->set_rules('formSendermail', 'Email', 'required');

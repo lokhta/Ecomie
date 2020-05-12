@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Events
+ * \author Jean-Baptiste Abeilhe
+ * \version 3.0
+ * @brief  permet d'afficher ou de gérer les images des galeries
+ */
+
 class Events extends CI_Controller{
     
    private $_event_manager;
@@ -13,11 +20,15 @@ class Events extends CI_Controller{
         $this->_event = create_object('Event');
     }
 
+    /**
+     * @brief events() affiche un ou plusieurs évènements
+     */
+
     public function events(){
         //Afficher un seul event
         if(!empty($_GET['event_id'])){            
         $data = get_data($this->_event_manager, $this->_event, 'getEvent', $_GET['event_id']);
-        // var_dump($data);
+
         $this->smarty->assign('eventDetail', $data);
 
             $this->smarty->view('pages/event.tpl');
@@ -29,6 +40,10 @@ class Events extends CI_Controller{
             $this->smarty->view('pages/events.tpl');
         }
     }
+
+    /**
+     * @brief dashboard() Permet la gestion des évèneemnts dans le dashboard
+     */
 
     public function dashboard(){
 
@@ -98,6 +113,10 @@ class Events extends CI_Controller{
         $this->smarty->view('admin/dashboard.tpl');
     }
 
+    /**
+     * @brief archives() ajoute la page archive dans le dahsboard et permet de gérer les évènements passés
+     */
+
     public function archives(){
         if(!empty($_GET['event_id'])){
             $data = get_data($this->_event_manager, $this->_event, 'getEvent', $_GET['event_id']);
@@ -105,12 +124,15 @@ class Events extends CI_Controller{
             $this->smarty->assign('page', 'admin/archive_detail.tpl');
         }else{
             $data = get_all_data($this->_event_manager, $this->_event, "getAllEvent");
-            // var_dump($data);
             $this->smarty->assign('archive', $data);
             $this->smarty->assign('page', 'admin/archive.tpl');
         }
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+    /**
+     * @brief upload() permet de transférer un image avec ckeditor
+     */
 
     public function upload(){
         upload_image_ckeditor('events');

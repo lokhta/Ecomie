@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['7fa10444a4399ebef5a75f8657394354a3ac7c36_5f0_2efile_2egalerie_2etpl_2ephp_270',['7fa10444a4399ebef5a75f8657394354a3ac7c36_0.file.galerie.tpl.php',['../7fa10444a4399ebef5a75f8657394354a3ac7c36__0_8file_8galerie_8tpl_8php.html',1,'']]]
+  ['comment_2ephp_260',['Comment.php',['../_comment_8php.html',1,'']]],
+  ['comment_5fmanager_2ephp_261',['Comment_manager.php',['../_comment__manager_8php.html',1,'']]],
+  ['comments_2ephp_262',['Comments.php',['../_comments_8php.html',1,'']]],
+  ['config_2ephp_263',['config.php',['../config_8php.html',1,'']]]
 ];

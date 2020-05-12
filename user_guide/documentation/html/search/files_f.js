@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['newsletter_2ephp_304',['Newsletter.php',['../_newsletter_8php.html',1,'']]],
-  ['newsletter_5fmanager_2ephp_305',['Newsletter_manager.php',['../_newsletter__manager_8php.html',1,'']]],
-  ['newsletters_2ephp_306',['Newsletters.php',['../_newsletters_8php.html',1,'']]]
+  ['welcome_2ephp_290',['Welcome.php',['../_welcome_8php.html',1,'']]],
+  ['welcome_5fmessage_2ephp_291',['welcome_message.php',['../welcome__message_8php.html',1,'']]]
 ];

@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Contrôleur Articles
+ * \author Sofiane AL AMRI
+ * \version 3.0
+ * @brief Ce contrôleur permet d'afficher et de gérer les articles sur le site  
+ */
+
 class Articles extends CI_Controller{
 
     private $_article_manager;
@@ -9,10 +16,13 @@ class Articles extends CI_Controller{
     public function __construct(){
         parent::__construct();
 
-        // var_dump($_POST);
         $this->_article_manager = create_object('Article_manager');
         $this->_article = create_object('Article');
     }
+
+    /**
+     * @brief articles() Affiche un ou plusieurs articles 
+     */
 
     public function articles(){
 
@@ -38,6 +48,10 @@ class Articles extends CI_Controller{
             $this->smarty->view('pages/savoir_faire.tpl');
         }
     }
+
+    /**
+     * @brief articles() Permet de gérer les articles dans le dashboard
+     */
 
     public function dashboard(){
 
@@ -122,6 +136,11 @@ class Articles extends CI_Controller{
         $this->smarty->assign('script_ckeditor', $script_ckeditor);
         $this->smarty->view('admin/dashboard.tpl');
     }
+
+    
+    /**
+     * @brief upload() permet de transférer un image avec ckeditor
+     */
 
     public function upload(){
         upload_image_ckeditor('articles');

@@ -15,8 +15,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief __construct() permet de charger les fonctions se trouvant dans les modèles User et User_manager
-    * @param _user_manager Devient un nouvel objet user_manager
-    * @param _user Devient un nouvel objet user
     */
 
     public function __construct(){
@@ -31,12 +29,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief connexion() permet au utilisateurs ayant déjà un compte créé, de se connecté
-    * @param $_POST contient les données du formulaire envoyé par l'utilisateur
-    * @param $userManager le nouvel objet user_manager devient une nouvelle variable $user_manager
-    * @param $getUser contient une ligne de la table user
-    * @param $user le nouvel objet user devient une nouvelle variable $user
-    * @param $userTab est un tableau contenant les données de l'objet $user
-    * @param $keys variable contenant le nom de la clé dans $userTab en effaçant le caractère "user" pour chaques clés
     */
 
     public function connexion(){
@@ -83,14 +75,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief inscription() permet aux visiteurs du site de s'inscrire en tant que membre
-    * @param helper permet de charger les helpers de codeigniter form et url
-    * @param library permet de charger la librairie codeigniter 'form_validation' pour afficher les messages d'erreurs des champs obligatoires
-    * @param set_error_delimiters est un paramètre de form_validation permettant d'ajouter la classe "error" dans la vue inscription
-    * @param $config contient un tableau à plusieurs dimension contenant les "rôles" de chaques champs dans le formulaire inscription
-    * @param set_rules met les rôles pour form_validation à jour avec le tableau $config
-    * @param run retourne faux si il y a une erreur dans form_validation et true si les champs sont bien renseignés
-    * @param write_data envoi les données reçus à la BDD pour les insérés dans la table users
-    * @param send_mail envoi un mail de confirmation au visiteur venant de s'inscrire
     */
 
     public function inscription()
@@ -186,8 +170,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief logout() permet aux utilisateurs connectés de se déconnecter
-    * @param session_destroy permet de "détruire" la session en cours
-    * @param redirect_base_url permet de rediriger la page en cours vers la page d'accueil du site
     */
 
     public function logout()
@@ -200,11 +182,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief profil() permet aux membres d'accéder à l'heure profil et de modifier leurs informations
-    * @param $_GET récupère la valeur pour ['del'] afin de supprimer la photo de profil ou non
-    * @param del_avatar supprime la photo de profil en fonction de l'identifiant de la session
-    * @param smarty->assign permet d'assigner une valeur à une variable smarty pour l'utiliser dans la vue
-    * @param $_SESSION contient les données de la session de l'utilisateur
-    * @param $_POST contient les données renseingés par l'utilisateurs dans le formulaire pour modifier ses informations
     */
 
     public function profil()
@@ -233,11 +210,6 @@ class Users extends CI_Controller{
 
     /**
     * @brief membres() permet d'afficher la liste des utilisateurs dans la dashboard
-    * @param $_GET récupère la valeur pour modifier le rôle de l'utilisateur
-    * @param $role contient le role de l'utilisateur
-    * @param smarty->assign permet d'assigner une valeur à une variable smarty pour l'utiliser dans la vue
-    * @param $data_list contient un tableau de la liste des utilisateurs avec leurs données
-    * @param $_POST contient les données renseingés par l'utilisateurs dans le formulaire pour modifier ses informations
     */
 
     public function membres()
