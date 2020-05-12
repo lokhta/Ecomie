@@ -33,11 +33,6 @@ class Welcome extends CI_Controller {
 
 	/**
     * @brief index() permet d'ajouter l'inscription à la newsletter et d'afficher la vu de la page d'accueil
-    * @param $_POST contient les données du formulaire envoyé par l'utilisateur
-    * @param $subscription_manager créé un nouvel objet du modèle Subscription_manager
-    * @param $subscription créé un nouvel objet du modèle Subscription
-    * @param write_data utilise la fonction du fichier func_helper avec les paramètres des objets créés et les informations de $POST
-    * @param redirect fait une redirection vers la page d'accueil
     */
 
     public function index(){

@@ -20,9 +20,6 @@ class Messages extends CI_Controller{
 
     /**
      * @brief send_message() enregistre les données dans la BDD et les affiches dans le dashboard
-     * @param $_POST contient les informations du message (adresse mail, objet, contenus, validation des conditions d'utilisations)
-     * @param write_data exécute le helper dans func_helper.php avec les paramètres associés
-     * @param json_encode exécute le script java pour afficher les erreurs sur la page contact
      */
 
     public function send_message(){
@@ -36,10 +33,6 @@ class Messages extends CI_Controller{
 
     /**
      * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
-     * @param $_GET cette variable contient l'identifiant du message lorsque l'on clique dessus
-     * @param $data contient les données du message qu'il récupère de la BDD
-     * @param del_data supprime les données dans la BDD en fonction de l'id du message séléctionné
-     * @param get_all_data récupère tout les messages associés à l'id de l'utilisateur depuis la BDD
      */
 
     public function dashboard(){

@@ -16,11 +16,6 @@ class Dashboard extends CI_Controller{
 
     /**
      * @brief index() affiche le tableau de bord
-     * @param $data contient les données du message qu'il récupère de la BDD
-     * @param $count_article contient le nombres d'article sur le site
-     * @param $count_user contient le nombre d'utilisateurs sur le site
-     * @param $count_event contient le nombre d'événements sur le site
-     * @param com_report contient les données d'un commentaire signalé par un utilisateur
      */
 
     public function index(){

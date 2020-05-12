@@ -17,9 +17,6 @@ class Email extends CI_Controller{
 
     /**
     * @brief send_page() permet de partager un article par mail
-    * @param $subject contient l'objet du mail avec le nom de l'utilisateur qui l'as envoyé
-    * @param $message contient le contenu du mail avec le nom de l'utilisateur qui l'as envoyé ainsi que le lien de l'article
-    * @param send_mail appel la fonction dans le fichier func_helper pour envoyer le mail à sont destinataire
     */
 
     public function send_page(){

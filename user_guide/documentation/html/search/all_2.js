@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['251f8c0c18f8d652ebedbcd4153f8d73f2d4d8e1_5f0_2efile_2esavoir_5ffaire_2etpl_2ephp_6',['251f8c0c18f8d652ebedbcd4153f8d73f2d4d8e1_0.file.savoir_faire.tpl.php',['../251f8c0c18f8d652ebedbcd4153f8d73f2d4d8e1__0_8file_8savoir__faire_8tpl_8php.html',1,'']]],
-  ['2e50f3edac36a528cf222f724c4bbf66a0de3ba0_5f0_2efile_2edashboard_2etpl_2ephp_7',['2e50f3edac36a528cf222f724c4bbf66a0de3ba0_0.file.dashboard.tpl.php',['../2e50f3edac36a528cf222f724c4bbf66a0de3ba0__0_8file_8dashboard_8tpl_8php.html',1,'']]]
+  ['9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80_5f0_2efile_2earchive_2etpl_2ephp_6',['9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80_0.file.archive.tpl.php',['../9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80__0_8file_8archive_8tpl_8php.html',1,'']]]
 ];

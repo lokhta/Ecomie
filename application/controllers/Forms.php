@@ -21,7 +21,6 @@ class Forms extends CI_Controller{
 
     /**
      * @brief dashboard() permet d'afficher tout les messages reçus dans le dashboard et de les gérés
-     * @param $data contient les données du message qu'il récupère de la BDD
      */
 
     public function dashboard(){
@@ -38,8 +37,6 @@ class Forms extends CI_Controller{
 
     /**
      * @brief send_message() permet d'envoyer un message à travers la page contact
-     * @param form_validation est un helper de codeigniter permettant de gérer et d'afficher les erreurs de saisi
-     * @param $array est un tableau contenant un success ou un error qui sera utilisé après par le javascript
      */
 
     public function send_message(){

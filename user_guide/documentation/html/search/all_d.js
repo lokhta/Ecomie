@@ -1,23 +1,4 @@
 var searchData=
 [
-  ['e0f30e020daba03cd787211eea07ef74a32d1093_5f0_2efile_2econnection_2etpl_2ephp_69',['e0f30e020daba03cd787211eea07ef74a32d1093_0.file.connection.tpl.php',['../e0f30e020daba03cd787211eea07ef74a32d1093__0_8file_8connection_8tpl_8php.html',1,'']]],
-  ['e13789b07c83c266538c02e0cf97440d5741dd19_5f0_2efile_2eevents_2etpl_2ephp_70',['e13789b07c83c266538c02e0cf97440d5741dd19_0.file.events.tpl.php',['../e13789b07c83c266538c02e0cf97440d5741dd19__0_8file_8events_8tpl_8php.html',1,'']]],
-  ['edit_5fcomment_71',['edit_comment',['../class_comments.html#a8f745e9a594108b17bd45516efbf76f5',1,'Comments']]],
-  ['editarticle_72',['editArticle',['../class_article__manager.html#ae54c662590ef1228f1680a64701a201c',1,'Article_manager']]],
-  ['editcomment_73',['editComment',['../class_comment__manager.html#a97a7cb9e982691905c477b586ac7e361',1,'Comment_manager']]],
-  ['editevent_74',['editEvent',['../class_event__manager.html#a9858faa7f42350fa7b9d7e015d793459',1,'Event_manager']]],
-  ['editgalerie_75',['editGalerie',['../class_galerie__manager.html#abbd68a6bd640943a8ad807277f8df030',1,'Galerie_manager']]],
-  ['editnews_76',['editNews',['../class_newsletter__manager.html#a72eb7e2c00d7b7dbad93e5ad866941e0',1,'Newsletter_manager']]],
-  ['editor_77',['editor',['../class_galeries.html#a9519adcc17294545fc907f0d7122cfe0',1,'Galeries']]],
-  ['editsubscriber_78',['editSubscriber',['../class_subscription__manager.html#a923b40d39e72027a7a79cabcd104b291',1,'Subscription_manager']]],
-  ['edituser_79',['editUser',['../class_user__manager.html#adc3ed184dae87cc040d05ad603ca2e11',1,'User_manager']]],
-  ['email_80',['Email',['../class_email.html',1,'']]],
-  ['email_2ephp_81',['Email.php',['../_email_8php.html',1,'']]],
-  ['event_82',['Event',['../class_event.html',1,'']]],
-  ['event_2ephp_83',['Event.php',['../_event_8php.html',1,'']]],
-  ['event_5fmanager_84',['Event_manager',['../class_event__manager.html',1,'']]],
-  ['event_5fmanager_2ephp_85',['Event_manager.php',['../_event__manager_8php.html',1,'']]],
-  ['eventnotinbase_86',['eventNotInBase',['../class_galerie__manager.html#a593dc71bb0c138a31743f29cbcf40ed1',1,'Galerie_manager']]],
-  ['events_87',['Events',['../class_events.html',1,'Events'],['../class_events.html#ade509b07f1df45730d31589b81a26efb',1,'Events\events()']]],
-  ['events_2ephp_88',['events.php',['../events_8php.html',1,'']]]
+  ['logout_148',['logout',['../class_users.html#a082405d89acd6835c3a7c7a08a7adbab',1,'Users']]]
 ];

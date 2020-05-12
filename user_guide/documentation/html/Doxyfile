@@ -945,7 +945,8 @@ EXCLUDE_PATTERNS       = */libraries/* \
                          */demo/* \
                          */cli/* \
                          */html/* \
-                         */errors/*
+                         */errors/* \
+                         */smarty/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
