@@ -452,7 +452,7 @@ function send_mail($from, $to, $subject, $message, $format){
         $ci->email->message($message);
 
     if($ci->email->send()){
-        if(!empty($_GET["sender"])){
+        if(!empty($from)){
             echo json_encode(array("success" => "<div class='alert alert-success'>L'email a bien été envoyé</div>"));
         }
     }else{

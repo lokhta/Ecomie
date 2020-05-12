@@ -23,12 +23,14 @@ class Email extends CI_Controller{
     */
 
     public function send_page(){
- 
         $subject = "Email envoyé par ".$_GET["sender"];
         $message = $_GET["sender"]." vous a envoyé cette article qui pourrait vous plaire : ".$_GET["url"];
         
         send_mail($_GET['sender'], $_GET['recipient'], $subject, $message, "text");
+    }
 
+    public function send_reponse(){
+        send_mail("Ecomie", $_GET['recipient'], $_GET["subject"], $_GET["reponse"], "text");
     }
    
 }
