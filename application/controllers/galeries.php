@@ -62,7 +62,7 @@ class Galeries extends CI_Controller{
         }else{
             $data = get_all_data($this->_galerie_manager, $this->_galerie, 'getAllGalerie');
 
-
+            // var_dump($data);
             $this->smarty->assign('galerie', $data);
             $this->smarty->assign('page', 'admin/galerie.tpl');
         }
@@ -72,19 +72,26 @@ class Galeries extends CI_Controller{
     }
     
     public function editor(){
+        $this->form_validation->set_rules('imgAlt', 'Texte alternatif', 'required');
 
-        //$notBase = $this->_galerie_manager->eventNotInBase();
-        // var_dump($notBase);
-
-        if(!empty($_POST)){
-            $count_image = $this->_galerie_manager->count_image($_POST['imgEvent']);
-            if($count_image < 20){
-                $_POST['imgName'] = upload_image("imgName",600, 600);
-                write_data($this->_galerie_manager, $this->_galerie, "addImage",$_POST);
-            }
+        if(empty($_FILES['imgName']['name'])){
+            $this->form_validation->set_rules('imgName', 'Image', 'required');
         }
 
-
+        if($this->form_validation->run() == false){
+            $this->smarty->assign("error", validation_errors("<p class='red_error'>", "</p>"));
+        }else{
+            if(!empty($_POST["imgEvent"]) && $_POST["imgEvent"] != 0){
+                $count_image = $this->_galerie_manager->count_image($_POST['imgEvent']);
+                if($count_image < 20){
+                    $_POST['imgName'] = upload_image("imgName",600, 600);
+                    write_data($this->_galerie_manager, $this->_galerie, "addImage",$_POST);
+                }
+            }else{
+                $this->smarty->assign("error_event", "vous devez choisir un event");
+            }
+        }
+        
         $option = get_option_select_input($this->_galerie_manager, "eventNotInBase","eventId","eventName","Evénements");
         $this->smarty->assign("option", $option);
         // var_dump($option);
@@ -96,3 +103,4 @@ class Galeries extends CI_Controller{
 
 
 }
+

@@ -45,12 +45,9 @@ class Events extends CI_Controller{
   
         if($_GET){
             $url = "Events/dashboard?event_id=".$_GET['event_id'];
+            $url_form = $url."&edit=1";
 
-            if(!empty($_GET['edit'])){
-                $url .= "&edit=1&update=1";
-            }
-
-            $this->smarty->assign('url', $url);
+            $this->smarty->assign('url_form', $url_form);
 
             //Afficher un seul évènement
             if(!empty($_GET['event_id'])){
@@ -61,12 +58,12 @@ class Events extends CI_Controller{
             }
 
             //Modification évènement
-            if(!empty($_POST) && !empty($_GET['update'])){
+            if(!empty($_POST) && !empty($_GET['edit'])){
                 $date_modif = date('Y-m-d H:i:s');
 
                 write_data($this->_event_manager, $this->_event, 'editEvent', $_POST, array('eventDate' => $date_modif));
 
-                redirect($url, 'location');
+                redirect($url_form, 'location');
             }
 
             //Suppression évènement

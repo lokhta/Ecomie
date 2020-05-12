@@ -1035,26 +1035,12 @@ PAGE SAVOIR-FAIRE***************************************************************
     background-color: white;
 }
 
-.savoir__faire--article p img {  
-        max-width: 500px;
-        max-height: 500px;
-}
 @media screen and (max-width: 768px) {
-    .savoir__faire--article p img {  
-        max-width: 400px;
-        max-height: 400px;
-    }
-    .savoir__faire {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-}
 
-@media screen and (max-width: 572px) {
-    .savoir__faire--article p img {  
-        max-width: 200px;
-        max-height: 200px;
-    }
+.savoir__faire {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 }
 
 @media screen and (max-width: 350px) {
@@ -1116,12 +1102,6 @@ Page évènements
     text-decoration: none; 
     color: black;
 }
-.event__bloc p img {
-    max-width: 70%;
-    max-height: 70%;
-    text-decoration: none; 
-    color: black;
-}
 
 .event__auteur {
     width: 100%;
@@ -1154,14 +1134,6 @@ Page évènements
     padding:10px;
     background-color: rgb(141, 191, 59);
 }
-.event__bloc p img {  
-    max-width: 500px;
-    max-height: 500px;
-}
-.event__event p img {  
-    max-width: 500px;
-    max-height: 500px;
-}
 
 @media screen and (max-width: 768px) { 
 
@@ -1190,25 +1162,7 @@ Page évènements
         margin: 5px auto;
         font-size: 0.9em;
     }
-    .event__bloc p img {  
-        max-width: 400px;
-        max-height: 400px;
-    }
-    .event__event p img {  
-        max-width: 400px;
-        max-height: 400px;
-    }
 }
-@media screen and (max-width: 572px) {
-    .event__bloc p img {  
-        max-width: 200px;
-        max-height: 200px;
-    }
-    .event__event p img {  
-        max-width: 200px;
-        max-height: 200px;
-    }
-    }
 /************************************
 Galerie
 ************************************/
@@ -1469,7 +1423,7 @@ section.right_content {
     align-items: center;
     font-size: 30px;
     background: #2C3E50;
-    height: 75px;
+    height: 50px;
 }
 
 .content_ico{
@@ -1555,6 +1509,7 @@ div#dash_info .flex_column {
         overflow: hidden;
         position: relative;
         margin: auto auto;
+        z-index:1;
     }
 
     .link-nav-admin:hover{
@@ -2003,7 +1958,6 @@ span.comment_author {
 table#tab_profil .info_profil td:nth-child(2) {
     display: flex;
     justify-content: space-between;
-    
 
 }
 
@@ -2295,6 +2249,8 @@ a.btn.btn_create_gallery{
     justify-content: space-between;
     align-items: center;
     background: #fff;
+    width: 400px;
+    margin: 15px;
 }
 
 #list_gallery img{
