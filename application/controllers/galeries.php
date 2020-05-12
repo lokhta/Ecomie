@@ -79,20 +79,12 @@ class Galeries extends CI_Controller{
 
     }
     
-<<<<<<< HEAD
     public function editor(){
         $this->form_validation->set_rules('imgAlt', 'Texte alternatif', 'required');
 
         if(empty($_FILES['imgName']['name'])){
             $this->form_validation->set_rules('imgName', 'Image', 'required');
         }
-=======
-    /**
-     * @brief editor() permet d'éditer une galerie pour ajouter des images
-     */
-
-    public function editor(){
->>>>>>> cf91145ba0ffea61238a671a5ae7cabbde0cb9a2
 
         if($this->form_validation->run() == false){
             $this->smarty->assign("error", validation_errors("<p class='red_error'>", "</p>"));

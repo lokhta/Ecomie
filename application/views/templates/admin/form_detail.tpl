@@ -6,7 +6,7 @@
     
         <div>
             <div>
-                <h2>Envoyé par {$formDetail.formSenderName} - <{$formDetail.formSendermail}></h2>
+                <h2>Envoyé par {$formDetail.formSendername} - <span>{$formDetail.formSendermail}</span></h2>
                 <p id="subject_message">Objet : {$formDetail.formSubject}</p>
                 <span>Message : </span>
                 <p id="message_content">{$formDetail.formMessage}</p>

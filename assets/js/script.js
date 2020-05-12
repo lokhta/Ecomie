@@ -374,8 +374,39 @@ function ajax_comment(get_name,get_value,author_id){
     });
 }
 
+/**
+ * 
+ * @param {$("id du formualaire envoyé")} form 
+ * @param {$("id du bouton à cacher")} display 
+ */
+function send_email(form, display = null){
+    form.on("submit", function(event){
+    event.preventDefault();
+    $.ajax({
+        url:$(this).attr("action"),
+        method: "get",
+        data:$(this).serialize(),
+        dataType: "json",
 
+        success: function(data){
+            
+            if(data.error){
+                $("#success").html(data.error);
+            }else if(data.success){
+                $("#success").html(data.success);
+                $("#subject").val("");
+                $("#msg").val("");
+            }
+            
+            if(display){
+                display.css("display", "none");
+            }
+            setTimeout(hideMessage, 3000);
+        }
 
+    });
+});
+}
 
 /* Ajax partager un article*/
 function send_page_email(url){
@@ -387,29 +418,27 @@ function send_page_email(url){
         $("#share_form").append(html_email);
     })
 
-    $("#share_form").on("submit", function(event){
-        event.preventDefault();
-        $.ajax({
-            url:$(this).attr("action"),
-            method: "get",
-            data:$(this).serialize(),
-            dataType: "json",
+    let form = $("#share_form");
+    let display = $("#share_form_content");
 
-            success: function(data){
-                
-                if(data.error){
-                    $("#success").html(data.error);
-                }else if(data.success){
-                    $("#success").html(data.success);
-                }
-                
-                $("#share_form_content").css("display", "none");
+    send_email(form, display);
+}
 
-                setTimeout(hideMessage, 3000);
-            }
+function send_reponse(){
 
-        });
+    $("#event_btn").one("click", function(){
+
+        let html = '<input type="checkbox" name="recipient" value="{$formDetail.formSendermail}" checked style="display:none">';
+            html += '<p>Objet</p><input type="text" name=" subject" id="subject">';
+            html += '<p>Message</p><textarea name="reponse" cols="20" rows="20" id="msg"></textarea>';
+            html += '<input type="submit" value="Envoyer" id="submit">';
+        $("#form_reponse").html(html)
     });
+
+    let form = $("#form_reponse");
+    let display = $("#display_content");
+
+    send_email(form, display);
 }
 
 function gallery(image){
