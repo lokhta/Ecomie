@@ -23,7 +23,7 @@
                 <div id="footer__nav">
                     <ul id="footer__menu">
                         <li><a href="{base_url()}">Accueil</a></li>
-                        <li><a href="{base_url()}pages/articles">Savoir-Faire</a></li>
+                        <li><a href="{base_url()}Articles/articles">Savoir-Faire</a></li>
                         <li><a href="{base_url()}Events/events">Evénements</a></li>
                         <li><a href="{base_url()}Galeries/galeries">Galerie</a></li>
                         <li><a href="{base_url()}pages/contact">Contact</a></li>
