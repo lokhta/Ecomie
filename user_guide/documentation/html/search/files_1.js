@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80_5f0_2efile_2earchive_2etpl_2ephp_254',['9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80_0.file.archive.tpl.php',['../9af0de4a1a5ce73aa0468c1970b6dc7ecf670c80__0_8file_8archive_8tpl_8php.html',1,'']]]
+  ['comment_2ephp_255',['Comment.php',['../_comment_8php.html',1,'']]],
+  ['comment_5fmanager_2ephp_256',['Comment_manager.php',['../_comment__manager_8php.html',1,'']]],
+  ['comments_2ephp_257',['Comments.php',['../_comments_8php.html',1,'']]],
+  ['config_2ephp_258',['config.php',['../config_8php.html',1,'']]]
 ];

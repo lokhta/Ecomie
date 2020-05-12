@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['dashboard_2ephp_264',['dashboard.php',['../dashboard_8php.html',1,'']]],
-  ['database_2ephp_265',['database.php',['../database_8php.html',1,'']]]
+  ['galerie_2ephp_269',['galerie.php',['../galerie_8php.html',1,'']]],
+  ['galerie_5fmanager_2ephp_270',['galerie_manager.php',['../galerie__manager_8php.html',1,'']]],
+  ['galeries_2ephp_271',['galeries.php',['../galeries_8php.html',1,'']]]
 ];

@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['form_2ephp_270',['Form.php',['../_form_8php.html',1,'']]],
-  ['form_5fmanager_2ephp_271',['Form_manager.php',['../_form__manager_8php.html',1,'']]],
-  ['forms_2ephp_272',['Forms.php',['../_forms_8php.html',1,'']]],
-  ['func_5fhelper_2ephp_273',['func_helper.php',['../func__helper_8php.html',1,'']]]
+  ['newsletter_2ephp_275',['Newsletter.php',['../_newsletter_8php.html',1,'']]],
+  ['newsletter_5fmanager_2ephp_276',['Newsletter_manager.php',['../_newsletter__manager_8php.html',1,'']]],
+  ['newsletters_2ephp_277',['Newsletters.php',['../_newsletters_8php.html',1,'']]]
 ];
